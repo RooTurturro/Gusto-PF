@@ -4,7 +4,7 @@ const path = require('path'); //Permite trabajar con rutas
 
 module.exports = {
   "config": path.resolve("./database/config", "config.js"), //Ruta del archivo de configuracion de la DB
-  "models-path": path.resolve("./database/models", "index.js"), //Ruta de los modelos de la DB
+  "models-path": path.resolve("./database/models"), //Ruta de los modelos de la DB
   "seeders-path": path.resolve("./database/seeders"), //Ruta de los seeders de la DB
   "migrations-path": path.resolve("./database/migrations"), //Ruta de los migrations de la DB
 };
