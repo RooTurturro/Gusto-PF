@@ -1,61 +1,36 @@
-"use strict"; //No permite el uso de variables no definidas
-
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  let user = sequelize.define(
-    "user",
+  class User extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  User.init(
     {
-      id: {
-        //Nobre de la columna
-        type: DataTypes.BIGINT, //Tipo de dato
-        autoIncrement: true, //Auto incrementable
-        primaryKey: true, //Clave primaria
-        allowNull: false, //No permite nulo
-      },
-      nombre: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      apellido: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      edad: {
-        type: DataTypes.INTEGER,
-      },
-      celular: {
-        type: DataTypes.INTEGER,
-      },
-      createdAd: {
-        //Fecha de creacion
-        type: DataTypes.DATE,
-        field: "created_at",
-        defaultValue: DataTypes.NOW,
-        allowNull: false,
-      },
-      updatedAt: {
-        type: DataTypes.DATE,
-        field: "updated_at",
-        defaultValue: DataTypes.NOW,
-        allowNull: false,
-      },
-      deletedAt: {
-        type: DataTypes.DATE,
-        field: "deleted_at",
-      },
+      firstName: DataTypes.STRING,
+      lastName: DataTypes.STRING,
+      phone: DataTypes.STRING,
+      email: DataTypes.STRING,
+      address: DataTypes.STRING,
+      password: DataTypes.STRING,
+      isAdmin: DataTypes.BOOLEAN,
+      state: DataTypes.STRING,
+      
     },
     {
-      paranoid: true, //Elimina registros de forma logica
-      freezeTableName: true, //Evita que se cambie el nombre de la tabla a plural
+      sequelize,
+      paranoid: true, // Permite el borrado logico
+      timestamps: true,
+      modelName: "User",
     }
   );
-
-  user.associate = (models) => {
-    //Aca van las relaciones de las tablas
-  };
-
-  return user;
+  return User;
 };
