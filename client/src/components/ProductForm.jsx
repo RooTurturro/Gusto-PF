@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import './ProductForm.css'
 
 const ProductForm = () => {
 
+  const [burgerImage, setBurgerImage] = useState(null)
   const { register, formState: { errors } , handleSubmit } = useForm()
+
+  const onBurgerImageChange = (event) => {
+    setBurgerImage(event.target.files[0]);
+  };
 
   const onSubmit = (data) => {
     //aca despues vamos a enviar los datos del formulario al servidor
@@ -75,18 +79,24 @@ const ProductForm = () => {
 
       </div>
 
-      {/* <div>
+      <div>
         <label>Imagen del producto:</label>
         <input
           type='file' 
           name='productImage'
+          onChange={onBurgerImageChange}
           {...register('productImage', {
             required: {
               value: true,
               message: 'El campo es obligatorio'
             }
           })}/>
-      </div> */}
+
+        {
+          errors.productImage &&
+            <span>{errors.productImage.message}</span>
+        }
+      </div>
 
       <input type='submit' value='Enviar'/>
       
