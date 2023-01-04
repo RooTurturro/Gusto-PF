@@ -1,6 +1,6 @@
 const server = require("./src/app");
 require("dotenv").config();
-const { sequelize } = require("./database/models/index.js");
+const { sequelize } = require("./src/database/models/index.js");
 const port = process.env.PORT || 3001;
 
 const conectionTest = async () => {
