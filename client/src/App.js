@@ -2,30 +2,35 @@ import React from "react";
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Nav from "./components/Nav";
-import PediYa from "./components/Page/PediYa";
-import GustoBurgerClub from "./components/Page/GustoBurgerClub";
-import Home from "./components/Page/Home";
-import Menu from "./components/Page/Menu";
-import Sucursales from "./components/Page/Sucursales";
-import TrabajaAca from "./components/Page/TrabajaAca";
-import Nosotros from "./components/Page/Nosotros";
-import Card from "./components/Card";
+import PediYa from "./pages/PediYa";
+import GustoBurgerClub from "./pages/GustoBurgerClub";
+import Home from "./pages/Home";
+import Menu from "./pages/Menu";
+import Sucursales from "./pages/Sucursales";
+import TrabajaAca from "./pages/TrabajaAca";
+import Nosotros from "./pages/Nosotros";
+import AdminProvisorio from "./pages/AdminProvisorio";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
+        
         <Nav/>
-        <Card/>
-        {/* <Routes>
-          <Route exact path="/" component = {Home}/>
-          <Route exact path="/pediya" component = {PediYa}/>
-          <Route exact path="/gustoburgerclub" component = {GustoBurgerClub}/>
-          <Route exact path="/menu" component = {Menu}/>
-          <Route exact path="/sucursales" component = {Sucursales}/>
-          <Route exact path="/trabajaaca" component = {TrabajaAca}/>
-          <Route exact path="/nosotros" component = {Nosotros}/>
-        </Routes> */}
+
+        <Routes>
+          {/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
+          <Route exact path="/adminProvisorio" element = {<AdminProvisorio/>}/>
+
+          <Route exact path="/" element = {<Home/>}/>
+          <Route exact path="/pediya" element = {<PediYa/>}/>
+          <Route exact path="/gustoburgerclub" element = {<GustoBurgerClub/>}/>
+          <Route exact path="/menu" element = {<Menu/>}/>
+          <Route exact path="/sucursales" element = {<Sucursales/>}/>
+          <Route exact path="/trabajaaca" element = {<TrabajaAca/>}/>
+          <Route exact path="/nosotros" element = {<Nosotros/>}/>
+        </Routes>
+
       </Router>
     </div>
   );

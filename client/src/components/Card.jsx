@@ -1,6 +1,6 @@
 import React from 'react'
 import './Card.css'
-import burger from './assets/burger.png'
+import burger from '../assets/burger.png'
 
 export default function Card () {
   return (
