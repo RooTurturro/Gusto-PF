@@ -1,9 +1,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import './ProductForm.css'
 
 const ProductForm = () => {
 
-  const { register, handleSubmit } = useForm()
+  const { register, formState: { errors } , handleSubmit } = useForm()
 
   const onSubmit = (data) => {
     //aca despues vamos a enviar los datos del formulario al servidor
@@ -11,7 +12,7 @@ const ProductForm = () => {
   }
 
   return (
-    <>
+    <div>
 
     <h2>AGREGAR PRODUCTO</h2>
 
@@ -28,6 +29,11 @@ const ProductForm = () => {
               message: 'El campo es obligatorio'
             }
           })}/>
+
+        {
+          errors.productName &&
+            <span>{errors.productName.message}</span>
+        }
       </div>
 
       <div>
@@ -42,6 +48,11 @@ const ProductForm = () => {
               message: 'El campo es obligatorio'
             }
           })}/>
+
+        {
+          errors.productDescription &&
+            <span>{errors.productDescription.message}</span>
+        }
       </div>
 
       <div>
@@ -50,15 +61,21 @@ const ProductForm = () => {
           type='text' 
           name='productPrice'
           placeholder='Precio del producto'
-          {...register('productDescription', {
+          {...register('productPrice', {
             required: {
               value: true,
               message: 'El campo es obligatorio'
             }
           })}/>
+
+        {
+          errors.productPrice &&
+          <span>{errors.productPrice.message}</span>
+        }
+
       </div>
 
-      <div>
+      {/* <div>
         <label>Imagen del producto:</label>
         <input
           type='file' 
@@ -69,13 +86,13 @@ const ProductForm = () => {
               message: 'El campo es obligatorio'
             }
           })}/>
-      </div>
+      </div> */}
 
       <input type='submit' value='Enviar'/>
       
     </form>
     
-    </>
+    </div>
   )
 }
 
