@@ -4,7 +4,11 @@ const { getInfoProducts } = require("../controllers/productsControllers")
 const productRouter = Router();
 
 productRouter.get("/",(req,res)=>{
-    res.send(getInfoProducts())
+    res.send("Estamos en ruta /products")
+})
+
+productRouter.post("/",(req,res)=>{
+    res.send("Este es el post")
 })
 
 
