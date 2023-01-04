@@ -11,15 +11,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Order.belongsTo(models.User, {
+        /* foreingKey: "userId", */
+      })
+      Order.belongsTo(models.Detail);
     }
   }
-  Order.init({
-    delivered: DataTypes.BOOLEAN,
-    total: DataTypes.INTEGER,
-    state: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Order',
-  });
+  Order.init(
+    {
+      delivered: DataTypes.BOOLEAN,
+      total: DataTypes.INTEGER,
+      state: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      paranoid: true, // Permite el borrado logico
+      timestamps: true,
+      modelName: "Order",
+    }
+  );
   return Order;
 };
