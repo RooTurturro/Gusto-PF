@@ -9,12 +9,14 @@ import Menu from "./components/Page/Menu";
 import Sucursales from "./components/Page/Sucursales";
 import TrabajaAca from "./components/Page/TrabajaAca";
 import Nosotros from "./components/Page/Nosotros";
+import Card from "./components/Card";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Nav/>
+        <Card/>
         {/* <Routes>
           <Route exact path="/" component = {Home}/>
           <Route exact path="/pediya" component = {PediYa}/>
