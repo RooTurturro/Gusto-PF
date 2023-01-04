@@ -11,13 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Category.hasMany(models.Product);
     }
   }
-  Category.init({
-    name: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Category',
-  });
+  Category.init(
+    {
+      name: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      paranoid: true, // Permite el borrado logico
+      timestamps: true,
+      modelName: "Category",
+    }
+  );
   return Category;
 };

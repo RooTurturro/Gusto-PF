@@ -11,17 +11,25 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Product.belongsToMany(models.Detail, { through: "DetailProduct" });
+      Product.belongsTo(models.Category);
+      Product.belongsToMany(models.Toppings, { through: "prod-toppin" });
     }
   }
-  Product.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    image: DataTypes.STRING,
-    state: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Product',
-  });
+  Product.init(
+    {
+      name: DataTypes.STRING,
+      description: DataTypes.STRING,
+      price: DataTypes.INTEGER,
+      image: DataTypes.STRING,
+      state: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      paranoid: true, // Permite el borrado logico
+      timestamps: true,
+      modelName: "Product",
+    }
+  );
   return Product;
 };
