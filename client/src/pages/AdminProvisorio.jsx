@@ -1,10 +1,10 @@
 import React from 'react'
-import ProductForm from '../components/ProductForm'
+import ProductForm2 from './ProductForm2'
 
 const AdminProvisorio = () => {
   return (
     <div>
-      <ProductForm/>
+      <ProductForm2/>
     </div>
   )
 }
