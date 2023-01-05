@@ -1,12 +1,12 @@
 const { Router } = require("express");
-const {Product, Category, Toppings} = require('../../database/models/index')
+const {Product} = require('../../database/models/index')
 const { getInfoDB } = require("../controllers/productsControllers")
 
 
 const productRouter = Router();
 
 productRouter.get("/", async (req, res)=>{
-    const allProducts = (await getInfoDB())
+    const allProducts = await getInfoDB() 
     try{
     res.status(200).send(allProducts)
 }
