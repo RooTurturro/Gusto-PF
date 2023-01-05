@@ -1,5 +1,6 @@
 const createError = require("http-errors");
 const express = require("express");
+const { auth, requiresAuth } = require("express-openid-connect");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
@@ -10,8 +11,20 @@ const routes = require("./routing/index");
 
 
 const server = express();
-server.use(cors());
 
+const authConfig = {
+  authRequired: false,
+  auth0Logout: true,
+  issuerBaseURL: process.env.ISSUER_BASE_URL,
+  baseURL: process.env.BASE_URL,
+  clientID: process.env.CLIENT_ID,
+  secret: process.env.SECRET,
+  /* idpLogout: true, */
+};
+
+server.use(auth(authConfig));
+
+server.use(cors());
 
 server.use(logger("dev"));
 server.use(express.json());
