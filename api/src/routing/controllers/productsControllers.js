@@ -6,8 +6,19 @@ const getInfoDB = async () => {
     return dbData;
   };
 
+  const getInfoCategory = async () => {
+    const dbCategory = await Category.findAll();
+    return dbCategory;
+  };
+
+  const getInfoToppings = async () => {
+    const dbToppings = await Toppings.findAll();
+    return dbToppings;
+  }
 
 
 module.exports = {
-    getInfoDB
+    getInfoDB,
+    getInfoCategory,
+    getInfoToppings
 }
