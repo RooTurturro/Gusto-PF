@@ -11,6 +11,10 @@ export default function rootReducer(state = initialState, action) {
                 products: action.payload,
                 allProducts: action.payload
             }
+        case 'POST_PRODUCTS':
+            return {
+                ...state
+            }
         default:
             return state
     }

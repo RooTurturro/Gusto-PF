@@ -1,21 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
     return (
         <body>
-
             <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
                 <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#1">Gusto</a>
                 <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#1sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="navbar-nav">
-                    <div className="nav-item text-nowrap">
-                        <a className="nav-link px-3" href="#1">Sign out</a>
-                    </div>
-                </div>
             </header>
-
             <div className="container-fluid">
                 <div className="row">
                     <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -51,12 +45,15 @@ const Dashboard = () => {
                                         Menu
                                     </a>
                                 </li>
-
+                                <li className="nav-item">
+                                    <Link to={'/create'} className="nav-link" href="#1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-bar-chart-2 align-text-bottom" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                                        Agregar producto
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </nav>
-
-            
                 </div>
             </div>
 

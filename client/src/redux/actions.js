@@ -13,3 +13,10 @@ export function getProducts() {
         }
     }
 }
+
+export function postProduct() {
+    return async function (dispatch) {
+        const info = await axios.post('http://localhost:3001/products')
+        return info
+    }
+}
