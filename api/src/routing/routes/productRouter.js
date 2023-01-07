@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const {Product} = require('../../database/models/index')
+const {Product , Category} = require('../../database/models/index')
 const { getInfoDB } = require("../controllers/productsControllers")
 
 
@@ -39,10 +39,52 @@ productRouter.delete("/delete/:id", async (req, res) => {
     }
   });
 
-productRouter.put("/",(req,res)=>{
-    res.send("Estamos en el put ")
-})
+productRouter.put("/update/:id", async (req,res)=>{
+  try {
+    const { id } = req.params;
+    const {
+      name,
+      description,
+      price,
+      img,
+      state      
+    } = req.body;
+    if (id) {
+      let urlImage = "";
 
+      if (img) {
+        urlImage = img;
+      } else {
+        urlImage = "https://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c31f.png";
+      }
+
+      if (name) {
+        const findProduct = await Product.findByPk(id);
+        await findProduct.update(
+          {
+            name,
+            description,
+            price,
+            img,
+            state 
+          },
+          { where: { id: id } }
+        );
+
+        /*const typeDb = await Category.findAll({
+          where: { name: category },
+        });*/
+
+       /* await findProduct.setTypes(findProduct);*/
+        res.status(200).send("Producto modificado con exito");
+      } else {
+        res.status(400).send("Faltaron datos para modificar el producto");
+      }
+    }
+  } catch (error) {
+    console.log("entre al error del put", error);
+  }
+});
 
 
 module.exports = productRouter;
