@@ -1,6 +1,7 @@
 const initialState = {
     products: [],
-    allProducts: []
+    allProducts: [],
+    detail: {}
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -14,6 +15,11 @@ export default function rootReducer(state = initialState, action) {
         case 'POST_PRODUCTS':
             return {
                 ...state
+            }
+        case 'GET_DETAIL':
+            return {
+                ...state,
+                detail: action.payload
             }
         default:
             return state

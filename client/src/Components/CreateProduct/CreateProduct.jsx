@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { postProduct } from '../../redux/actions'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './CreateProduct.module.css'
 
 function validate(input) {
-  const errors = {}
+  let errors = {}
   if (!input.name) {
     errors.name = 'enter name'
   }
@@ -51,17 +51,26 @@ const CreateProduct = () => {
   }
   function handleSubmit(e) {
     e.preventDefault(e)
-    dispatch(postProduct(input))
-    alert('producto creado')
-    setInput({
-      name: '',
-      description: '',
-      price: '',
-      state: '',
-      image: ''
-    })
-    navigate('/home')
-
+    if (
+      !input.name !== '' &&
+      !input.description !== '' &&
+      !input.price !== '' &&
+      !input.state !== '' &&
+      !input.image !== ''
+    ) {
+      dispatch(postProduct(input))
+      alert('producto creado')
+      setInput({
+        name: '',
+        description: '',
+        price: '',
+        state: '',
+        image: ''
+      })
+      navigate('/home')
+    } else {
+      alert('no')
+    }
   }
 
   return (
@@ -103,7 +112,7 @@ const CreateProduct = () => {
           <label className={styles.label}>Precio del producto:</label>
           <input
             className={styles.input}
-            type='text'
+            type='number'
             name='price'
             placeholder='Precio del producto'
             onChange={handleChange}
@@ -146,6 +155,9 @@ const CreateProduct = () => {
         </div>
         <input className={styles.sendButton} type='submit' value='Enviar' />
       </form>
+      <Link to={'/dashboard'}>
+        Cancel
+      </Link>
     </div>
   )
 }

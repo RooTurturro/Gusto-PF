@@ -3,9 +3,9 @@
 }
 .form {
     border: 1px solid;
-    background-color: white;
+    background-color: rgb(202, 129, 129);
     border-radius: 10px;
-    padding: 5px 5px 2.5px 2.5px;
+    padding: 15px;
     width: 500px;
     margin: auto;
 }
@@ -34,6 +34,7 @@
     background-color: transparent;
     font-weight: bold;
     margin-bottom: 14px;
+    
 }
 
 .sendButton:hover {
