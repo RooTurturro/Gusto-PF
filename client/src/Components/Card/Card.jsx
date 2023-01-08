@@ -5,7 +5,14 @@ import * as actions from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-export default function Card({ id, name, price, description, image }) {
+export default function Card({
+	id,
+	name,
+	price,
+	description,
+	image,
+	setDataToEdit,
+}) {
 	const dispatch = useDispatch();
 
 	const trashEmpty = (id) => {
@@ -13,6 +20,9 @@ export default function Card({ id, name, price, description, image }) {
 		console.log(id);
 		window.location.reload();
 	};
+
+	//verifica si esta en la ruta /adminprovisorio
+	const isAdminRoute = window.location.pathname === "/adminprovisorio";
 
 	return (
 		<section className="light">
@@ -37,7 +47,12 @@ export default function Card({ id, name, price, description, image }) {
 					</article>
 				</div>
 			</Link>
-			<button onClick={() => trashEmpty(id)}>Borrar</button>
+			<div>
+				{isAdminRoute && <button onClick={() => trashEmpty(id)}>Borrar</button>}
+				{isAdminRoute && (
+					<button onClick={() => setDataToEdit(id)}>Editar</button>
+				)}
+			</div>
 		</section>
 	);
 }

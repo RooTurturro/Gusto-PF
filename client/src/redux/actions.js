@@ -7,6 +7,7 @@ export const CREATE_PRODUCTS = "CREATE_PRODUCTS";
 export const FILTER_BY_CATEGORIES = "FILTER_BY_CATEGORIES";
 export const LOADING = "LOADING";
 export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
+export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
 
 // export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 
@@ -65,6 +66,13 @@ export const deleteProducts = (id) => {
 	return async function (dispatch) {
 		await axios.delete(`http://localhost:3001/products/delete/${id}`);
 		return dispatch({ type: DELETE_PRODUCTS, payload: id });
+	};
+};
+
+export const updateProducts = (id) => {
+	return async function (dispatch) {
+		await axios.put(`http://localhost:3001/products/${id}`);
+		return dispatch({ type: UPDATE_PRODUCTS, payload: id });
 	};
 };
 

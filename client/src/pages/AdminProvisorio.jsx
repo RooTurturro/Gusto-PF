@@ -1,10 +1,13 @@
 import React from "react";
-import CreateProduct from "../Components/CreateProduct";
+import CrudForm from "../Components/CrudForm";
+import Menu from "./Menu";
 
 const AdminProvisorio = () => {
 	return (
 		<div>
-			<CreateProduct />
+			<CrudForm />
+			<hr />
+			<Menu />
 		</div>
 	);
 };
