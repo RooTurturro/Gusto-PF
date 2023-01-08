@@ -1,18 +1,47 @@
 const { Router } = require("express");
 const {Product , Category} = require('../../database/models/index')
-const { getInfoDB } = require("../controllers/productsControllers")
 
 
 const productRouter = Router();
 
 productRouter.get("/", async (req, res)=>{
-    const allProducts = await getInfoDB() 
+    const allProducts = await Product.findAll(); 
     try{
     res.status(200).send(allProducts)
 }
 catch {res.status(400).send(error)}
 })
-   
+
+productRouter.get('/:id', async (req, res)=>{
+  const { id } = req.params
+  try {
+    if(id){
+      const productId = await Product.findByPk(id)
+      res.status(200).send(productId)
+    }else{
+      res.status(400).send('Product not found')
+    }
+    
+  } catch (error) {
+    res.status(400).send(error)
+  }
+})
+
+// productRouter.get('/:id', async (req, res)=>{
+//   const { id } = req.params;
+//   const allProducts = await Product.findAll();
+
+//   try {
+//       if(id){
+//           const productId = await allProducts.filter(e=> e.id === id)
+//           productId.length? 
+//           res.status(200).send(productId):
+//           res.status(404).send('Pokemon not found');
+//       }  
+//   } catch (error) {
+//       res.status(400).send(error)
+//   }
+// })
 
 productRouter.post("/", async (req, res)=>{
     try {

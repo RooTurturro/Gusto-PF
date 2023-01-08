@@ -1,12 +1,12 @@
 const { Router } = require("express");
 const {Product, Category, Toppings} = require('../../database/models/index')
-const { getInfoDB , getInfoToppings } = require("../controllers/productsControllers")
+
 
 
 const toppingsRouter = Router();
 
 toppingsRouter.get("/", async (req, res) =>{
-    const allToppings = await getInfoToppings();
+    const allToppings = await Toppings.findAll();
     try{
     res.status(200).send(allToppings);
 }
