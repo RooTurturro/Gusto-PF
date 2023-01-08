@@ -1,12 +1,12 @@
-import React from 'react'
-import ProductForm2 from './ProductForm2'
+import React from "react";
+import CreateProduct from "../Components/CreateProduct";
 
 const AdminProvisorio = () => {
-  return (
-    <div>
-      <ProductForm2/>
-    </div>
-  )
-}
+	return (
+		<div>
+			<CreateProduct />
+		</div>
+	);
+};
 
-export default AdminProvisorio
+export default AdminProvisorio;
