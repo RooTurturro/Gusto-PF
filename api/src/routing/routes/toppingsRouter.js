@@ -1,17 +1,15 @@
 const { Router } = require("express");
 const {Product, Category, Toppings} = require('../../database/models/index')
-const { getInfoDB , getInfoToppings } = require("../controllers/productsControllers")
 
 
 const toppingsRouter = Router();
 
-toppingsRouter.get("/", async (req, res) => {
-  const allToppings = await getInfoToppings();
-  try {
-    res.status(200).json(allToppings);
-  } catch (error) {
-    res.status(400).send(error);
-  }
+toppingsRouter.get("/", async (req, res) =>{
+    const allToppings = await Toppings.findAll();
+    try{
+    res.status(200).send(allToppings);
+}
+catch {res.status(400).send(error)}
 });
 
 toppingsRouter.post("/", async (req, res) => {
@@ -24,17 +22,6 @@ toppingsRouter.post("/", async (req, res) => {
   }
 });
 
-
-toppingsRouter.delete("/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const toppingDelete = await Toppings.findByPk(id);
-    if (!toppingDelete) {
-      res.status(400).send("No existe el topping que deseas eliminar");
-    } else {
-      toppingDelete.destroy();
-      return res.status(200).send("Topping eliminado correctamente");
-=======
 
 toppingsRouter.delete("/delete/:id", async (req, res) =>{
     const { id } = req.params;
@@ -50,15 +37,8 @@ toppingsRouter.delete("/delete/:id", async (req, res) =>{
       res.status(400).json({ error: error.message }, "Entré al error de delete");
 
     }
-  } catch (error) {
-    res.status(400).json({ error: error.message }, "Entré al error de delete");
-  }
-});
+  });
 
-
-toppingsRouter.put("/", (req, res) => {
-  res.send("Estamos en put de Toppings");
-=======
 toppingsRouter.put("/update/:id", async (req, res) =>{
   try {
     const { id } = req.params;
