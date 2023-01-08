@@ -1,13 +1,14 @@
 import React from 'react'
 import './Card.css'
 import burger from '../../assets/burger.png'
+import { Link } from 'react-router-dom'
 
 
-export default function Card({name, price, description, image}) {
+export default function Card({ name, price, description, id, image }) {
 
 	return (
 		<section className="light">
-			<div className="container py-2">
+			<Link to={`/products/${id}`} className="container py-2">
 				<article className="postcard light red">
 					<a className="postcard__img_link" href="!#">
 						<img className="postcard__img" src={burger} alt="burger" />
@@ -25,7 +26,7 @@ export default function Card({name, price, description, image}) {
 						</ul>
 					</div>
 				</article>
-			</div>
+			</Link>
 
 		</section>
 

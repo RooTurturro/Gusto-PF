@@ -22,6 +22,7 @@ const Menu = () => {
           allProducts.map((el) => {
             return (
               <Card
+                id={el.id}
                 key={el.id}
                 name={el.name}
                 description={el.description}

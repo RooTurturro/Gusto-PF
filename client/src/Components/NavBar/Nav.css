@@ -1,0 +1,8 @@
+.navbar-nav {
+    align-items: center;
+    display: flex;
+}
+
+.nav-item{
+    font-size: 20px;
+}
