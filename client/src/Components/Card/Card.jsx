@@ -26,12 +26,12 @@ export default function Card({
 
 	return (
 		<section className="light">
-			<Link to={`/products/${id}`}>
+			<div >
 				<div className="container py-2">
-					<article className="postcard light red">
+					<div className="postcard light red">
 						<img className="postcard__img" src={burger} alt="burger" />
 						<div className="postcard__text t-dark">
-							<h1 className="postcard__title red">{name}</h1>
+							<Link to={`/products/${id}`} className="postcard__title red">{name}</Link>
 							<div className="postcard__subtitle small">
 								<time dateTime="2020-05-25 12:00:00"></time>
 							</div>
@@ -39,20 +39,24 @@ export default function Card({
 							<div className="postcard__preview-txt"> {description}</div>
 							<ul className="postcard__tagbox">
 								<li className="tag__item">
-									<i className="fas fa-tag mr-2"></i>
 									{price}
 								</li>
 							</ul>
+							<div className='buttons'>
+								{isAdminRoute && <button onClick={() => trashEmpty(id)}>Borrar</button>}
+								{isAdminRoute && (
+									<button onClick={() => setDataToEdit(id)}>Editar</button>
+								)}
+							</div>
 						</div>
-					</article>
+
+
+
+					</div>
 				</div>
-			</Link>
-			<div>
-				{isAdminRoute && <button onClick={() => trashEmpty(id)}>Borrar</button>}
-				{isAdminRoute && (
-					<button onClick={() => setDataToEdit(id)}>Editar</button>
-				)}
 			</div>
+
+
 		</section>
 	);
 }

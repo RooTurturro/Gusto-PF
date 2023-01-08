@@ -1,14 +1,18 @@
 import React from "react";
-import CrudForm from "../Components/CrudForm";
+import { Link } from "react-router-dom";
 import Menu from "./Menu";
+
 
 const AdminProvisorio = () => {
 	return (
 		<div>
-			<CrudForm />
-			<hr />
-			<Menu />
+
+			<Link to={'/create'} style={{display: 'flex', justifyContent: 'center'}}>
+				<button>Nuevo producto</button>
+			</Link>
+			<Menu/>
 		</div>
+
 	);
 };
 

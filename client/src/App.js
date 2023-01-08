@@ -12,6 +12,7 @@ import Nosotros from "./pages/Nosotros";
 import AdminProvisorio from "./pages/AdminProvisorio";
 import Dashboard from "./pages/Dashboard";
 import CardDetail from "./Components/CardDetail/CardDetail";
+import Form from './Components/Form/Form'
 
 function App() {
 	return (
@@ -20,6 +21,8 @@ function App() {
 			<Routes>
 				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
 				<Route exact path="/adminProvisorio" element={<AdminProvisorio />} />
+				<Route exact path="/create" element={<Form />} />
+
 				<Route exact path="/dashboard" element={<Dashboard />} />
 				<Route exact path="/" element={<Home />} />
 				<Route exact path="/pediya" element={<PediYa />} />

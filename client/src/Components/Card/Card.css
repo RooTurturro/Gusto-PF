@@ -11,6 +11,11 @@ body {
 .light {
 	background: #f3f5f7;
 }
+.buttons{
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
+}
 
 a,
 a:hover {

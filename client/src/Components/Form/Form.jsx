@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as actions from "../redux/actions";
+import * as actions from "../../redux/actions";
+import { useNavigate } from "react-router-dom";
+import styles from './Form.module.css'
+import { Link } from "react-router-dom";
 
 const CreateProduct = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate()
 	const products = useSelector((state) => state.products);
 	const productNames = products?.map((product) => product.name);
 
@@ -15,9 +19,8 @@ const CreateProduct = () => {
 		name: "",
 		price: "",
 		description: "",
-		//chequear el image
-		// image: "",
-		productList: [],
+		image: "",
+
 	});
 
 	const [errors, setErrors] = useState({
@@ -49,20 +52,20 @@ const CreateProduct = () => {
 			name: "",
 			price: "",
 			description: "",
-			//chequear el image
-			// image: "",
+			image: "",
 		});
 		alert(`El producto ${state.name} se creo exitosamente!`);
-		window.location.reload();
+		navigate('/adminprovisorio')
 	};
 
 	return (
 		<div>
-			<h2>FORM DE PRODUCTOS</h2>
-			<form onSubmit={handlerSubmit}>
+			<h2>Creando producto</h2>
+			<form className={styles.form} onSubmit={handlerSubmit}>
 				<div>
-					<label>Nombre:</label>
+					<label className={styles.label}>Nombre:</label>
 					<input
+						className={styles.input}
 						type="text"
 						name="name"
 						onChange={handlerChange}
@@ -70,9 +73,12 @@ const CreateProduct = () => {
 						value={state.name}
 						required
 					/>
-					{errors.name && <p>{errors.name}</p>}
-					<label>Descripcion:</label>
+					{errors.name && <p className={styles.error}>{errors.name}</p>}
+				</div>
+				<div>
+					<label className={styles.label}>Descripcion:</label>
 					<input
+						className={styles.input}
 						type="text"
 						name="description"
 						onChange={handlerChange}
@@ -80,9 +86,12 @@ const CreateProduct = () => {
 						value={state.description}
 						required
 					/>
-					{errors.description && <p>{errors.description}</p>}
-					<label>Precio:</label>
+					{errors.description && <p className={styles.error}>{errors.description}</p>}
+				</div>
+				<div>
+					<label className={styles.label}>Precio:</label>
 					<input
+						className={styles.input}
 						type="text"
 						name="price"
 						onChange={handlerChange}
@@ -90,26 +99,35 @@ const CreateProduct = () => {
 						value={state.price}
 						required
 					/>
-					{errors.price && <p>{errors.price}</p>}
-					{/* //hacer para image //hacer */}
-					{/* {state.products.map((p) => (
-						<div key={p}>
-							{p}
-							<button value={p} onClick={handlerDelete}>
-								X
-							</button>
-						</div>
-					))} */}
+					{errors.price && <p className={styles.error}>{errors.price}</p>}
+				</div>
+				<div>
+					<label className={styles.label}>Imagen</label>
+					<input
+						className={styles.input}
+						type='text'
+						name='image'
+						onChange={handlerChange}
+						placeholder={'Link de la imagen'}
+						value={state.image}
+						required
+					/>
+				</div>
+				<div style={{ display: 'flex', justifyContent: 'space-around' }}>
 					<button
-						disabled={!state.name || !state.description || !state.price}
+						disabled={!state.name || !state.description || !state.price || !state.image}
 						type="submit"
 					>
 						Crear producto
 					</button>
-					{(!state.name || !state.description || !state.price) && (
-						<p>Boton desactivado, uno o mas campos vacios.</p>
-					)}
+					<Link to={'/adminprovisorio'}>
+
+						<button>Cancelar</button>
+					</Link>
 				</div>
+				{(!state.name || !state.description || !state.price) && (
+					<p>Boton desactivado, uno o mas campos vacios.</p>
+				)}
 			</form>
 		</div>
 	);
