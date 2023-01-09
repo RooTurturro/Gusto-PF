@@ -1,25 +1,26 @@
-import React from 'react'
-import Card from '../Components/Card/Card'
-import { useDispatch, useSelector } from 'react-redux'
-import { getProducts } from '../redux/actions'
-import { useEffect } from 'react'
+import React from "react";
+import Card from "../Components/Card/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProducts } from "../redux/actions";
+import { useEffect } from "react";
+// import Loading from "../Components/Loading/Loading";
 
-const Menu = () => {
-
-  const dispatch = useDispatch()
-  const allProducts = useSelector((state) => state.products)
+const Menu = ({ setDataToEdit }) => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
 
   useEffect(() => {
-    dispatch(getProducts())
-  }, [dispatch])
-  console.log(allProducts)
+    if (products.length === 0) {
+      dispatch(getAllProducts());
+    }
+  }, [dispatch, products.length]);
 
   return (
     <div>
 
       {
-        allProducts.length > 0 ?
-          allProducts.map((el) => {
+        products.length > 0 ?
+          products.map((el) => {
             return (
               <Card
                 id={el.id}
@@ -27,6 +28,7 @@ const Menu = () => {
                 name={el.name}
                 description={el.description}
                 price={el.price}
+                image={el.image}
               />
             )
 
@@ -37,4 +39,4 @@ const Menu = () => {
 
 }
 
-export default Menu
+export default Menu;

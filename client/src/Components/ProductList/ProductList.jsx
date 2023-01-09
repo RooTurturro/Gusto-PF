@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getProducts } from '../../redux/actions'
+import { getAllProducts } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 
@@ -7,7 +7,7 @@ const ProductList = () => {
     const dispatch = useDispatch()
     const products = useSelector((state) => state.products)
     useEffect(() => {
-        dispatch(getProducts())
+        dispatch(getAllProducts())
     }, [dispatch])
     console.log(products)
 

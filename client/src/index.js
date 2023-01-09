@@ -5,12 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import store from './redux/store'
-
-//----------------
-import { Auth0Provider } from '@auth0/auth0-react'
 import { Provider } from 'react-redux';
+//----------------Auth0 Config----------------------------
+import { Auth0Provider } from '@auth0/auth0-react'
 const domain = 'dev-18zov1enqjrx8hn7.us.auth0.com';
-const clientId = 'KfMxxsUw8SRN1uevtEK1Hizs7Jmku6hI';
+const clientId = 'LqqBa9zF6gjJ2lwcrNYsAtYpikXifzQZ';
 
 ReactDOM.render(
 
