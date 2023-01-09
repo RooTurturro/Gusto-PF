@@ -6,36 +6,29 @@ import NavBar from "../NavBar/NavBar";
 // import { Link } from "react-router-dom";
 
 const Login = () => {
-    const { loginWithRedirect } = useAuth0();
-    const { user, isAuthenticated, isLoading } = useAuth0();
+	const { loginWithRedirect } = useAuth0();
+	const { user, isAuthenticated, isLoading } = useAuth0();
 
-    if (isLoading) {
-        return <div>Loading ...</div>;
-      }
+	if (isLoading) {
+		return <div>Loading ...</div>;
+	}
 
+	return (
+		<div>
+			<NavBar />
 
-    return(
+			{isAuthenticated && (
+				<div>
+					<img src={user.picture} alt={user.name} />
+					<h2>{user.name}</h2>
+					<p>{user.email}</p>
+				</div>
+			)}
 
-        <div >
-            <NavBar/>
-
-           {isAuthenticated && (
-            
-                <div>
-                    <img src={user.picture} alt={user.name} />
-                    <h2>{user.name}</h2>
-                    <p>{user.email}</p>
-                </div>
-            )}
-
-            <button onClick={()=>loginWithRedirect()}>Login</button>
-            <LogoutButton/>
-
-
-        </div>
-            
-    
-            )
-}
+			<button onClick={() => loginWithRedirect()}>Login</button>
+			<LogoutButton />
+		</div>
+	);
+};
 
 export default Login;
