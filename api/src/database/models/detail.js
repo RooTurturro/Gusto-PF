@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       Detail.belongsToMany(models.Product, {
         through: "DetailProduct",
-        foreignKey: 'detailId'
+        foreignKey: "detailId",
       });
     }
   }

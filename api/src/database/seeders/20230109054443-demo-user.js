@@ -1,12 +1,11 @@
 'use strict';
 
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert("Users", [
       {
-        id: "3460fafc-e008-4f6d-8df2-63f59be96c53",
+        id: "09f75887-b9ce-459a-8934-0d5b6e1af8ad",
         firstName: "Roo",
         lastName: "Turturro",
         phone: "+542676012489",

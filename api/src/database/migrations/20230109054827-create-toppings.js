@@ -7,7 +7,7 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
-        allowNull: false,
+        /* allowNull: false, */
         /* autoIncrement: true, */
       },
       name: {
@@ -17,7 +17,7 @@ module.exports = {
       price: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        isInt: true,
+        /* isInt: true, */
       },
       createdAt: {
         type: Sequelize.DATE,

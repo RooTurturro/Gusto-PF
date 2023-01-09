@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Order.belongsTo(models.User, {
         foreingKey: "orderId",
-      })
+      });
       Order.belongsTo(models.Detail, {
-        foreingKey: "orderId"
+        foreingKey: "orderId",
       });
     }
   }

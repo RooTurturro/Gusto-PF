@@ -7,29 +7,29 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
-        allowNull: false,
+        /* allowNull: false, */
         /* autoIncrement: true, */
       },
       firstName: {
         type: Sequelize.STRING,
         allowNull: false,
-        notEmpty: true,
+        /* notEmpty: true, */
       },
       lastName: {
         type: Sequelize.STRING,
         allowNull: false,
-        notEmpty: true,
+        /* notEmpty: true, */
       },
       phone: {
         type: Sequelize.STRING,
         allowNull: false,
-        isInt: true,
+        /* isInt: true, */
       },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
-        isEmail: true,
+        /* isEmail: true, */
       },
       address: {
         type: Sequelize.STRING,
@@ -41,7 +41,7 @@ module.exports = {
       },
       isAdmin: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
+        defaultValue: false,
       },
       state: {
         type: Sequelize.STRING,
