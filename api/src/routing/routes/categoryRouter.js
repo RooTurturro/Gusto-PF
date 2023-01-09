@@ -48,7 +48,7 @@ categoryRouter.delete("/:id", async (req, res) => {
 categoryRouter.put("/", (req, res) => {
   res.send("Estamos en put de category");
 });
-=======
+
 categoryRouter.get("/", async (req, res) =>{
     const allCategory = await getInfoCategory() 
     try{

@@ -49,8 +49,6 @@ productRouter.delete("/:id", async (req, res) => {
 productRouter.put("/", (req, res) => {
   res.send("Estamos en el put ");
 });
-=======
-  });
 
 productRouter.put("/update/:id", async (req,res)=>{
   try {

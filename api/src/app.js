@@ -12,6 +12,8 @@ const routes = require("./routing/index");
 
 const server = express();
 
+server.use(cors());
+
 const authConfig = {
   authRequired: false,
   auth0Logout: true,
@@ -24,7 +26,6 @@ const authConfig = {
 
 server.use(auth(authConfig));
 
-server.use(cors());
 
 server.use(logger("dev"));
 server.use(express.json());

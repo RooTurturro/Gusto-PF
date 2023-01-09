@@ -12,9 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Order.belongsTo(models.User, {
-        /* foreingKey: "userId", */
+        foreingKey: "orderId",
       })
-      Order.belongsTo(models.Detail);
+      Order.belongsTo(models.Detail, {
+        foreingKey: "orderId"
+      });
     }
   }
   Order.init(

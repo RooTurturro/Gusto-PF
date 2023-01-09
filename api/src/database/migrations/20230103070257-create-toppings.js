@@ -4,24 +4,30 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Toppings", {
       id: {
-        allowNull: false,
-        autoIncrement: true,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        allowNull: false,
+        /* autoIncrement: true, */
       },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      createdAt: {
+      price: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+        isInt: true,
+      },
+      createdAt: {
         type: Sequelize.DATE,
+        allowNull: false,
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
-      deleteAt: {
+      deletedAt: {
         type: Sequelize.DATE,
       },
     });

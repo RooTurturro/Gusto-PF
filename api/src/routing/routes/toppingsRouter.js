@@ -34,7 +34,11 @@ toppingsRouter.delete("/:id", async (req, res) => {
     } else {
       toppingDelete.destroy();
       return res.status(200).send("Topping eliminado correctamente");
-=======
+    }
+  } catch (e) {
+    console.log(e)
+  }
+});
 
 toppingsRouter.delete("/delete/:id", async (req, res) =>{
     const { id } = req.params;
@@ -49,16 +53,17 @@ toppingsRouter.delete("/delete/:id", async (req, res) =>{
     } catch (error) {
       res.status(400).json({ error: error.message }, "Entré al error de delete");
 
-    }
-  } catch (error) {
+  } 
+    /* catch (error) {
     res.status(400).json({ error: error.message }, "Entré al error de delete");
-  }
+  } */
 });
 
 
 toppingsRouter.put("/", (req, res) => {
   res.send("Estamos en put de Toppings");
-=======
+})
+
 toppingsRouter.put("/update/:id", async (req, res) =>{
   try {
     const { id } = req.params;

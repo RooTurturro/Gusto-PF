@@ -3,29 +3,29 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Details", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
-      subtotal: {
-        type: Sequelize.INTEGER,
-      },
-      specification: {
-        type: Sequelize.STRING,
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      deleteAt: {
-        type: Sequelize.DATE,
-      },
+        id: {
+          type: Sequelize.INTEGER,
+          primaryKey: true,
+          autoIncrement: true,
+          allowNull: false,
+        },
+        subtotal: {
+          type: Sequelize.INTEGER,
+        },
+        specification: {
+          type: Sequelize.STRING,
+        },
+        createdAt: {
+          type: Sequelize.DATE,
+          allowNull: false,
+        },
+        updatedAt: {
+          type: Sequelize.DATE,
+          allowNull: false,
+        },
+        deletedAt: {
+          type: Sequelize.DATE,
+        },
     });
   },
   async down(queryInterface, Sequelize) {
