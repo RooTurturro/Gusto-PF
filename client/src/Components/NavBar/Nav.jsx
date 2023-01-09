@@ -36,6 +36,9 @@ export default function Nav() {
               <NavLink className="nav-link" to='/trabajaaca'>TRABAJA ACA!</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to='/perfil'>PERFIL</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to='/dashboard'>DASHBOARD</NavLink>
             </li>
           </ul>

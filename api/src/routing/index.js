@@ -11,4 +11,8 @@ router.use("/categorys", categoryRouter);
 router.use("/toppings", toppingsRouter);
 router.use("/users", usersRouter);
 
+router.get("/", function(req, res) {
+    res.redirect('http://localhost:3001/perfil')
+  });
+
 module.exports = router;
