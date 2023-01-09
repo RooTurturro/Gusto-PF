@@ -6,7 +6,6 @@ import NavBar from "../NavBar/NavBar";
 // import { Link } from "react-router-dom";
 
 const Login = () => {
-
     const { loginWithRedirect } = useAuth0();
     const { user, isAuthenticated, isLoading } = useAuth0();
 
