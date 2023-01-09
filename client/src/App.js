@@ -12,6 +12,7 @@ import Nosotros from "./pages/Nosotros";
 import Dashboard from "./pages/Dashboard";
 import CreateProduct from "./Components/CreateProduct/CreateProduct";
 import Detail from "./Components/Detail/Detail";
+import Perfil from "./pages/Perfil";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Route exact path="/gustoburgerclub" element={<GustoBurgerClub />} />
         <Route exact path="/menu" element={<Menu />} />
         <Route exact path="/products/:id" element={<Detail />} />
-      
+        <Route exact path="/perfil" element={<Perfil />} />
         <Route exact path="/sucursales" element={<Sucursales />} />
         <Route exact path="/trabajaaca" element={<TrabajaAca />} />
         <Route exact path="/nosotros" element={<Nosotros />} />
