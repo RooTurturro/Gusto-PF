@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const {Product, Category, Toppings} = require('../../database/models/index')
-const { getInfoDB , getInfoCategory} = require("../controllers/productsControllers")
+
 
 
 const categoryRouter = Router();
@@ -48,9 +48,9 @@ categoryRouter.delete("/:id", async (req, res) => {
 categoryRouter.put("/", (req, res) => {
   res.send("Estamos en put de category");
 });
-=======
+
 categoryRouter.get("/", async (req, res) =>{
-    const allCategory = await getInfoCategory() 
+    const allCategory = await  Category.findAll();
     try{
     res.status(200).send(allCategory)
 }
