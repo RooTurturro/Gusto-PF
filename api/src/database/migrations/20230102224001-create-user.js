@@ -2,62 +2,57 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Users", {
+    await queryInterface.createTable('Users', {
       id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        /* allowNull: false, */
-        /* autoIncrement: true, */
+        type: Sequelize.INTEGER,
+        /* defaultValue: Sequelize.UUIDV4 */
       },
       firstName: {
         type: Sequelize.STRING,
-        allowNull: false,
-        /* notEmpty: true, */
+        allowNull: false
       },
       lastName: {
         type: Sequelize.STRING,
-        allowNull: false,
-        /* notEmpty: true, */
+        allowNull: false
       },
       phone: {
         type: Sequelize.STRING,
-        allowNull: false,
-        /* isInt: true, */
+        allowNull: false
       },
       email: {
         type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
-        /* isEmail: true, */
+        allowNull: false
       },
       address: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       password: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       isAdmin: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false,
+        allowNull: false
       },
       state: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       createdAt: {
-        type: Sequelize.DATE,
         allowNull: false,
+        type: Sequelize.DATE
       },
       updatedAt: {
-        type: Sequelize.DATE,
         allowNull: false,
+        type: Sequelize.DATE
       },
-      deletedAt: {
-        type: Sequelize.DATE,
-      },
+      deleteAt: {
+        type: Sequelize.DATE
+      }
     });
   },
   async down(queryInterface, Sequelize) {

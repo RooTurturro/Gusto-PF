@@ -2,37 +2,39 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Toppings", {
+    await queryInterface.createTable("Orders", {
       id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        /* allowNull: false, */
-        /* autoIncrement: true, */
+        type: Sequelize.INTEGER,
       },
-      name: {
+      delivered: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      total: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      state: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      price: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        /* isInt: true, */
-      },
       createdAt: {
-        type: Sequelize.DATE,
         allowNull: false,
+        type: Sequelize.DATE,
       },
       updatedAt: {
-        type: Sequelize.DATE,
         allowNull: false,
+        type: Sequelize.DATE,
       },
-      deletedAt: {
+      deleteAt: {
         type: Sequelize.DATE,
       },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Toppings');
+    await queryInterface.dropTable('Orders');
   }
 };
