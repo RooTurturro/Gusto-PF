@@ -17,7 +17,7 @@ export const getAllProducts = () => {
 		dispatch(loading());
 		try {
 			//json
-			const response = await axios.get("http://localhost:3000/products");
+			const response = await axios.get("http://localhost:3001/products");
 			return dispatch({
 				type: GET_ALL_PRODUCTS,
 				payload: response.data,
@@ -33,7 +33,7 @@ export const getPaymentUrl = (values) => {
 		dispatch(loading());
 		try {
 			const response = await axios.post(
-				"http://localhost:3000/payment",
+				"http://localhost:3001/payment",
 				values
 			);
 			return dispatch({
@@ -50,7 +50,7 @@ export const getProductsSummary = (name) => {
 	return async function (dispatch) {
 		try {
 			let response = await axios.get(
-				`http://localhost:3000/products?name=${name}`
+				`http://localhost:3001/products?name=${name}`
 			);
 			return dispatch({ type: GET_PRODUCTS_SUMMARY, payload: response.data });
 		} catch (error) {
@@ -63,7 +63,7 @@ export const getProductsDetail = (id) => {
 	return async function (dispatch) {
 		try {
 			dispatch(loading());
-			let response = await axios.get(`http://localhost:3000/products/${id}`);
+			let response = await axios.get(`http://localhost:3001/products/${id}`);
 			return dispatch({
 				type: GET_PRODUCTS_DETAIL,
 				payload: response.data,
@@ -76,21 +76,21 @@ export const getProductsDetail = (id) => {
 
 export const createProducts = (values) => {
 	return async function (dispatch) {
-		await axios.post("http://localhost:3000/products", values);
+		await axios.post("http://localhost:3001/products", values);
 		return dispatch({ type: CREATE_PRODUCTS, payload: values });
 	};
 };
 
 export const deleteProducts = (id) => {
 	return async function (dispatch) {
-		await axios.delete(`http://localhost:3000/products/delete/${id}`);
+		await axios.delete(`http://localhost:3001/products/delete/${id}`);
 		return dispatch({ type: DELETE_PRODUCTS, payload: id });
 	};
 };
 
 export const updateProducts = (id) => {
 	return async function (dispatch) {
-		await axios.put(`http://localhost:3000/products/${id}`);
+		await axios.put(`http://localhost:3001/products/${id}`);
 		return dispatch({ type: UPDATE_PRODUCTS, payload: id });
 	};
 };
