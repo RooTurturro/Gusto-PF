@@ -11,16 +11,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Detail.hasOne(models.Order)
-      Detail.belongsToMany(models.Product, { through: "DetailProduct" });
+      Detail.belongsToMany(models.Product, {
+        through: "DetailProduct",
+        foreignKey: "productId",
+        constraints: false,
+      });
+      Detail.hasOne(models.Order, {
+        foreignKey: "detailId",
+      });
     }
   }
-  Detail.init({
-    subtotal: DataTypes.INTEGER,
-    specification: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Detail',
-  });
+  Detail.init(
+    {
+      subtotal: DataTypes.INTEGER,
+      specification: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      paranoid: true, // Permite el borrado logico
+      timestamps: true,
+      modelName: "Detail",
+    }
+  );
   return Detail;
 };
