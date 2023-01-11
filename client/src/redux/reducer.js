@@ -6,80 +6,111 @@ import { CREATE_PRODUCTS } from "./actions";
 import { UPDATE_PRODUCTS } from "./actions";
 import { GET_PRODUCTS_SUMMARY } from "./actions";
 import { GET_ALL_PRODUCTS } from "./actions";
+import { PRICE_ORDER } from "./actions";
+import { ALPHABETICAL_ORDER } from "./actions";
 
 const initialState = {
-	products: [],
-	allProducts: [],
-	productDetail: {},
-	loading: true,
-	actualPage: 1,
+ products: [],
+ allProducts: [],
+ productDetail: {},
+ loading: true,
+ actualPage: 1,
 };
 
 const rootReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case LOADING:
-			return {
-				...state,
-				loading: true,
-			};
-		case GET_ALL_PRODUCTS:
-			return {
-				...state,
-				products: action.payload,
-				allProducts: action.payload,
-			};
-		case GET_PRODUCTS_SUMMARY:
-			return {
-				...state,
-				loading: false,
-				products: action.payload,
-			};
+ switch (action.type) {
+  case LOADING:
+   return {
+    ...state,
+    loading: true,
+   };
+  case GET_ALL_PRODUCTS:
+   return {
+    ...state,
+    products: action.payload,
+    allProducts: action.payload,
+   };
+  case GET_PRODUCTS_SUMMARY:
+   return {
+    ...state,
+    loading: false,
+    products: action.payload,
+   };
 
-		case GET_PRODUCTS_DETAIL:
-			return {
-				...state,
-				loading: false,
-				productDetail: action.payload,
-			};
-		case CREATE_PRODUCTS:
-			return {
-				...state,
-				products: [...state.products, action.payload],
-			};
-		case UPDATE_PRODUCTS:
-			return {
-				...state,
-				products: state.products.filter(
-					(product) => product.name !== action.payload
-				),
-			};
-		case DELETE_PRODUCTS:
-			return {
-				...state,
-				products: state.products.filter(
-					(product) => product.name !== action.payload
-				),
-			};
-		//for drinks, burgers, wraps, desserts...
+  case GET_PRODUCTS_DETAIL:
+   return {
+    ...state,
+    loading: false,
+    productDetail: action.payload,
+   };
+  case CREATE_PRODUCTS:
+   return {
+    ...state,
+    products: [...state.products, action.payload],
+   };
+  case UPDATE_PRODUCTS:
+   return {
+    ...state,
+    products: state.products.filter(
+     (product) => product.name !== action.payload
+    ),
+   };
+  case DELETE_PRODUCTS:
+   return {
+    ...state,
+    products: state.products.filter(
+     (product) => product.name !== action.payload
+    ),
+   };
+  //for drinks, burgers, wraps, desserts...
 
-		//add to the products props a 'category'.
-		case FILTER_BY_CATEGORIES:
-			const allProducts = state.allProducts;
-			const filteredStatus =
-				action.payload === "All"
-					? allProducts
-					: allProducts.filter(
-							(product) => product.category === action.payload
-					  );
-			return {
-				...state,
-				products: filteredStatus,
-			};
+  //add to the products props a 'category'.
+  case FILTER_BY_CATEGORIES:
+   const allProducts = state.allProducts;
+   const filteredStatus =
+    action.payload === "All"
+     ? allProducts
+     : allProducts.filter(
+       (product) => product.category === action.payload
+       );
+   return {
+    ...state,
+    products: filteredStatus,
+   };
+   case PRICE_ORDER:
+    let byPrice = state.allProducts;
+    byPrice =
+      action.payload === "asc"
+     ? state.products.sort(function (a, b) {
+      if (a.price > b.price) return 1;
+      if (a.price < b.price) return -1;
+      return 0;
+       })
+     : state.products.sort(function (a, b) {
+      if (a.price < b.price) return 1;
+      if (a.price > b.price) return -1;
+      return 0;
+       });
+  case ALPHABETICAL_ORDER:
+      let sortedProducts = [...state.products];
+      sortedProducts =
+        action.payload === "a-z"
+          ? state.products.sort(function (a, b) {
+              if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+              if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+              return 0;
+            })
+          : state.products.sort(function (a, b) {
+              if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+              if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+              return 0;
+            });
 
-		// case ORDER_BY_POPULATION:
-		default:
-			return state;
-	}
+  // case ORDER_BY_POPULATION:
+  default:
+   return state;
+ }
 };
 
 export default rootReducer;
+

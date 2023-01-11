@@ -3,6 +3,8 @@ import Card from "../Components/Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../redux/actions";
 import { useEffect } from "react";
+import Filters from "../Components/Filters/Filters";
+
 // import Loading from "../Components/Loading/Loading";
 
 const Menu = ({ setDataToEdit }) => {
@@ -17,7 +19,9 @@ const Menu = ({ setDataToEdit }) => {
 
   return (
     <div>
-
+      <div>
+        <Filters />
+      </div>
       {
         products.length > 0 ?
           products.map((el) => {

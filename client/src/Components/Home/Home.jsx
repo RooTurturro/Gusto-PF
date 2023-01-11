@@ -8,15 +8,18 @@ import arrow from '../../assets/arrow.png'
 import { Link } from "react-router-dom";
 import './Home.css'
 
+
 const Home = () => {
   return (
+    
 
     <div className='section'>
+      
       <div className='container'>
         <div className='row'>
           <div className='col-12 col-md4'>
             <Link to="/menu">
-              <button className="button"><h1 className='title_one'>GUSTO </h1></button>
+              <button className="button"><h1 className='title_one'>GUSTO</h1></button>
             </Link>
             <h1 className='marca_registrada'>®</h1>
           </div>
