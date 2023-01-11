@@ -19,7 +19,7 @@ router.get("/", function (req, res) {
 	res.redirect("http://localhost:3001/perfil");
 });
 
-router.get("/payment", function (req, res, next) {
+router.post("/payment", function (req, res, next) {
 	PaymentInstance.getPaymentLink(req, res);
 });
 
