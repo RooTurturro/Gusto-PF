@@ -24,26 +24,46 @@ const Perfil = () => {
         <div>
             {isAuthenticated ?
                 isAuthenticated && (
-                    <div className={styles.profile}>
-                        <div className={styles.profileContainer}>
-                            <img src={user.picture} alt={user.name} />
-                            <h2>{user.nickname} </h2>
-                            <p>Su email es: {user.email}</p>
+                    <div className={styles.container}>
+                        
+                        <div >
+                            <img src={user.picture} alt="Imagen de usuario" className={styles.img} />
+                        </div>
+                        
+                            
+                        <div className={styles.infoContainer}>
 
-                            <Link to={'/historial'}>
-                                Historial de compras
-                            </Link>
+                            <p>nickname: {user.nickname}</p>
+                            <p>Correo: {user.email}</p>
+                            <p>name: {user.name}</p>
+                            <p>Correo: {user.email}</p>
+                            <p>username: {user.given_name}</p>
+                            
+                        
                         </div>
-                        <div>
-                            <LogoutButton />
+
+                        <div className={styles.buttonContainer}>
+                            <button className={styles.button}>Editar Perfil</button>
+                            
+                            <LogoutButton/>
+
+                            <Link to={'/historial'} className={styles.button}> Historial </Link>
                         </div>
+                        
+
+
+
                     </div>
+                 
                 ) :
-                <div className={styles.login}>
-                    <div>
-                        <LoginButton />
+                <div className={styles.container}>
+                    <div className={styles.login}>
+                            <div>
+                                <LoginButton />
+                            </div>
                     </div>
                 </div>
+                
             }
         </div>
 
