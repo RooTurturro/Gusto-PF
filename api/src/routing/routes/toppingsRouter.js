@@ -1,18 +1,18 @@
 const { Router } = require("express");
-const {Product, Category, Toppings} = require('../../database/models/index')
+const { Category ,Toppings} = require('../../database/models/index')
 
 
 const toppingsRouter = Router();
 
-toppingsRouter.get("/", async (req, res) =>{
-    const allToppings = await Toppings.findAll();
+toppingsRouter.get("/", async (req, res) =>{ //ANDA
+    const allToppings = await Toppings?.findAll();
     try{
     res.status(200).send(allToppings);
 }
 catch {res.status(400).send(error)}
 });
 
-toppingsRouter.post("/", async (req, res) => {
+toppingsRouter.post("/", async (req, res) => { //ANDA
   try {
     const { name } = req.body;
     const newTopping = await Toppings.create({ name });
@@ -23,7 +23,7 @@ toppingsRouter.post("/", async (req, res) => {
 });
 
 
-toppingsRouter.delete("/delete/:id", async (req, res) =>{
+toppingsRouter.delete("/delete/:id", async (req, res) =>{ //ANDA
     const { id } = req.params;
     try {
       const toppingDelete = await Toppings.findByPk(id);
@@ -39,7 +39,7 @@ toppingsRouter.delete("/delete/:id", async (req, res) =>{
     }
   });
 
-toppingsRouter.put("/update/:id", async (req, res) =>{
+toppingsRouter.put("/update/:id", async (req, res) =>{ //ANDA
   try {
     const { id } = req.params;
     const {
