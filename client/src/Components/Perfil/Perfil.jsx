@@ -33,11 +33,9 @@ const Perfil = () => {
                             
                         <div className={styles.infoContainer}>
 
-                            <p>nickname: {user.nickname}</p>
+                            <p>Nombre: {user.name}</p>
+                            <p>Apodo: {user.nickname}</p>
                             <p>Correo: {user.email}</p>
-                            <p>name: {user.name}</p>
-                            <p>Correo: {user.email}</p>
-                            <p>username: {user.given_name}</p>
                             
                         
                         </div>
@@ -47,7 +45,9 @@ const Perfil = () => {
                             
                             <LogoutButton/>
 
-                            <Link to={'/historial'} className={styles.button}> Historial </Link>
+                            <Link to={'/historial'} className={styles.button}> Historial Compras</Link>
+
+                            <button className={styles.button}>Añadir Informacion</button>
                         </div>
                         
 
@@ -56,6 +56,7 @@ const Perfil = () => {
                     </div>
                  
                 ) :
+
                 <div className={styles.container}>
                     <div className={styles.login}>
                             <div>

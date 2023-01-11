@@ -1,11 +1,14 @@
-import { FILTER_BY_CATEGORIES } from "./actions";
-import { LOADING } from "./actions";
-import { DELETE_PRODUCTS } from "./actions";
-import { GET_PRODUCTS_DETAIL } from "./actions";
-import { CREATE_PRODUCTS } from "./actions";
-import { UPDATE_PRODUCTS } from "./actions";
-import { GET_PRODUCTS_SUMMARY } from "./actions";
-import { GET_ALL_PRODUCTS } from "./actions";
+import { GET_ALL_PRODUCTS, 
+			GET_USER_INFO, 
+			GET_PRODUCTS_SUMMARY, 
+			UPDATE_PRODUCTS, 
+			CREATE_PRODUCTS,
+			GET_PRODUCTS_DETAIL,
+			DELETE_PRODUCTS,
+			LOADING,
+			FILTER_BY_CATEGORIES,
+		} from "./actions";
+
 
 const initialState = {
 	products: [],
@@ -13,6 +16,7 @@ const initialState = {
 	productDetail: {},
 	loading: true,
 	actualPage: 1,
+	user: '',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -22,6 +26,10 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 			};
+
+		case GET_USER_INFO:
+				return {...state, user:action.payload}
+
 		case GET_ALL_PRODUCTS:
 			return {
 				...state,

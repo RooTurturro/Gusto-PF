@@ -7,7 +7,7 @@ const LogoutButton = () => {
 
   return (
     <button className={styled.button} onClick={() => logout({ returnTo: window.location.origin })}>
-      Log Out
+      Cerrar sesion
     </button>
   );
 };
