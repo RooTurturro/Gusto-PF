@@ -4,6 +4,7 @@ export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const GET_PRODUCTS_DETAIL = "GET_PRODUCTSDETAIL";
 export const GET_PRODUCTS_SUMMARY = "GET_PRODUCTSS_SUMMARY";
 export const CREATE_PRODUCTS = "CREATE_PRODUCTS";
+export const GET_PAYMENT_URL = "GET_PAYMENT_URL";
 export const FILTER_BY_CATEGORIES = "FILTER_BY_CATEGORIES";
 export const LOADING = "LOADING";
 export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
@@ -18,11 +19,29 @@ export const getAllProducts = () => {
 			//json
 			const response = await axios.get("http://localhost:3000/products");
 			return dispatch({
-				type: "GET_ALL_PRODUCTS",
+				type: GET_ALL_PRODUCTS,
 				payload: response.data,
 			});
 		} catch (error) {
 			return dispatch({ type: GET_ALL_PRODUCTS, payload: error.message });
+		}
+	};
+};
+
+export const getPaymentUrl = (values) => {
+	return async function (dispatch) {
+		dispatch(loading());
+		try {
+			const response = await axios.post(
+				"http://localhost:3000/payment",
+				values
+			);
+			return dispatch({
+				type: GET_PAYMENT_URL,
+				payload: response.data,
+			});
+		} catch (error) {
+			return dispatch({ type: GET_PAYMENT_URL, payload: error.message });
 		}
 	};
 };

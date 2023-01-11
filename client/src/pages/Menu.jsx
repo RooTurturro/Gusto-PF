@@ -14,10 +14,8 @@ const Menu = ({ setDataToEdit }) => {
       dispatch(getAllProducts());
     }
   }, [dispatch, products.length]);
-
   return (
     <div>
-
       {
         products.length > 0 ?
           products.map((el) => {
@@ -33,7 +31,7 @@ const Menu = ({ setDataToEdit }) => {
             )
 
           }) : <div>nada</div>}
-
+      
     </div>
   )
 
