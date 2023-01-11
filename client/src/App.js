@@ -16,6 +16,7 @@ import Perfil from "./Components/Perfil/Perfil";
 import AdminProvisorio from "./pages/AdminProvisorio";
 import Historial from './Components/Historial/Historial'
 import Carrito from "./Components/Carrito/Carrito";
+import SenGrid from "./Components/SendGrid/SenGrid";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         {/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/sendgrid" element={<SenGrid />} />
         <Route exact path="/carrito" element={<Carrito />} />
         <Route exact path="/historial" element={<Historial />} />
         <Route exact path="/adminProvisorio" element={<AdminProvisorio />} />
