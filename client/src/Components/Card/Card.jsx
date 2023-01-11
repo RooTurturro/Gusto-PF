@@ -37,16 +37,18 @@ export default function Card({
 							<div className="postcard__bar"></div>
 							<div className="postcard__preview-txt"> {description}</div>
 							<ul className="postcard__tagbox">
-								<li className="tag__item">
-
+								<li style={{fontSize: '20px' }} className="tag__item">
 									${price}
 								</li>
 							</ul>
-							<div className='buttons'>
-								{isAdminRoute && <button onClick={() => trashEmpty(id)}>Borrar</button>}
+							<div style={{ display: 'flex', flexDirection: 'column', width:'20%', gap:'1rem', marginTop:'20px' }}>
+								<button type="button" class="btn btn-danger">Agregar al carrito</button>
+								{isAdminRoute && <button type="button" class="btn btn-primary" onClick={() => trashEmpty(id)}>Borrar</button>}
 								{/* {isAdminRoute && (
 									<button onClick={() => setDataToEdit(id)}>Editar</button>
 								)} */}
+							</div>
+							<div>
 							</div>
 						</div>
 
