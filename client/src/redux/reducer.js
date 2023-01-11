@@ -3,6 +3,7 @@ import { LOADING } from "./actions";
 import { DELETE_PRODUCTS } from "./actions";
 import { GET_PRODUCTS_DETAIL } from "./actions";
 import { CREATE_PRODUCTS } from "./actions";
+import { GET_PAYMENT_URL } from "./actions";
 import { UPDATE_PRODUCTS } from "./actions";
 import { GET_PRODUCTS_SUMMARY } from "./actions";
 import { GET_ALL_PRODUCTS } from "./actions";
@@ -13,6 +14,8 @@ const initialState = {
 	productDetail: {},
 	loading: true,
 	actualPage: 1,
+	paymentUrl: "",
+	buyProducts: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -45,6 +48,11 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				products: [...state.products, action.payload],
+			};
+		case GET_PAYMENT_URL:
+			return {
+				...state,
+				paymentUrl: action.payload,
 			};
 		case UPDATE_PRODUCTS:
 			return {
