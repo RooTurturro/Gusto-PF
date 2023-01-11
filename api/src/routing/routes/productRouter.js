@@ -4,7 +4,7 @@ const {Product , Category} = require('../../database/models/index')
 
 const productRouter = Router();
 
-productRouter.get("/", async (req, res)=>{
+productRouter.get("/", async (req, res)=>{ //ANDA
     const allProducts = await Product.findAll(); 
     try{
     res.status(200).send(allProducts)
@@ -12,7 +12,7 @@ productRouter.get("/", async (req, res)=>{
 catch {res.status(400).send(error)}
 })
 
-productRouter.get('/:id', async (req, res)=>{
+productRouter.get('/:id', async (req, res)=>{ //ANDA
   const { id } = req.params
   try {
     if(id){
@@ -28,7 +28,7 @@ productRouter.get('/:id', async (req, res)=>{
 })
 
 
-productRouter.post("/", async (req, res)=>{
+productRouter.post("/", async (req, res)=>{  //ANDA
     try {
         const {name, description, price, image, state  } = req.body;
         const newProduct = await Product.create({name, description, price, image, state})
@@ -38,7 +38,7 @@ productRouter.post("/", async (req, res)=>{
     }
 })
 
-productRouter.delete("/delete/:id", async (req, res) => {
+productRouter.delete("/delete/:id", async (req, res) => { //ANDA
     const { id } = req.params;
     try {
       const productDelete = await Product.findByPk(id);
