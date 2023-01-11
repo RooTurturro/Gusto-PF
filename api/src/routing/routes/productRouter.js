@@ -6,12 +6,20 @@ const {Product , Category} = require('../../database/models/index')
 const productRouter = Router();
 
 productRouter.get("/", async (req, res)=>{ //ANDA
+    const { name } = req.query;
     const allProducts = await Product.findAll(); 
     try{
-    res.status(200).send(allProducts)
-}
-catch {res.status(400).send(error)}
-})
+      if(name){
+        const product = allProducts.filter(e => e.name.toLowerCase() === name.toLowerCase());
+        product.length ? res.status(200).send(product) : res.send('Product not found');
+      } else {
+        const products = allProducts
+        return res.status(200).send(products)
+      }
+    } catch(error) {
+      res.status(400).send(error)
+    }
+  })
 
 productRouter.get('/:id', async (req, res)=>{ //ANDA
   const { id } = req.params
