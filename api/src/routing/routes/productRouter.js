@@ -40,13 +40,7 @@ productRouter.get('/:id', async (req, res)=>{ //ANDA
 productRouter.post("/", async (req, res)=>{  //ANDA
     try {
         const {name, description, price, image, state, category  } = req.body;
-        const newProduct = await Product.create({name, description, price, image, state})
-        // const categoryDB = await Category.findAll({
-        //   where:{
-        //     name:category
-        //   }
-        // })
-        // newProduct.setCategory(categoryDB)
+        const newProduct = await Product.create({name, description, price, image, state, category})
         res.status(201).send(newProduct);
     } catch (error) {
         res.status(400).send(error);
@@ -76,7 +70,8 @@ productRouter.put("/update/:id", async (req,res)=>{
       description,
       price,
       img,
-      state      
+      state,
+      category    
     } = req.body;
     if (id) {
       let urlImage = "";
@@ -95,7 +90,8 @@ productRouter.put("/update/:id", async (req,res)=>{
             description,
             price,
             img,
-            state 
+            state,
+            category
           },
           { where: { id: id } }
         );
