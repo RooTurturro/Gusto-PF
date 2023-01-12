@@ -8,12 +8,7 @@ const PediYa = ({ price, quantity }) => {
 	const cart = useSelector((state) => state)
 
 	const handlePayment = () => {
-		const details = {
-			name: "burgerfan",
-			price: 100,
-			id: 1,
-		};
-
+		const details =[] //pasarle el cart
 		dispatch(getPaymentUrl(details));
 		console.log(paymentUrl);
 	};
@@ -22,7 +17,6 @@ const PediYa = ({ price, quantity }) => {
 		<div>
 			<div class="card-body">
 				<ul class="list-group list-group-flush">
-
 					<li class="list-group-item d-flex justify-content-between align-items-center px-0">
 						Envio
 						<span>Gratis</span>
