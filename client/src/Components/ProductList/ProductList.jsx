@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getAllProducts } from '../../redux/globalActions'
+import { getAllProducts } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import './ProductList.css'
 
