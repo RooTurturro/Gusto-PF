@@ -11,7 +11,6 @@ it("Can send emails with valid inputs" , async ()=>{
       subject : "subjeect" ,
       text : "Texto random" ,
       html : "<strong>Random text</strong>",
-      sandboxMode : true 
     }).expect(201);
 })
 
@@ -23,6 +22,5 @@ it("Error" , async ()=>{
       subject : "" ,
       text : "Texto random" ,
       html : "<strong>Random text</strong>",
-      sandboxMode : true 
     }).expect(400);
 })
