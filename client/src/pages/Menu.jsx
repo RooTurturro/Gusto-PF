@@ -30,6 +30,7 @@ const Menu = ({ setDataToEdit }) => {
                 price={el.price}
                 image={el.image}
                 addToCart={() => dispatch(addToCart(el.id))}
+                category={el.category}
               />
             )
 
