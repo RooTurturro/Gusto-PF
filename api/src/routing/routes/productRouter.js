@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const {Product , Category} = require('../../database/models/index')
+const {Product, Category} = require('../../db')
 
 // anda todo
 
@@ -39,8 +39,14 @@ productRouter.get('/:id', async (req, res)=>{ //ANDA
 
 productRouter.post("/", async (req, res)=>{  //ANDA
     try {
-        const {name, description, price, image, state  } = req.body;
+        const {name, description, price, image, state, category  } = req.body;
         const newProduct = await Product.create({name, description, price, image, state})
+        // const categoryDB = await Category.findAll({
+        //   where:{
+        //     name:category
+        //   }
+        // })
+        // newProduct.setCategory(categoryDB)
         res.status(201).send(newProduct);
     } catch (error) {
         res.status(400).send(error);

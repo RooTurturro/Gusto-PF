@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const userRouter = Router();
 const { requiresAuth } = require("express-openid-connect");
-const { User } = require("../../database/models/index");
+const { User } = require('../../db')
 
 
 userRouter.get("/", (req, res) => {
