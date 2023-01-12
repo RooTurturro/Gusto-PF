@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as actions from "../../redux/actions";
+import * as actions from "../../redux/actions/globalActions";
 import { useNavigate } from "react-router-dom";
 import styles from './Form.module.css'
 import { Link } from "react-router-dom";
@@ -20,6 +20,7 @@ const CreateProduct = () => {
 		price: "",
 		description: "",
 		image: "",
+		state: ""
 
 	});
 
@@ -53,6 +54,7 @@ const CreateProduct = () => {
 			price: "",
 			description: "",
 			image: "",
+			state: ""
 		});
 		alert(`El producto ${state.name} se creo exitosamente!`);
 		navigate('/adminprovisorio')
@@ -113,9 +115,21 @@ const CreateProduct = () => {
 						required
 					/>
 				</div>
+				<div>
+					<label className={styles.label}>Estado</label>
+					<input
+						className={styles.input}
+						type='text'
+						name='state'
+						onChange={handlerChange}
+						placeholder={'Estado del producto'}
+						value={state.state}
+						required
+					/>
+				</div>
 				<div style={{ display: 'flex', justifyContent: 'space-around' }}>
 					<button
-						disabled={!state.name || !state.description || !state.price  || !state.image}
+						disabled={!state.name || !state.description || !state.price || !state.image}
 						type="submit"
 					>
 						Crear producto
