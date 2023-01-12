@@ -1,6 +1,5 @@
 import React from "react";
 import "./Card.css";
-import burger from "../../assets/burger.png";
 import * as actions from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -12,6 +11,7 @@ export default function Card({
 	description,
 	image,
 	setDataToEdit,
+	addToCart,
 }) {
 	const dispatch = useDispatch();
 
@@ -42,11 +42,11 @@ export default function Card({
 								</li>
 							</ul>
 							<div style={{ display: 'flex', flexDirection: 'column', width:'20%', gap:'1rem', marginTop:'20px' }}>
-								<button type="button" class="btn btn-danger">Agregar al carrito</button>
+							<button type="button" class="btn btn-danger" onClick={() => addToCart(id)}>Agregar al carrito</button>
 								{isAdminRoute && <button type="button" class="btn btn-primary" onClick={() => trashEmpty(id)}>Borrar</button>}
-								{/* {isAdminRoute && (
-									<button onClick={() => setDataToEdit(id)}>Editar</button>
-								)} */}
+								{isAdminRoute && (
+									<button type="button" class="btn btn-dark" onClick={() => setDataToEdit(id)}>Editar</button>
+								)}
 							</div>
 							<div>
 							</div>

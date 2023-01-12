@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../Components/Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../redux/actions";
+import { addToCart } from "../redux/shoppingActions";
 import { useEffect } from "react";
 // import Loading from "../Components/Loading/Loading";
 
@@ -22,11 +23,13 @@ const Menu = ({ setDataToEdit }) => {
             return (
               <Card
                 id={el.id}
+                data={el}
                 key={el.id}
                 name={el.name}
                 description={el.description}
                 price={el.price}
                 image={el.image}
+                addToCart={() => dispatch(addToCart(el.id))}
               />
             )
 

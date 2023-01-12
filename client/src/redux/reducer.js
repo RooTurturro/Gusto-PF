@@ -1,12 +1,14 @@
-import { FILTER_BY_CATEGORIES } from "./actions";
-import { LOADING } from "./actions";
-import { DELETE_PRODUCTS } from "./actions";
-import { GET_PRODUCTS_DETAIL } from "./actions";
-import { CREATE_PRODUCTS } from "./actions";
-import { GET_PAYMENT_URL } from "./actions";
-import { UPDATE_PRODUCTS } from "./actions";
-import { GET_PRODUCTS_SUMMARY } from "./actions";
-import { GET_ALL_PRODUCTS } from "./actions";
+import { FILTER_BY_CATEGORIES } from "../redux/actions";
+import { LOADING } from "../redux/actions";
+import { DELETE_PRODUCTS } from "../redux/actions";
+import { GET_PRODUCTS_DETAIL } from "../redux/actions";
+import { CREATE_PRODUCTS } from "../redux/actions";
+import { GET_PAYMENT_URL } from "../redux/actions";
+import { UPDATE_PRODUCTS } from "../redux/actions";
+import { GET_PRODUCTS_SUMMARY } from "../redux/actions";
+import { GET_ALL_PRODUCTS } from "../redux/actions";
+import { ADD_TO_CART, CLEAR_CART, REMOVE_ALL_FROM_CART, REMOVE_ONE_FROM_CART } from "../types";
+
 
 const initialState = {
 	products: [],
@@ -17,6 +19,7 @@ const initialState = {
 	user: '',
 	paymentUrl: "",
 	buyProducts: [],
+	cart: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -82,12 +85,51 @@ const rootReducer = (state = initialState, action) => {
 				action.payload === "All"
 					? allProducts
 					: allProducts.filter(
-							(product) => product.category === action.payload
-					  );
+						(product) => product.category === action.payload
+					);
 			return {
 				...state,
 				products: filteredStatus,
 			};
+		case ADD_TO_CART: {
+			let newItem = state.products.find(
+				producto => producto.id === action.payload)
+			let itemInCart = state.cart.find(item => item.id === newItem.id);
+			return itemInCart
+				? {
+					...state,
+					cart: state.cart.map((item) =>
+						item.id === newItem.id
+							? { ...item, quantity: item.quantity + 1 }
+							: item),
+				}
+				: {
+					...state,
+					cart: [...state.cart, { ...newItem, quantity: 1 }],
+				};
+		}
+
+		case REMOVE_ALL_FROM_CART: {
+			let itemToDelete = state.cart.find(item => item.id === action.payload)
+
+			return itemToDelete > 1 ? {
+				...state,
+				cart: state.cart.map(item => item.id === action.payload ? { ...item, quantity: item.quantity - 1 } :
+					item),
+			} : {
+				...state,
+				cart: state.cart.filter((item) => item.id !== action.payload)
+			}
+		}
+		case REMOVE_ONE_FROM_CART: {
+			return {
+				...state,
+				cart: state.cart.filter((item) => item.id !== action.payload)
+			}
+		}
+		case CLEAR_CART: {
+			return initialState;
+		}
 
 		// case ORDER_BY_POPULATION:
 		default:

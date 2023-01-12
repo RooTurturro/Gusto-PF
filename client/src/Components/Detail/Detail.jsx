@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProductsDetail } from '../../redux/actions'
-import burger from '../../assets/burger.png'
 import styles from './Detail.module.css'
 
 
