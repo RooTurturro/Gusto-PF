@@ -1,12 +1,12 @@
 const { Router } = require("express");
-const { Product, Category, Toppings } = require('../../database/models/index')
+const {  Category  } = require('../../db')
 
 
 
 const categoryRouter = Router();
 
-categoryRouter.get("/", async (req, res) => {
-  const allCategory = await getInfoCategory();
+categoryRouter.get("/", async (req, res) => { //ANDA
+  const allCategory = await Category.findAll();
   try {
     res.status(200).json(allCategory);
   } catch (error) {
@@ -14,23 +14,17 @@ categoryRouter.get("/", async (req, res) => {
   }
 });
 
-categoryRouter.post("/", async (req, res) => {
+categoryRouter.post("/", async (req, res) => { //ANDA
   try {
-    const { name, description, price, image, state } = req.body;
-    const newCategory = await Category.create({
-      name,
-      description,
-      price,
-      image,
-      state,
-    });
+    const { name } = req.body;
+    const newCategory = await Category.create({ name });
     res.status(201).json(newCategory);
   } catch (error) {
     res.status(400).send(error);
   }
 });
 
-categoryRouter.delete("/:id", async (req, res) => {
+categoryRouter.delete("/:id", async (req, res) => { //ANDA
   const { id } = req.params;
   try {
     const categoryDelete = await Category.findByPk(id);
@@ -46,7 +40,7 @@ categoryRouter.delete("/:id", async (req, res) => {
 });
 
 
-categoryRouter.put("/update/:id", async (req, res) => {
+categoryRouter.put("/update/:id", async (req, res) => { // ANDA
   try {
     const { id } = req.params;
     const {

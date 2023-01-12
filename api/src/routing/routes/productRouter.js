@@ -1,18 +1,27 @@
 const { Router } = require("express");
-const {Product , Category} = require('../../database/models/index')
+const {Product, Category} = require('../../db')
 
+// anda todo
 
 const productRouter = Router();
 
-productRouter.get("/", async (req, res)=>{
+productRouter.get("/", async (req, res)=>{ //ANDA
+    const { name } = req.query;
     const allProducts = await Product.findAll(); 
     try{
-    res.status(200).send(allProducts)
-}
-catch {res.status(400).send(error)}
-})
+      if(name){
+        const product = allProducts.filter(e => e.name.toLowerCase() === name.toLowerCase());
+        product.length ? res.status(200).send(product) : res.send('Product not found');
+      } else {
+        const products = allProducts
+        return res.status(200).send(products)
+      }
+    } catch(error) {
+      res.status(400).send(error)
+    }
+  })
 
-productRouter.get('/:id', async (req, res)=>{
+productRouter.get('/:id', async (req, res)=>{ //ANDA
   const { id } = req.params
   try {
     if(id){
@@ -28,17 +37,23 @@ productRouter.get('/:id', async (req, res)=>{
 })
 
 
-productRouter.post("/", async (req, res)=>{
+productRouter.post("/", async (req, res)=>{  //ANDA
     try {
-        const {name, description, price, image, state  } = req.body;
+        const {name, description, price, image, state, category  } = req.body;
         const newProduct = await Product.create({name, description, price, image, state})
+        // const categoryDB = await Category.findAll({
+        //   where:{
+        //     name:category
+        //   }
+        // })
+        // newProduct.setCategory(categoryDB)
         res.status(201).send(newProduct);
     } catch (error) {
         res.status(400).send(error);
     }
 })
 
-productRouter.delete("/delete/:id", async (req, res) => {
+productRouter.delete("/delete/:id", async (req, res) => { //ANDA
     const { id } = req.params;
     try {
       const productDelete = await Product.findByPk(id);

@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
-
+var { json } = require('body-parser')
 const routes = require("./routing/index");
 
 
@@ -25,7 +25,7 @@ const authConfig = {
 server.use(auth(authConfig));
 
 server.use(cors());
-
+server.use(json())
 server.use(logger("dev"));
 server.use(express.json());
 server.use(express.urlencoded({ extended: false, limit: "100mb" }));
