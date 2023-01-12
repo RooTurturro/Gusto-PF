@@ -1,20 +1,9 @@
-const server = require("./src/app");
-require("dotenv").config();
-const { sequelize } = require("./src/database/models/index.js");
-const port = process.env.PORT || 3000;
+const server = require('./src/app.js');
+const { conn } = require('./src/db.js');
 
-const conectionTest = async () => {
-	try {
-		await sequelize.authenticate();
-		console.log("Conection ok");
-		server.listen(port, () => {
-			port
-				? console.log(`Se conecto al localhost:${port}`)
-				: console.log(`No fue posible conexion a localhost:${port}`);
-		});
-	} catch (error) {
-		console.log("Error en la conxion !!!", error);
-	}
-};
-
-conectionTest();
+// Syncing all the models at once.
+conn.sync({ force: true }).then(() => {
+  server.listen(3001, () => {
+    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  });
+});

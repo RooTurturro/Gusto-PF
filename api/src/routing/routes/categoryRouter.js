@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const {  Category  } = require('../../database/models/index')
+const {  Category  } = require('../../db')
 
 
 
