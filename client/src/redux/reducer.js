@@ -14,6 +14,7 @@ const initialState = {
 	productDetail: {},
 	loading: true,
 	actualPage: 1,
+	user: '',
 	paymentUrl: "",
 	buyProducts: [],
 };
@@ -25,6 +26,10 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 			};
+
+		case GET_USER_INFO:
+				return {...state, user:action.payload}
+
 		case GET_ALL_PRODUCTS:
 			return {
 				...state,

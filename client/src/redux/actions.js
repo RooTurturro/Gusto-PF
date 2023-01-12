@@ -1,5 +1,5 @@
 import axios from "axios";
-
+export const GET_USER_INFO = "GET_USER_INFO";
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const GET_PRODUCTS_DETAIL = "GET_PRODUCTSDETAIL";
 export const GET_PRODUCTS_SUMMARY = "GET_PRODUCTSS_SUMMARY";
@@ -103,4 +103,19 @@ export const loading = () => {
 
 export const filterProductsByCategories = (payload) => {
 	return { type: FILTER_BY_CATEGORIES, payload };
+};
+
+
+export const login = ()=>{
+    return async function(dispatch){
+        const json = await axios.get("http://localhost:3000/login");
+        return dispatch({ type: GET_USER_INFO, payload: json.data});
+    };
+};
+
+export const getUserInfo= ()=>{
+    return async function(dispatch){
+        const json = await axios.get("http://localhost:3000/users");
+        return dispatch({ type: GET_USER_INFO, payload: json.data});
+    };
 };
