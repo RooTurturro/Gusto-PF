@@ -3,19 +3,15 @@ const sendGrid = Router();
 const sgMail = require("../../services/sendGrid")
 
 sendGrid.post("/", async (req,res)=>{
- const { to , subject , text , html , sandboxMode = false  } = req.body ; 
+ const { to , subject , text , html } = req.body ; 
 
   const msg = {
     to,
-    from: `emilianore997@gmail.com`,
+    from: `emi-re11@hotmail.com`,
     subject,
     text,
     html,
-    mail_settings : {
-      sandbox_mode: {
-        enable: sandboxMode
-      }
-    }
+   
   }
   try{
     await sgMail.send(msg)

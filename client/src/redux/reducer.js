@@ -14,6 +14,8 @@ import {
 	REMOVE_ALL_FROM_CART,
 	REMOVE_ONE_FROM_CART,
 } from "../types";
+=======
+import { ADD_TO_CART, CLEAR_CART, REMOVE_ALL_FROM_CART, REMOVE_ONE_FROM_CART } from "../types";
 import { GET_USER_INFO } from "../redux/actions";
 
 const initialState = {
