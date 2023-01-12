@@ -12,6 +12,7 @@ export default function Card({
 	image,
 	setDataToEdit,
 	addToCart,
+	category
 }) {
 	const dispatch = useDispatch();
 
@@ -39,6 +40,9 @@ export default function Card({
 							<ul className="postcard__tagbox">
 								<li style={{fontSize: '20px' }} className="tag__item">
 									${price}
+								</li>
+								<li style={{fontSize: '20px' }} className="tag__item">
+									{category}
 								</li>
 							</ul>
 							<div style={{ display: 'flex', flexDirection: 'column', width:'20%', gap:'1rem', marginTop:'20px' }}>
