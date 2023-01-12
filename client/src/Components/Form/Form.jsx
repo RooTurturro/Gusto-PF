@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as actions from "../../redux/actions/globalActions";
+import * as actions from "../../redux/globalActions";
 import { useNavigate } from "react-router-dom";
 import styles from './Form.module.css'
 import { Link } from "react-router-dom";

@@ -1,13 +1,13 @@
-import { FILTER_BY_CATEGORIES } from "../actions/globalActions";
-import { LOADING } from "../actions/globalActions";
-import { DELETE_PRODUCTS } from "../actions/globalActions";
-import { GET_PRODUCTS_DETAIL } from "../actions/globalActions";
-import { CREATE_PRODUCTS } from "../actions/globalActions";
-import { GET_PAYMENT_URL } from "../actions/globalActions";
-import { UPDATE_PRODUCTS } from "../actions/globalActions";
-import { GET_PRODUCTS_SUMMARY } from "../actions/globalActions";
-import { GET_ALL_PRODUCTS } from "../actions/globalActions";
-import { ADD_TO_CART, CLEAR_CART, REMOVE_ALL_FROM_CART, REMOVE_ONE_FROM_CART } from "../../types";
+import { FILTER_BY_CATEGORIES } from "../redux/globalActions";
+import { LOADING } from "../redux/globalActions";
+import { DELETE_PRODUCTS } from "../redux/globalActions";
+import { GET_PRODUCTS_DETAIL } from "../redux/globalActions";
+import { CREATE_PRODUCTS } from "../redux/globalActions";
+import { GET_PAYMENT_URL } from "../redux/globalActions";
+import { UPDATE_PRODUCTS } from "../redux/globalActions";
+import { GET_PRODUCTS_SUMMARY } from "../redux/globalActions";
+import { GET_ALL_PRODUCTS } from "../redux/globalActions";
+import { ADD_TO_CART, CLEAR_CART, REMOVE_ALL_FROM_CART, REMOVE_ONE_FROM_CART } from "../types";
 
 
 const initialState = {

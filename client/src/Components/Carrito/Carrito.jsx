@@ -1,9 +1,9 @@
 import ProductItem from './ProductItem'
 import { useSelector, useDispatch } from 'react-redux'
-import { addToCart, clearCart, delFromCart } from '../../redux/actions/shoppingActions'
+import { addToCart, clearCart, delFromCart } from '../../redux/shoppingActions'
 import CarritoItem from './CarritoItem'
 import { useEffect } from 'react'
-import { getAllProducts } from '../../redux/actions/globalActions'
+import { getAllProducts } from '../../redux/globalActions'
 import PediYa from '../../pages/PediYa'
 
 const Carrito = () => {

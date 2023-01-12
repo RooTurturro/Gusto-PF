@@ -1,6 +1,6 @@
 import React from "react";
 import "./Card.css";
-import * as actions from "../../redux/actions/globalActions";
+import * as actions from "../../redux/globalActions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 

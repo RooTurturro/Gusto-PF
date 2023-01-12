@@ -1,8 +1,8 @@
 import React from "react";
 import Card from "../Components/Card/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../redux/actions/globalActions";
-import { addToCart } from "../redux/actions/shoppingActions";
+import { getAllProducts } from "../redux/globalActions";
+import { addToCart } from "../redux/shoppingActions";
 import { useEffect } from "react";
 // import Loading from "../Components/Loading/Loading";
 

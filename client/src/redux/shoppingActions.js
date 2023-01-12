@@ -3,7 +3,7 @@ import {
     CLEAR_CART,
     REMOVE_ALL_FROM_CART,
     REMOVE_ONE_FROM_CART
-} from '../../types'
+} from '../types'
 
 export const addToCart = (id) => ({ type: ADD_TO_CART, payload: id })
 

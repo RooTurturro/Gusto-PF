@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import store from './redux/store/store'
+import store from './redux/store'
 import { Provider } from 'react-redux';
 //----------------Auth0 Config----------------------------
 import { Auth0Provider } from '@auth0/auth0-react'
