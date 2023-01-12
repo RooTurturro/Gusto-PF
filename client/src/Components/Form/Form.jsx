@@ -72,13 +72,6 @@ const CreateProduct = () => {
 		})
 	}
 
-	function handleDelete(e) {
-		setState({
-			...state,
-			category: state.category.filter(t => t !== e)
-		})
-	}
-
 	return (
 		<div>
 			<h2>Creando producto</h2>
@@ -148,13 +141,21 @@ const CreateProduct = () => {
 				</div>
 				<div>
 					<label className={styles.label}>Categoria</label>
-					<select name='category' style={{ color: 'black' }} onChange={(e) => handleSelect(e)}>
+					{/* <select name='category' style={{ color: 'black' }} onChange={(e) => handleSelect(e)}>
 						<option value={state.category}>Seleccione 1 categoria</option>
 						{categorias && categorias.map((p, index) => (
 							<option key={index} value={p}>{p}</option>
 						))}
+					</select> */}
+					<select onChange={(e) => handleSelect(e)}>
+						<option value='Hamburguesa'>Hamburguesa</option>
+						<option value='Wrap'>Wrap</option>
+						<option value='Postre'>Postre</option>
+						<option value='Bebida'>Bebida</option>
+						<option value='Papas'>Papas</option>
+						<option value='Snack'>Snack</option>
+						<option value='Ensalada'>Ensalada</option>
 					</select>
-					{state.category}
 				</div>
 				<div style={{ display: 'flex', justifyContent: 'space-around' }}>
 					<button
