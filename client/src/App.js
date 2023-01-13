@@ -18,6 +18,7 @@ import Historial from './Components/Historial/Historial'
 import Carrito from "./Components/Carrito/Carrito";
 import SenGrid from "./Components/SendGrid/SenGrid";
 import ProductList from "./Components/ProductList/ProductList";
+import ProfileUserForm from "./Components/Form/ProfileUserForm";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/sucursales" element={<Sucursales />} />
         <Route exact path="/trabajaaca" element={<TrabajaAca />} />
         <Route exact path="/nosotros" element={<Nosotros />} />
+        <Route exact path="/editarperfilusuario" element={<ProfileUserForm />} />
       </Routes>
     </div>
   );
