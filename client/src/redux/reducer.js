@@ -10,6 +10,9 @@ import { RATING_PRODUCTS } from "../redux/actions";
 import { GET_PRODUCTS_SUMMARY } from "../redux/actions";
 import { GET_ALL_PRODUCTS } from "../redux/actions";
 import { GET_USER_INFO } from "../redux/actions";
+
+import { PRICE_ORDER } from "../redux/actions";
+import { ALPHABETICAL_ORDER } from "../redux/actions";
 import {
 	ADD_TO_CART,
 	CLEAR_CART,
@@ -45,18 +48,11 @@ const rootReducer = (state = initialState, action) => {
 			return { ...state, user: action.payload }
 
 
-			return { ...state, user: action.payload };
-
 		case GET_ALL_PRODUCTS:
 			return {
 				...state,
 				products: action.payload,
 				allProducts: action.payload,
-			};
-			case GET_ALL_CATEGORIES:
-			return {
-				...state,
-				allCategories: action.payload,
 			};
 		case GET_PRODUCTS_SUMMARY:
 			return {
@@ -109,67 +105,59 @@ const rootReducer = (state = initialState, action) => {
 				action.payload === "All"
 					? allProducts
 					: allProducts.filter(
-						(product) => product.category === action.payload
-					);
-
-			const cFilter = action.payload === 'all' ? 
-			state.allProducts: 
-			state.allProducts?.filter(e => e.categorie?.includes(action.payload))
-
+						product => product.category === action.payload);
 			return {
-			  ...state,
-			  products: cFilter
-			} 
+				...state,
+				products: filteredStatus
+			}
 		case PRICE_ORDER:
 			const sortPrice = action.payload === 'asc' ? state.products.sort(function (a, b) {
 				if (a.price > b.price) {
-				  return 1;
+					return 1;
 				}
 				if (b.price > a.price) {
-				  return -1
+					return -1
 				}
 				return 0
-			  }) : state.products.sort(function (a, b) {
+			}) : state.products.sort(function (a, b) {
 				if (a.price > b.price) {
-				  return -1;
+					return -1;
 				}
 				if (b.price > a.price) {
-				  return 1;
+					return 1;
 				}
 				return 0
-			  })
-			  return {
+			})
+			return {
 				...state,
 
 				products: sortPrice
-			  }
-	
+			}
+
 
 		case ALPHABETICAL_ORDER:
 			const sort = action.payload === 'A-Z' ? state.products.sort(function (a, b) {
 				if (a.name > b.name) {
-				  return 1;
+					return 1;
 				}
 				if (b.name > a.name) {
-				  return -1;
+					return -1;
 				}
 				return 0
-			  }) : state.products.sort(function (a, b) {
+			}) : state.products.sort(function (a, b) {
 				if (a.name > b.name) {
-				  return -1;
+					return -1;
 				}
 				if (b.name > a.name) {
-				  return 1;
+					return 1;
 				}
 				return 0
-			  })
-			  return {
+			})
+			return {
 				...state,
 				products: sort
-			  }
+			}
 
-				products: filteredStatus,
-			};
 		case ADD_TO_CART: {
 			let newItem = state.products.find(
 				(producto) => producto.id === action.payload
@@ -229,4 +217,4 @@ export default rootReducer;
 
 
 
- 
+
