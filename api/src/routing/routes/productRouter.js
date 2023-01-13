@@ -41,6 +41,7 @@ productRouter.get("/:id", async (req, res) => {
 	}
 });
 
+
 productRouter.post("/", async (req, res) => {
 	//ANDA
 	try {
