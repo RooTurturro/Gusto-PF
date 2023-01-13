@@ -10,11 +10,9 @@ export const FILTER_BY_CATEGORIES = "FILTER_BY_CATEGORIES";
 export const LOADING = "LOADING";
 export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
 export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
-
 export const ALPHABETICAL_ORDER = "ALPHABETICAL_ORDER";
 export const PRICE_ORDER = "PRICE_ORDER";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
-
 export const RATING_PRODUCTS = "RATING_PRODUCTS";
 
 // export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
@@ -35,16 +33,7 @@ export const getAllProducts = () => {
 	};
 };
 
-export const getAllCategories = () => {
-    return async function(dispatch) {
-        return fetch("http://localhost:3001/categories")
-        .then(response => response.json())
-        .then(json => dispatch({
-            type: GET_ALL_CATEGORIES,
-            payload: json
-        }))
-    }
-};
+
 
 export const getPaymentUrl = (values) => {
 	return async function (dispatch) {
@@ -127,30 +116,30 @@ export const loading = () => {
 // export const OrderbyPopulation
 
 export const filterProductsByCategories = (payload) => {
-	return { 
-		type: FILTER_BY_CATEGORIES, 
-		payload 
+	return {
+		type: FILTER_BY_CATEGORIES,
+		payload
 	};
 };
 export const priceOrder = (payload) => {
-	return { 
-		type: PRICE_ORDER, 
+	return {
+		type: PRICE_ORDER,
 		payload
-	 };
+	};
 };
 export const OrderbyPopulation = (payload) => {
-	return{
-	 type: ORDER_BY_POPULATION,
-	 payload,
-	}
-   }
-   
-   export const aplhabeticalOrder = (payload) => {
 	return {
-	 type: ALPHABETICAL_ORDER,
-	 payload,
-	  };
-   }
+		type: ORDER_BY_POPULATION,
+		payload,
+	}
+}
+
+export const aplhabeticalOrder = (payload) => {
+	return {
+		type: ALPHABETICAL_ORDER,
+		payload,
+	};
+}
 
 
 export const login = () => {
@@ -165,4 +154,4 @@ export const getUserInfo = () => {
 		const json = await axios.get("http://localhost:3000/users");
 		return dispatch({ type: GET_USER_INFO, payload: json.data });
 	};
-
+}

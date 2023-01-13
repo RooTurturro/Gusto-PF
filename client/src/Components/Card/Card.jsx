@@ -15,10 +15,15 @@ export default function Card({
 	category
 }) {
 	const dispatch = useDispatch();
-
+	const Swal = require('sweetalert2')
 	const trashEmpty = (id) => {
 		dispatch(actions.deleteProducts(id));
-		window.location.reload();
+		Swal.fire({
+			icon: 'error',
+			title: 'Eliminado!'
+		}).then((e) => {
+			window.location.reload()
+		})
 	};
 
 	//verifica si esta en la ruta /adminprovisorio
