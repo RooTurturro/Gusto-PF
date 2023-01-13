@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../redux/actions";
 import { addToCart } from "../redux/shoppingActions";
 import { useEffect } from "react";
+import Filters from "../Components/Filters/Filter";
 // import Loading from "../Components/Loading/Loading";
 
 const Menu = ({ setDataToEdit }) => {
@@ -17,6 +18,9 @@ const Menu = ({ setDataToEdit }) => {
   }, [dispatch, products.length]);
   return (
     <div>
+      <div>
+        <Filters/>
+      </div>
       {
         products.length > 0 ?
           products.map((el) => {
