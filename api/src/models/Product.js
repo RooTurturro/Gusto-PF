@@ -22,15 +22,6 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      rating: {
-        type: DataTypes.INTEGER,
-        validate: {
-          min: 1,
-          max: 5
-        },
-        defaultValue: 1,
-        /* allowNull: false, */
-      },
       image: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -40,7 +31,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       category: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
     },

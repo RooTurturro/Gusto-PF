@@ -25,10 +25,6 @@ const AdminProvisorio = () => {
 
 		// </div>
 		<div>
-
-			<Link to={'/create'} style={{ display: 'flex', justifyContent: 'center' }}>
-				<button>Nuevo producto</button>
-			</Link>
 			<Menu />
 		</div>
 	);

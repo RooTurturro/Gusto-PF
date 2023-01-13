@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 //----------------Auth0 Config----------------------------
 import { Auth0Provider } from '@auth0/auth0-react'
 const domain = 'dev-18zov1enqjrx8hn7.us.auth0.com';
-const clientId = 'dC62CcwF4rJihASZzkZ7ZTixIGGoRtao';
+const clientId = 'LqqBa9zF6gjJ2lwcrNYsAtYpikXifzQZ';
 
 ReactDOM.render(
 
