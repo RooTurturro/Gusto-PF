@@ -7,29 +7,22 @@ module.exports = (sequelize) =>{
             allowNull: false,
             primaryKey: true,
         },
-        firstName: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        lastName : {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+       
         phone: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         email: {
             type: DataTypes.STRING,
-            allowNull:false,
+            allowNull:true,
         },
         address: {
             type: DataTypes.STRING,
-            allowNull:false,
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
+            allowNull:true,
         },
         isAdmin: {
             type: DataTypes.BOOLEAN,
@@ -37,7 +30,7 @@ module.exports = (sequelize) =>{
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
     },
     {

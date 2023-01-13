@@ -9,14 +9,15 @@ import { GET_PRODUCTS_SUMMARY } from "../redux/actions";
 import { GET_ALL_PRODUCTS } from "../redux/actions";
 import { ADD_TO_CART, CLEAR_CART, REMOVE_ALL_FROM_CART, REMOVE_ONE_FROM_CART } from "../types";
 import { GET_USER_INFO } from "../redux/actions";
+import { USER_LOGIN } from "../redux/actions";
 
 const initialState = {
-	products: [],
+	products: [],	
 	allProducts: [],
 	productDetail: {},
 	loading: true,
 	actualPage: 1,
-	user: '',
+	user: {},
 	paymentUrl: "",
 	buyProducts: [],
 	cart: []
@@ -30,7 +31,10 @@ const rootReducer = (state = initialState, action) => {
 				loading: true,
 			};
 
-		case GET_USER_INFO:
+		// case GET_USER_INFO:
+		// 		return {...state, user:action.payload}
+		
+		case USER_LOGIN:
 				return {...state, user:action.payload}
 
 		case GET_ALL_PRODUCTS:
