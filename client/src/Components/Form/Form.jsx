@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
-import styles from './Form.module.css'
+
 import { Link } from "react-router-dom";
+import './Form.css'
 
 const CreateProduct = () => {
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate()
 	const products = useSelector((state) => state.products);
 	const productNames = products?.map((product) => product.name);
+	const Swal = require('sweetalert2')
 
 	useEffect(() => {
 		dispatch(actions.getAllProducts());
@@ -20,7 +23,8 @@ const CreateProduct = () => {
 		price: "",
 		description: "",
 		image: "",
-		state: ""
+		state: "",
+		category: ""
 
 	});
 
@@ -54,95 +58,120 @@ const CreateProduct = () => {
 			price: "",
 			description: "",
 			image: "",
-			state: ""
+			state: "",
+			category: ""
 		});
-		alert(`El producto ${state.name} se creo exitosamente!`);
+		Swal.fire(`El producto ${state.name} se creo exitosamente!`);
 		navigate('/adminprovisorio')
 	};
 
-	return (
-		<div>
-			<h2>Creando producto</h2>
-			<form className={styles.form} onSubmit={handlerSubmit}>
-				<div>
-					<label className={styles.label}>Nombre:</label>
-					<input
-						className={styles.input}
-						type="text"
-						name="name"
-						onChange={handlerChange}
-						placeholder={"Nombre del producto"}
-						value={state.name}
-						required
-					/>
-					{errors.name && <p className={styles.error}>{errors.name}</p>}
-				</div>
-				<div>
-					<label className={styles.label}>Descripcion:</label>
-					<input
-						className={styles.input}
-						type="text"
-						name="description"
-						onChange={handlerChange}
-						placeholder={"Descripción del producto"}
-						value={state.description}
-						required
-					/>
-					{errors.description && <p className={styles.error}>{errors.description}</p>}
-				</div>
-				<div>
-					<label className={styles.label}>Precio:</label>
-					<input
-						className={styles.input}
-						type="text"
-						name="price"
-						onChange={handlerChange}
-						placeholder={"$"}
-						value={state.price}
-						required
-					/>
-					{errors.price && <p className={styles.error}>{errors.price}</p>}
-				</div>
-				<div>
-					<label className={styles.label}>Imagen</label>
-					<input
-						className={styles.input}
-						type='text'
-						name='image'
-						onChange={handlerChange}
-						placeholder={'Link de la imagen'}
-						value={state.image}
-						required
-					/>
-				</div>
-				<div>
-					<label className={styles.label}>Estado</label>
-					<input
-						className={styles.input}
-						type='text'
-						name='state'
-						onChange={handlerChange}
-						placeholder={'Estado del producto'}
-						value={state.state}
-						required
-					/>
-				</div>
-				<div style={{ display: 'flex', justifyContent: 'space-around' }}>
-					<button
-						disabled={!state.name || !state.description || !state.price || !state.image}
-						type="submit"
-					>
-						Crear producto
-					</button>
-					<Link to={'/adminprovisorio'}>
+	function handleSelect(e) {
+		setState({
+			...state,
+			category: state.category.includes(e.target.value) ? state.category : [...state.category, e.target.value]
+		})
+	}
 
-						<button>Cancelar</button>
-					</Link>
+	return (
+		<div class="form-body">
+			<div class="row">
+				<div class="form-holder">
+					<div class="form-content">
+						<div class="form-items">
+							<h2>Creando producto</h2>
+							<form class="requires-validation" onSubmit={handlerSubmit}>
+								<div class="col-md-12">
+									{/* <label className={styles.label}>Nombre:</label> */}
+									<input
+										class="form-control"
+										type="text"
+										name="name"
+										onChange={handlerChange}
+										placeholder={"Nombre del producto"}
+										value={state.name}
+										required
+									/>
+									{/* {errors.name && <p className={styles.error}>{errors.name}</p>} */}
+								</div>
+								<div class="col-md-12">
+									{/* <label className={styles.label}>Descripcion:</label> */}
+									<input
+										class="form-control"
+										type="text"
+										name="description"
+										onChange={handlerChange}
+										placeholder={"Descripción del producto"}
+										value={state.description}
+										required
+									/>
+									{/* {errors.description && <p className={styles.error}>{errors.description}</p>} */}
+								</div>
+								<div class="col-md-12">
+									{/* <label className={styles.label}>Precio:</label> */}
+									<input
+										class="form-control"
+										type="text"
+										name="price"
+										onChange={handlerChange}
+										placeholder={"$"}
+										value={state.price}
+										required
+									/>
+									{/* {errors.price && <p className={styles.error}>{errors.price}</p>} */}
+								</div>
+								<div class="col-md-12">
+									{/* <label className={styles.label}>Imagen</label> */}
+									<input
+										class="form-control"
+										type='text'
+										name='image'
+										onChange={handlerChange}
+										placeholder={'Link de la imagen'}
+										value={state.image}
+										required
+									/>
+								</div>
+								<div class="col-md-12">
+									{/* <label className={styles.label}>Estado</label> */}
+									<input
+										id='Activo'
+										type='text'
+										name='state'
+										onChange={handlerChange}
+										placeholder={'Estado del producto'}
+										value={state.state}
+										required
+									/>
+								</div>
+								<div class="col-md-12">
+									{/* <label className={styles.label}>Categoria</label> */}
+									<select class="form-select mt-3" onChange={(e) => handleSelect(e)}>
+										<option value='Hamburguesa'>Hamburguesa</option>
+										<option value='Wrap'>Wrap</option>
+										<option value='Postre'>Postre</option>
+										<option value='Bebida'>Bebida</option>
+										<option value='Papas'>Papas</option>
+										<option value='Snack'>Snack</option>
+										<option value='Ensalada'>Ensalada</option>
+									</select>
+								</div >
+								<div class="form-button mt-3" style={{display:'flex', justifyContent:'space-between'}}>
+									<button
+										class="btn btn-primary"
+										disabled={!state.name || !state.description || !state.price || !state.image || !state.state || !state.category }
+										type="submit"
+									>
+										Crear producto
+									</button>
+									<Link to={'/adminprovisorio'}>
+										<button class="btn btn-danger">Cancelar</button>
+									</Link>
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
-				{(!state.name || !state.description || !state.price) && (
-					<p>Boton desactivado, uno o mas campos vacios.</p>
-				)}
-			</form>
+			</div>
 		</div>
 	);
 };

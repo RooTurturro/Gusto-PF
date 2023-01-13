@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const productRouter = require("./routes/productRouter");
+const purchaseRouter = require ('./routes/purchaseRouter')
 
 const toppingsRouter = require("./routes/toppingsRouter");
 const usersRouter = require("./routes/usersRouter");
@@ -16,6 +17,7 @@ router.use("/products", productRouter);
 router.use("/toppings", toppingsRouter);
 router.use("/users", usersRouter);
 router.use("/api/mail", sendGrid)
+router.use("/purchase", purchaseRouter)
 
 router.get("/", function (req, res) {
 	res.redirect("http://localhost:3000/perfil");

@@ -24,12 +24,11 @@ const ProductList = () => {
                                     <table class="table user-list">
                                         <thead>
                                             <tr>
-                                                <th><span>Producto</span></th>
-                                                <th><span>Fecha</span></th>
-                                                <th class="text-center"><span>Status</span></th>
-                                                <th><span>Precio</span></th>
-                                                <th><span>Email</span></th>
-                                                <th>&nbsp;</th>
+                                                <th scope="col" width="20%"><span>Producto</span></th>
+                                                <th scope="col" width="20%"><span>Fecha</span></th>
+                                                <th scope="col" width="20%" class="text-center"><span>Status</span></th>
+                                                <th scope="col" width="20%"><span>Precio</span></th>
+                                                <th scope="col" width="20%"><span>Email</span></th>
                                             </tr>
                                         </thead>
                                         <tbody>
