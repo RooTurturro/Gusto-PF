@@ -1,6 +1,5 @@
-import ProductItem from './ProductItem'
 import { useSelector, useDispatch } from 'react-redux'
-import { addToCart, clearCart, delFromCart } from '../../redux/shoppingActions'
+import { delFromCart } from '../../redux/shoppingActions'
 import CarritoItem from './CarritoItem'
 import { useEffect } from 'react'
 import { getAllProducts } from '../../redux/actions'
@@ -8,7 +7,6 @@ import PediYa from '../../pages/PediYa'
 
 const Carrito = () => {
     const dispatch = useDispatch()
-    const products = useSelector((state) => state.products)
     const cart = useSelector((state) => state.cart)
 
     useEffect(() => {
@@ -16,7 +14,7 @@ const Carrito = () => {
     }, [dispatch])
 
     return (
-        
+
         <div style={{ color: 'black' }}>
             <article className="box">
                 <section class="h-100 gradient-custom">
@@ -25,9 +23,8 @@ const Carrito = () => {
                             <div class="col-md-8">
                                 <div class="card mb-0">
                                     <div class="card-body">
-                                        
                                         {
-                                            cart.map((item, index) =>
+                                            cart.map((item) =>
                                                 <CarritoItem
                                                     key={item.id}
                                                     id={item.id}
@@ -38,22 +35,14 @@ const Carrito = () => {
                                                     image={item.image}
                                                     delOneFromCart={() => dispatch(delFromCart(item.id))}
                                                     delAllFromCart={() => dispatch(delFromCart(item.id, true))}
-                                                />
-
-                                            )
-                                            
-                                        }
+                                                />)}
                                         < PediYa />
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </section>
-
             </article>
         </div>
 

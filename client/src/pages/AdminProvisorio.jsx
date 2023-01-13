@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Menu from "./Menu";
-import { useAuth0 } from "@auth0/auth0-react";
+
 
 
 
 const AdminProvisorio = () => {
-	const { isAuthenticated } = useAuth0();
 
 	return (
 		// <div>

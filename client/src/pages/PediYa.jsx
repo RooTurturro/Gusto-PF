@@ -18,7 +18,6 @@ const PediYa = ({ price, quantity }) => {
             id: 1,
         };
         console.log(detail);
-
         dispatch(getPaymentUrl(detail));
     };
 

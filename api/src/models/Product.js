@@ -1,8 +1,8 @@
-const {DataTypes} = require('sequelize');
+const { DataTypes } = require('sequelize');
 
-module.exports = (sequelize) =>{
+module.exports = (sequelize) => {
     sequelize.define('Product', {
-        id:{
+        id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             allowNull: false,
@@ -32,8 +32,12 @@ module.exports = (sequelize) =>{
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false,
         },
+        rating: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        }
     },
-    {
-        timestamps:false
-    })
+        {
+            timestamps: false
+        })
 }

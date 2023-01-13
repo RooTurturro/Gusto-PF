@@ -1,7 +1,6 @@
 import React from "react";
 import "./Card.css";
-import * as actions from "../../redux/actions";
-import { useDispatch } from "react-redux";
+
 import { Link } from "react-router-dom";
 
 export default function Card({
@@ -10,25 +9,8 @@ export default function Card({
 	price,
 	description,
 	image,
-	setDataToEdit,
 	addToCart,
-	category
-}) {
-	const dispatch = useDispatch();
-	const Swal = require('sweetalert2')
-	const trashEmpty = (id) => {
-		dispatch(actions.deleteProducts(id));
-		Swal.fire({
-			icon: 'error',
-			title: 'Eliminado!'
-		}).then((e) => {
-			window.location.reload()
-		})
-	};
-
-	//verifica si esta en la ruta /adminprovisorio
-	const isAdminRoute = window.location.pathname === "/adminprovisorio";
-
+	category }) {
 	return (
 		<section className="light">
 			<div >
@@ -51,26 +33,14 @@ export default function Card({
 								</li>
 							</ul>
 							<div style={{ display: 'flex', flexDirection: 'column', width: '20%', gap: '1rem', marginTop: '20px' }}>
-								{isAdminRoute ?
-									isAdminRoute && (
-										<div style={{ display: 'flex', gap: '1rem' }}>
-											<button type="button" class="btn btn-danger" onClick={() => trashEmpty(id)}>Borrar</button>
-											<button type="button" class="btn btn-primary" onClick={() => setDataToEdit(id)}>Editar</button>
-										</div>
-									) : <div>
-										<button type="button" class="btn btn-danger" onClick={() => addToCart(id)}>Agregar al carrito</button></div>}
-							</div>
-							<div>
+								<button type="button" class="btn btn-danger" onClick={() => addToCart(id)}>
+									Agregar al carrito
+								</button>
 							</div>
 						</div>
-
-
-
 					</div>
 				</div>
 			</div>
-
-
 		</section>
 	);
 }
