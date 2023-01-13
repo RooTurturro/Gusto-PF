@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { getAllProducts } from '../../redux/actions'
+import { deleteProducts, getAllProducts } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import './ProductList.css'
+import { Link } from 'react-router-dom'
 
 
 const ProductList = () => {
@@ -11,9 +12,31 @@ const ProductList = () => {
         dispatch(getAllProducts())
     }, [dispatch])
     console.log(products)
+    const Swal = require('sweetalert2')
+    const trashEmpty = (id) => {
+        dispatch(deleteProducts(id));
+        Swal.fire({
+            icon: 'error',
+            title: 'Eliminado!'
+        }).then((e) => {
+            window.location.reload()
+        })
+    };
 
     return (
         <>
+            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                <Link to={'/create'}>
+                    <button type="button" class="btn btn-success">
+                        Nuevo producto
+                    </button>
+                </Link>
+                <Link to={'/productlist'}>
+                    <button type="button" class="btn btn-warning">
+                        Lista de compras
+                    </button>
+                </Link>
+            </div>
 
             {products.map((e) => (
                 <div class="container">
@@ -38,40 +61,22 @@ const ProductList = () => {
                                                     <a href="#!" class="user-link">{e.name}</a>
                                                 </td>
                                                 <td>
-                                                    2013/08/08
+                                                    {e.description}
                                                 </td>
                                                 <td class="text-center">
-                                                    <span class="label label-default">{e.state}</span>
+                                                    {e.state === 'Disponible' ? (
+                                                        <button type="button" class="btn btn-success">Disponible</button>
+                                                    ) : <button type="button" class="btn btn-dark">No disponible</button>}
                                                 </td>
                                                 <td class="text-center">
                                                     <span class="label label-default">${e.price}</span>
                                                 </td>
-                                                <td>
-                                                    <a href="#!">mila@kunis.com</a>
+                                                <td style={{}}>
+                                                    {e.category}
                                                 </td>
-                                                <td style={{ width: "20%" }}>
-                                                    {e.state === 'En proceso' ? (
-
-                                                        <button type="button" class="btn btn-danger">Cancelar</button>
-                                                    ): null}
-                                                    <a href="#!" class="table-link">
-                                                        <span class="fa-stack">
-                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                        </span>
-                                                    </a>
-                                                    <a href="#!" class="table-link">
-                                                        <span class="fa-stack">
-                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                        </span>
-                                                    </a>
-                                                    <a href="#!" class="table-link danger">
-                                                        <span class="fa-stack">
-                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                                        </span>
-                                                    </a>
+                                                <td>
+                                                    <button type="button" onClick={() => trashEmpty(e.id)} class="btn btn-danger">Borrar</button>
+                                                    <button type="button" class="btn btn-secondary">Editar</button>
                                                 </td>
                                             </tr>
                                         </tbody>
