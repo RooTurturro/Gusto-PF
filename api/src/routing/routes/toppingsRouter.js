@@ -1,4 +1,4 @@
-const { Router } = require("express");
+/* const { Router } = require("express");
 const { Category ,Toppings} = require('../../db')
 
 
@@ -10,9 +10,9 @@ toppingsRouter.get("/", async (req, res) =>{ //ANDA
     res.status(200).send(allToppings);
 }
 catch {res.status(400).send(error)}
-});
+}); */
 
-toppingsRouter.post("/", async (req, res) => { //ANDA
+/* toppingsRouter.post("/", async (req, res) => { //ANDA
   try {
     const { name } = req.body;
     const newTopping = await Toppings.create({ name });
@@ -20,10 +20,10 @@ toppingsRouter.post("/", async (req, res) => { //ANDA
   } catch (error) {
     res.status(400).send(error);
   }
-});
+}); */
 
 
-toppingsRouter.delete("/delete/:id", async (req, res) =>{ //ANDA
+/* toppingsRouter.delete("/delete/:id", async (req, res) =>{ //ANDA
     const { id } = req.params;
     try {
       const toppingDelete = await Toppings.findByPk(id);
@@ -37,15 +37,15 @@ toppingsRouter.delete("/delete/:id", async (req, res) =>{ //ANDA
       res.status(400).json({ error: error.message }, "Entré al error de delete");
 
     }
-  });
-
+  }); */
+/* 
 toppingsRouter.put("/update/:id", async (req, res) =>{ //ANDA
   try {
     const { id } = req.params;
     const {
       name    
     } = req.body;
-    if (id) {
+    if (id) { */
      /* let urlImage = "";
 
       if (img) {
@@ -54,21 +54,21 @@ toppingsRouter.put("/update/:id", async (req, res) =>{ //ANDA
         urlImage = "https://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c31f.png";
       }*/
 
-      if (name) {
+      /* if (name) {
         const findTopping = await Toppings.findByPk(id);
         await findTopping.update(
           {
             name   
           },
           { where: { id: id } }
-        );
+        ); */
 
         /*const typeDb = await Toppings.findAll({
           where: { name: toppings },
         });*/
 
        /* await findTopping.setTypes(findTopping);*/
-        res.status(200).send("Topping modificado con exito");
+        /* res.status(200).send("Topping modificado con exito");
       } else {
         res.status(400).send("Faltaron datos para modificar el Topping");
       }
@@ -77,6 +77,6 @@ toppingsRouter.put("/update/:id", async (req, res) =>{ //ANDA
     console.log("entre al error del put", error);
   }
 
-});
+}); */
 
-module.exports = toppingsRouter; 
+/* module.exports = toppingsRouter;  */

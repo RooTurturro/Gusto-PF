@@ -39,8 +39,8 @@ productRouter.get('/:id', async (req, res)=>{ //ANDA
 
 productRouter.post("/", async (req, res)=>{  //ANDA
     try {
-        const {name, description, price, image, state, category  } = req.body;
-        const newProduct = await Product.create({name, description, price, image, state, category})
+        const {name, description, price, rating, image, state, category  } = req.body;
+        const newProduct = await Product.create({name, description, price, rating, image, state, category})
         res.status(201).send(newProduct);
     } catch (error) {
         res.status(400).send(error);
@@ -108,6 +108,36 @@ productRouter.put("/update/:id", async (req,res)=>{
     }
   } catch (error) {
     console.log("entre al error del put", error);
+  }
+});
+
+
+//SCORES
+
+
+productRouter.post("/rating", async (req, res) => {
+  try {
+    const { productId, rating } = req.body;
+    const product = await Product.findByPk(productId);
+    if (!product) {
+      return res.status(404).send("Producto no encontrado");
+    }
+
+    // Calcular la nueva calificación promedio
+    const newRating =
+      (product.rating * product.numRatings + rating) / (product.numRatings + 1);
+
+    // Actualizar la base de datos
+    await product.update({
+      rating: newRating,
+      numRatings: product.numRatings + 1,
+    });
+
+    // Responder al cliente
+    return res.startus(200).send("Producto calificado con éxito");
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Ocurrió un error");
   }
 });
 

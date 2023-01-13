@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const productRouter = require("./routes/productRouter");
 
-const toppingsRouter = require("./routes/toppingsRouter");
+/* const toppingsRouter = require("./routes/toppingsRouter"); */
 const usersRouter = require("./routes/usersRouter");
 const sendGrid = require("./routes/sendGridRouter");
 
@@ -13,7 +13,7 @@ const PaymentInstance = new PaymentController(new PaymentService());
 
 router.use("/products", productRouter);
 
-router.use("/toppings", toppingsRouter);
+/* router.use("/toppings", toppingsRouter); */
 router.use("/users", usersRouter);
 router.use("/api/mail", sendGrid)
 
