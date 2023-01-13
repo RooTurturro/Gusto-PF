@@ -4,6 +4,7 @@ import CarritoItem from './CarritoItem'
 import { useEffect } from 'react'
 import { getAllProducts } from '../../redux/actions'
 import PediYa from '../../pages/PediYa'
+import './Carrito.css'
 
 const Carrito = () => {
     const dispatch = useDispatch()

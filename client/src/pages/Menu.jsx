@@ -38,26 +38,12 @@ const Menu = () => {
     }
   }, [dispatch, products.length]);
 
-  const isAdminRoute = window.location.pathname === "/adminprovisorio";
+  const isAdminRoute = window.location.pathname === "/productlist";
 
   return (
     <div>
       <div>
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-          {isAdminRoute && (
-            <div>
-              <Link to={'/create'}>
-                <button type="button" class="btn btn-success">
-                  Nuevo producto
-                </button>
-              </Link>
-              <Link to={'/productlist'}>
-                <button type="button" class="btn btn-warning">
-                  Lista de compras
-                </button>
-              </Link>
-            </div>
-          )}
+        <div>          
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <button className="boton_refresh" onClick={(e) => { handleClick(e) }} >Limpiar Filtros</button>
             <div>
