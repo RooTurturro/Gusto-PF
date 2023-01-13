@@ -5,13 +5,22 @@ import { getPaymentUrl } from "../redux/actions";
 const PediYa = ({ price, quantity }) => {
 	const dispatch = useDispatch();
 	const paymentUrl = useSelector((state) => state.paymentUrl);
-	const cart = useSelector((state) => state)
+	const cart = useSelector((state) => state.cart)
+	const totalPrice = () => {
+        //FUNCIONA, tenemos la suma de todos los precios
+        return cart.reduce((total, item) => total + item.price, 0);
+    };
 
-	const handlePayment = () => {
-		const details =[] //pasarle el cart
-		dispatch(getPaymentUrl(details));
-		console.log(paymentUrl);
-	};
+    const handlePayment = () => {
+        const detail = {
+            name: "GUSTO - Te damos lo tuyo 🔥",
+            price: totalPrice(),
+            id: 1,
+        };
+        console.log(detail);
+
+        dispatch(getPaymentUrl(detail));
+    };
 
 	return (
 		<div>
@@ -33,7 +42,7 @@ const PediYa = ({ price, quantity }) => {
 					Checkout
 				</button>
 				{paymentUrl.length > 0 ? (
-					<div style={{display:'flex'}}>
+					<div style={{ display: 'flex' }}>
 						Seleccione metodo de pago
 						<a href={paymentUrl}>
 							<img width={'100px'} src="https://res.cloudinary.com/ds41xxspf/image/upload/v1668792016/Donde-Suena-Assets/mercado-pago_pxshfi.png" alt='mercadopago' />

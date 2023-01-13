@@ -2,9 +2,10 @@ import React from 'react'
 
 const CartItem = ({ id, name, price, image, description, quantity, delOneFromCart }) => {
     return (
-        <div class="row">
-            <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+        <div class=" mt-3 row">
+            < hr />
+            <div class="  col-lg-3 col-md-12  mb-4 mb-lg-0">
+                <div class="  bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
                     <img src={image}
                         class="w-100" alt="Blue Jeans Jacket" />
                     <a href="#!">
@@ -12,7 +13,7 @@ const CartItem = ({ id, name, price, image, description, quantity, delOneFromCar
                     </a>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+            <div class=" col-lg-5 col-md-6 mb-4 mb-lg-0">
                 <p><strong>{name}</strong></p>
                 <p>{description}</p>
                 <button onClick={() => delOneFromCart(id)} type="button" class="btn btn-danger">
@@ -22,7 +23,7 @@ const CartItem = ({ id, name, price, image, description, quantity, delOneFromCar
                 </button>
             </div>
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <div class="d-flex mb-4" style={{ maxWidth: '300px' }}>
+                {/* <div class="d-flex mb-4" style={{ maxWidth: '300px' }}>
                     <div>
                         <button type="button" class="btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
@@ -44,11 +45,12 @@ const CartItem = ({ id, name, price, image, description, quantity, delOneFromCar
                             </i>
                         </button>
                     </div>
-                </div>
+                </div> */}
                 <p class="text-start text-md-center">
                     Precio del producto <strong>${price}</strong>
                 </p>
             </div>
+
         </div>
     )
 }

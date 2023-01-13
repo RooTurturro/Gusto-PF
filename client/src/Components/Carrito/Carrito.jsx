@@ -16,6 +16,7 @@ const Carrito = () => {
     }, [dispatch])
 
     return (
+        
         <div style={{ color: 'black' }}>
             <article className="box">
                 <section class="h-100 gradient-custom">
@@ -24,6 +25,7 @@ const Carrito = () => {
                             <div class="col-md-8">
                                 <div class="card mb-0">
                                     <div class="card-body">
+                                        
                                         {
                                             cart.map((item, index) =>
                                                 <CarritoItem
@@ -37,10 +39,14 @@ const Carrito = () => {
                                                     delOneFromCart={() => dispatch(delFromCart(item.id))}
                                                     delAllFromCart={() => dispatch(delFromCart(item.id, true))}
                                                 />
+
                                             )
+                                            
                                         }
                                         < PediYa />
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>
