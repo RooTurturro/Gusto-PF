@@ -37,15 +37,45 @@ productRouter.get('/:id', async (req, res)=>{ //ANDA
 })
 
 
-productRouter.post("/", async (req, res)=>{  //ANDA
-    try {
-        const {name, description, price, rating, image, state, category  } = req.body;
-        const newProduct = await Product.create({name, description, price, rating, image, state, category})
-        res.status(201).send(newProduct);
-    } catch (error) {
-        res.status(400).send(error);
-    }
-})
+/* productRouter.post("/", async (req, res) => {
+  //ANDA
+  try {
+    const { name, description, price, rating, image, state, category } =
+      req.body;
+    const newProduct = await Product.create({
+      name,
+      description,
+      price,
+      rating,
+      image,
+      state,
+      category,
+    });
+    res.status(201).json(newProduct);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+}); */
+
+productRouter.post("/", async (req, res) => {
+  try {
+    const { name, description, price, image, state, category } = req.body;
+    let rating = req.body.rating;
+    if (!rating) rating = 3;
+    const newProduct = await Product.create({
+      name,
+      description,
+      price,
+      image,
+      state,
+      category,
+      rating,
+    });
+    res.status(201).send(newProduct);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
 
 productRouter.delete("/delete/:id", async (req, res) => { //ANDA
     const { id } = req.params;
@@ -131,10 +161,11 @@ productRouter.put("/state/:id", async (req,res)=>{
 //SCORES
 
 
-productRouter.post("/rating", async (req, res) => {
+productRouter.post("/rating/:id", async (req, res) => {
   try {
-    const { productId, rating } = req.body;
-    const product = await Product.findByPk(productId);
+    const { id } = req.params;
+    const { rating } = req.body;
+    const product = await Product.findByPk(id);
     if (!product) {
       return res.status(404).send("Producto no encontrado");
     }
