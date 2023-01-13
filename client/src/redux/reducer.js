@@ -138,7 +138,7 @@ const rootReducer = (state = initialState, action) => {
 				products: sortPrice
 			}
 
-
+			
 		case ALPHABETICAL_ORDER:
 			const sort = action.payload === 'A-Z' ? state.products.sort(function (a, b) {
 				if (a.name > b.name) {

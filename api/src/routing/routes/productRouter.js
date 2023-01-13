@@ -39,8 +39,8 @@ productRouter.get('/:id', async (req, res)=>{ //ANDA
 
 productRouter.post("/", async (req, res)=>{  //ANDA
     try {
-        const {name, description, price, image, state, category  } = req.body;
-        const newProduct = await Product.create({name, description, price, image, state, category})
+        const {name, description, price, image, state, category, rating  } = req.body;
+        const newProduct = await Product.create({name, description,rating, price, image, state, category})
         res.status(201).send(newProduct);
     } catch (error) {
         res.status(400).send(error);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Card from "../Components/Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, priceOrder, filterProductsByCategories, aplhabeticalOrder } from "../redux/actions";
@@ -6,52 +6,30 @@ import { addToCart } from "../redux/shoppingActions";
 import './Menu.css'
 import { Link } from "react-router-dom";
 
-// import Loading from "../Components/Loading/Loading";
-
-const Menu = ({ setDataToEdit }) => {
+const Menu = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
 
-  const allProducts = useSelector((state => state.products))
-
-  const [order, setOrder] = useState('')
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const [productsPerPage, setproductsPerPage] = useState(12);
-  const indexOfLast = currentPage * productsPerPage;
-  const indexOfFirst = indexOfLast - productsPerPage;
-  const currentProducts = allProducts.slice(indexOfFirst, indexOfLast);
-
   function handleClick(e) {
-    e.preventDefault();
+    e.preventDefault(e);
     dispatch(getAllProducts());
-    setCurrentPage(1);
   }
 
 
   function handleOrderByName(e) {
-    e.preventDefault();
+    e.preventDefault(e);
     dispatch(aplhabeticalOrder(e.target.value));
-    setCurrentPage(1);
-    setOrder(`Order ${e.target.value}`);
-
   }
 
 
   function handlePriceOrder(e) {
-    e.preventDefault();
+    e.preventDefault(e);
     dispatch(priceOrder(e.target.value));
-    setCurrentPage(1);
-    setOrder(`Order ${e.target.value}`);
-
   }
 
   function handleFilterProductsByCategories(e) {
     e.preventDefault(e);
     dispatch(filterProductsByCategories(e.target.value));
-    setCurrentPage(1);
-    setOrder(`Order ${e.target.value}`);
-
   }
 
   useEffect(() => {
@@ -65,7 +43,7 @@ const Menu = ({ setDataToEdit }) => {
   return (
     <div>
       <div>
-        <div style={{ display: 'flex', justifyContent:'space-around'}}> 
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
           {isAdminRoute && (
             <div>
               <Link to={'/create'}>
@@ -74,37 +52,27 @@ const Menu = ({ setDataToEdit }) => {
                 </button>
               </Link>
               <Link to={'/productlist'}>
-                <button type="button" class="btn btn-warning">Lista de compras</button>
+                <button type="button" class="btn btn-warning">
+                  Lista de compras
+                </button>
               </Link>
             </div>
           )}
-          <div style={{display:'flex', justifyContent:'center'}}>
-            <button className="boton_refresh" onClick={e => { handleClick(e) }} >Limpiar Filtros</button>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <button className="boton_refresh" onClick={(e) => { handleClick(e) }} >Limpiar Filtros</button>
             <div>
               <label>Ordenamiento</label>
               <select
-                className="boton"
-                name='orden'
-                onChange={(e) => handleOrderByName(e)}
-              >
-                <option disabled selected value="default">
-                  Orden
-                </option>
+                className="boton" onChange={e => handleOrderByName(e)}>
+                <option disabled selected value="default">Alfabetico</option>
                 <option value='A-Z'>A-Z</option>
                 <option value='Z-A'>Z-A</option>
               </select>
             </div>
             <div>
               <label>Precio</label>
-              <select
-                className="boton"
-                name='precio'
-                onChange={e => handlePriceOrder(e)}
-
-              >
-                <option disabled selected value="default">
-                  Precio
-                </option>
+              <select className="boton" onChange={e => handlePriceOrder(e)}>
+                <option disabled selected value="default">Precio</option>
                 <option value='asc'>Menor</option>
                 <option value='desc'>Mayor</option>
               </select>
@@ -125,8 +93,6 @@ const Menu = ({ setDataToEdit }) => {
           </div>
         </div>
       </div>
-      <div>
-      </div>
       {
         products.length > 0 ?
           products.map((el) => {
@@ -143,9 +109,7 @@ const Menu = ({ setDataToEdit }) => {
                 category={el.category}
               />
             )
-
           }) : <div>nada</div>}
-
     </div>
   )
 
