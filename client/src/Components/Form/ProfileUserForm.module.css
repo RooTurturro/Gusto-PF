@@ -1,0 +1,33 @@
+.form {
+    height: 87vh;
+    background: linear-gradient(to right, rgb(203, 17, 17), rgb(20, 2, 13));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'recoleta';
+    src: url('../../assets/RecoletaAlt-Bold.ttf');
+    font-style: normal;
+    font-weight: normal;
+    gap: 30px;
+}
+
+.input {
+    border-radius: 5px;
+}
+
+.button {
+    background-color: rgb(#b71c1c);
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    border-radius: 10px;
+    
+}
+
+.button:hover{
+	background-color: rgb(14, 70, 8);
+}
