@@ -7,10 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Nav() {
 
-  const { isAuthenticated } = useAuth0();
   return (
-
-
     <nav className="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
       <div className="container-fluid all-show">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,12 +15,12 @@ export default function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto">
-            {isAuthenticated && (
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to='/adminprovisorio'>ADMIN</Link>
-              </li>
 
-            )}
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to='/adminprovisorio'>ADMIN</Link>
+            </li>
+
+
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to='/pediya'>PEDI YA!</Link>
             </li>

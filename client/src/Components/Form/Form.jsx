@@ -6,6 +6,9 @@ import styles from './Form.module.css'
 import { Link } from "react-router-dom";
 
 const CreateProduct = () => {
+
+	const categorias = ['Hamburguesa', 'Papas', 'Snack', 'Wrap', 'Ensalada', 'Bebida', 'Postre']
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate()
 	const products = useSelector((state) => state.products);
@@ -20,6 +23,8 @@ const CreateProduct = () => {
 		price: "",
 		description: "",
 		image: "",
+		state: "",
+		category: ""
 
 	});
 
@@ -53,10 +58,19 @@ const CreateProduct = () => {
 			price: "",
 			description: "",
 			image: "",
+			state: "",
+			category: ""
 		});
 		alert(`El producto ${state.name} se creo exitosamente!`);
 		navigate('/adminprovisorio')
 	};
+
+	function handleSelect(e) {
+		setState({
+			...state,
+			category: state.category.includes(e.target.value) ? state.category : [...state.category, e.target.value]
+		})
+	}
 
 	return (
 		<div>
@@ -113,9 +127,39 @@ const CreateProduct = () => {
 						required
 					/>
 				</div>
+				<div>
+					<label className={styles.label}>Estado</label>
+					<input
+						className={styles.input}
+						type='text'
+						name='state'
+						onChange={handlerChange}
+						placeholder={'Estado del producto'}
+						value={state.state}
+						required
+					/>
+				</div>
+				<div>
+					<label className={styles.label}>Categoria</label>
+					{/* <select name='category' style={{ color: 'black' }} onChange={(e) => handleSelect(e)}>
+						<option value={state.category}>Seleccione 1 categoria</option>
+						{categorias && categorias.map((p, index) => (
+							<option key={index} value={p}>{p}</option>
+						))}
+					</select> */}
+					<select onChange={(e) => handleSelect(e)}>
+						<option value='Hamburguesa'>Hamburguesa</option>
+						<option value='Wrap'>Wrap</option>
+						<option value='Postre'>Postre</option>
+						<option value='Bebida'>Bebida</option>
+						<option value='Papas'>Papas</option>
+						<option value='Snack'>Snack</option>
+						<option value='Ensalada'>Ensalada</option>
+					</select>
+				</div>
 				<div style={{ display: 'flex', justifyContent: 'space-around' }}>
 					<button
-						disabled={!state.name || !state.description || !state.price  || !state.image}
+						disabled={!state.name || !state.description || !state.price || !state.image}
 						type="submit"
 					>
 						Crear producto
