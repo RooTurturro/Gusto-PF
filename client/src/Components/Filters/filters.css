@@ -1,0 +1,28 @@
+
+
+.boton_refresh{
+    height: 40px;
+    width: 176px;
+    box-sizing: border-box;
+    border: transparent;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    outline: none;
+    cursor: pointer;
+
+}
+
+.boton{
+    height: 40px;
+    width: 176px;
+    box-sizing: border-box;
+    border: transparent;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    outline: none;
+    cursor: pointer;
+}

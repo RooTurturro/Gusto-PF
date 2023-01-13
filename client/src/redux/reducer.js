@@ -1,3 +1,4 @@
+
 import { FILTER_BY_CATEGORIES } from "../redux/actions";
 import { LOADING } from "../redux/actions";
 import { DELETE_PRODUCTS } from "../redux/actions";
@@ -17,9 +18,11 @@ import {
 } from "../types";
 
 
+
 const initialState = {
 	products: [],
 	allProducts: [],
+	allCategories: [],
 	productDetail: {},
 	loading: true,
 	actualPage: 1,
@@ -38,12 +41,22 @@ const rootReducer = (state = initialState, action) => {
 				loading: true,
 			};
 		case GET_USER_INFO:
+
+			return { ...state, user: action.payload }
+
+
 			return { ...state, user: action.payload };
+
 		case GET_ALL_PRODUCTS:
 			return {
 				...state,
 				products: action.payload,
 				allProducts: action.payload,
+			};
+			case GET_ALL_CATEGORIES:
+			return {
+				...state,
+				allCategories: action.payload,
 			};
 		case GET_PRODUCTS_SUMMARY:
 			return {
@@ -98,8 +111,63 @@ const rootReducer = (state = initialState, action) => {
 					: allProducts.filter(
 						(product) => product.category === action.payload
 					);
+
+			const cFilter = action.payload === 'all' ? 
+			state.allProducts: 
+			state.allProducts?.filter(e => e.categorie?.includes(action.payload))
+
 			return {
+			  ...state,
+			  products: cFilter
+			} 
+		case PRICE_ORDER:
+			const sortPrice = action.payload === 'asc' ? state.products.sort(function (a, b) {
+				if (a.price > b.price) {
+				  return 1;
+				}
+				if (b.price > a.price) {
+				  return -1
+				}
+				return 0
+			  }) : state.products.sort(function (a, b) {
+				if (a.price > b.price) {
+				  return -1;
+				}
+				if (b.price > a.price) {
+				  return 1;
+				}
+				return 0
+			  })
+			  return {
 				...state,
+
+				products: sortPrice
+			  }
+	
+
+		case ALPHABETICAL_ORDER:
+			const sort = action.payload === 'A-Z' ? state.products.sort(function (a, b) {
+				if (a.name > b.name) {
+				  return 1;
+				}
+				if (b.name > a.name) {
+				  return -1;
+				}
+				return 0
+			  }) : state.products.sort(function (a, b) {
+				if (a.name > b.name) {
+				  return -1;
+				}
+				if (b.name > a.name) {
+				  return 1;
+				}
+				return 0
+			  })
+			  return {
+				...state,
+				products: sort
+			  }
+
 				products: filteredStatus,
 			};
 		case ADD_TO_CART: {
@@ -156,3 +224,9 @@ const rootReducer = (state = initialState, action) => {
 };
 
 export default rootReducer;
+
+
+
+
+
+ 
