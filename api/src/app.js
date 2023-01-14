@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
-var { json } = require('body-parser')
+const { json } = require('body-parser')
 const routes = require("./routing/index");
 
 
@@ -25,10 +25,11 @@ const authConfig = {
 };
 
 server.use(auth(authConfig));
-
+server.use(logger('dev'));
 server.use(express.urlencoded({ extended: false, limit: "100mb" }));
 server.use(json({ limit: "100mb" }));
 server.use(express.json());
+server.use(cookieParser());
 server.use(express.static(path.join(__dirname, "public")));
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
