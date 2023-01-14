@@ -23,6 +23,7 @@ const CreateProduct = () => {
 		description: "",
 		image: "",
 		state: "",
+		rating: "",
 		category: "",
 	});
 
@@ -57,7 +58,8 @@ const CreateProduct = () => {
 			description: "",
 			image: "",
 			state: "",
-			category: "",
+			rating: "",
+			category: ""
 		});
 		Swal.fire(`El producto ${state.name} se creo exitosamente!`);
 		navigate("/productlist");
@@ -70,6 +72,15 @@ const CreateProduct = () => {
 				? state.category
 				: [...state.category, e.target.value],
 		});
+	}
+
+	function handleSelectState(e) {
+		setState({
+			...state,
+			state: state.state.includes(e.target.value)
+				? state.state
+				: [...state.state, e.target.value]
+		})
 	}
 
 	return (
@@ -104,7 +115,19 @@ const CreateProduct = () => {
 										value={state.description}
 										required
 									/>
+
 									{/* {errors.description && <p className={styles.error}>{errors.description}</p>} */}
+								</div>
+								<div class="col-md-12 mt-3">
+									<input
+										class="form-control"
+										type="number"
+										name="rating"
+										onChange={handlerChange}
+										placeholder={"Rating"}
+										value={state.rating}
+										required
+									/>
 								</div>
 								<div class="col-md-12">
 									{/* <label className={styles.label}>Precio:</label> */}
@@ -129,31 +152,23 @@ const CreateProduct = () => {
 										required
 									/>
 								</div>
-								<div class="col-md-12 mt-2">
-									<input
-										type="text"
-										name="state"
-										onChange={handlerChange}
-										placeholder={"Estado del producto"}
-										value={state.state}
-										required
-									/>
 
-									{/* <input type='radio' value='Disponible' name='state' onChange={(e) => handleCheck(e)} />
+								<div class="col-md-12 mt-1">
+									{/* <label>Estado: </label>
+
+									<input type='checkbox' onChange={(e) => handleCheck(e)} value='Disponible' name='state' />
 									<label>Disponible</label>
-									<input type='radio' value='No disponible' name='state' onChange={(e) => handleCheck(e)} />
-									<label>No disponible</label> */}
-									{/* <select onChange={(e) => handleCheck(e)}>
-										<option value='default'disabled>Estado del producto</option>
-										<option value='Disponible'>Disponible</option>
-										<option value='No disponible'>No disponible</option>
-									</select> */}
+
+									<input type='checkbox' onChange={(e) => handleCheck(e)} value='No disponible' name='state' />
+									<label>No isponible</label> */}
+									<select class="form-select mt-3" onChange={(e) => handleSelectState(e)}>
+										<option value="default">Estado del producto</option>
+										<option value="Disponible">Disponible</option>
+										<option value="No disponible">No disponible</option>
+									</select>
 								</div>
 								<div class="col-md-12">
-									<select
-										class="form-select mt-3"
-										onChange={(e) => handleSelect(e)}
-									>
+									<select class="form-select mt-3" onChange={(e) => handleSelect(e)}>
 										<option value="default">Seleccione una categoria</option>
 										<option value="Hamburguesa">Hamburguesa</option>
 										<option value="Wrap">Wrap</option>

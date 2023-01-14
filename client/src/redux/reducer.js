@@ -10,6 +10,7 @@ import { GET_PRODUCTS_SUMMARY } from "../redux/actions";
 import { GET_ALL_PRODUCTS } from "../redux/actions";
 import { GET_USER_INFO } from "../redux/actions";
 import { USER_LOGIN } from "../redux/actions";
+import { GET_ALL_PURCHASES } from "../redux/actions";
 
 import { PRICE_ORDER } from "../redux/actions";
 import { ALPHABETICAL_ORDER } from "../redux/actions";
@@ -32,6 +33,7 @@ const initialState = {
 	buyProducts: [],
 	cart: [],
 	rating: undefined,
+	purchases:[]
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -54,6 +56,11 @@ const rootReducer = (state = initialState, action) => {
 				products: action.payload,
 				allProducts: action.payload,
 			};
+		case GET_ALL_PURCHASES:
+			return {
+				...state,
+				purchases: action.payload
+			}
 		case GET_PRODUCTS_SUMMARY:
 			return {
 				...state,

@@ -8,10 +8,6 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
-    height: 100%;
-    overflow: hidden;
-}
 
 .form-body{
     background-color: #331521;
