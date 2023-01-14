@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 // import { getUserLog, login } from "../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -9,95 +9,111 @@ import styles from './Perfil.module.css'
 import { Link } from 'react-router-dom';
 import { userLogin } from '../../redux/actions';
 
+
 const Perfil =  () => {
 
     const { user, isAuthenticated, isLoading } = useAuth0();
     const dispatch = useDispatch(); 
+    const usuario = useSelector((state) => state.user);
 
-    const usuario = useSelector(state => state.user);
+    if (isAuthenticated) {
 
-    console.log(user)
-    console.log('antes' + usuario)
-    useEffect(()=>{
-        if (isLoading) {
-            return <Loading />;
-        } else if (isAuthenticated) {
-            dispatch(userLogin({name:user.name, email:user.email}))
+        usuario.name = user.name;
+        usuario.email = user.email;
         
-        } 
-    },[dispatch]);
-   
+    }
 
-    console.log('despues' + usuario)
-    return (
-        <div>
+
+    useEffect(()=>{
+
+        if (isLoading) {
+
+            return <Loading />;
+
+        } else if (isAuthenticated) {
+
+            dispatch(userLogin({name:user.name, email:user.email}))
            
-            {isAuthenticated ?
-                isAuthenticated && (
+        } 
+        
+    }, [dispatch]);
+
+
+    
+    return (    <div>
+        
+           
+                {isAuthenticated ?
+                    isAuthenticated && (
+                    
                     <div className={styles.container}>
-                        
-                        <div className={styles.infoContainerName}>
-                            <img src={user.picture} alt="Imagen de usuario" className={styles.img} />
+                        <div className={styles.bloque}>
+                                <div className={styles.left}>
+                                    <div>
+                                        <img src={user.picture} className={styles.imagen}alt="imagen de usuario" />
+                                    </div>
+                                    <div>
+                                        <h3>{user.name}</h3>
+                                    </div>
 
-                            <p>{user.name}</p>
-                        </div>
-                        
-                            
-                        <div className={styles.infoContainer}>
+                                </div>
 
+                                <div className={styles.right}>
+                                    <div className={styles.info}>
+                                        <div>
+                                            <h3 className={styles.titulo}>Correo</h3>
+                                            <p className={styles.text}>{user.email}</p>
 
-                            
-                            <p>{user.email}</p>
-                            <p>{user.phone}</p>
-                            <p>{user.address}</p>
-                            
-                        
-                        </div>
+                                        </div>
+                                            
+                                        <div>
+                                            <h3 className={styles.titulo}>Teléfono</h3>
+                                            <p className={styles.text}>{usuario.phone}</p>
 
-                        <div className={styles.buttonContainer}>
+                                        </div>
+                                        <div>
+                                            <h3 className={styles.titulo}>Dirección</h3>
+                                            <p className={styles.text}>{usuario.address}</p>
+                                        </div>
 
-                            <LogoutButton/>
-                            
-                            
-                            <Link to={'/historial'}> 
-                                
-
-                                <button className={styles.button}><span>Historial Compras</span></button>
-
-                                
-                                
-
-                            </Link>
-
-
-                            <Link to={'/editarperfilusuario'}> 
-                                    
-
-                                    <button className={styles.button}><span>Editar Perfil</span></button>
+                                    </div>
 
                                     
-                                
-                            </Link>
+                                    <div className={styles.botones}>
+                                        
+                                                <LogoutButton/>
 
-                            
+                                                <Link to={'/historial'}>
+
+                                                    <button className={styles.button}>
+                                                            <span>Historial Compras</span>
+                                                    </button>                    
+                                                </Link>
+
+                                                 <Link to={'/editarperfilusuario'}> 
+                                                    <button className={styles.button}>
+                                                            <span>Editar Perfil</span>
+                                                    </button>  
+                                                </Link>
+                                        
+                                    </div>
+                                </div>
                         </div>
-                        
-
-
-
-                    </div>
-                 
+                    </div>   
+       
+    
                 ) :
 
-                <div className={styles.container}>
-                    <div className={styles.login}>
-                            <div>
+                <div className={styles.containerLogin}>
+                    
+                            
                                 <LoginButton />
-                            </div>
-                    </div>
+                            
+                    
                 </div>
                 
             }
+
         </div>
 
     )

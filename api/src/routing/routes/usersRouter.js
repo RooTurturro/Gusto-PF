@@ -28,11 +28,23 @@ userRouter.get("/", async (req, res) => {
 
 userRouter.post("/", async (req, res)=>{
   try {
+
       const {name, email} = req.body;
+      const findUser = await User.findOne({ where: { email: email } });
+
+    if (findUser) {
+
+      res.status(201).send('Usuario ya existe');
+      
+    } else {
 
       const newUser = await User.findOrCreate({where:{name, email}})
-
+      
       res.status(201).send(newUser);
+
+    }
+      
+      
 
   } catch (error) {
       console.log(error)
@@ -45,14 +57,18 @@ userRouter.post("/", async (req, res)=>{
 
 
  userRouter.put("/", async (req, res) => {
-          const {name, phone, email, address,} = req.body;
+
+          const {name, phone, email, address} = req.body;
+
           const findUser = await User.findOne({ where: { email: email } });
+
               try {
 
                 if(name && phone && email && address){
 
-                await findUser.update({name,phone,email,address,});
-                res.status(200).send("Usuario modificado con exito");
+                await findUser.update({name,phone,email,address});
+                res.status(200).send(findUser);
+
                   } else {
                   res.status(400).send("Faltaron datos para modificar el Usuario");
                 }

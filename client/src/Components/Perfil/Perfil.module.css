@@ -1,27 +1,82 @@
-* {
-    margin: 0;
-    padding: 0
-}
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
+ 
+ 
+ .container {
+    background-color: #ef1939;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100vw;
+    
+ }
+ .bloque {
+    width: 60rem;
+    height: 18rem;
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #9b051c;
+    
+ }
 
+ .left {
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+   
+ }
 
-.container {
-    height: 87vh;
-    background: linear-gradient(to right, rgb(0, 0, 0), rgb(196, 5, 5));
+ .right {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'recoleta';
-    src: url('../../assets/RecoletaAlt-Bold.ttf');
-    font-style: normal;
-    font-weight: normal;
-    gap: 10px;
+    width: 45rem;
+    background-color: aliceblue;
+    color: black;
+    gap: 2rem;
+ }
+
+ .info {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 5px;
+ }
+
+.titulo {
+    border-bottom: 1px solid black;
+    font-family: 'Hanken Grotesk', sans-serif;
+    
 }
 
-.img {
-    border-radius: 100%;
-    height: 20vh;
+.botones {
+    display: flex;
+    border-top: #9b051c;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    
+   
 }
+
+
+.containerLogin {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #ef1939;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .button {
     
@@ -34,35 +89,19 @@
     border-radius: 10px;
     
 }
-.button:hover {
-    background-color: rgb(212, 245, 0);
-}
 
-.buttonContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    gap: 15px;
+.button:hover{
+	background-color: #efe819;
     
+}  
+
+.imagen {
+    height: 8rem;
+    border-radius: 100%;
+    margin: 1.5rem;
 }
 
-.infoContainer {
-    background-color: rgb(47, 9, 9);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem;
-    margin: 1rem;
+.text {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.infoContainerName {
-    background-color: rgb(47, 9, 9);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-}
