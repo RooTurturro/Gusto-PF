@@ -2,8 +2,8 @@ const {DataTypes} = require('sequelize');
 module.exports = (sequelize) =>{
     sequelize.define('Purchase', {
         id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             allowNull: false,
             primaryKey: true,
         },
@@ -29,6 +29,11 @@ module.exports = (sequelize) =>{
         total:{
             type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        takeAway:{
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull:false,
         },
         state:{
             type: DataTypes.STRING,

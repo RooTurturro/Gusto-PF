@@ -10,6 +10,7 @@ import { RATING_PRODUCTS } from "../redux/actions";
 import { GET_PRODUCTS_SUMMARY } from "../redux/actions";
 import { GET_ALL_PRODUCTS } from "../redux/actions";
 import { GET_USER_INFO } from "../redux/actions";
+import { USER_LOGIN } from "../redux/actions";
 
 import { PRICE_ORDER } from "../redux/actions";
 import { ALPHABETICAL_ORDER } from "../redux/actions";
@@ -23,14 +24,14 @@ import {
 
 
 const initialState = {
-	products: [],
+	products: [],	
 	allProducts: [],
 	allCategories: [],
 	productDetail: {},
 	loading: true,
 	actualPage: 1,
-	user: "",
-	paymentUrl: "",
+  user: {},
+  paymentUrl: "",
 	buyProducts: [],
 	cart: [],
 	rating: undefined,
@@ -43,9 +44,12 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 			};
-		case GET_USER_INFO:
 
-			return { ...state, user: action.payload }
+		// case GET_USER_INFO:
+		// 		return {...state, user:action.payload}
+		
+		case USER_LOGIN:
+				return {...state, user:action.payload}
 
 
 		case GET_ALL_PRODUCTS:
@@ -134,7 +138,7 @@ const rootReducer = (state = initialState, action) => {
 				products: sortPrice
 			}
 
-
+			
 		case ALPHABETICAL_ORDER:
 			const sort = action.payload === 'A-Z' ? state.products.sort(function (a, b) {
 				if (a.name > b.name) {

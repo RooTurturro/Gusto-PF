@@ -20,7 +20,7 @@ export default function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to='/adminprovisorio'>ADMIN</Link>
+              <Link className="nav-link active" aria-current="page" to='/productlist'>ADMIN</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to='/menu'>MENU</Link>

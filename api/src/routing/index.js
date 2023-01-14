@@ -20,7 +20,7 @@ router.use("/api/mail", sendGrid)
 router.use("/purchase", purchaseRouter)
 
 router.get("/", function (req, res) {
-	res.redirect("http://localhost:3001/perfil");
+	res.redirect("http://localhost:3000/perfil");
 });
 
 router.post("/payment", function (req, res, next) {

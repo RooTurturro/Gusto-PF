@@ -62,7 +62,7 @@ const CreateProduct = () => {
 			category: ""
 		});
 		Swal.fire(`El producto ${state.name} se creo exitosamente!`);
-		navigate('/adminprovisorio')
+		navigate('/productlist')
 	};
 
 	function handleSelect(e) {
@@ -117,10 +117,8 @@ const CreateProduct = () => {
 										value={state.price}
 										required
 									/>
-									{/* {errors.price && <p className={styles.error}>{errors.price}</p>} */}
 								</div>
 								<div class="col-md-12">
-									{/* <label className={styles.label}>Imagen</label> */}
 									<input
 										class="form-control"
 										type='text'
@@ -131,10 +129,9 @@ const CreateProduct = () => {
 										required
 									/>
 								</div>
-								<div class="col-md-12">
-									{/* <label className={styles.label}>Estado</label> */}
+								<div class="col-md-12 mt-2">
 									<input
-										id='Activo'
+
 										type='text'
 										name='state'
 										onChange={handlerChange}
@@ -142,10 +139,21 @@ const CreateProduct = () => {
 										value={state.state}
 										required
 									/>
+
+									{/* <input type='radio' value='Disponible' name='state' onChange={(e) => handleCheck(e)} />
+									<label>Disponible</label>
+
+									<input type='radio' value='No disponible' name='state' onChange={(e) => handleCheck(e)} />
+									<label>No disponible</label> */}
+									{/* <select onChange={(e) => handleCheck(e)}>
+										<option value='default'disabled>Estado del producto</option>
+										<option value='Disponible'>Disponible</option>
+										<option value='No disponible'>No disponible</option>
+									</select> */}
 								</div>
 								<div class="col-md-12">
-									{/* <label className={styles.label}>Categoria</label> */}
 									<select class="form-select mt-3" onChange={(e) => handleSelect(e)}>
+										<option value='default'>Seleccione una categoria</option>
 										<option value='Hamburguesa'>Hamburguesa</option>
 										<option value='Wrap'>Wrap</option>
 										<option value='Postre'>Postre</option>
@@ -155,10 +163,10 @@ const CreateProduct = () => {
 										<option value='Ensalada'>Ensalada</option>
 									</select>
 								</div >
-								<div class="form-button mt-3" style={{display:'flex', justifyContent:'space-between'}}>
+								<div class="form-button mt-3" style={{ display: 'flex', justifyContent: 'space-between' }}>
 									<button
 										class="btn btn-primary"
-										disabled={!state.name || !state.description || !state.price || !state.image || !state.state || !state.category }
+										disabled={!state.name || !state.description || !state.price || !state.image || !state.state || !state.category}
 										type="submit"
 									>
 										Crear producto
