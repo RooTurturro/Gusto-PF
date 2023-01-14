@@ -9,7 +9,7 @@ const colors = {
 	grey: "#a9a9a9",
 };
 
-function RatingProducts() {
+function RatingProducts({ id }) {
 	const stars = Array(5).fill(0);
 	const dispatch = useDispatch();
 
@@ -27,7 +27,8 @@ function RatingProducts() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		dispatch(actions.ratingProducts(currentStars));
+		dispatch(actions.ratingProducts(currentStars, id));
+		// console.log(currentStars, id); LLEGA
 		alert(`Gusto te lo agradece 🔥`);
 	};
 

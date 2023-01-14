@@ -18,6 +18,7 @@ export const PRICE_ORDER = "PRICE_ORDER";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 export const RATING_PRODUCTS = "RATING_PRODUCTS";
 
+export const GET_ALL_PURCHASES = "GET_PURCHASE"
 
 // export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 
@@ -37,7 +38,19 @@ export const getAllProducts = () => {
 	};
 };
 
-
+export const getAllPurchases = () => {
+	return async function (dispatch) {
+		try {
+			const response = await axios.get('http://localhost:3001/purchase')
+			return dispatch({
+				type: GET_ALL_PURCHASES,
+				payload: response.data
+			})
+		} catch (error) {
+			return dispatch({ type: GET_ALL_PURCHASES, payload: error.message })
+		}
+	}
+}
 
 export const getPaymentUrl = (values) => {
 	return async function (dispatch) {
@@ -85,7 +98,7 @@ export const getProductsDetail = (id) => {
 	};
 };
 
-export const createProducts = (values) => {
+export const createProduct = (values) => {
 	return async function (dispatch) {
 		await axios.post("http://localhost:3001/products", values);
 		return dispatch({ type: CREATE_PRODUCTS, payload: values });
@@ -99,17 +112,25 @@ export const deleteProducts = (id) => {
 	};
 };
 
-export const updateProducts = (id) => {
-	return async function (dispatch) {
-		await axios.put(`http://localhost:3001/products/${id}`);
-		return dispatch({ type: UPDATE_PRODUCTS, payload: id });
-	};
+export const updateProduct = (product) => async (dispatch) => {
+	try {
+		const response = await axios.put(
+			`http://localhost:3001/products/update/${product.id}`,
+			product
+		);
+		dispatch({
+			type: "UPDATE_PRODUCT",
+			payload: response.data,
+		});
+	} catch (error) {
+		console.log(error);
+	}
 };
 
-export const ratingProducts = (id) => {
+export const ratingProducts = (rating, id) => {
 	return async function (dispatch) {
-		await axios.put(`http://localhost:3001/products/${id}`);
-		return dispatch({ type: RATING_PRODUCTS, payload: id });
+		await axios.put(`http://localhost:3001/products/rating/${id}`, { rating });
+		return dispatch({ type: RATING_PRODUCTS, payload: rating, id });
 	};
 };
 
@@ -122,46 +143,44 @@ export const loading = () => {
 export const filterProductsByCategories = (payload) => {
 	return {
 		type: FILTER_BY_CATEGORIES,
-		payload
+		payload,
 	};
 };
 export const priceOrder = (payload) => {
 	return {
 		type: PRICE_ORDER,
-		payload
+		payload,
 	};
 };
 export const OrderbyPopulation = (payload) => {
 	return {
 		type: ORDER_BY_POPULATION,
 		payload,
-	}
-}
+	};
+};
 
 export const aplhabeticalOrder = (payload) => {
 	return {
 		type: ALPHABETICAL_ORDER,
 		payload,
 	};
-}
+};
 
 //-------------Actions Usuario -------------- Auth0
 
-export const userEditProfile= ()=>{
-    return async function(dispatch){
-        const json = await axios.put("http://localhost:3001/users");
-        return dispatch({ type: USER_EDIT_PROFILE, payload: json.data});
-    };
+export const userEditProfile = () => {
+	return async function (dispatch) {
+		const json = await axios.put("http://localhost:3001/users");
+		return dispatch({ type: USER_EDIT_PROFILE, payload: json.data });
+	};
 };
 
-
-export const userLogin = (payload)=>{
-    return async function(dispatch){
-        const json = await axios.post("http://localhost:3001/users", payload);
-        return dispatch({ type: USER_LOGIN, payload: json.data});
-    };
+export const userLogin = (payload) => {
+	return async function (dispatch) {
+		const json = await axios.post("http://localhost:3001/users", payload);
+		return dispatch({ type: USER_LOGIN, payload: json.data });
+	};
 };
-
 
 export const userUpdate = (payload)=>{
     return async function(dispatch){

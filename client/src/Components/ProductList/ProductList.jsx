@@ -31,9 +31,9 @@ const ProductList = () => {
                         Nuevo producto
                     </button>
                 </Link>
-                <Link to={'/productlist'}>
+                <Link to={'/historial'}>
                     <button type="button" class="btn btn-warning">
-                        Lista de compras
+                        Historial de compras
                     </button>
                 </Link>
             </div>
@@ -46,12 +46,14 @@ const ProductList = () => {
                                 <div class="table-responsive">
                                     <table class="table user-list">
                                         <thead>
-                                            <tr>
-                                                <th scope="col" width="20%"><span>Producto</span></th>
-                                                <th scope="col" width="20%"><span>Fecha</span></th>
-                                                <th scope="col" width="20%" class="text-center"><span>Status</span></th>
-                                                <th scope="col" width="20%"><span>Precio</span></th>
-                                                <th scope="col" width="20%"><span>Email</span></th>
+                                            <tr class="text-center">
+                                                <th scope="col" width="20%" class="text-center"><span>Producto</span></th>
+                                                <th scope="col" width="20%" class="text-center"><span>Description</span></th>
+                                                <th scope="col" width="12%" class="text-center"><span>Status</span></th>
+                                                <th scope="col" width="12%" class="text-center"><span>Precio</span></th>
+                                                <th scope="col" width="10%" class="text-center"><span>Valoración</span></th>
+                                                <th scope="col" width="16%" class="text-center"><span>Categoria</span></th>
+                                                <th scope="col" width="20%" class="text-center"><span>Acciones</span></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -72,11 +74,14 @@ const ProductList = () => {
                                                     <span class="label label-default">${e.price}</span>
                                                 </td>
                                                 <td style={{}}>
+                                                    {e.rating}
+                                                </td>
+                                                <td style={{}}>
                                                     {e.category}
                                                 </td>
                                                 <td>
                                                     <button type="button" onClick={() => trashEmpty(e.id)} class="btn btn-danger">Borrar</button>
-                                                    <button type="button" class="btn btn-secondary">Editar</button>
+                                                    <button type="button" class="btn btn-secondary"> Editar </button>
                                                 </td>
                                             </tr>
                                         </tbody>

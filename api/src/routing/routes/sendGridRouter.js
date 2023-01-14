@@ -39,7 +39,7 @@ sendGrid.post("/checkout", async (req,res)=>{
      from: `emi-re11@hotmail.com`,
      subject: "Su pedido esta siendo preparado",
      text:"Gracias por su compra",
-     html: `<h1>Preparando pedido</h1><strong>Muchas gracias por su compra ${name} esperamos volver a verlo pronto, Los detalles de su pedido son ${sendDetail},</strong><strong>Gusto</strong>`,
+     html: `<h1>Preparando pedido</h1><strong>Muchas gracias por su compra ${name} esperamos volver a verlo pronto, Los detalles de su pedido son ,</strong><strong>Gusto</strong>`,
     
    }
    try{

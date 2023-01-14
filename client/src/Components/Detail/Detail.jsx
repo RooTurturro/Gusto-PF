@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductsDetail } from "../../redux/actions";
 import styles from "./Detail.module.css";
 import RatingProducts from "../RatingProducts/RatingProducts";
+import Edit from "../Edit";
 
 const Detail = () => {
 	const { id } = useParams();
@@ -29,7 +30,8 @@ const Detail = () => {
 					</div>
 				</div>
 			</div>
-			<RatingProducts />
+			<RatingProducts id={id} />
+			<Edit productDetail={product} />
 
 			<Link className={styles.cardButton} to={"/menu"}>
 				<button>Volver</button>

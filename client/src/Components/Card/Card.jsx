@@ -10,6 +10,7 @@ export default function Card({
 	description,
 	image,
 	addToCart,
+	rating,
 	category }) {
 	return (
 		<section className="light">
@@ -30,6 +31,9 @@ export default function Card({
 								</li>
 								<li style={{ fontSize: '20px' }} className="tag__item">
 									{category}
+								</li>
+								<li style={{ fontSize: '20px' }} className="tag__item">
+									{rating}
 								</li>
 							</ul>
 							<div style={{ display: 'flex', flexDirection: 'column', width: '20%', gap: '1rem', marginTop: '20px' }}>
