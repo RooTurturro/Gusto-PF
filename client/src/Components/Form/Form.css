@@ -14,7 +14,7 @@ html, body {
 }
 
 .form-body{
-    background-color: #331521;
+    background-color: #ef1939;
 }
 
 
@@ -149,4 +149,55 @@ html, body {
 
 .valid-feedback{
    color: #2acc80;
+}
+
+.bottonDa {
+    margin: 1rem;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+.bottonDa:hover{
+	background-color: #149110;
+    
+}   
+
+
+.formDa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottonClose {
+    gap: 0.3rem;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    border-radius: 10px;
+    
+    align-items: center;
+}
+
+.bottonClose:hover{
+	background-color: #e51010;
+    
+}
+
+.botones {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
 }
