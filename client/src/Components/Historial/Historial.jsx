@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getAllProducts, getAllPurchases } from '../../redux/actions'
+import { getAllPurchases } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -16,7 +16,6 @@ const Historial = () => {
 
   useEffect(() => {
     dispatch(getAllPurchases())
-    console.log(purchases)
   }, [dispatch])
 
   return (
