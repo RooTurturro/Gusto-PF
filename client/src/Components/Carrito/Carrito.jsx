@@ -3,7 +3,7 @@ import { delFromCart } from '../../redux/shoppingActions'
 import CarritoItem from './CarritoItem'
 import { useEffect } from 'react'
 import { getAllProducts } from '../../redux/actions'
-import PediYa from '../../pages/PediYa'
+import PediYa from '../PediYa/PediYa'
 import './Carrito.css'
 
 const Carrito = () => {
@@ -16,8 +16,8 @@ const Carrito = () => {
 
     return (
 
-        <div style={{ color: 'black' }}>
-            <article className="box">
+        <div class='carrito-body'>
+            <article >
                 <section class="h-100 gradient-custom">
                     <div class="container py-2">
                         <div class="row d-flex justify-content-center my-4">

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPaymentUrl } from "../redux/actions";
+import { getPaymentUrl } from "../../redux/actions";
 import axios from "axios" ;
 
 const PediYa = ({ price, quantity }) => {

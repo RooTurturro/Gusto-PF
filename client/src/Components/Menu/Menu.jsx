@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Card from "../Components/Card/Card";
+import Card from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts, priceOrder, filterProductsByCategories, aplhabeticalOrder } from "../redux/actions";
-import { addToCart } from "../redux/shoppingActions";
+import { getAllProducts, priceOrder, filterProductsByCategories, aplhabeticalOrder } from "../../redux/actions";
+import { addToCart } from "../../redux/shoppingActions";
 import './Menu.css'
 
 
@@ -45,29 +45,26 @@ const Menu = () => {
 
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <button className="boton_refresh" onClick={(e) => { handleClick(e) }} >Limpiar Filtros</button>
+    <div class='menu-body'>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems:'center' }}>
+        <button class="boton_refresh" onClick={(e) => { handleClick(e) }} >Limpiar Filtros</button>
         <div>
-          <label>Ordenamiento</label>
-          <select className="boton" onChange={e => handleOrderByName(e)}>
+          <select class="boton" onChange={e => handleOrderByName(e)}>
             <option disabled selected value="default">Alfabetico</option>
             <option value='A-Z'>A-Z</option>
             <option value='Z-A'>Z-A</option>
           </select>
         </div>
         <div>
-          <label>Precio</label>
-          <select className="boton" onChange={(e) => handlePriceOrder(e)}>
+          <select class="boton" onChange={(e) => handlePriceOrder(e)}>
             <option disabled selected value="default">Precio</option>
             <option value='asc'>Menor</option>
             <option value='desc'>Mayor</option>
           </select>
         </div>
         <div>
-          <label>Categorias</label>
-          <select className="boton" onChange={e => handleFilterProductsByCategories(e)}>
-            <option value='All'>Todos</option>
+          <select class="boton" onChange={e => handleFilterProductsByCategories(e)}>
+            <option disabled selected value='All'>Categorias</option>
             <option value='Hamburguesa'>Hamburguesa</option>
             <option value='Wrap'>Wrap</option>
             <option value='Postre'>Postre</option>

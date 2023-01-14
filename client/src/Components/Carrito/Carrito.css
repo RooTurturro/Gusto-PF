@@ -1,13 +1,19 @@
 .gradient-custom {
     /* fallback for old browsers */
-    background: #cb1111;
+    background: #ef1939;
     
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to right, rgb(203, 17, 48), rgb(252, 37, 119));
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgb(203, 17, 17), rgb(20, 2, 13))
+    background: #ef1939
     }
 .container{
     color: black;
+}
+
+
+.carrito-body{
+    background-color: #ef1939;
+    min-height: 100vh;
 }

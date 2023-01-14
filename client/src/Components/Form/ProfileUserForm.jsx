@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { userLogin, userUpdate } from "../../redux/actions";
+import { userUpdate } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 // import * as actions from "../../redux/actions";
 // import { useNavigate } from "react-router-dom";
@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 
 const ProfileUserForm = () => {
     const dispatch = useDispatch();
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated } = useAuth0();
 
     const Swal = require('sweetalert2')
 
