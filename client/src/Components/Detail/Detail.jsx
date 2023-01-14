@@ -29,7 +29,7 @@ const Detail = () => {
 					</div>
 				</div>
 			</div>
-			<RatingProducts />
+			<RatingProducts id={id} />
 
 			<Link className={styles.cardButton} to={"/menu"}>
 				<button>Volver</button>
