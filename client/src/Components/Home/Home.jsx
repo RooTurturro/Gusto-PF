@@ -7,8 +7,16 @@ import logo_inst from '../../assets/logo_instagram.png'
 import arrow from '../../assets/arrow.png'
 import { Link } from "react-router-dom";
 import './Home.css'
+// import { useAuth0 } from "@auth0/auth0-react";
+// import { userLogin } from '../../redux/actions';
+// import { useDispatch } from 'react-redux';
+// import {useEffect} from 'react';
+// import Loading from '../Loading/Loading';
 
 const Home = () => {
+ 
+
+
   return (
 
     <div className='section'>

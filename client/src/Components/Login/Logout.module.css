@@ -18,5 +18,6 @@
 }
 
 .button:hover{
-	background-color: rgb(219, 139, 19);
+	background-color: rgb(168, 107, 15);
+    color: aliceblue;
 }
