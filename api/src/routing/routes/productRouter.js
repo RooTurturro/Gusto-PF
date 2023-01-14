@@ -161,11 +161,12 @@ productRouter.put("/state/:id", async (req,res)=>{
 //SCORES
 
 
-productRouter.post("/rating/:id", async (req, res) => {
+productRouter.put("/rating/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { rating } = req.body;
     const product = await Product.findByPk(id);
+    console.log(product);
     if (!product) {
       return res.status(404).send("Producto no encontrado");
     }
@@ -181,12 +182,40 @@ productRouter.post("/rating/:id", async (req, res) => {
     });
 
     // Responder al cliente
-    return res.startus(200).send("Producto calificado con éxito");
+    return res.status(200).send("Producto calificado con éxito");
   } catch (error) {
     console.error(error);
     return res.status(500).send("Ocurrió un error");
   }
 });
+
+
+/* productRouter.put("/rating/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { rating } = req.body;
+
+    const product = await Product.findByPk(id);
+
+    
+
+    if (product) {
+      const newRating =
+        (product.rating * product.numRatings + rating) /
+        (product.numRatings + 1);
+      await product.update({
+        rating: newRating,
+        numRatings: product.numRatings + 1,
+      });
+    } else {
+      res.status(400).send("NO se puede actualizar")
+    }
+
+  } catch (error) {
+    console.log(error)
+    return res.status(500).send(error);
+  }
+}); */
 
 
 module.exports = productRouter;
