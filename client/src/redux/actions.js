@@ -19,6 +19,8 @@ export const PRICE_ORDER = "PRICE_ORDER";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 export const RATING_PRODUCTS = "RATING_PRODUCTS";
 
+export const GET_ALL_PURCHASES = "GET_PURCHASE"
+
 // export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 
 export const getAllProducts = () => {
@@ -36,6 +38,20 @@ export const getAllProducts = () => {
 		}
 	};
 };
+
+export const getAllPurchases = () => {
+	return async function (dispatch) {
+		try {
+			const response = await axios.get('http://localhost:3001/purchase')
+			return dispatch({
+				type: GET_ALL_PURCHASES,
+				payload: response.data
+			})
+		} catch (error) {
+			return dispatch({ type: GET_ALL_PURCHASES, payload: error.message })
+		}
+	}
+}
 
 export const getPaymentUrl = (values) => {
 	return async function (dispatch) {
