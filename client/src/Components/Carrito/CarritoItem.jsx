@@ -23,34 +23,11 @@ const CartItem = ({ id, name, price, image, description, quantity, delOneFromCar
                 </button>
             </div>
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                {/* <div class="d-flex mb-4" style={{ maxWidth: '300px' }}>
-                    <div>
-                        <button type="button" class="btn btn-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="form-outline">
-                        <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
-                        <label class="form-label" for="form1">{quantity}</label>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-primary"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                            <i class="fas fa-plus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-                                </svg>
-                            </i>
-                        </button>
-                    </div>
-                </div> */}
+
                 <p class="text-start text-md-center">
                     Precio del producto <strong>${price}</strong>
                 </p>
             </div>
-
         </div>
     )
 }

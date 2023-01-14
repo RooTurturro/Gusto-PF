@@ -11,7 +11,7 @@ const ProductList = () => {
     useEffect(() => {
         dispatch(getAllProducts())
     }, [dispatch])
-    console.log(products)
+    
     const Swal = require('sweetalert2')
     const trashEmpty = (id) => {
         dispatch(deleteProducts(id));
@@ -60,7 +60,7 @@ const ProductList = () => {
                                             <tr>
                                                 <td>
                                                     <img src={e.image} alt="" />
-                                                    <a href="#!" class="user-link">{e.name}</a>
+                                                    <p href="#!" class="user-link">{e.name}</p>
                                                 </td>
                                                 <td>
                                                     {e.description}

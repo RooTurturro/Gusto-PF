@@ -59,6 +59,7 @@ productRouter.post("/", async (req, res) => {
 		res.status(201).send(newProduct);
 	} catch (error) {
 		res.status(400).send(error);
+		console.log(error)
 	}
 });
 
