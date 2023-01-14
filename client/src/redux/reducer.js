@@ -33,7 +33,7 @@ const initialState = {
 	buyProducts: [],
 	cart: [],
 	rating: undefined,
-	purchases:[]
+	purchases: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -112,65 +112,62 @@ const rootReducer = (state = initialState, action) => {
 
 		//add to the products props a 'category'.
 		case FILTER_BY_CATEGORIES:
-			const allProducts = state.allProducts;
-			const filteredStatus =
-				action.payload === "All"
-					? allProducts
-					: allProducts.filter(
-							(product) => product.category === action.payload
-					  );
-			return {
-				...state,
-				products: filteredStatus,
-			};
-		case PRICE_ORDER:
-			const sortPrice =
-				action.payload === "asc"
-					? state.products.sort(function (a, b) {
-							if (a.price > b.price) {
-								return 1;
-							}
-							if (b.price > a.price) {
-								return -1;
-							}
-							return 0;
-					  })
-					: state.products.sort(function (a, b) {
-							if (a.price > b.price) {
-								return -1;
-							}
-							if (b.price > a.price) {
-								return 1;
-							}
-							return 0;
-					  });
-			return {
-				...state,
+			// const allProducts = state.allProducts;
+			// const filteredStatus =
+			// 	action.payload === "All"
+			// 		? allProducts
+			// 		: allProducts.filter(
+			// 			(product) => product.category === action.payload
+			// 		);
+			// return {
+			// 	...state,
+			// 	products: filteredStatus,
+			// };
 
-				products: sortPrice,
-			};
+			const allProducts = state.allProducts
+			const filterCreated = action.payload = 'All' ?
+				allProducts : allProducts.filter(el => {
+					return el.category?.split(",").includes(action.payload)
+				})
+			return {
+				...state,
+				products: filterCreated
+			}
+		case PRICE_ORDER:
+			const sortPrice = action.payload === 'asc'
+				? state.products.sort(function (a, b) {
+					return a.price - b.price
+				})
+				: state.products.sort(function (a, b) {
+					return b.price - a.price
+				});
+			return {
+				...state,
+				products: sortPrice
+			}
+
 
 		case ALPHABETICAL_ORDER:
 			const sort =
-				action.payload === "A-Z"
+				action.payload === "Z-A"
 					? state.products.sort(function (a, b) {
-							if (a.name > b.name) {
-								return 1;
-							}
-							if (b.name > a.name) {
-								return -1;
-							}
-							return 0;
-					  })
+						if (a.name > b.name) {
+							return 1;
+						}
+						if (b.name > a.name) {
+							return -1;
+						}
+						return 0;
+					})
 					: state.products.sort(function (a, b) {
-							if (a.name > b.name) {
-								return -1;
-							}
-							if (b.name > a.name) {
-								return 1;
-							}
-							return 0;
-					  });
+						if (a.name > b.name) {
+							return -1;
+						}
+						if (b.name > a.name) {
+							return 1;
+						}
+						return 0;
+					});
 			return {
 				...state,
 				products: sort,
@@ -183,17 +180,17 @@ const rootReducer = (state = initialState, action) => {
 			let itemInCart = state.cart.find((item) => item.id === newItem.id);
 			return itemInCart
 				? {
-						...state,
-						cart: state.cart.map((item) =>
-							item.id === newItem.id
-								? { ...item, quantity: item.quantity + 1 }
-								: item
-						),
-				  }
+					...state,
+					cart: state.cart.map((item) =>
+						item.id === newItem.id
+							? { ...item, quantity: item.quantity + 1 }
+							: item
+					),
+				}
 				: {
-						...state,
-						cart: [...state.cart, { ...newItem, quantity: 1 }],
-				  };
+					...state,
+					cart: [...state.cart, { ...newItem, quantity: 1 }],
+				};
 		}
 
 		case REMOVE_ALL_FROM_CART: {
@@ -201,17 +198,17 @@ const rootReducer = (state = initialState, action) => {
 
 			return itemToDelete > 1
 				? {
-						...state,
-						cart: state.cart.map((item) =>
-							item.id === action.payload
-								? { ...item, quantity: item.quantity - 1 }
-								: item
-						),
-				  }
+					...state,
+					cart: state.cart.map((item) =>
+						item.id === action.payload
+							? { ...item, quantity: item.quantity - 1 }
+							: item
+					),
+				}
 				: {
-						...state,
-						cart: state.cart.filter((item) => item.id !== action.payload),
-				  };
+					...state,
+					cart: state.cart.filter((item) => item.id !== action.payload),
+				};
 		}
 		case REMOVE_ONE_FROM_CART: {
 			return {

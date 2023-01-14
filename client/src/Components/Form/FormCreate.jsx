@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
-
+import styles from './FormCreate.module.css'
 import { Link } from "react-router-dom";
 import "./Form.css";
 
@@ -65,24 +65,6 @@ const CreateProduct = () => {
 		navigate("/productlist");
 	};
 
-	function handleSelect(e) {
-		setState({
-			...state,
-			category: state.category.includes(e.target.value)
-				? state.category
-				: [...state.category, e.target.value],
-		});
-	}
-
-	function handleSelectState(e) {
-		setState({
-			...state,
-			state: state.state.includes(e.target.value)
-				? state.state
-				: [...state.state, e.target.value]
-		})
-	}
-
 	return (
 		<div class="form-body">
 			<div class="row">
@@ -92,7 +74,6 @@ const CreateProduct = () => {
 							<h2>Creando producto</h2>
 							<form class="requires-validation" onSubmit={handlerSubmit}>
 								<div class="col-md-12">
-									{/* <label className={styles.label}>Nombre:</label> */}
 									<input
 										class="form-control"
 										type="text"
@@ -102,10 +83,9 @@ const CreateProduct = () => {
 										value={state.name}
 										required
 									/>
-									{/* {errors.name && <p className={styles.error}>{errors.name}</p>} */}
+									{errors.name && <p className={styles.error}>{errors.name}</p>}
 								</div>
 								<div class="col-md-12">
-									{/* <label className={styles.label}>Descripcion:</label> */}
 									<input
 										class="form-control"
 										type="text"
@@ -115,8 +95,7 @@ const CreateProduct = () => {
 										value={state.description}
 										required
 									/>
-
-									{/* {errors.description && <p className={styles.error}>{errors.description}</p>} */}
+									{errors.description && <p className={styles.error}>{errors.description}</p>}
 								</div>
 								<div class="col-md-12 mt-3">
 									<input
@@ -128,9 +107,9 @@ const CreateProduct = () => {
 										value={state.rating}
 										required
 									/>
+									{errors.description && <p className={styles.error}>{errors.description}</p>}
 								</div>
 								<div class="col-md-12">
-									{/* <label className={styles.label}>Precio:</label> */}
 									<input
 										class="form-control"
 										type="text"
@@ -140,6 +119,8 @@ const CreateProduct = () => {
 										value={state.price}
 										required
 									/>
+									{errors.description && <p className={styles.error}>{errors.description}</p>}
+
 								</div>
 								<div class="col-md-12">
 									<input
@@ -151,33 +132,45 @@ const CreateProduct = () => {
 										value={state.image}
 										required
 									/>
+									{errors.description && <p className={styles.error}>{errors.description}</p>}
 								</div>
-
 								<div class="col-md-12 mt-1">
-									{/* <label>Estado: </label>
-
-									<input type='checkbox' onChange={(e) => handleCheck(e)} value='Disponible' name='state' />
-									<label>Disponible</label>
-
-									<input type='checkbox' onChange={(e) => handleCheck(e)} value='No disponible' name='state' />
-									<label>No isponible</label> */}
-									<select class="form-select mt-3" onChange={(e) => handleSelectState(e)}>
-										<option value="default">Estado del producto</option>
-										<option value="Disponible">Disponible</option>
-										<option value="No disponible">No disponible</option>
-									</select>
+									<label>Estado del producto: </label>
+									<br />
+									<label onChange={handlerChange} class="btn btn-sm btn-outline-secondary">
+										<input class="btn-check" type="radio" name="state" value='Agotado' autocomplete="off" /> Agotado
+									</label>
+									<label onChange={handlerChange} class="btn btn-sm btn-outline-secondary">
+										<input class="btn-check" type="radio" name="state" value='Disponible' autocomplete="off" /> Disponible
+									</label>
 								</div>
-								<div class="col-md-12">
-									<select class="form-select mt-3" onChange={(e) => handleSelect(e)}>
-										<option value="default">Seleccione una categoria</option>
-										<option value="Hamburguesa">Hamburguesa</option>
-										<option value="Wrap">Wrap</option>
-										<option value="Postre">Postre</option>
-										<option value="Bebida">Bebida</option>
-										<option value="Papas">Papas</option>
-										<option value="Snack">Snack</option>
-										<option value="Ensalada">Ensalada</option>
-									</select>
+								<div class="btn-group-toggle" data-toggle="buttons">
+
+									<label>Categoria: </label>
+									<br />
+									<label onChange={handlerChange} class="btn btn-secondary">
+										<input class="btn-check" type="radio" name="category" value='Bebida' autocomplete="off" /> Bebida
+									</label>
+									<label onChange={handlerChange} class="btn btn-secondary">
+										<input class="btn-check" type="radio" name="category" value='Hamburguesa' autocomplete="off" /> Hamburguesa
+									</label>
+									<label onChange={handlerChange} class="btn btn-secondary">
+										<input class="btn-check" type="radio" name="category" value='Wrap' autocomplete="off" /> Wrap
+									</label>
+									<label onChange={handlerChange} class="btn btn-secondary">
+										<input class="btn-check" type="radio" name="category" value='Ensalada' autocomplete="off" /> Ensalada
+									</label>
+									<br />
+									<label onChange={handlerChange} class="btn btn-secondary">
+										<input class="btn-check" type="radio" name="category" value='Postre' autocomplete="off" /> Postre
+									</label>
+									<label onChange={handlerChange} class="btn btn-secondary">
+										<input class="btn-check" type="radio" name="category" value='Snack' autocomplete="off" /> Snack
+									</label>
+									<label onChange={handlerChange} class="btn btn-secondary">
+										<input class="btn-check" type="radio" name="category" value='Papas' autocomplete="off" /> Papas
+									</label>
+
 								</div>
 								<div
 									class="form-button mt-3"

@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
 				allowNull: false,
 			},
 			category: {
-				type: DataTypes.ARRAY(DataTypes.STRING),
+				type: DataTypes.STRING,
 				allowNull: false,
 			},
 		},

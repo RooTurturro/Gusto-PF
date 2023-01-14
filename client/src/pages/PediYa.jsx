@@ -7,34 +7,31 @@ const PediYa = ({ price, quantity }) => {
 	const paymentUrl = useSelector((state) => state.paymentUrl);
 	const cart = useSelector((state) => state.cart)
 	const totalPrice = () => {
-        //FUNCIONA, tenemos la suma de todos los precios
-        return cart.reduce((total, item) => total + item.price, 0);
-    };
+		//FUNCIONA, tenemos la suma de todos los precios
+		return cart.reduce((total, item) => total + item.price, 0);
+	};
 
-    const handlePayment = () => {
-        const detail = {
-            name: "GUSTO - Te damos lo tuyo 🔥",
-            price: totalPrice(),
-            id: 1,
-        };
-        console.log(detail);
-        dispatch(getPaymentUrl(detail));
-    };
+	const handlePayment = () => {
+		const detail = {
+			name: "GUSTO - Te damos lo tuyo 🔥",
+			price: totalPrice(),
+			id: 1,
+		};
+		console.log(detail);
+		dispatch(getPaymentUrl(detail));
+	};
 
 	return (
 		<div>
 			<div class="card-body">
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item d-flex justify-content-between align-items-center px-0">
-						Envio
-						<span>Gratis</span>
-					</li>
+
 					<li
-						class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-						<div>
+						class="list-group-item border-0 px-0 mb-3">
+						<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
 							<strong>Monto total</strong>
+							<span><strong>${totalPrice()}</strong></span>
 						</div>
-						<span><strong>${price}.00 x {quantity} = ${price * quantity}.00</strong></span>
 					</li>
 				</ul>
 				<button onClick={handlePayment} type="button" class="btn btn-primary btn-lg btn-block">
