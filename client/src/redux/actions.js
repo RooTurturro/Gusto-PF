@@ -83,7 +83,7 @@ export const getProductsDetail = (id) => {
 	};
 };
 
-export const createProducts = (values) => {
+export const createProduct = (values) => {
 	return async function (dispatch) {
 		await axios.post("http://localhost:3001/products", values);
 		return dispatch({ type: CREATE_PRODUCTS, payload: values });
@@ -97,11 +97,19 @@ export const deleteProducts = (id) => {
 	};
 };
 
-export const updateProducts = (id) => {
-	return async function (dispatch) {
-		await axios.put(`http://localhost:3001/products/${id}`);
-		return dispatch({ type: UPDATE_PRODUCTS, payload: id });
-	};
+export const updateProduct = (product) => async (dispatch) => {
+	try {
+		const response = await axios.put(
+			`http://localhost:3001/products/update/${product.id}`,
+			product
+		);
+		dispatch({
+			type: "UPDATE_PRODUCT",
+			payload: response.data,
+		});
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 export const ratingProducts = (rating, id) => {
