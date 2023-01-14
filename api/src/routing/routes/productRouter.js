@@ -137,8 +137,22 @@ productRouter.put("/rating/:id", async (req, res) => {
     const { id } = req.params;
     const { rating } = req.body;
     const findProduct = await Product.findByPk(id);
+
+    if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+      return res.status(400).send("Puntaje invalido !!!");
+    }
+
+    findProduct.rating = rating;
+
+    // calculate the average rating
+    const totalRatings = await Product.sum("rating");
+    const totalProducts = await Product.count();
+    const resul = totalRatings / totalProducts;
+    findProduct.averageRating = resul
+
     if (findProduct) {
       await findProduct.update({ rating }, { where: { id: id } });
+      /* await findProduct.save(); */
       res.status(200).send("rating modificado con exito");
     } else {
       res.status(404).send("No se encontro producto !!!");
