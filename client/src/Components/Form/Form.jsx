@@ -1,3 +1,4 @@
+/*
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
@@ -12,6 +13,7 @@ const Form = ({ product, editing }) => {
 		setState(product);
 	}, [product]);
 
+	
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		dispatch(
@@ -87,4 +89,6 @@ const Form = ({ product, editing }) => {
 	);
 };
 
+
 export default Form;
+*/
