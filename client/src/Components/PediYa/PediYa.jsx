@@ -13,6 +13,8 @@ const PediYa = () => {
 	const paymentUrl = useSelector((state) => state.paymentUrl);
 	const cart = useSelector((state) => state.cart)
 	const usuario = useSelector(state => state.user);
+	const compra = useSelector((state) => state.purchases)
+
 	const totalPrice = () => {
 		//FUNCIONA, tenemos la suma de todos los precios
 		return cart.reduce((total, item) => total + item.price, 0);
@@ -38,16 +40,15 @@ const PediYa = () => {
 			})],
 			takeAway: true
 		};
-		const userDetail = {
-			name: "emiliano",
-			to: "emilianore997@gmail.com"
-		}
-		const to = userDetail.to;
-		const name = userDetail.name;
+
+		const to = detail.email;
+		const name = detail.name;
+		const compras = detail;
 		const sendEmail = async () => {
-			await axios.post("http://localhost:3001/api/mail/checkout", { to, name })
+			await axios.post("http://localhost:3001/api/mail/checkout", { to, name , compras})
 		};
 		sendEmail();
+		console.log(compras);
 		console.log(detail);
 		dispatch(getPaymentUrl(detail));
 		dispatch(postPurchase(detail))
