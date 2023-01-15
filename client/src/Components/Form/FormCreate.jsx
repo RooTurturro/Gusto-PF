@@ -186,11 +186,10 @@ const CreateProduct = () => {
 											!state.state ||
 											!state.category
 										}
-										type="submit"
-									>
+										type="submit">
 										Crear producto
 									</button>
-									<Link to={"/adminprovisorio"}>
+									<Link to={"/productlist"}>
 										<button class="btn btn-danger">Cancelar</button>
 									</Link>
 								</div>

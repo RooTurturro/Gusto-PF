@@ -12,7 +12,6 @@ const PediYa = () => {
 	const dispatch = useDispatch();
 	const paymentUrl = useSelector((state) => state.paymentUrl);
 	const cart = useSelector((state) => state.cart)
-	const purchase = useSelector((state) => state.purchase)
 	const usuario = useSelector(state => state.user);
 	const totalPrice = () => {
 		//FUNCIONA, tenemos la suma de todos los precios

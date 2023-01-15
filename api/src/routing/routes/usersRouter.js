@@ -58,7 +58,7 @@ userRouter.post("/", async (req, res)=>{
 
  userRouter.put("/", async (req, res) => {
 
-          const {name, phone, email, address} = req.body;
+          const {name, phone, email, address, isAdmin} = req.body;
 
           const findUser = await User.findOne({ where: { email: email } });
 
@@ -66,7 +66,7 @@ userRouter.post("/", async (req, res)=>{
 
                 if(name && phone && email && address){
 
-                await findUser.update({name,phone,email,address});
+                await findUser.update({name,phone,email,address,isAdmin});
                 res.status(200).send(findUser);
 
                   } else {
