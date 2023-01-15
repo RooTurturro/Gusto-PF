@@ -1,4 +1,4 @@
-import { FILTER_BY_CATEGORIES, POST_PURCHASE } from "../redux/actions";
+import { FILTER_BY_CATEGORIES, POST_PURCHASE, UPDATE_STATE } from "../redux/actions";
 import { LOADING } from "../redux/actions";
 import { DELETE_PRODUCTS } from "../redux/actions";
 import { GET_PRODUCTS_DETAIL } from "../redux/actions";
@@ -106,6 +106,20 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				products: products,
+			};
+		case UPDATE_STATE:
+			const { id, state: newState } = action.payload;
+			return {
+				...state,
+				products: state.products.map(product => {
+					if (product.id === id) {
+						return {
+							...product,
+							state: newState
+						}
+					}
+					return product
+				})
 			};
 		case DELETE_PRODUCTS:
 			return {

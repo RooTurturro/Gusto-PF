@@ -17,6 +17,7 @@ export const ALPHABETICAL_ORDER = "ALPHABETICAL_ORDER";
 export const PRICE_ORDER = "PRICE_ORDER";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 export const RATING_PRODUCTS = "RATING_PRODUCTS";
+export const UPDATE_STATE = "UPDATE_STATE"
 
 export const GET_ALL_PURCHASES = "GET_PURCHASE"
 
@@ -145,6 +146,17 @@ export const ratingProducts = (rating, id) => {
 	};
 };
 
+export const updateState = (state, id) => {
+	return async (dispatch) => {
+		try {
+			await axios.put(`http://localhost:3001/products/state/${id}`, { state })
+			dispatch({ type: UPDATE_STATE, payload: { state, id } })
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+
 export const loading = () => {
 	return { type: LOADING };
 };
@@ -185,6 +197,8 @@ export const userEditProfile = () => {
 		return dispatch({ type: USER_EDIT_PROFILE, payload: json.data });
 	};
 };
+
+
 
 export const userLogin = (payload) => {
 	return async function (dispatch) {

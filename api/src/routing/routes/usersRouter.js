@@ -8,47 +8,47 @@ const { User } = require('../../db')
 // });  
 
 userRouter.get("/", async (req, res) => {
-  
-    const allUsers = await User.findAll(); 
 
-    try {
-      
-        const user = allUsers
-        return res.status(200).send(user)
+  const allUsers = await User.findAll();
 
-      }
+  try {
 
-    catch (error) {
+    const user = allUsers
+    return res.status(200).send(user)
 
-      res.status(400).send(error)
-    }
+  }
+
+  catch (error) {
+
+    res.status(400).send(error)
+  }
 });
 
 
 
-userRouter.post("/", async (req, res)=>{
+userRouter.post("/", async (req, res) => {
   try {
 
-      const {name, email} = req.body;
-      const findUser = await User.findOne({ where: { email: email } });
+    const { name, email } = req.body;
+    const findUser = await User.findOne({ where: { email: email } });
 
     if (findUser) {
 
       res.status(201).send('Usuario ya existe');
-      
+
     } else {
 
-      const newUser = await User.findOrCreate({where:{name, email}})
-      
+      const newUser = await User.findOrCreate({ where: { name, email } })
+
       res.status(201).send(newUser);
 
     }
-      
-      
+
+
 
   } catch (error) {
-      console.log(error)
-      res.status(400).send(error);
+    console.log(error)
+    res.status(400).send(error);
   }
 });
 
@@ -56,28 +56,28 @@ userRouter.post("/", async (req, res)=>{
 
 
 
- userRouter.put("/", async (req, res) => {
+userRouter.put("/", async (req, res) => {
 
-          const {name, phone, email, address, isAdmin} = req.body;
+  const { name, phone, email, address, isAdmin } = req.body;
 
-          const findUser = await User.findOne({ where: { email: email } });
+  const findUser = await User.findOne({ where: { email: email } });
 
-              try {
+  try {
 
-                if(name && phone && email && address){
+    if (name && phone && email && address) {
 
-                await findUser.update({name,phone,email,address,isAdmin});
-                res.status(200).send(findUser);
+      await findUser.update({ name, phone, email, address, isAdmin });
+      res.status(200).send(findUser);
 
-                  } else {
-                  res.status(400).send("Faltaron datos para modificar el Usuario");
-                }
+    } else {
+      res.status(400).send("Faltaron datos para modificar el Usuario");
+    }
 
-              } catch (error) {
-                console.log("entre al error del put", error);
-              }
-      })
-   
+  } catch (error) {
+    console.log("entre al error del put", error);
+  }
+})
+
 
 
 

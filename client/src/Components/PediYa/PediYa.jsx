@@ -32,7 +32,7 @@ const PediYa = () => {
 			email: usuario.email,
 			specification: usuario.specification,
 			total: totalPrice(),
-			state: 'En proceso',
+			state: 'Finalizada',
 			products: [cart.map((el) => {
 				return (
 					el.name

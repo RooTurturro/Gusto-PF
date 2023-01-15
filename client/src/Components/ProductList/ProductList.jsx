@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { deleteProducts, getAllProducts, priceOrder, filterProductsByCategories, aplhabeticalOrder } from '../../redux/actions'
+import { deleteProducts, getAllProducts, priceOrder, filterProductsByCategories, aplhabeticalOrder, updateState } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import './ProductList.css'
 import { Link } from 'react-router-dom'
@@ -46,6 +46,16 @@ const ProductList = () => {
         setOrder(`Ordenado ${e.target.value}`)
     }
 
+    const agotarProducto = (products) => {
+        dispatch(updateState(false, products.id))
+    }
+
+    const mostrarId = (id) => {
+        console.log(id)
+    }
+
+
+
     return (
         <>
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -79,7 +89,7 @@ const ProductList = () => {
                             <option value='Snack'>Snack</option>
                             <option value='Ensalada'>Ensalada</option>
                         </select>
-                        <button type="button" class="btn btn-dark" onClick={(e) => { handleClick(e) }}>Limpiar</button>
+                        <button type="button" class="btn btn-dark" onClick={(e) => { handleClick(e) }}>Resetear</button>
                     </div>
                 </div>
                 <Link to={'/historial'}>
@@ -116,8 +126,8 @@ const ProductList = () => {
                                                     {e.description}
                                                 </td>
                                                 <td class="text-center">
-                                                    {e.state === 'Disponible' ? (
-                                                        <button type="button" class="btn btn-success">Disponible</button>
+                                                    {e.state ? (
+                                                        <button type="button" class="btn btn-success" onClick={() => agotarProducto()}>Disponible</button>
                                                     ) : <button type="button" class="btn btn-dark">No disponible</button>}
                                                 </td>
                                                 <td class="text-center">
@@ -131,7 +141,9 @@ const ProductList = () => {
                                                 </td>
                                                 <td style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                                                     <button type="button" onClick={() => trashEmpty(e.id)} class="btn btn-danger">Borrar</button>
-                                                    <button type="button" class="btn btn-secondary"> Editar </button>
+                                                    <Link to={`/editform/${e.id}`}> 
+                                                        <button type="button" class="btn btn-secondary" onClick={() => mostrarId(e.id)} >Editar </button>
+                                                    </Link>
                                                 </td>
                                             </tr>
                                         </tbody>

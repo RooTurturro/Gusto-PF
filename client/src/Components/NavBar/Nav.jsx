@@ -9,7 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 export default function Nav() {
   const usuario = useSelector(state => state.user);
   const { isAuthenticated } = useAuth0();
-  console.log(usuario)
+  
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary justify-content-between">

@@ -46,7 +46,6 @@ sendGrid.post("/checkout", async (req,res)=>{
     })
   }
      
-  console.log(compras)
    const msg = {
      to,
      from: `emi-re11@hotmail.com`,
@@ -58,6 +57,7 @@ sendGrid.post("/checkout", async (req,res)=>{
      await sgMail.send(msg)
    }
    catch(err){
+     console.log(err)
      return res.status(400).send(err)
    }
    res.status(201).send({success : true})
