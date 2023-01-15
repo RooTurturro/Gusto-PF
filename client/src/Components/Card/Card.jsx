@@ -20,7 +20,6 @@ export default function Card({ id, name, price, description, image, addToCart, r
 							<div>
 								Rating: {rating}
 							</div>
-							
 							<div className="postcard__bar"></div>
 							<div className="postcard__preview-txt"> {description}</div>
 							<ul className="postcard__tagbox">

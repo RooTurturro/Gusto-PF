@@ -42,7 +42,7 @@ const Historial = () => {
                     <thead>
                       <tr>
                         <th scope="col" width="10%"><span>Name</span></th>
-                        <th scope="col" width="10%"><span>Lastname</span></th>
+
                         <th scope="col" width="20%" class="text-center"><span>Adress</span></th>
                         <th scope="col" width="20%"><span>Productos</span></th>
                         <th scope="col" width="20%"><span>Especificaciones</span></th>
@@ -56,9 +56,7 @@ const Historial = () => {
                         <td class="text-center" >
                           {e.name}
                         </td>
-                        <td class="text-center">
-                          {e.lastname}
-                        </td>
+
                         <td class="text-center">
                           {e.address}
                         </td>

@@ -1,4 +1,4 @@
-import { FILTER_BY_CATEGORIES } from "../redux/actions";
+import { FILTER_BY_CATEGORIES, POST_PURCHASE } from "../redux/actions";
 import { LOADING } from "../redux/actions";
 import { DELETE_PRODUCTS } from "../redux/actions";
 import { GET_PRODUCTS_DETAIL } from "../redux/actions";
@@ -27,8 +27,8 @@ const initialState = {
 	productDetail: {},
 	loading: true,
 	actualPage: 1,
-  user: {},
-  paymentUrl: "",
+	user: {},
+	paymentUrl: "",
 	buyProducts: [],
 	cart: [],
 	rating: undefined,
@@ -44,18 +44,18 @@ const rootReducer = (state = initialState, action) => {
 			};
 
 		case USER_UPDATE:
-		 	return {...state, user:action.payload}
-		
+			return { ...state, user: action.payload }
+
 		case USER_LOGIN:
-			return {...state}
-      
+			return { ...state }
+
 		case GET_ALL_PRODUCTS:
 			return {
 				...state,
 				products: action.payload,
 				allProducts: action.payload,
 			};
-      
+
 		case GET_ALL_PURCHASES:
 			return {
 				...state,
@@ -80,6 +80,11 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				products: [...state.products, action.payload],
 			};
+		case POST_PURCHASE:
+			return {
+				...state,
+				purchase: action.payload
+			}
 		case GET_PAYMENT_URL:
 			return {
 				...state,
@@ -113,27 +118,19 @@ const rootReducer = (state = initialState, action) => {
 
 		//add to the products props a 'category'.
 		case FILTER_BY_CATEGORIES:
-			// const allProducts = state.allProducts;
-			// const filteredStatus =
-			// 	action.payload === "All"
-			// 		? allProducts
-			// 		: allProducts.filter(
-			// 			(product) => product.category === action.payload
-			// 		);
-			// return {
-			// 	...state,
-			// 	products: filteredStatus,
-			// };
-
-			const allProducts = state.allProducts
-			const filterCreated = action.payload = 'All' ?
-				allProducts : allProducts.filter(el => {
-					return el.category?.split(",").includes(action.payload)
-				})
+			const allProducts = state.allProducts;
+			const filteredStatus =
+				action.payload === "All"
+					? allProducts
+					: allProducts.filter(
+						(product) => product.category === action.payload
+					);
 			return {
 				...state,
-				products: filterCreated
-			}
+				products: filteredStatus,
+			};
+
+
 		case PRICE_ORDER:
 			const sortPrice = action.payload === 'asc'
 				? state.products.sort(function (a, b) {

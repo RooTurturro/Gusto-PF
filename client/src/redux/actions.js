@@ -20,6 +20,8 @@ export const RATING_PRODUCTS = "RATING_PRODUCTS";
 
 export const GET_ALL_PURCHASES = "GET_PURCHASE"
 
+export const POST_PURCHASE = 'POST_PURCHASE'
+
 // export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 
 export const getAllProducts = () => {
@@ -51,6 +53,8 @@ export const getAllPurchases = () => {
 		}
 	}
 }
+
+
 
 export const getPaymentUrl = (values) => {
 	return async function (dispatch) {
@@ -104,6 +108,13 @@ export const createProduct = (values) => {
 		return dispatch({ type: CREATE_PRODUCTS, payload: values });
 	};
 };
+
+export const postPurchase = (payload) => {
+	return async function (dispatch) {
+		await axios.post('http://localhost:3001/purchase', payload)
+		return dispatch({ type: POST_PURCHASE, payload: payload })
+	}
+}
 
 export const deleteProducts = (id) => {
 	return async function (dispatch) {
@@ -182,10 +193,10 @@ export const userLogin = (payload) => {
 	};
 };
 
-export const userUpdate = (payload)=>{
-    return async function(dispatch){
-        const json = await axios.put("http://localhost:3001/users", payload);
-        return dispatch({ type: USER_UPDATE, payload: json.data});
-    };
+export const userUpdate = (payload) => {
+	return async function (dispatch) {
+		const json = await axios.put("http://localhost:3001/users", payload);
+		return dispatch({ type: USER_UPDATE, payload: json.data });
+	};
 };
 
