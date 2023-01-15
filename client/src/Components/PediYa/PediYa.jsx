@@ -55,44 +55,36 @@ const PediYa = () => {
 
 	};
 
+	console.log(usuario)
 
 	return (
 		<>
 			{isAuthenticated ?
 				isAuthenticated && (
 					<div>
-						<div class="card-body">
-
-							{user.name || user.address || user.email === '' ?
-								user.name && (
-									<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-										<div>Complete sus datos para continuar con la compra!</div>
-										<button type="button" class="btn btn-info">
-											<Link to={'/editarperfilusuario'}>Editar perfil</Link>
-										</button>
-									</div>
-								) : <div>
-									<ul class="list-group list-group-flush">
-										<li
-											class="list-group-item border-0 px-0 mb-3">
-											<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-												<strong>Monto total</strong>
-												<span><strong>${totalPrice()}</strong></span>
-											</div>
-										</li>
-									</ul>
-									<button onClick={handlePayment} type="button" class="btn btn-primary btn-lg btn-block">
-										Checkout
-									</button>
-									{paymentUrl.length > 0 ? (
-										<div div style={{ display: 'flex' }}>
-											Seleccione metodo de pago
-											<a href={paymentUrl}>
-												<img width={'100px'} src="https://res.cloudinary.com/ds41xxspf/image/upload/v1668792016/Donde-Suena-Assets/mercado-pago_pxshfi.png" alt='mercadopago' />
-											</a>
+						<div className="card-body">
+							<div>
+								<ul className="list-group list-group-flush">
+									<li
+										className="list-group-item border-0 px-0 mb-3">
+										<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+											<strong>Monto total</strong>
+											<span><strong>${totalPrice()}</strong></span>
 										</div>
-									) : null}
-								</div>}
+									</li>
+								</ul>
+								<button onClick={handlePayment} type="button" className="btn btn-primary btn-lg btn-block">
+									Checkout
+								</button>
+								{paymentUrl.length > 0 ? (
+									<div div style={{ display: 'flex' }}>
+										Seleccione metodo de pago
+										<a href={paymentUrl}>
+											<img width={'100px'} src="https://res.cloudinary.com/ds41xxspf/image/upload/v1668792016/Donde-Suena-Assets/mercado-pago_pxshfi.png" alt='mercadopago' />
+										</a>
+									</div>
+								) : null}
+							</div>
 						</div>
 					</div >
 				) :
@@ -101,7 +93,7 @@ const PediYa = () => {
 					<div>
 						Inicie sesion para utilizar el carrito!
 					</div>
-					<button onClick={() => loginWithRedirect()} type="button" class="btn btn-primary">
+					<button onClick={() => loginWithRedirect()} type="button" className="btn btn-primary">
 						Iniciar Sesion
 					</button>
 				</div>

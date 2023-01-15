@@ -16,14 +16,14 @@ const Carrito = () => {
 
     return (
 
-        <div class='carrito-body'>
+        <div className='carrito-body'>
             <article >
-                <section class="h-100 gradient-custom">
-                    <div class="container py-2">
-                        <div class="row d-flex justify-content-center my-4">
-                            <div class="col-md-8">
-                                <div class="card mb-0">
-                                    <div class="card-body">
+                <section className="h-100 gradient-custom">
+                    <div className="container py-2">
+                        <div className="row d-flex justify-content-center my-4">
+                            <div className="col-md-8">
+                                <div className="card mb-0">
+                                    <div className="card-body">
                                         {
                                             cart.map((item) =>
                                                 <CarritoItem
