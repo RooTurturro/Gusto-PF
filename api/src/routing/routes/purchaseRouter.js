@@ -35,6 +35,7 @@ purchaseRouter.post('/', async (req, res) =>{
         res.status(201).send(newPurchase);
     } catch (error) {
         res.status(400).send(error)
+        console.log(error)
     }
 })
 

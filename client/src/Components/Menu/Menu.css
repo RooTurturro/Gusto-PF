@@ -24,3 +24,8 @@
     outline: none;
     cursor: pointer;
 }
+
+.menu-body{
+    background-color: #f3f5f7;
+    min-height: 100vh;
+}
