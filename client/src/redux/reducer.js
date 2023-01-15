@@ -147,7 +147,7 @@ const rootReducer = (state = initialState, action) => {
 
 		case ALPHABETICAL_ORDER:
 			const sort =
-				action.payload === "Z-A"
+				action.payload === "A-Z"
 					? state.products.sort(function (a, b) {
 						if (a.name > b.name) {
 							return 1;

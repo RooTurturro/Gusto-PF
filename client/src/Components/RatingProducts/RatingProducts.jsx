@@ -42,7 +42,7 @@ function RatingProducts({ id }) {
 
 	return (
 		<form style={styles.container} onSubmit={handleSubmit}>
-			<h2> RATING </h2>
+			<p> RATING </p>
 			<div style={styles.stars}>
 				{stars.map((_, index) => {
 					return (
@@ -64,7 +64,7 @@ function RatingProducts({ id }) {
 				})}
 			</div>
 
-			<button type="submit" style={styles.button}>
+			<button type="button submit" class="btn btn-primary">
 				Enviar
 			</button>
 		</form>
@@ -76,6 +76,7 @@ const styles = {
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
+		gap:'1rem'
 	},
 	stars: {
 		display: "flex",

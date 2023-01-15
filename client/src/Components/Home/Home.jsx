@@ -14,11 +14,9 @@ import './Home.css'
 // import Loading from '../Loading/Loading';
 
 const Home = () => {
- 
 
 
   return (
-
     <div className='section'>
       <div className='container'>
         <div className='row'>
@@ -46,6 +44,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+
   )
 }
 

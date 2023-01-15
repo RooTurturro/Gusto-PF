@@ -17,7 +17,7 @@ const Menu = () => {
     }
   }, [dispatch, products.length]);
 
-  
+
   function handleClick(e) {
     e.preventDefault(e);
     dispatch(getAllProducts());
@@ -45,26 +45,25 @@ const Menu = () => {
 
 
   return (
-    <div class='menu-body'>
-      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems:'center' }}>
-        <button class="boton_refresh" onClick={(e) => { handleClick(e) }} >Limpiar Filtros</button>
+    <div className='menu-body'>
+      <div style={{ display: 'flex', justifyContent: 'center', gap:'3rem' }}>
         <div>
-          <select class="boton" onChange={e => handleOrderByName(e)}>
-            <option disabled selected value="default">Alfabetico</option>
+          <select className="form-select" onChange={e => handleOrderByName(e)}>
+            <option disabled selected defaultValue='default'>Alfabetico</option>
             <option value='A-Z'>A-Z</option>
             <option value='Z-A'>Z-A</option>
           </select>
         </div>
         <div>
-          <select class="boton" onChange={(e) => handlePriceOrder(e)}>
-            <option disabled selected value="default">Precio</option>
+          <select className="form-select" aria-label="Default select example" onChange={(e) => handlePriceOrder(e)}>
+            <option disabled selected defaultValue='default'>Precio</option>
             <option value='asc'>Menor</option>
             <option value='desc'>Mayor</option>
           </select>
         </div>
         <div>
-          <select class="boton" onChange={e => handleFilterProductsByCategories(e)}>
-            <option disabled selected value='All'>Categorias</option>
+          <select className="form-select" aria-label="Default select example" onChange={e => handleFilterProductsByCategories(e)}>
+            <option disabled selected value='All'>Categoria</option>
             <option value='Hamburguesa'>Hamburguesa</option>
             <option value='Wrap'>Wrap</option>
             <option value='Postre'>Postre</option>
@@ -74,6 +73,7 @@ const Menu = () => {
             <option value='Ensalada'>Ensalada</option>
           </select>
         </div>
+        <button type="button" className="btn btn-dark" onClick={(e) => { handleClick(e) }}>Limpiar</button>
       </div>
       <div>
         {
