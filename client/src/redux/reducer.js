@@ -13,6 +13,7 @@ import { USER_UPDATE } from "../redux/actions";
 import { GET_ALL_PURCHASES } from "../redux/actions";
 import { PRICE_ORDER } from "../redux/actions";
 import { ALPHABETICAL_ORDER } from "../redux/actions";
+import { EDIT_FORM } from "../redux/actions"
 import {
 	ADD_TO_CART,
 	CLEAR_CART,
@@ -45,7 +46,12 @@ const rootReducer = (state = initialState, action) => {
 
 		case USER_UPDATE:
 			return { ...state, user: action.payload }
-
+		
+		case EDIT_FORM:{
+			return {
+				...state, 
+			}
+		}
 		case USER_LOGIN:
 			return { ...state }
 
