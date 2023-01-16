@@ -17,7 +17,7 @@ const Menu = () => {
     }
   }, [dispatch, products.length]);
 
-
+  
   function handleClick(e) {
     e.preventDefault(e);
     dispatch(getAllProducts());

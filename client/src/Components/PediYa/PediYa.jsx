@@ -3,17 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPaymentUrl, postPurchase } from "../../redux/actions";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+
+
 
 
 const PediYa = () => {
 
-	const { isAuthenticated, loginWithRedirect, user } = useAuth0()
+	const { isAuthenticated, loginWithRedirect } = useAuth0()
 	const dispatch = useDispatch();
 	const paymentUrl = useSelector((state) => state.paymentUrl);
 	const cart = useSelector((state) => state.cart)
 	const usuario = useSelector(state => state.user);
-	const compra = useSelector((state) => state.purchases)
+	
+	const Swal = require("sweetalert2");
 
 	const totalPrice = () => {
 		//FUNCIONA, tenemos la suma de todos los precios
@@ -24,6 +26,10 @@ const PediYa = () => {
 
 
 	const handlePayment = () => {
+		if(!usuario.address){
+			Swal.fire('Completa los datos para continuar la compra')
+			return 
+		} 
 
 		const detail = {
 			name: usuario.name,
@@ -48,8 +54,6 @@ const PediYa = () => {
 			await axios.post("http://localhost:3001/api/mail/checkout", { to, name , compras})
 		};
 		sendEmail();
-		console.log(compras);
-		console.log(detail);
 		dispatch(getPaymentUrl(detail));
 		dispatch(postPurchase(detail))
 
@@ -74,6 +78,7 @@ const PediYa = () => {
 										</div>
 									</li>
 								</ul>
+
 								<button onClick={handlePayment} type="button" className="btn btn-primary btn-lg btn-block">
 									Checkout
 								</button>
@@ -84,7 +89,7 @@ const PediYa = () => {
 											<img width={'100px'} src="https://res.cloudinary.com/ds41xxspf/image/upload/v1668792016/Donde-Suena-Assets/mercado-pago_pxshfi.png" alt='mercadopago' />
 										</a>
 									</div>
-								) : null}
+								) :  null}
 							</div>
 						</div>
 					</div >

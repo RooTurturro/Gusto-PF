@@ -82,7 +82,7 @@ productRouter.delete("/delete/:id", async (req, res) => {
 productRouter.put("/update/:id", async (req, res) => {
 	try {
 		const { id } = req.params;
-		const { name, description, price, img, state, category, rating } = req.body;
+		const { name, description, price, img, state, category } = req.body;
 		if (id) {
 			let urlImage = "";
 

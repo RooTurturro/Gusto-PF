@@ -18,7 +18,7 @@ export const PRICE_ORDER = "PRICE_ORDER";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 export const RATING_PRODUCTS = "RATING_PRODUCTS";
 export const UPDATE_STATE = "UPDATE_STATE"
-
+export const EDIT_FORM = "EDIT_FORM";
 export const GET_ALL_PURCHASES = "GET_PURCHASE"
 
 export const POST_PURCHASE = 'POST_PURCHASE'
@@ -123,6 +123,14 @@ export const deleteProducts = (id) => {
 		return dispatch({ type: DELETE_PRODUCTS, payload: id });
 	};
 };
+
+export const editForm = (product, id) => {
+	return async function (dispatch) {
+		await axios.put(`http://localhost:3001/products/update/${id}` , { product });
+		return dispatch({ type: EDIT_FORM, payload: product });
+	};
+};
+
 
 export const updateProduct = (product) => async (dispatch) => {
 	try {

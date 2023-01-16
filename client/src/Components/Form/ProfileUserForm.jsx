@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 import { Link } from "react-router-dom";
 
 import { userUpdate } from "../../redux/actions";
@@ -11,9 +12,15 @@ import { useDispatch } from "react-redux";
 // import { Link } from "react-router-dom";
 
 const ProfileUserForm = () => {
-    const navigate = useNavigate()
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+
+    //const { user, isAuthenticated, isLoading } = useAuth0();
+
     const Swal = require('sweetalert2')
+
+
+
 
     const [inputs, setInputs] = useState({
         name: '',
@@ -23,6 +30,7 @@ const ProfileUserForm = () => {
     });
 
     //---------HANDLES-----------------------------------
+
     const handleSubmit = (evento) => {
         evento.preventDefault();
         dispatch(userUpdate(inputs));
@@ -34,6 +42,7 @@ const ProfileUserForm = () => {
         })
         Swal.fire(`Datos Guardados`);
         navigate('/perfil')
+
     }
     //--------
     const handleInputs = (evento) => {
@@ -42,6 +51,7 @@ const ProfileUserForm = () => {
             ...inputs,
             [evento.target.name]: evento.target.value,
         })
+
     }
 
 
@@ -126,6 +136,6 @@ const ProfileUserForm = () => {
         </div>
 
     )
-};
+}
 
 export default ProfileUserForm;

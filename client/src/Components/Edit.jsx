@@ -10,7 +10,7 @@ const Edit = ({ productDetail }) => {
 
 	return (
 		<div>
-			<button type="button" class="btn btn-warning" onClick={handleEdit}>Editar</button>
+			<button type="button" className="btn btn-warning" onClick={handleEdit}>Editar</button>
 			{editing && <Form product={productDetail} editing={editing} />}
 		</div>
 	);
