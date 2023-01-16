@@ -32,11 +32,13 @@ const Perfil = () => {
 
         } else if (isAuthenticated) {
 
+
             dispatch(userLogin({ name: user.name, email: user.email }))
 
         }
 
     }, [dispatch]);
+
 
 
 
