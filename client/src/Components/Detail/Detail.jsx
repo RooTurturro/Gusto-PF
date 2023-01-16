@@ -6,8 +6,10 @@ import styles from "./Detail.module.css";
 import RatingProducts from "../RatingProducts/RatingProducts";
 import Edit from "../Edit";
 
+
 const Detail = () => {
 	const navigate = useNavigate()
+	const usuario = useSelector(state => state.user);
 	const { id } = useParams();
 	const product = useSelector((state) => state.productDetail);
 	const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const Detail = () => {
 	useEffect(() => {
 		dispatch(getProductsDetail(id));
 	}, [dispatch, id]);
-	
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.infoContainer}>
@@ -27,7 +29,9 @@ const Detail = () => {
 				</div>
 			</div>
 			<div className={styles.actionsButtons}>
-				<Edit productDetail={product} />
+				{usuario.isAdmin ? usuario.isAdmin && (
+					<Edit productDetail={product} />
+				) : null}
 				<div>
 					<button onClick={() => navigate(-1)} type="button" className="btn btn-danger">Volver</button>
 				</div>

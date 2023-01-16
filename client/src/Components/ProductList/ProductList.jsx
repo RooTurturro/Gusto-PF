@@ -29,15 +29,15 @@ const ProductList = () => {
     }
 
 
-        function soldOut(id){
-            dispatch(updateState(id, {state: 'agotado'}));
-            dispatch(getAllProducts())
-        }
+    function soldOut(id) {
+        dispatch(updateState(id, { state: 'agotado' }));
+        dispatch(getAllProducts())
+    }
 
-        function available(id){
-            dispatch(updateState(id, {state: 'disponible'}));
-            dispatch(getAllProducts())
-        } 
+    function available(id) {
+        dispatch(updateState(id, { state: 'disponible' }));
+        dispatch(getAllProducts())
+    }
 
 
     function handleOrderByName(e) {
@@ -58,9 +58,6 @@ const ProductList = () => {
         setOrder(`Ordenado ${e.target.value}`)
     }
 
-    const agotarProducto = (products) => {
-        dispatch(updateState(false, products.id))
-    }
 
     const mostrarId = (id) => {
         console.log(id)
@@ -119,7 +116,7 @@ const ProductList = () => {
                                     <table class="table user-list">
                                         <thead>
                                             <tr class="text-center">
-                                                <th scope="col" width="20%" class="text-center"><span>Id</span></th>
+
                                                 <th scope="col" width="20%" class="text-center"><span>Producto</span></th>
                                                 <th scope="col" width="20%" class="text-center"><span>Description</span></th>
                                                 <th scope="col" width="12%" class="text-center"><span>Stock</span></th>
@@ -133,9 +130,6 @@ const ProductList = () => {
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    {e.id}
-                                                </td>
-                                                <td>
                                                     <img src={e.image} alt="" />
                                                     <p href="#!" class="user-link">{e.name}</p>
                                                     {/* <p href="#!" class="user-link">{e.id}</p> */}
@@ -144,9 +138,11 @@ const ProductList = () => {
                                                     {e.description}
                                                 </td>
                                                 <td class="text-center">
-                                                    <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px', marginBottom:'10px' }} onClick={() => available(e.id)} class="btn btn-secondary">Disponible</button>
-                                                    <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px'  }} onClick={() => soldOut(e.id)} class="btn btn-danger">Agotado</button>
+                                                    <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px', marginBottom: '10px' }} onClick={() => available(e.id)} class="btn btn-secondary">Disponible</button>
+                                                    <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px' }} onClick={() => soldOut(e.id)} class="btn btn-danger">Agotado</button>
                                                 </td>
+
+
                                                 <td class="text-center">
                                                     <span class="label label-default">${e.price}</span>
                                                 </td>
@@ -160,12 +156,11 @@ const ProductList = () => {
 
                                                     {e.state}
                                                 </td>
-                                                <td style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                                    <Link to={`/editform/${e.id}`}> 
-                                                        <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px'  }} class="btn btn-secondary" onClick={() => mostrarId(e.id)} >Editar </button>
-
+                                                <td>
+                                                    <Link to={`/products/${e.id}`}>
+                                                        <button type="button" style={{ marginBottom: '10px', fontSize: '12px', width: '70px' }} class="btn btn-info" onClick={() => mostrarId(e.id)} >Detalle </button>
                                                     </Link>
-                                                    <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px'  }} onClick={() => trashEmpty(e.id)} class="btn btn-danger">Borrar</button>
+                                                    <button type="button" style={{ fontSize: '12px', width: '70px' }} onClick={() => trashEmpty(e.id)} class="btn btn-danger">Borrar</button>
                                                 </td>
                                             </tr>
                                         </tbody>
