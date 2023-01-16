@@ -113,20 +113,33 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				products: products,
 			};
-		case UPDATE_STATE:
-			const { id, state: newState } = action.payload;
-			return {
-				...state,
-				products: state.products.map(product => {
-					if (product.id === id) {
-						return {
-							...product,
-							state: newState
-						}
-					}
-					return product
-				})
-			};
+		// case UPDATE_STATE:
+		// 	const { id, state: newState } = action.payload;
+		// 	return {
+		// 		...state,
+		// 		products: state.products.map(product => {
+		// 			if (product.id === id) {
+		// 				return {
+		// 					...product,
+		// 					state: newState
+		// 				}
+		// 			}
+		// 			return product
+		// 		})
+		// 	};
+		// case UPDATE_STATE:
+		// 	const productInde = state.products.findIndex((p) => p.id === action.id);
+		// 	const prod = { ...state.products[productInde] };
+		// 	prod.state = action.payload
+		// 	const allProduct = [...state.products];
+		// 	allProduct[productInde] = prod;
+
+		// 	return{
+		// 		...state,
+		// 		products: allProduct
+		// 	}
+			
+			
 		case DELETE_PRODUCTS:
 			return {
 				...state,

@@ -154,11 +154,10 @@ export const ratingProducts = (rating, id) => {
 	};
 };
 
-export const updateState = (state, id) => {
-	return async (dispatch) => {
+export const updateState = (id, payload) => {
+	return async () => {
 		try {
-			await axios.put(`http://localhost:3001/products/state/${id}`, { state })
-			dispatch({ type: UPDATE_STATE, payload: { state, id } })
+			await axios.put(`http://localhost:3001/products/state/${id}`, payload)
 		} catch (error) {
 			console.log(error)
 		}
