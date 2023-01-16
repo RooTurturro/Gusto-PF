@@ -39,9 +39,9 @@ const CreateProduct = () => {
 		if (!state.name) errors.name = "El nombre del producto es requerido";
 		else if (nameRepeated.length)
 			errors.name = `El producto ${state.name} ya existe`;
-		if(!state.description) errors.description = 'Ingrese una descripcion'
-		if(!state.category) errors.category='Selecciona una categoria'
-		
+		if (!state.description) errors.description = 'Ingrese una descripcion'
+		if (!state.category) errors.category = 'Selecciona una categoria'
+
 		return errors;
 	};
 
@@ -100,7 +100,7 @@ const CreateProduct = () => {
 									/>
 									{errors.description && <p className={styles.error}>{errors.description}</p>}
 								</div>
-								
+
 								<div className="col-md-12">
 									<input
 										className="form-control"
@@ -127,36 +127,37 @@ const CreateProduct = () => {
 									{errors.description && <p className={styles.error}>{errors.description}</p>}
 								</div>
 
-								<div class="col-md-12 mt-1">
-									<label>Estado del producto: </label>
-									<br />
-									<label onChange={handlerChange} class="btn btn-sm btn-outline-secondary">
-										<input class="btn-check" type="radio" name="state" value='agotado' autocomplete="off" /> Agotado
-									</label>
-									<label onChange={handlerChange} class="btn btn-sm btn-outline-secondary">
-										<input class="btn-check" type="radio" name="state" value='disponible' autocomplete="off" /> Disponible
-									</label>
+								<div class="col-md-12 mt-3 mb-2">
+									<div style={{ display: 'flex', gap: '0.3rem' }}>
+
+										<label>Estado del producto: </label>
+										<br />
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input class="btn-check" type="radio" name="state" value='disponible' autocomplete="off" /> Disponible
+										</label>
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input class="btn-check" type="radio" name="state" value='agotado' autocomplete="off" /> Agotado
+										</label>
+									</div>
 
 								</div>
 								<div style={{ display: 'flex', gap: '1rem' }} className="btn-group-toggle" data-toggle="buttons">
-
 									<div style={{ display: 'flex', gap: '0.3rem' }}>
 										Categorias:
 										<br />
-
 										<label onChange={handlerChange} className="btn btn-secondary">
 											<input className="btn-check" type="radio" name="category" value='Bebida' autoComplete="off" /> Bebida
 										</label>
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Hamburguesa' autoComplete="off" /> Hamburguesa
-										</label>
-										<label onChange={handlerChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Wrap' autoComplete="off" /> Wrap
-										</label>
-										<label onChange={handlerChange} className="btn btn-secondary">
 											<input className="btn-check" type="radio" name="category" value='Ensalada' autoComplete="off" /> Ensalada
 										</label>
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Hamburguesa' autoComplete="off" /> Hamburguesa
+										</label>
 										<br />
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Papas' autoComplete="off" /> Papas
+										</label>
 										<label onChange={handlerChange} className="btn btn-secondary">
 											<input className="btn-check" type="radio" name="category" value='Postre' autoComplete="off" /> Postre
 										</label>
@@ -164,7 +165,7 @@ const CreateProduct = () => {
 											<input className="btn-check" type="radio" name="category" value='Snack' autoComplete="off" /> Snack
 										</label>
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Papas' autoComplete="off" /> Papas
+											<input className="btn-check" type="radio" name="category" value='Wrap' autoComplete="off" /> Wrap
 										</label>
 									</div>
 								</div>
@@ -173,7 +174,7 @@ const CreateProduct = () => {
 									style={{ display: "flex", justifyContent: "space-between" }}
 								>
 									<button
-										className="btn btn-primary"
+										className="btn btn-light"
 										disabled={
 											!state.name ||
 											!state.description ||
@@ -186,7 +187,7 @@ const CreateProduct = () => {
 										Crear producto
 									</button>
 									<Link to={"/productlist"}>
-										<button className="btn btn-danger">Cancelar</button>
+										<button className="btn btn-dark">Cancelar</button>
 									</Link>
 								</div>
 							</form>

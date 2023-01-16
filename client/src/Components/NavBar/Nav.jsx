@@ -9,8 +9,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 export default function Nav() {
   const usuario = useSelector(state => state.user);
   const { isAuthenticated } = useAuth0();
-  
-
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
       <div className="container-fluid all-show">

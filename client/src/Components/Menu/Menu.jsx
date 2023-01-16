@@ -79,7 +79,7 @@ const Menu = () => {
         {
           products.length > 0 ?
             products.map((el) => {
-              if(el.state==='disponible'){
+              if(el.state ){
               return (
                 <Card
                   id={el.id}
