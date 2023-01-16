@@ -131,7 +131,7 @@ export const editForm = (product, id) => {
 	};
 };
 
-/*
+
 export const updateProduct = (product) => async (dispatch) => {
 	try {
 		const response = await axios.put(
@@ -146,7 +146,7 @@ export const updateProduct = (product) => async (dispatch) => {
 		console.log(error);
 	}
 };
-*/
+
 export const ratingProducts = (rating, id) => {
 	return async function (dispatch) {
 		await axios.put(`http://localhost:3001/products/rating/${id}`, { rating });
