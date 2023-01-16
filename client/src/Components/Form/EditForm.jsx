@@ -48,7 +48,7 @@ const EditForm = () => {
 		navigate("/productlist");
   };
 
-	const [errors, setErrors] = useState({
+	const [errors, /*setErrors*/] = useState({
 		name: "",
 	});
 

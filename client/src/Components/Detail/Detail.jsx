@@ -14,23 +14,21 @@ const Detail = () => {
 	useEffect(() => {
 		dispatch(getProductsDetail(id));
 	}, [dispatch, id]);
-	console.log(product);
+	
 	return (
 		<div className={styles.container}>
 			<div className={styles.infoContainer}>
 				<img src={product.image} alt="nada" />
 				<div className={styles.info} >
 					<h3>{product.name}</h3>
-					<p>Descripcion sobre el producto: {product.description}</p>
+					<p>{product.description}</p>
 					<RatingProducts id={id} />
 				</div>
 			</div>
 			<div className={styles.actionsButtons}>
-
 				<Edit productDetail={product} />
-
 				<Link to={"/menu"}>
-					<button type="button" class="btn btn-danger">Volver</button>
+					<button type="button" className="btn btn-danger">Volver</button>
 				</Link>
 			</div>
 		</div>
