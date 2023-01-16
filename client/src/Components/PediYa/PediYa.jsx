@@ -3,18 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPaymentUrl, postPurchase } from "../../redux/actions";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+
 
 
 
 const PediYa = () => {
 
-	const { isAuthenticated, loginWithRedirect, user } = useAuth0()
+	const { isAuthenticated, loginWithRedirect } = useAuth0()
 	const dispatch = useDispatch();
 	const paymentUrl = useSelector((state) => state.paymentUrl);
 	const cart = useSelector((state) => state.cart)
 	const usuario = useSelector(state => state.user);
-	const compra = useSelector((state) => state.purchases)
+	
 	const Swal = require("sweetalert2");
 
 	const totalPrice = () => {
@@ -27,7 +27,7 @@ const PediYa = () => {
 
 	const handlePayment = () => {
 		if(!usuario.address){
-			Swal.fire('carga LOS DATOS')
+			Swal.fire('Completa los datos para continuar la compra')
 			return 
 		} 
 

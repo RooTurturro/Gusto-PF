@@ -4,14 +4,17 @@ import { FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
 
+
 const colors = {
 	red: "#FF0000",
 	grey: "#a9a9a9",
 };
 
 function RatingProducts({ id }) {
+	const Swal = require("sweetalert2");
 	const stars = Array(5).fill(0);
 	const dispatch = useDispatch();
+	
 
 	//DEFINO MIS ESTADOS
 
@@ -29,7 +32,7 @@ function RatingProducts({ id }) {
 		event.preventDefault();
 		dispatch(actions.ratingProducts(currentStars, id));
 		// console.log(currentStars, id); LLEGA
-		alert(`Gusto te lo agradece 🔥`);
+		Swal.fire('¡Rating enviado!');
 	};
 
 	const handleMouseOver = (newHoverStars) => {
@@ -64,7 +67,7 @@ function RatingProducts({ id }) {
 				})}
 			</div>
 
-			<button type="button submit" class="btn btn-primary">
+			<button type="button submit" className="btn btn-primary">
 				Enviar
 			</button>
 		</form>
@@ -81,6 +84,7 @@ const styles = {
 	stars: {
 		display: "flex",
 		flexDirection: "row",
+		
 	},
 	button: {
 		border: "1px solid #a9a9a9",

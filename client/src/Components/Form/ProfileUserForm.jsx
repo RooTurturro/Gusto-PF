@@ -1,7 +1,4 @@
 import React from "react";
-
-
-
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -16,6 +13,7 @@ import { useDispatch } from "react-redux";
 
 const ProfileUserForm = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     //const { user, isAuthenticated, isLoading } = useAuth0();
 
@@ -26,9 +24,9 @@ const ProfileUserForm = () => {
 
     const [inputs, setInputs] = useState({
         name: '',
-        email: '' ,
-        phone:"", 
-        address:"",
+        email: '',
+        phone: "",
+        address: "",
     });
 
     //---------HANDLES-----------------------------------
@@ -51,7 +49,7 @@ const ProfileUserForm = () => {
 
         setInputs({
             ...inputs,
-            [evento.target.name]: evento.target.value, 
+            [evento.target.name]: evento.target.value,
         })
 
     }
@@ -131,11 +129,13 @@ const ProfileUserForm = () => {
                                     </Link>
                                 </div>
                             </form>
-
                         </div>
                     </div>
-        
-	            )
-};
+                </div>
+            </div>
+        </div>
+
+    )
+}
 
 export default ProfileUserForm;

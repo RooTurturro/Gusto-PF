@@ -1,11 +1,16 @@
+body{
+    background-color: #e1e5ea;
+}
 .infoContainer {
     display: flex;
     align-items: center;
     color: black;
-    flex-direction: column;
-    
+    margin-top: 10px;
+    padding: 3rem;
     width: 50%;
     justify-content: center;
+    box-shadow: 2px 4px 10px 2px rgba(0, 0, 0, 0.66);
+    background-color: #f3f5f7;
 }
 
 .infoContainer img {
@@ -17,12 +22,14 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .info{
     display: flex;
     flex-direction: column;
     align-items: center;   
+    margin-left: 20px;
 }
 
 .actionsButtons{
