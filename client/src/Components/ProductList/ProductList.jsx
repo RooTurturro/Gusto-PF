@@ -28,6 +28,18 @@ const ProductList = () => {
         dispatch(getAllProducts());
     }
 
+
+        function soldOut(id){
+            dispatch(updateState(id, {state: 'agotado'}));
+            dispatch(getAllProducts())
+        }
+
+        function available(id){
+            dispatch(updateState(id, {state: 'disponible'}));
+            dispatch(getAllProducts())
+        } 
+
+
     function handleOrderByName(e) {
         e.preventDefault(e);
         dispatch(aplhabeticalOrder(e.target.value));
@@ -107,28 +119,33 @@ const ProductList = () => {
                                     <table class="table user-list">
                                         <thead>
                                             <tr class="text-center">
+                                                <th scope="col" width="20%" class="text-center"><span>Id</span></th>
                                                 <th scope="col" width="20%" class="text-center"><span>Producto</span></th>
                                                 <th scope="col" width="20%" class="text-center"><span>Description</span></th>
-                                                <th scope="col" width="12%" class="text-center"><span>Status</span></th>
+                                                <th scope="col" width="12%" class="text-center"><span>Stock</span></th>
                                                 <th scope="col" width="12%" class="text-center"><span>Precio</span></th>
                                                 <th scope="col" width="10%" class="text-center"><span>Valoración</span></th>
                                                 <th scope="col" width="16%" class="text-center"><span>Categoria</span></th>
+                                                <th scope="col" width="16%" class="text-center"><span>Estado Actual</span></th>
                                                 <th scope="col" width="20%" class="text-center"><span>Acciones</span></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>
+                                                    {e.id}
+                                                </td>
+                                                <td>
                                                     <img src={e.image} alt="" />
                                                     <p href="#!" class="user-link">{e.name}</p>
+                                                    {/* <p href="#!" class="user-link">{e.id}</p> */}
                                                 </td>
                                                 <td>
                                                     {e.description}
                                                 </td>
                                                 <td class="text-center">
-                                                    {e.state ? (
-                                                        <button type="button" class="btn btn-success" onClick={() => agotarProducto()}>Disponible</button>
-                                                    ) : <button type="button" class="btn btn-dark">No disponible</button>}
+                                                    <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px', marginBottom:'10px' }} onClick={() => available(e.id)} class="btn btn-secondary">Disponible</button>
+                                                    <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px'  }} onClick={() => soldOut(e.id)} class="btn btn-danger">Agotado</button>
                                                 </td>
                                                 <td class="text-center">
                                                     <span class="label label-default">${e.price}</span>
@@ -139,11 +156,14 @@ const ProductList = () => {
                                                 <td style={{}}>
                                                     {e.category}
                                                 </td>
+                                                <td>
+                                                    {e.state}
+                                                </td>
                                                 <td style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                                    <button type="button" onClick={() => trashEmpty(e.id)} class="btn btn-danger">Borrar</button>
                                                     <Link to={`/editform/${e.id}`}> 
-                                                        <button type="button" class="btn btn-secondary" onClick={() => mostrarId(e.id)} >Editar </button>
+                                                        <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px'  }} class="btn btn-secondary" onClick={() => mostrarId(e.id)} >Editar </button>
                                                     </Link>
+                                                    <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px'  }} onClick={() => trashEmpty(e.id)} class="btn btn-danger">Borrar</button>
                                                 </td>
                                             </tr>
                                         </tbody>
