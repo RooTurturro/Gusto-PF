@@ -36,7 +36,7 @@ const Perfil =  () => {
            
         } 
         
-    }, [dispatch]);
+    }, [dispatch, isAuthenticated, isLoading, user.name, user.email]);
 
 
     
