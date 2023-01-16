@@ -17,14 +17,17 @@ import styles from './Home.module.css';
 // import Loading from '../Loading/Loading';
 
 const Home = () => {
+
  
   const [index, setIndex] = useState(0);
+
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
 
   return (
+
         <div className={styles.container}>
             <Carousel activeIndex={index} onSelect={handleSelect} className={styles.carrucel}>
 
@@ -145,7 +148,7 @@ const Home = () => {
           
 
     
-            
+        
   )
 }
 

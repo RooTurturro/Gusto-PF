@@ -17,7 +17,8 @@ export const ALPHABETICAL_ORDER = "ALPHABETICAL_ORDER";
 export const PRICE_ORDER = "PRICE_ORDER";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 export const RATING_PRODUCTS = "RATING_PRODUCTS";
-
+export const UPDATE_STATE = "UPDATE_STATE"
+export const EDIT_FORM = "EDIT_FORM";
 export const GET_ALL_PURCHASES = "GET_PURCHASE"
 
 export const POST_PURCHASE = 'POST_PURCHASE'
@@ -123,6 +124,14 @@ export const deleteProducts = (id) => {
 	};
 };
 
+export const editForm = (product, id) => {
+	return async function (dispatch) {
+		await axios.put(`http://localhost:3001/products/update/${id}` , { product });
+		return dispatch({ type: EDIT_FORM, payload: product });
+	};
+};
+
+
 export const updateProduct = (product) => async (dispatch) => {
 	try {
 		const response = await axios.put(
@@ -144,6 +153,17 @@ export const ratingProducts = (rating, id) => {
 		return dispatch({ type: RATING_PRODUCTS, payload: rating, id });
 	};
 };
+
+export const updateState = (state, id) => {
+	return async (dispatch) => {
+		try {
+			await axios.put(`http://localhost:3001/products/state/${id}`, { state })
+			dispatch({ type: UPDATE_STATE, payload: { state, id } })
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
 
 export const loading = () => {
 	return { type: LOADING };
@@ -185,6 +205,8 @@ export const userEditProfile = () => {
 		return dispatch({ type: USER_EDIT_PROFILE, payload: json.data });
 	};
 };
+
+
 
 export const userLogin = (payload) => {
 	return async function (dispatch) {

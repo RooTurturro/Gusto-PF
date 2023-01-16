@@ -1,77 +1,65 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import * as actions from "../../redux/actions";
-import { useNavigate } from "react-router-dom";
-import styles from './FormCreate.module.css'
-import { Link } from "react-router-dom";
+import React, { useEffect,useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams , useNavigate , Link } from 'react-router-dom';
+import { getProductsDetail , editForm} from '../../redux/actions';
 import "./Form.css";
+import styles from './FormCreate.module.css'
 
-const CreateProduct = () => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const products = useSelector((state) => state.products);
-	const productNames = products?.map((product) => product.name);
-	const Swal = require("sweetalert2");
+const EditForm = () => {
 
-	useEffect(() => {
-		dispatch(actions.getAllProducts());
-	}, [dispatch]);
-
-	const [state, setState] = useState({
-		name: "",
-		price: "",
-		description: "",
-		image: "",
-		state: "",
-		rating: "",
-		category: "",
+  const { id } = useParams();
+  const product = useSelector((state) => state.productDetail);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const Swal = require("sweetalert2");
+  
+  const [stateForm, setState] = useState({
+    name: product.name,
+    price: product.price,
+    description: product.description,
+    image: product.img,
+    state: product.state,
+    category: product.category
 	});
+  
+  useEffect(() => {
+    dispatch(getProductsDetail(id));
+  }, [dispatch, id]);
+  console.log(product);
 
-	const [errors, setErrors] = useState({
-		name: "",
-	});
-
-	/*FUNCIÓN VALIDADORA DEL INPUT DEL NOMBRE DE LA ACTIVIDAD************************/
-	const validate = (state) => {
-		let errors = {};
-		let nameRepeated = productNames.filter((name) => name === state.name);
-
-		if (!state.name) errors.name = "El nombre del producto es requerido";
-		else if (nameRepeated.length)
-			errors.name = `El producto ${state.name} ya existe`;
-		return errors;
-	};
-
-	const handlerChange = (event) => {
+  const handlerChange = (event) => {
 		const value = event.target.value;
 		const property = event.target.name;
-		setState({ ...state, [property]: value });
-		setErrors(validate({ ...state, [property]: value }));
+		setState({ ...stateForm, [property]: value });
 	};
 
-	const handlerSubmit = (event) => {
+  const handlerSubmit = async (event) => {
 		event.preventDefault();
-		dispatch(actions.createProduct(state));
+		dispatch(await editForm( product , id));
 		setState({
 			name: "",
 			price: "",
 			description: "",
 			image: "",
 			state: "",
-			rating: "",
 			category: ""
 		});
-		Swal.fire(`El producto ${state.name} se creo exitosamente!`);
+		Swal.fire(`El producto ${stateForm.name} se edito exitosamente!`);
 		navigate("/productlist");
-	};
+  };
 
-	return (
-		<div class="form-body">
+	const [errors, setErrors] = useState({
+		name: "",
+	});
+
+  console.log(stateForm)
+  return (
+    <div class="form-body">
 			<div class="row">
 				<div class="form-holder">
 					<div class="form-content">
 						<div class="form-items">
-							<h2>Creando producto</h2>
+							<h2>Editar producto</h2>
 							<form class="requires-validation" onSubmit={handlerSubmit}>
 								<div class="col-md-12">
 									<input
@@ -79,8 +67,8 @@ const CreateProduct = () => {
 										type="text"
 										name="name"
 										onChange={handlerChange}
-										placeholder={"Nombre del producto"}
-										value={state.name}
+										placeholder={product.name}
+										value={stateForm.name}
 										required
 									/>
 									{errors.name && <p className={styles.error}>{errors.name}</p>}
@@ -91,32 +79,21 @@ const CreateProduct = () => {
 										type="text"
 										name="description"
 										onChange={handlerChange}
-										placeholder={"Descripción del producto"}
-										value={state.description}
+                    placeholder={product.description}
+										value={stateForm.description}
 										required
 									/>
 									{errors.description && <p className={styles.error}>{errors.description}</p>}
 								</div>
-								<div class="col-md-12 mt-3">
-									<input
-										class="form-control"
-										type="number"
-										name="rating"
-										onChange={handlerChange}
-										placeholder={"Rating"}
-										value={state.rating}
-										required
-									/>
-									{errors.description && <p className={styles.error}>{errors.description}</p>}
-								</div>
+								
 								<div class="col-md-12">
 									<input
 										class="form-control"
 										type="text"
 										name="price"
 										onChange={handlerChange}
-										placeholder={"$"}
-										value={state.price}
+                    placeholder={product.price}
+										value={stateForm.price}
 										required
 									/>
 									{errors.description && <p className={styles.error}>{errors.description}</p>}
@@ -128,8 +105,8 @@ const CreateProduct = () => {
 										type="text"
 										name="image"
 										onChange={handlerChange}
-										placeholder={"Link de la imagen"}
-										value={state.image}
+                    placeholder={product.image}
+										value={stateForm.image}
 										required
 									/>
 									{errors.description && <p className={styles.error}>{errors.description}</p>}
@@ -179,15 +156,15 @@ const CreateProduct = () => {
 									<button
 										class="btn btn-primary"
 										disabled={
-											!state.name ||
-											!state.description ||
-											!state.price ||
-											!state.image ||
-											!state.state ||
-											!state.category
+											!stateForm.name ||
+											!stateForm.description ||
+											!stateForm.price ||
+											!stateForm.image ||
+											!stateForm.state ||
+											!stateForm.category
 										}
 										type="submit">
-										Crear producto
+										Editar producto
 									</button>
 									<Link to={"/productlist"}>
 										<button class="btn btn-danger">Cancelar</button>
@@ -201,5 +178,5 @@ const CreateProduct = () => {
 		</div>
 	);
 };
-
-export default CreateProduct;
+  
+export default EditForm

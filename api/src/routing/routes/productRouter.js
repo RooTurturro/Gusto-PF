@@ -82,7 +82,7 @@ productRouter.delete("/delete/:id", async (req, res) => {
 productRouter.put("/update/:id", async (req, res) => {
 	try {
 		const { id } = req.params;
-		const { name, description, price, img, state, category, rating } = req.body;
+		const { name, description, price, img, state, category } = req.body;
 		if (id) {
 			let urlImage = "";
 
@@ -113,7 +113,7 @@ productRouter.put("/update/:id", async (req, res) => {
 			}
 		}
 	} catch (error) {
-		console.log("entre al error del put", error);
+		console.log(error);
 	}
 });
 
@@ -125,7 +125,7 @@ productRouter.put("/state/:id", async (req, res) => {
 		await findProduct.update({ state }, { where: { id: id } });
 		res.status(200).send("Estado modificado con exito");
 	} catch (error) {
-		console.log("entre al error del put", error);
+		console.log(error);
 	}
 });
 

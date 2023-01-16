@@ -1,4 +1,4 @@
-import { FILTER_BY_CATEGORIES, POST_PURCHASE } from "../redux/actions";
+import { FILTER_BY_CATEGORIES, POST_PURCHASE, UPDATE_STATE } from "../redux/actions";
 import { LOADING } from "../redux/actions";
 import { DELETE_PRODUCTS } from "../redux/actions";
 import { GET_PRODUCTS_DETAIL } from "../redux/actions";
@@ -13,6 +13,7 @@ import { USER_UPDATE } from "../redux/actions";
 import { GET_ALL_PURCHASES } from "../redux/actions";
 import { PRICE_ORDER } from "../redux/actions";
 import { ALPHABETICAL_ORDER } from "../redux/actions";
+import { EDIT_FORM } from "../redux/actions"
 import {
 	ADD_TO_CART,
 	CLEAR_CART,
@@ -45,7 +46,12 @@ const rootReducer = (state = initialState, action) => {
 
 		case USER_UPDATE:
 			return { ...state, user: action.payload }
-
+		
+		case EDIT_FORM:{
+			return {
+				...state, 
+			}
+		}
 		case USER_LOGIN:
 			return { ...state }
 
@@ -107,6 +113,20 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				products: products,
 			};
+		case UPDATE_STATE:
+			const { id, state: newState } = action.payload;
+			return {
+				...state,
+				products: state.products.map(product => {
+					if (product.id === id) {
+						return {
+							...product,
+							state: newState
+						}
+					}
+					return product
+				})
+			};
 		case DELETE_PRODUCTS:
 			return {
 				...state,
@@ -147,7 +167,7 @@ const rootReducer = (state = initialState, action) => {
 
 		case ALPHABETICAL_ORDER:
 			const sort =
-				action.payload === "Z-A"
+				action.payload === "A-Z"
 					? state.products.sort(function (a, b) {
 						if (a.name > b.name) {
 							return 1;

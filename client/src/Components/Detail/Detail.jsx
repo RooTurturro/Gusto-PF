@@ -16,26 +16,23 @@ const Detail = () => {
 	}, [dispatch, id]);
 	console.log(product);
 	return (
-		<div>
-			<div className={styles.cardDetail}>
-				<div>
-					<img className={styles.cardImage} src={product.image} alt="nada" />
-				</div>
-				<div className={styles.cardBody}>
-					<h1>{product.name}</h1>
-					<div>
-						<div>Descripcion sobre el producto: {product.description}</div>
-						<div>El producto tiene un precio de: ${product.price}</div>
-						<div>Topings: ?</div>
-					</div>
+		<div className={styles.container}>
+			<div className={styles.infoContainer}>
+				<img src={product.image} alt="nada" />
+				<div className={styles.info} >
+					<h3>{product.name}</h3>
+					<p>Descripcion sobre el producto: {product.description}</p>
+					<RatingProducts id={id} />
 				</div>
 			</div>
-			<RatingProducts id={id} />
-			<Edit productDetail={product} />
+			<div className={styles.actionsButtons}>
 
-			<Link className={styles.cardButton} to={"/menu"}>
-				<button>Volver</button>
-			</Link>
+				<Edit productDetail={product} />
+
+				<Link to={"/menu"}>
+					<button type="button" class="btn btn-danger">Volver</button>
+				</Link>
+			</div>
 		</div>
 	);
 };
