@@ -85,16 +85,13 @@ const ProfileUserForm = () => {
                                     />
                                 </div>
                                 <div class="col-md-12">
-
                                     <input
                                         class="form-control"
                                         type="text"
                                         name="phone"
                                         onChange={handleInputs}
                                         value={inputs.phone}
-
                                         placeholder="Telefono"
-
                                         required
                                     />
                                 </div>

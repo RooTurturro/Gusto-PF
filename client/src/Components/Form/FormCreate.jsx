@@ -39,6 +39,9 @@ const CreateProduct = () => {
 		if (!state.name) errors.name = "El nombre del producto es requerido";
 		else if (nameRepeated.length)
 			errors.name = `El producto ${state.name} ya existe`;
+		if(!state.description) errors.description = 'Ingrese una descripcion'
+		if(!state.category) errors.category='Selecciona una categoria'
+		
 		return errors;
 	};
 
@@ -66,16 +69,16 @@ const CreateProduct = () => {
 	};
 
 	return (
-		<div class="form-body">
-			<div class="row">
-				<div class="form-holder">
-					<div class="form-content">
-						<div class="form-items">
+		<div className="form-body">
+			<div className="row">
+				<div className="form-holder">
+					<div className="form-content">
+						<div className="form-items">
 							<h2>Creando producto</h2>
-							<form class="requires-validation" onSubmit={handlerSubmit}>
-								<div class="col-md-12">
+							<form className="requires-validation" onSubmit={handlerSubmit}>
+								<div className="col-md-12">
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="name"
 										onChange={handlerChange}
@@ -85,9 +88,9 @@ const CreateProduct = () => {
 									/>
 									{errors.name && <p className={styles.error}>{errors.name}</p>}
 								</div>
-								<div class="col-md-12">
+								<div className="col-md-12">
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="description"
 										onChange={handlerChange}
@@ -97,21 +100,10 @@ const CreateProduct = () => {
 									/>
 									{errors.description && <p className={styles.error}>{errors.description}</p>}
 								</div>
-								<div class="col-md-12 mt-3">
+								
+								<div className="col-md-12">
 									<input
-										class="form-control"
-										type="number"
-										name="rating"
-										onChange={handlerChange}
-										placeholder={"Rating"}
-										value={state.rating}
-										required
-									/>
-									{errors.description && <p className={styles.error}>{errors.description}</p>}
-								</div>
-								<div class="col-md-12">
-									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="price"
 										onChange={handlerChange}
@@ -122,9 +114,9 @@ const CreateProduct = () => {
 									{errors.description && <p className={styles.error}>{errors.description}</p>}
 
 								</div>
-								<div class="col-md-12">
+								<div className="col-md-12">
 									<input
-										class="form-control"
+										className="form-control"
 										type="text"
 										name="image"
 										onChange={handlerChange}
@@ -134,50 +126,54 @@ const CreateProduct = () => {
 									/>
 									{errors.description && <p className={styles.error}>{errors.description}</p>}
 								</div>
-								<div class="col-md-12 mt-1">
-									<label>Estado del producto: </label>
-									<br />
-									<label onChange={handlerChange} class="btn btn-sm btn-outline-secondary">
-										<input class="btn-check" type="radio" name="state" value='true' autocomplete="off" /> Agotado
-									</label>
-									<label onChange={handlerChange} class="btn btn-sm btn-outline-secondary">
-										<input class="btn-check" type="radio" name="state" value='false' autocomplete="off" /> Disponible
-									</label>
+								<div  className="col-md-12 mt-2 mb-2">
+									<div style={{ display: 'flex', gap: '1rem' }}>
+										Estado del producto:
+										<br />
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="state" value='true' autoComplete="off" /> Agotado
+										</label>
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="state" value='false' autoComplete="off" /> Disponible
+										</label>
+									</div>
 								</div>
-								<div class="btn-group-toggle" data-toggle="buttons">
+								<div style={{ display: 'flex', gap: '1rem' }} className="btn-group-toggle" data-toggle="buttons">
 
-									<label>Categoria: </label>
-									<br />
-									<label onChange={handlerChange} class="btn btn-secondary">
-										<input class="btn-check" type="radio" name="category" value='Bebida' autocomplete="off" /> Bebida
-									</label>
-									<label onChange={handlerChange} class="btn btn-secondary">
-										<input class="btn-check" type="radio" name="category" value='Hamburguesa' autocomplete="off" /> Hamburguesa
-									</label>
-									<label onChange={handlerChange} class="btn btn-secondary">
-										<input class="btn-check" type="radio" name="category" value='Wrap' autocomplete="off" /> Wrap
-									</label>
-									<label onChange={handlerChange} class="btn btn-secondary">
-										<input class="btn-check" type="radio" name="category" value='Ensalada' autocomplete="off" /> Ensalada
-									</label>
-									<br />
-									<label onChange={handlerChange} class="btn btn-secondary">
-										<input class="btn-check" type="radio" name="category" value='Postre' autocomplete="off" /> Postre
-									</label>
-									<label onChange={handlerChange} class="btn btn-secondary">
-										<input class="btn-check" type="radio" name="category" value='Snack' autocomplete="off" /> Snack
-									</label>
-									<label onChange={handlerChange} class="btn btn-secondary">
-										<input class="btn-check" type="radio" name="category" value='Papas' autocomplete="off" /> Papas
-									</label>
+									<div style={{ display: 'flex', gap: '0.3rem' }}>
+										Categorias:
+										<br />
 
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Bebida' autoComplete="off" /> Bebida
+										</label>
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Hamburguesa' autoComplete="off" /> Hamburguesa
+										</label>
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Wrap' autoComplete="off" /> Wrap
+										</label>
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Ensalada' autoComplete="off" /> Ensalada
+										</label>
+										<br />
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Postre' autoComplete="off" /> Postre
+										</label>
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Snack' autoComplete="off" /> Snack
+										</label>
+										<label onChange={handlerChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Papas' autoComplete="off" /> Papas
+										</label>
+									</div>
 								</div>
 								<div
-									class="form-button mt-3"
+									className="form-button mt-3"
 									style={{ display: "flex", justifyContent: "space-between" }}
 								>
 									<button
-										class="btn btn-primary"
+										className="btn btn-primary"
 										disabled={
 											!state.name ||
 											!state.description ||
@@ -190,7 +186,7 @@ const CreateProduct = () => {
 										Crear producto
 									</button>
 									<Link to={"/productlist"}>
-										<button class="btn btn-danger">Cancelar</button>
+										<button className="btn btn-danger">Cancelar</button>
 									</Link>
 								</div>
 							</form>

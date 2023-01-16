@@ -20,6 +20,7 @@ export const RATING_PRODUCTS = "RATING_PRODUCTS";
 export const UPDATE_STATE = "UPDATE_STATE"
 export const EDIT_FORM = "EDIT_FORM";
 export const GET_ALL_PURCHASES = "GET_PURCHASE"
+export const CLEAN_DETAIL = 'CLEAN_DETAIL'
 
 export const POST_PURCHASE = 'POST_PURCHASE'
 
@@ -126,7 +127,7 @@ export const deleteProducts = (id) => {
 
 export const editForm = (product, id) => {
 	return async function (dispatch) {
-		await axios.put(`http://localhost:3001/products/update/${id}` , { product });
+		await axios.put(`http://localhost:3001/products/update/${id}`, { product });
 		return dispatch({ type: EDIT_FORM, payload: product });
 	};
 };
@@ -154,14 +155,21 @@ export const ratingProducts = (rating, id) => {
 	};
 };
 
+// export const updateState = (state, id) => {
+// 	return async (dispatch) => {
+// 		try {
+// 			await axios.put(`http://localhost:3001/products/state/${id}`, { state })
+// 			dispatch({ type: UPDATE_STATE, payload: { state, id } })
+// 		} catch (error) {
+// 			console.log(error)
+// 		}
+// 	}
+// }
+
 export const updateState = (state, id) => {
 	return async (dispatch) => {
-		try {
-			await axios.put(`http://localhost:3001/products/state/${id}`, { state })
-			dispatch({ type: UPDATE_STATE, payload: { state, id } })
-		} catch (error) {
-			console.log(error)
-		}
+		await axios.put(`http://localhost:3001/products/state/${id}`, { state })
+		dispatch({ type: UPDATE_STATE, payload: state, id })
 	}
 }
 

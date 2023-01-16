@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsDetail } from "../../redux/actions";
 import styles from "./Detail.module.css";
@@ -7,6 +7,7 @@ import RatingProducts from "../RatingProducts/RatingProducts";
 import Edit from "../Edit";
 
 const Detail = () => {
+	const navigate = useNavigate()
 	const { id } = useParams();
 	const product = useSelector((state) => state.productDetail);
 	const dispatch = useDispatch();
@@ -27,9 +28,9 @@ const Detail = () => {
 			</div>
 			<div className={styles.actionsButtons}>
 				<Edit productDetail={product} />
-				<Link to={"/menu"}>
-					<button type="button" className="btn btn-danger">Volver</button>
-				</Link>
+				<div>
+					<button onClick={() => navigate(-1)} type="button" className="btn btn-danger">Volver</button>
+				</div>
 			</div>
 		</div>
 	);

@@ -14,6 +14,7 @@ import { GET_ALL_PURCHASES } from "../redux/actions";
 import { PRICE_ORDER } from "../redux/actions";
 import { ALPHABETICAL_ORDER } from "../redux/actions";
 import { EDIT_FORM } from "../redux/actions"
+import { CLEAN_DETAIL } from '../redux/actions'
 import {
 	ADD_TO_CART,
 	CLEAR_CART,
@@ -45,15 +46,25 @@ const rootReducer = (state = initialState, action) => {
 			};
 
 		case USER_UPDATE:
-			return { ...state, user: action.payload }
-		
-		case EDIT_FORM:{
 			return {
-				...state, 
+				...state,
+				user: action.payload
+			}
+
+		case EDIT_FORM: {
+			return {
+				...state,
 			}
 		}
 		case USER_LOGIN:
-			return { ...state }
+			return {
+				...state
+			}
+		case CLEAN_DETAIL:
+			return {
+				...state,
+				productDetail: {}
+			}
 
 		case GET_ALL_PRODUCTS:
 			return {
@@ -113,20 +124,32 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				products: products,
 			};
+		// case UPDATE_STATE:
+		// 	const { id, state: newState } = action.payload;
+		// 	return {
+		// 		...state,
+		// 		products: state.products.map(product => {
+		// 			if (product.id === id) {
+		// 				return {
+		// 					...product,
+		// 					state: newState
+		// 				}
+		// 			}
+		// 			return product
+		// 		})
+		// 	};
+
 		case UPDATE_STATE:
-			const { id, state: newState } = action.payload;
+			const productInde = state.products.findIndex((p) => p.id === action.id);
+			const product1 = { ...state.products[productInde] };
+			product.rating = action.payload;
+			const products1 = [...state.products];
+			products[productInde] = product1;
 			return {
 				...state,
-				products: state.products.map(product => {
-					if (product.id === id) {
-						return {
-							...product,
-							state: newState
-						}
-					}
-					return product
-				})
+				products: products1,
 			};
+
 		case DELETE_PRODUCTS:
 			return {
 				...state,

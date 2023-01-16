@@ -139,18 +139,16 @@ const ProductList = () => {
                                                 <td style={{}}>
                                                     {e.category}
                                                 </td>
-                                                <td style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                                <td>
                                                     <button type="button" onClick={() => trashEmpty(e.id)} class="btn btn-danger">Borrar</button>
-                                                    <Link to={`/editform/${e.id}`}> 
-                                                        <button type="button" class="btn btn-secondary" onClick={() => mostrarId(e.id)} >Editar </button>
+                                                    <Link to={`/products/${e.id}`}>
+                                                        <button style={{marginTop:'10px'}} type="button" class="btn btn-info">Detalle </button>
                                                     </Link>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
