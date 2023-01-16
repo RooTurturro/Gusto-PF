@@ -155,21 +155,14 @@ export const ratingProducts = (rating, id) => {
 	};
 };
 
-// export const updateState = (state, id) => {
-// 	return async (dispatch) => {
-// 		try {
-// 			await axios.put(`http://localhost:3001/products/state/${id}`, { state })
-// 			dispatch({ type: UPDATE_STATE, payload: { state, id } })
-// 		} catch (error) {
-// 			console.log(error)
-// 		}
-// 	}
-// }
 
-export const updateState = (state, id) => {
-	return async (dispatch) => {
-		await axios.put(`http://localhost:3001/products/state/${id}`, { state })
-		dispatch({ type: UPDATE_STATE, payload: state, id })
+export const updateState = (id, payload) => {
+	return async () => {
+		try {
+			await axios.put(`http://localhost:3001/products/state/${id}`, payload)
+		} catch (error) {
+			console.log(error)
+		}
 	}
 }
 

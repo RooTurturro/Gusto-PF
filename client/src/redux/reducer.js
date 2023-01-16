@@ -139,17 +139,6 @@ const rootReducer = (state = initialState, action) => {
 		// 		})
 		// 	};
 
-		case UPDATE_STATE:
-			const productInde = state.products.findIndex((p) => p.id === action.id);
-			const product1 = { ...state.products[productInde] };
-			product.rating = action.payload;
-			const products1 = [...state.products];
-			products[productInde] = product1;
-			return {
-				...state,
-				products: products1,
-			};
-
 		case DELETE_PRODUCTS:
 			return {
 				...state,

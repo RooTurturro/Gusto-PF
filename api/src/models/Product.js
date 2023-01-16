@@ -34,8 +34,8 @@ module.exports = (sequelize) => {
 				allowNull: false,
 			},
 			state: {
-				type: DataTypes.BOOLEAN,
-				defaultValue: true,
+				type: DataTypes.STRING,
+				defaultValue: 'disponible',
 				allowNull: false
 			},
 			category: {

@@ -126,17 +126,17 @@ const CreateProduct = () => {
 									/>
 									{errors.description && <p className={styles.error}>{errors.description}</p>}
 								</div>
-								<div  className="col-md-12 mt-2 mb-2">
-									<div style={{ display: 'flex', gap: '1rem' }}>
-										Estado del producto:
-										<br />
-										<label onChange={handlerChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="state" value='true' autoComplete="off" /> Agotado
-										</label>
-										<label onChange={handlerChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="state" value='false' autoComplete="off" /> Disponible
-										</label>
-									</div>
+
+								<div class="col-md-12 mt-1">
+									<label>Estado del producto: </label>
+									<br />
+									<label onChange={handlerChange} class="btn btn-sm btn-outline-secondary">
+										<input class="btn-check" type="radio" name="state" value='agotado' autocomplete="off" /> Agotado
+									</label>
+									<label onChange={handlerChange} class="btn btn-sm btn-outline-secondary">
+										<input class="btn-check" type="radio" name="state" value='disponible' autocomplete="off" /> Disponible
+									</label>
+
 								</div>
 								<div style={{ display: 'flex', gap: '1rem' }} className="btn-group-toggle" data-toggle="buttons">
 

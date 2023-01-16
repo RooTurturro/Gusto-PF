@@ -79,6 +79,7 @@ const Menu = () => {
         {
           products.length > 0 ?
             products.map((el) => {
+              if(el.state==='disponible'){
               return (
                 <Card
                   id={el.id}
@@ -92,7 +93,7 @@ const Menu = () => {
                   category={el.category}
                   rating={el.rating}
                 />
-              )
+              )}
             }) : <div>nada</div>
         }
       </div>
