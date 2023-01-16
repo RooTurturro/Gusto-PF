@@ -14,6 +14,7 @@ import { GET_ALL_PURCHASES } from "../redux/actions";
 import { PRICE_ORDER } from "../redux/actions";
 import { ALPHABETICAL_ORDER } from "../redux/actions";
 import { EDIT_FORM } from "../redux/actions"
+import { CLEAN_DETAIL } from '../redux/actions'
 import {
 	ADD_TO_CART,
 	CLEAR_CART,
@@ -45,15 +46,25 @@ const rootReducer = (state = initialState, action) => {
 			};
 
 		case USER_UPDATE:
-			return { ...state, user: action.payload }
-		
-		case EDIT_FORM:{
 			return {
-				...state, 
+				...state,
+				user: action.payload
+			}
+
+		case EDIT_FORM: {
+			return {
+				...state,
 			}
 		}
 		case USER_LOGIN:
-			return { ...state }
+			return {
+				...state
+			}
+		case CLEAN_DETAIL:
+			return {
+				...state,
+				productDetail: {}
+			}
 
 		case GET_ALL_PRODUCTS:
 			return {
@@ -127,19 +138,7 @@ const rootReducer = (state = initialState, action) => {
 		// 			return product
 		// 		})
 		// 	};
-		// case UPDATE_STATE:
-		// 	const productInde = state.products.findIndex((p) => p.id === action.id);
-		// 	const prod = { ...state.products[productInde] };
-		// 	prod.state = action.payload
-		// 	const allProduct = [...state.products];
-		// 	allProduct[productInde] = prod;
 
-		// 	return{
-		// 		...state,
-		// 		products: allProduct
-		// 	}
-			
-			
 		case DELETE_PRODUCTS:
 			return {
 				...state,

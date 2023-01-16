@@ -20,7 +20,7 @@ const Form = ({ product, editing }) => {
 		dispatch(
 			editing ? actions.updateProduct(state) : actions.createProduct(state)
 		);
-		navigate("/productlist");
+		navigate(-1);
 	};
 
 	const handleChange = (event) => {
@@ -29,12 +29,12 @@ const Form = ({ product, editing }) => {
 	};
 
 	return (
-		<div className="form-body">
+		<div className="form-body" >
 			<div className="row">
 				<div className="form-holder">
 					<div className="form-content">
 						<div className="form-items">
-
+							{editing ? <h2>Editando producto</h2>: null}
 							<form className="requires-validation" onSubmit={handleSubmit}>
 								<div className="col-md-12">
 									<input
@@ -91,14 +91,30 @@ const Form = ({ product, editing }) => {
 										<option value="inactivo">Inactivo</option>
 									</select>
 								</div>
-								<div className="col-md-12">
-									<select name="category" value={state.category} onChange={handleChange}>
+								<div className="col-md-12 mb-2">
 										<option value="">Selecciona una categoria</option>
-										<option value="pizza">Pizza</option>
-										<option value="pasta">Pasta</option>
-										<option value="ensaladas">Ensaladas</option>
-										<option value="bebidas">Bebidas</option>
-									</select>
+										<label onChange={handleChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Bebida' autoComplete="off" /> Bebida
+										</label>
+										<label onChange={handleChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Hamburguesa' autoComplete="off" /> Hamburguesa
+										</label>
+										<label onChange={handleChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Wrap' autoComplete="off" /> Wrap
+										</label>
+										<label onChange={handleChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Ensalada' autoComplete="off" /> Ensalada
+										</label>
+										<br />
+										<label onChange={handleChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Postre' autoComplete="off" /> Postre
+										</label>
+										<label onChange={handleChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Snack' autoComplete="off" /> Snack
+										</label>
+										<label onChange={handleChange} className="btn btn-secondary">
+											<input className="btn-check" type="radio" name="category" value='Papas' autoComplete="off" /> Papas
+										</label>
 								</div>
 								<button className="btn btn-primary" type="submit">{editing ? "Actualizar" : "Crear"}</button>
 							</form>

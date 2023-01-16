@@ -18,7 +18,7 @@ export default function Card({ id, name, price, description, image, addToCart, r
 						<div className="postcard__text t-dark">
 							<Link to={`/products/${id}`} className="postcard__title red">{name}</Link>
 							<div>
-								Rating: {rating}
+								Valoracion: {rating}
 							</div>
 							<div className="postcard__bar"></div>
 							<div className="postcard__preview-txt"> {description}</div>
