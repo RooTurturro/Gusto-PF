@@ -30,13 +30,23 @@ const ProductList = () => {
 
 
     function soldOut(id) {
-        dispatch(updateState(id, { state: 'agotado' }));
+        dispatch(updateState(id, { state: false }));
         dispatch(getAllProducts())
+        Swal.fire({
+            title: 'Producto fuera de stock'
+        }).then(() => {
+            window.location.reload()
+        })
     }
 
     function available(id) {
-        dispatch(updateState(id, { state: 'disponible' }));
+        dispatch(updateState(id, { state: true }));
         dispatch(getAllProducts())
+        Swal.fire({
+            title: 'Producto disponible!'
+        }).then(() => {
+            window.location.reload()
+        })
     }
 
 
@@ -57,12 +67,6 @@ const ProductList = () => {
         dispatch(filterProductsByCategories(e.target.value));
         setOrder(`Ordenado ${e.target.value}`)
     }
-
-
-    const mostrarId = (id) => {
-        console.log(id)
-    }
-
 
 
     return (
@@ -123,7 +127,7 @@ const ProductList = () => {
                                                 <th scope="col" width="12%" class="text-center"><span>Precio</span></th>
                                                 <th scope="col" width="10%" class="text-center"><span>Valoración</span></th>
                                                 <th scope="col" width="16%" class="text-center"><span>Categoria</span></th>
-                                                <th scope="col" width="16%" class="text-center"><span>Estado Actual</span></th>
+
                                                 <th scope="col" width="20%" class="text-center"><span>Acciones</span></th>
                                             </tr>
                                         </thead>
@@ -138,11 +142,11 @@ const ProductList = () => {
                                                     {e.description}
                                                 </td>
                                                 <td class="text-center">
-                                                    <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px', marginBottom: '10px' }} onClick={() => available(e.id)} class="btn btn-secondary">Disponible</button>
-                                                    <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px' }} onClick={() => soldOut(e.id)} class="btn btn-danger">Agotado</button>
+                                                    {e.state ?
+                                                        e.state && (
+                                                            <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px', marginBottom: '10px' }} onClick={() => soldOut(e.id)} class="btn btn-success">Disponible</button>
+                                                        ) : <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px' }} onClick={() => available(e.id)} class="btn btn-danger">Agotado</button>}
                                                 </td>
-
-
                                                 <td class="text-center">
                                                     <span class="label label-default">${e.price}</span>
                                                 </td>
@@ -153,12 +157,8 @@ const ProductList = () => {
                                                     {e.category}
                                                 </td>
                                                 <td>
-
-                                                    {e.state}
-                                                </td>
-                                                <td>
                                                     <Link to={`/products/${e.id}`}>
-                                                        <button type="button" style={{ marginBottom: '10px', fontSize: '12px', width: '70px' }} class="btn btn-info" onClick={() => mostrarId(e.id)} >Detalle </button>
+                                                        <button type="button" style={{ marginBottom: '10px', fontSize: '12px', width: '70px' }} class="btn btn-info"  >Detalle </button>
                                                     </Link>
                                                     <button type="button" style={{ fontSize: '12px', width: '70px' }} onClick={() => trashEmpty(e.id)} class="btn btn-danger">Borrar</button>
                                                 </td>

@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 // import { getUserLog, login } from "../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -84,13 +84,14 @@ const Perfil = () => {
                             <div className={styles.botones}>
 
                                 <LogoutButton />
+                                {usuario.isAdmin ? usuario.isAdmin && (
+                                    <Link to={'/historial'}>
 
-                                <Link to={'/historial'}>
-
-                                    <button className={styles.button}>
-                                        <span>Historial Compras</span>
-                                    </button>
-                                </Link>
+                                        <button className={styles.button}>
+                                            <span>Historial Compras</span>
+                                        </button>
+                                    </Link>
+                                ) : null}
 
                                 <Link to={'/editarperfilusuario'}>
                                     <button className={styles.button}>

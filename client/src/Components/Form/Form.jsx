@@ -9,6 +9,7 @@ const Form = ({ product, editing }) => {
 	const [state, setState] = useState(product);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const Swal = require("sweetalert2");
 
 	useEffect(() => {
 		setState(product);
@@ -21,6 +22,10 @@ const Form = ({ product, editing }) => {
 			editing ? actions.updateProduct(state) : actions.createProduct(state)
 		);
 		navigate(-1);
+		Swal.fire(`El producto ${state.name} se edito!`).then(() => {
+			window.location.reload()
+		})
+		
 	};
 
 	const handleChange = (event) => {

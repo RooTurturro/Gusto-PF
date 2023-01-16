@@ -6,8 +6,8 @@
 
 .img {
  
-    height: 70vh;
-    width: 30vw;
+    height: 80vh;
+    width: 20vw;
 }
 
 .promociones {
@@ -54,8 +54,6 @@
 
 .promocionesContainer {
     gap: 5rem;
-    padding-left: 5rem;
-    padding-top: 2rem;
     height: 90vh;
     background-image: url('../../assets/hamburguesa7.png');
     background-repeat: no-repeat;
