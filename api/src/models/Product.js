@@ -25,10 +25,15 @@ module.exports = (sequelize) => {
 			rating: {
 				type: DataTypes.INTEGER,
 				validate: {
-					min: 0,
+					min: 1,
 					max: 5,
-				},
-			},
+        },
+        defaultValue: 1,
+      },
+      totalRating: {
+        type: DataTypes.INTEGER,
+        defaultValue: 1,
+      },
 			image: {
 				type: DataTypes.STRING,
 				allowNull: false,
@@ -36,7 +41,7 @@ module.exports = (sequelize) => {
 			state: {
 				type: DataTypes.BOOLEAN,
 				defaultValue: true,
-				allowNull: false
+				allowNull: false,
 			},
 			category: {
 				type: DataTypes.STRING,
