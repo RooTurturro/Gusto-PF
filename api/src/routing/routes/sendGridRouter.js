@@ -32,9 +32,9 @@ sendGrid.post("/checkout", async (req,res)=>{
     product2: detail.specification,
     product3: detail.total
   }*/
-  const { to , name , compras } = req.body ; 
+  const { to , name } = req.body ; 
   
-  const detail = {
+ /* const detail = {
     name : compras.name,
     total: compras.total,
     products : compras.products.map((el) => {
@@ -44,14 +44,14 @@ sendGrid.post("/checkout", async (req,res)=>{
         })
       )
     })
-  }
+  }*/
      
    const msg = {
      to,
      from: `emi-re11@hotmail.com`,
      subject: "Su pedido esta siendo preparado",
      text:"Gracias por su compra",
-     html: `<h1>Preparando pedido</h1><strong>Hola ${name} recibimos tu compra ! <br></br> Pediste ${detail.products} <br></br> El total es : ${detail.total} <br></br> </strong> <br></br><strong> Muchas Gracias !!! :D  <br></br> </strong><strong>Gusto</strong>`,
+     html: `<h1>Preparando pedido</h1><strong>Hola ${name} recibimos tu compra ! <br></br> Pediste  <br></br> </strong> <br></br><strong> Muchas Gracias !!! :D  <br></br> </strong><strong>Gusto</strong>`,
    }
    try{
      await sgMail.send(msg)
@@ -63,15 +63,15 @@ sendGrid.post("/checkout", async (req,res)=>{
    res.status(201).send({success : true})
  });
 
- sendGrid.post("/login", async (req,res)=>{
-  const { to , name } = req.body ; 
+ sendGrid.post("/cancel", async (req,res)=>{
+  const { to , name , motivo} = req.body ; 
  
    const msg = {
      to,
      from: `emi-re11@hotmail.com`,
-     subject: "Su cuenta a sido creada :)",
-     text:"Cuenta creada con exito ",
-     html: `<h1>Cuenta registrada con exito</h1><strong>Su cuenta a sido creada con exito , Esperamos pronto su pedido</strong>`,
+     subject: "Su pedido a sido cancelado :((",
+     text:"Pedido cancelado",
+     html: `<h1>Su pedido fue cancelado :(</h1><strong>Lamentamos este incoveniente, los motivos de cancelacion son : ${motivo}</strong>`,
     
    }
    try{

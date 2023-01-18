@@ -131,9 +131,13 @@ productRouter.put("/rating/:id", async (req, res) => {
     const { id } = req.params;
     const { rating } = req.body;
 
-    rating < 1 || rating > 5
+    /* rating < 1 || rating > 5
       ? res.status(400).send("Valores invalidos !!!")
-      : rating;
+      : rating; */
+
+    if (rating < 1 || rating > 5 || typeof rating !== "number" || !Number.isInteger(rating)) {
+      res.status(400).send("Valores invalidos !!!");
+    }
 
     if (id) {
       const findProduct = await Product.findByPk(id);

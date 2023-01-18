@@ -37,8 +37,8 @@ const initialState = {
 	cart: JSON.parse(window.localStorage.getItem('carrito')) || [],
 	rating: undefined,
 	purchases: [],
-	purchase: true,
-};
+	newPurchase:[]
+}
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -108,7 +108,7 @@ const rootReducer = (state = initialState, action) => {
 		case POST_PURCHASE:
 			return {
 				...state,
-				purchase: action.payload
+				newPurchase: action.payload
 			}
 		case GET_PAYMENT_URL:
 			return {
