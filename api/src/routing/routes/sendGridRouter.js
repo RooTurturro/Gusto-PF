@@ -48,7 +48,7 @@ sendGrid.post("/checkout", async (req,res)=>{
      
    const msg = {
      to,
-     from: `emi-re11@hotmail.com`,
+     from: `rocioolivaturturro@gmail.com`,
      subject: "Su pedido esta siendo preparado",
      text:"Gracias por su compra",
      html: `<h1>Preparando pedido</h1><strong>Hola ${name} recibimos tu compra ! <br></br> Pediste  <br></br> </strong> <br></br><strong> Muchas Gracias !!! :D  <br></br> </strong><strong>Gusto</strong>`,
@@ -68,7 +68,7 @@ sendGrid.post("/checkout", async (req,res)=>{
  
    const msg = {
      to,
-     from: `emi-re11@hotmail.com`,
+     from: `rocioolivaturturro@gmail.com`,
      subject: "Su pedido a sido cancelado :((",
      text:"Pedido cancelado",
      html: `<h1>Su pedido fue cancelado :(</h1><strong>Lamentamos este incoveniente, los motivos de cancelacion son : ${motivo}</strong>`,
@@ -88,7 +88,7 @@ sendGrid.post("/checkout", async (req,res)=>{
  
    const msg = {
      to,
-     from: `emi-re11@hotmail.com`,
+     from: `rocioolivaturturro@gmail.com`,
      subject: "Su cuenta a sido modificada:)",
      text:"Cuenta su cuenta a sido modificada",
      html: `<h1>Su cuenta se modifico con exito ! </h1><strong>Hola ${name}.Su cuenta a sido modificada con exito</strong>`,
