@@ -197,6 +197,16 @@ export const updatePurchaseState = (id, payload) => {
 	}
 }
 
+export const updateSpecification = (id, payload) => {
+	return async () => {
+		try {
+			await axios.put(`http://localhost:3001/purchase/specification/${id}`, payload)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+
 export const loading = () => {
 	return { type: LOADING };
 };
