@@ -22,18 +22,20 @@ export default function Nav() {
         </div>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to='/sucursales'>SUCURSALES</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to='/menu'>MENU</Link>
+            </li>
             {usuario.isAdmin ? usuario.isAdmin &&  (
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to='/productlist'>ADMIN</Link>
               </li>
 
-            ): null}
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to='/menu'>MENU</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to='/sucursales'>SUCURSALES</Link>
-            </li>
+            ) : <li className="nav-item">
+            <Link className="nav-link active" aria-current="page" to='/miscompras'>MIS COMPRAS</Link>
+              </li>}
           </ul>
         </div>
         <div style={{ color: 'black', display: 'flex', gap: '1rem', marginRight: '10px' }}>

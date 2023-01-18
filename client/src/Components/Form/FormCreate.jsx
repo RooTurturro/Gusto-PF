@@ -131,10 +131,10 @@ const CreateProduct = () => {
 										<label>Estado del producto: </label>
 										<br />
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input class="btn-check" type="radio" name="state" value='disponible' autocomplete="off" /> Disponible
+											<input class="btn-check" type="radio" name="state" value= {true} autocomplete="off" /> Disponible
 										</label>
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input class="btn-check" type="radio" name="state" value='agotado' autocomplete="off" /> Agotado
+											<input class="btn-check" type="radio" name="state" value= {false} autocomplete="off" /> Agotado
 										</label>
 									</div>
 								</div>
