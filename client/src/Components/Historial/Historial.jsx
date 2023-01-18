@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getAllPurchases } from '../../redux/actions'
+import { getAllPurchases, updatePurchaseState } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -17,6 +17,17 @@ const Historial = () => {
   useEffect(() => {
     dispatch(getAllPurchases())
   }, [dispatch])
+
+    const Swal = require('sweetalert2')
+    
+    function handleClick(id) {
+      dispatch(updatePurchaseState(id, { state: "Cancelado" }));
+      Swal.fire({
+          title: 'Cancelado'
+      }).then(() => {
+          window.location.reload()
+      })
+  }
 
   return (
     <>
@@ -77,9 +88,10 @@ const Historial = () => {
                           {e.state}
                         </td>
                         <td class="text-center">
-                          {e.state === 'En proceso' ? (
-                            <button type='button' class='btn btn-danger'>Cancelar</button>
-                          ) : <button type='button' class='btn btn-success'>Entregada</button>}
+                          {e.state === 'En proceso'}
+                            <button type='button' class='btn btn-danger' onClick={() => handleClick(e.id)}  disabled = {e.state === "Cancelado"}>Cancelar</button>
+                          {e.state === 'En proceso'}
+                          <button type='button' class='btn btn-success'  disabled = {e.state === "Cancelado"}>Entregada</button>
                         </td>
                       </tr>
                     </tbody>

@@ -15,6 +15,7 @@ import { PRICE_ORDER } from "../redux/actions";
 import { ALPHABETICAL_ORDER } from "../redux/actions";
 import { EDIT_FORM } from "../redux/actions"
 import { CLEAN_DETAIL } from '../redux/actions'
+import { RESET_STATE_PURCHASE } from '../redux/actions'
 import {
 	ADD_TO_CART,
 	CLEAR_CART,
@@ -34,7 +35,8 @@ const initialState = {
 	buyProducts: [],
 	cart: [],
 	rating: undefined,
-	purchases: []
+	purchases: [],
+	purchase: true,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -249,7 +251,21 @@ const rootReducer = (state = initialState, action) => {
 		case CLEAR_CART: {
 			return initialState;
 		}
-
+		case RESET_STATE_PURCHASE:
+     
+		const { id, state: newState } = action.payload;
+		 	return {
+		 		...state,
+		 		purchase: state.purchase.map(purchase => {
+		 			if (purchase.id === id) {
+		 				return {
+		 					...purchase,
+		 					state: newState
+		 				}
+		 			}
+		 			return purchase
+				})
+		 	};
 		// case ORDER_BY_POPULATION:
 		default:
 			return state;
