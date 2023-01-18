@@ -91,7 +91,12 @@ const Perfil = () => {
                                             <span>Historial Compras</span>
                                         </button>
                                     </Link>
-                                ) : null}
+                                ) : <Link to={'/miscompras'}>
+
+                                <button className={styles.button}>
+                                    <span>Historial Compras</span>
+                                </button>
+                            </Link> }
 
                                 <Link to={'/editarperfilusuario'}>
                                     <button className={styles.button}>

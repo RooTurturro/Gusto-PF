@@ -9,6 +9,7 @@ import FormCreate from "./Components/Form/FormCreate";
 import Detail from "./Components/Detail/Detail";
 import Perfil from "./Components/Perfil/Perfil";
 import Historial from "./Components/Historial/Historial";
+import UserHistory from "./Components/Historial/UserHistory";
 import Carrito from "./Components/Carrito/Carrito";
 import SenGrid from "./Components/SendGrid/SenGrid";
 import ProductList from "./Components/ProductList/ProductList";
@@ -31,7 +32,7 @@ function App() {
 				<Route exact path="/products/:id" element={<Detail />} />
 				<Route exact path="/perfil" element={<Perfil />} />
 				<Route exact path="/sucursales" element={<Sucursales />} />
-				
+				<Route exact path="/miscompras" element={<UserHistory />} />
 				<Route
 					exact
 					path="/editarperfilusuario"

@@ -34,7 +34,8 @@ const initialState = {
 	buyProducts: [],
 	cart: [],
 	rating: undefined,
-	purchases: []
+	purchases: [],
+	newPurchase:[]
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -100,7 +101,7 @@ const rootReducer = (state = initialState, action) => {
 		case POST_PURCHASE:
 			return {
 				...state,
-				purchase: action.payload
+				newPurchase: action.payload
 			}
 		case GET_PAYMENT_URL:
 			return {
