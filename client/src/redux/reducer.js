@@ -37,7 +37,7 @@ const initialState = {
 	rating: undefined,
 	purchases: [],
 	newPurchase:[]
-
+}
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
