@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getAllUsers, updateUser } from '../../redux/actions'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import Sidebar from '../Sidebar/Sidebar'
 
 
 const Users = () => {
@@ -19,35 +20,36 @@ const Users = () => {
     })
   }
 
+  function deshabilitarUser(email) {
+    dispatch(updateUser(email, { state: 'Deshabilitado' }))
+    Swal.fire({
+      title: 'Usuario deshabilitado'
+    }).then(() => {
+      window.location.reload()
+    })
+  }
+
   useEffect(() => {
     dispatch(getAllUsers())
   }, [dispatch])
+  console.log(user)
 
   return (
-    <>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Link to={'/create'}>
-          <button type="button" class="btn btn-success">
-            Nuevo producto
-          </button>
-        </Link>
-        <Link to={'/productlist'}>
-          <button type="button" class="btn btn-warning">
-            Listado de productos
-          </button>
-        </Link>
+    <div style={{ display: 'flex' }}>
+      <div >
+        <Sidebar />
       </div>
       {user.map((e) => (
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="main-box clearfix">
-                <div class="table-responsive">
-                  <table class="table user-list">
+        <div key={e.id} className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="main-box clearfix">
+                <div className="table-responsive">
+                  <table className="table user-list">
                     <thead>
                       <tr>
                         <th scope="col" width="20%"><span>Nombre</span></th>
-                        <th scope="col" width="20%" class="text-center"><span>Dirección</span></th>
+                        <th scope="col" width="20%" className="text-center"><span>Dirección</span></th>
                         <th scope="col" width="20%"><span>Telefono</span></th>
                         <th scope="col" width="25%"><span>E-Mail</span></th>
                         <th scope="col" width="20%"><span>state</span></th>
@@ -55,23 +57,23 @@ const Users = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="text-center" >
+                        <td className="text-center" >
                           {e.name}
                         </td>
 
-                        <td class="text-center">
+                        <td className="text-center">
                           {e.address}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {e.phone}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {e.email}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {e.state === 'Deshabilitado' ? (
-                            <button onClick={() => habilitarUser(e.email)} type='button' class='btn btn-danger'>Deshabilitado</button>
-                          ) : <button type='button' class='btn btn-success'>Habilitado</button>}
+                            <button onClick={() => habilitarUser(e.email)} type='button' className='btn btn-danger'>Deshabilitado</button>
+                          ) : <button onClick={() => deshabilitarUser(e.email)} type='button' className='btn btn-success'>Habilitado</button>}
                         </td>
                       </tr>
                     </tbody>
@@ -83,7 +85,7 @@ const Users = () => {
         </div>
       ))}
 
-    </>
+    </div>
 
   )
 }
