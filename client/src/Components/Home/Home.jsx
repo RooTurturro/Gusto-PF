@@ -106,27 +106,24 @@ const Home = () => {
             <h3 className={styles.type}>Combo 3</h3>
             <p className={styles.type}>Hamburguesa con salsa golf</p>
           </div>
-
         </div>
       </div>
-
-
       <div className={styles.containerInfo}>
-        <footer class="w-100 py-4 flex-shrink-0">
-          <div class="container py-4">
-            <div class="row gy-4 gx-5">
-              <div class="col-lg-4 col-md-6">
+        <footer className="w-100 py-4 flex-shrink-0">
+          <div className="container py-4">
+            <div className="row gy-4 gx-5">
+              <div className="col-lg-4 col-md-6">
                 <h5 className={styles.gusto}>GUSTO</h5>
               </div>
 
-              <div class="col-lg-2 col-md-6">
+              <div className="col-lg-2 col-md-6">
                 <h5 className={styles.titulo}>Informacion</h5>
                 <p className={styles.type2}>Contactanos</p>
                 <p className={styles.type2}> +54 323464351</p>
                 <a href='https://www.instagram.com/ganasdegusto/' className={styles.a}>Instagram</a>
               </div>
 
-              <div class="col-lg-2 col-md-6">
+              <div className="col-lg-2 col-md-6">
                 <h5 className={styles.titulo}>Ayuda</h5>
                 <p className={styles.type2}>Legales</p>
 
@@ -137,7 +134,7 @@ const Home = () => {
                 <p className={styles.type2}>Trabaja con nosotros.</p>
 
               </div>
-              <div class="col-lg-4 col-md-6">
+              <div className="col-lg-4 col-md-6">
                 <img src={logo} className={styles.logo} alt="logo gusto" />
                 <p className={styles.type2}>Inicio</p>
                 <p className={styles.type2}>Menu</p>

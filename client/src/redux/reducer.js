@@ -32,7 +32,7 @@ const initialState = {
 	user: {},
 	paymentUrl: "",
 	buyProducts: [],
-	cart: [],
+	cart: JSON.parse(window.localStorage.getItem('carrito')) || [],
 	rating: undefined,
 	purchases: []
 };
@@ -208,8 +208,8 @@ const rootReducer = (state = initialState, action) => {
 				(producto) => producto.id === action.payload
 			);
 			let itemInCart = state.cart.find((item) => item.id === newItem.id);
-			return itemInCart
-				? {
+			if (itemInCart) {
+				return {
 					...state,
 					cart: state.cart.map((item) =>
 						item.id === newItem.id
@@ -217,10 +217,12 @@ const rootReducer = (state = initialState, action) => {
 							: item
 					),
 				}
-				: {
+			} else {
+				return {
 					...state,
 					cart: [...state.cart, { ...newItem, quantity: 1 }],
 				};
+			}
 		}
 
 		case REMOVE_ALL_FROM_CART: {
