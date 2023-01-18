@@ -38,7 +38,7 @@ const PediYa = () => {
 			email: usuario.email,
 			specification: usuario.specification,
 			total: totalPrice(),
-			state: 'Finalizada',
+			state: 'En proceso',
 			products: [cart.map((el) => {
 				return (
 					el.name
@@ -64,8 +64,8 @@ const PediYa = () => {
 
 	return (
 		<>
-			{isAuthenticated ?
-				isAuthenticated && (
+			{/* {isAuthenticated ?
+				isAuthenticated && ( */}
 					<div>
 						<div className="card-body">
 							<div>
@@ -93,7 +93,7 @@ const PediYa = () => {
 							</div>
 						</div>
 					</div >
-				) :
+				{/* ) :
 
 				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 					<div>
@@ -103,7 +103,7 @@ const PediYa = () => {
 						Iniciar Sesion
 					</button>
 				</div>
-			}
+			} */}
 		</>
 	);
 };

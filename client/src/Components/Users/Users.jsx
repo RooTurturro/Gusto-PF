@@ -1,21 +1,26 @@
 import React, { useEffect } from 'react'
-import { getAllPurchases } from '../../redux/actions'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { getAllUsers, updateUser } from '../../redux/actions'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 
-
-// aca se obtienen las compras hechas por el usuario
-// se muestran en el perfil de cada usuario luego de logearse
-// se puede hacer un mapeo y devolver la Card del menu pero siendo ya una compra realizada
-
-const Historial = () => {
+const Users = () => {
 
   const dispatch = useDispatch()
-  const purchases = useSelector((state) => state.purchases)
+  const user = useSelector((state) => state.users)
+
+  function habilitarUser(email) {
+    dispatch(updateUser(email, { state: 'Habilitado' }))
+    Swal.fire({
+      title: 'Usuario habilitado'
+    }).then(() => {
+      window.location.reload()
+    })
+  }
 
   useEffect(() => {
-    dispatch(getAllPurchases())
+    dispatch(getAllUsers())
   }, [dispatch])
 
   return (
@@ -32,7 +37,7 @@ const Historial = () => {
           </button>
         </Link>
       </div>
-      {purchases.map((e) => (
+      {user.map((e) => (
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
@@ -41,12 +46,10 @@ const Historial = () => {
                   <table class="table user-list">
                     <thead>
                       <tr>
-                        <th scope="col" width="10%"><span>Name</span></th>
-                        <th scope="col" width="20%" class="text-center"><span>Adress</span></th>
-                        <th scope="col" width="20%"><span>Productos</span></th>
-                        <th scope="col" width="20%"><span>Especificaciones</span></th>
-                        <th scope="col" width="10%"><span>Total</span></th>
-                        <th scope="col" width="20%"><span>Envio a domicilio</span></th>
+                        <th scope="col" width="20%"><span>Nombre</span></th>
+                        <th scope="col" width="20%" class="text-center"><span>Dirección</span></th>
+                        <th scope="col" width="20%"><span>Telefono</span></th>
+                        <th scope="col" width="25%"><span>E-Mail</span></th>
                         <th scope="col" width="20%"><span>state</span></th>
                       </tr>
                     </thead>
@@ -60,25 +63,15 @@ const Historial = () => {
                           {e.address}
                         </td>
                         <td class="text-center">
-                          {e.products}
+                          {e.phone}
                         </td>
                         <td class="text-center">
-                          {e.specification}
-                        </td>
-
-                        <td class="text-center">
-                          {e.total}
+                          {e.email}
                         </td>
                         <td class="text-center">
-                          Delivery
-                        </td>
-                        <td class="text-center">
-                          {e.state}
-                        </td>
-                        <td class="text-center">
-                          {e.state === 'En proceso' ? (
-                            <button type='button' class='btn btn-danger'>Cancelar</button>
-                          ) : <button type='button' class='btn btn-success'>Entregada</button>}
+                          {e.state === 'Deshabilitado' ? (
+                            <button onClick={() => habilitarUser(e.email)} type='button' class='btn btn-danger'>Deshabilitado</button>
+                          ) : <button type='button' class='btn btn-success'>Habilitado</button>}
                         </td>
                       </tr>
                     </tbody>
@@ -92,7 +85,7 @@ const Historial = () => {
 
     </>
 
-  );
-};
+  )
+}
 
-export default Historial;
+export default Users
