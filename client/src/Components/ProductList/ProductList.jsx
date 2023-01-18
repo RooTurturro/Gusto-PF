@@ -111,26 +111,26 @@ const ProductList = () => {
                     </button>
                 </Link>
             </div>
-            {products.map((e) => (
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="main-box clearfix">
-                                <div class="table-responsive">
-                                    <table class="table user-list">
-                                        <thead>
-                                            <tr class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="main-box clearfix">
+                            <div class="table-responsive">
+                                <table class="table user-list">
+                                    <thead>
+                                        <tr class="text-center">
 
-                                                <th scope="col" width="20%" class="text-center"><span>Producto</span></th>
-                                                <th scope="col" width="20%" class="text-center"><span>Description</span></th>
-                                                <th scope="col" width="12%" class="text-center"><span>Stock</span></th>
-                                                <th scope="col" width="12%" class="text-center"><span>Precio</span></th>
-                                                <th scope="col" width="10%" class="text-center"><span>Valoración</span></th>
-                                                <th scope="col" width="16%" class="text-center"><span>Categoria</span></th>
+                                            <th scope="col" width="20%" class="text-center"><span>Producto</span></th>
+                                            <th scope="col" width="20%" class="text-center"><span>Description</span></th>
+                                            <th scope="col" width="12%" class="text-center"><span>Stock</span></th>
+                                            <th scope="col" width="12%" class="text-center"><span>Precio</span></th>
+                                            <th scope="col" width="10%" class="text-center"><span>Valoración</span></th>
+                                            <th scope="col" width="16%" class="text-center"><span>Categoria</span></th>
 
-                                                <th scope="col" width="20%" class="text-center"><span>Acciones</span></th>
-                                            </tr>
-                                        </thead>
+                                            <th scope="col" width="20%" class="text-center"><span>Acciones</span></th>
+                                        </tr>
+                                    </thead>
+                                    {products.map((e) => (
                                         <tbody>
                                             <tr>
                                                 <td>
@@ -164,13 +164,13 @@ const ProductList = () => {
                                                 </td>
                                             </tr>
                                         </tbody>
-                                    </table>
-                                </div>
+                                    ))}
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-            ))}
+            </div>
 
         </>
     )

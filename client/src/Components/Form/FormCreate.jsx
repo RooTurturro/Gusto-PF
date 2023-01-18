@@ -126,10 +126,8 @@ const CreateProduct = () => {
 									/>
 									{errors.description && <p className={styles.error}>{errors.description}</p>}
 								</div>
-
-								<div class="col-md-12 mt-3 mb-2">
+								<div class="col-md-12 mt-3 mb-2 checkbox-container">
 									<div style={{ display: 'flex', gap: '0.3rem' }}>
-
 										<label>Estado del producto: </label>
 										<br />
 										<label onChange={handlerChange} className="btn btn-secondary">
@@ -139,7 +137,6 @@ const CreateProduct = () => {
 											<input class="btn-check" type="radio" name="state" value= {false} autocomplete="off" /> Agotado
 										</label>
 									</div>
-
 								</div>
 								<div style={{ display: 'flex', gap: '1rem' }} className="btn-group-toggle" data-toggle="buttons">
 									<div style={{ display: 'flex', gap: '0.3rem' }}>
