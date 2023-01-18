@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPaymentUrl, postPurchase } from "../../redux/actions";
 import axios from "axios";
+import FinalCheckOut from "./FinalCheckOut";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
@@ -11,7 +12,7 @@ const PediYa = () => {
 
 	const { isAuthenticated, loginWithRedirect } = useAuth0()
 	const dispatch = useDispatch();
-	const paymentUrl = useSelector((state) => state.paymentUrl);
+
 	const cart = useSelector((state) => state.cart)
 	const usuario = useSelector(state => state.user);
 	
@@ -38,7 +39,9 @@ const PediYa = () => {
 			email: usuario.email,
 			specification: usuario.specification,
 			total: totalPrice(),
-			state: 'Finalizada',
+
+			state: 'en proceso',
+
 			products: [cart.map((el) => {
 				return (
 					el.name
@@ -64,8 +67,8 @@ const PediYa = () => {
 
 	return (
 		<>
-			{isAuthenticated ?
-				isAuthenticated && (
+			{/* {isAuthenticated ?
+				isAuthenticated && ( */}
 					<div>
 						<div className="card-body">
 							<div>
@@ -78,22 +81,15 @@ const PediYa = () => {
 										</div>
 									</li>
 								</ul>
-
-								<button onClick={handlePayment} type="button" className="btn btn-primary btn-lg btn-block">
-									Checkout
+								<button onClick={handlePayment} type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style={{alignContent:'flex-start',color: '#212529'}} >
+								Finalizar compra!
+ 								<FinalCheckOut/>
 								</button>
-								{paymentUrl.length > 0 ? (
-									<div div style={{ display: 'flex' }}>
-										Seleccione metodo de pago
-										<a href={paymentUrl}>
-											<img width={'100px'} src="https://res.cloudinary.com/ds41xxspf/image/upload/v1668792016/Donde-Suena-Assets/mercado-pago_pxshfi.png" alt='mercadopago' />
-										</a>
-									</div>
-								) :  null}
+								
 							</div>
 						</div>
 					</div >
-				) :
+				{/* ) :
 
 				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 					<div>
@@ -103,7 +99,7 @@ const PediYa = () => {
 						Iniciar Sesion
 					</button>
 				</div>
-			}
+			} */}
 		</>
 	);
 };

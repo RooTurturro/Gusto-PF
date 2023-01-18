@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getAllPurchases, updatePurchaseState } from '../../redux/actions'
+import { getAllPurchases } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -11,39 +11,17 @@ import { Link } from 'react-router-dom'
 
 const Historial = () => {
 
-  const dispatch = useDispatch()
-  const purchases = useSelector((state) => state.purchases)
+    const dispatch = useDispatch()
+    const purchases = useSelector((state) => state.purchases)
+    const user = useSelector(state => state.user);
 
   useEffect(() => {
     dispatch(getAllPurchases())
   }, [dispatch])
 
-    const Swal = require('sweetalert2')
-    
-    function handleClick(id) {
-      dispatch(updatePurchaseState(id, { state: "Cancelado" }));
-      Swal.fire({
-          title: 'Cancelado'
-      }).then(() => {
-          window.location.reload()
-      })
-  }
-
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <Link to={'/create'}>
-          <button type="button" class="btn btn-success">
-            Nuevo producto
-          </button>
-        </Link>
-        <Link to={'/productlist'}>
-          <button type="button" class="btn btn-warning">
-            Listado de productos
-          </button>
-        </Link>
-      </div>
-      {purchases.map((e) => (
+      {purchases.map((e) => ( e.name === user.name ? 
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
@@ -53,6 +31,7 @@ const Historial = () => {
                     <thead>
                       <tr>
                         <th scope="col" width="10%"><span>Name</span></th>
+
                         <th scope="col" width="20%" class="text-center"><span>Adress</span></th>
                         <th scope="col" width="20%"><span>Productos</span></th>
                         <th scope="col" width="20%"><span>Especificaciones</span></th>
@@ -87,10 +66,9 @@ const Historial = () => {
                           {e.state}
                         </td>
                         <td class="text-center">
-                          {e.state === 'En proceso'}
-                            <button type='button' class='btn btn-danger' onClick={() => handleClick(e.id)}  disabled = {e.state === "Cancelado"}>Cancelar</button>
-                          {e.state === 'En proceso'}
-                          <button type='button' class='btn btn-success'  disabled = {e.state === "Cancelado"}>Entregada</button>
+                          {e.state === 'en proceso' ?
+                            <button type='button' class='btn btn-success'>Entregada!</button>
+                           : e.state}
                         </td>
                       </tr>
                     </tbody>
@@ -100,7 +78,7 @@ const Historial = () => {
             </div>
           </div>
         </div>
-      ))}
+      :null ))}
 
     </>
 
