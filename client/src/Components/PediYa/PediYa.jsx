@@ -47,13 +47,13 @@ const PediYa = () => {
 			takeAway: true
 		};
 
-		const to = detail.email;
+		/*const to = detail.email;
 		const name = detail.name;
 		const compras = detail;
 		const sendEmail = async () => {
 			await axios.post("http://localhost:3001/api/mail/checkout", { to, name , compras})
 		};
-		sendEmail();
+		sendEmail();*/
 		dispatch(getPaymentUrl(detail));
 		dispatch(postPurchase(detail))
 

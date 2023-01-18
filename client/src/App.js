@@ -13,7 +13,7 @@ import Carrito from "./Components/Carrito/Carrito";
 import SenGrid from "./Components/SendGrid/SenGrid";
 import ProductList from "./Components/ProductList/ProductList";
 import ProfileUserForm from "./Components/Form/ProfileUserForm";
-
+import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces"
 
 function App() {
 	return (
@@ -31,7 +31,7 @@ function App() {
 				<Route exact path="/products/:id" element={<Detail />} />
 				<Route exact path="/perfil" element={<Perfil />} />
 				<Route exact path="/sucursales" element={<Sucursales />} />
-				
+				<Route exact path="/checkout" element={<CheckOutSucces />} />
 				<Route
 					exact
 					path="/editarperfilusuario"
