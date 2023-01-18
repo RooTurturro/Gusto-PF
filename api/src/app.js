@@ -63,6 +63,8 @@ server.use(function (err, req, res, next) {
     message: err.message,
     error: err,
   });
+
+  next();
 });
 
 module.exports = server;
