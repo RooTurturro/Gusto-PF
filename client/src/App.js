@@ -13,6 +13,7 @@ import Carrito from "./Components/Carrito/Carrito";
 import SenGrid from "./Components/SendGrid/SenGrid";
 import ProductList from "./Components/ProductList/ProductList";
 import ProfileUserForm from "./Components/Form/ProfileUserForm";
+import Users from "./Components/Users/Users";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 			<Routes>
 				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
 				<Route exact path="/" element={<Home />} />
+				<Route exact path="/users" element={<Users />} />
 				<Route exact path="/productlist" element={<ProductList />} />
 				<Route exact path="/sendgrid" element={<SenGrid />} />
 				<Route exact path="/carrito" element={<Carrito />} />

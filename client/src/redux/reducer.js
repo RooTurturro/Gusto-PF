@@ -1,4 +1,4 @@
-import { FILTER_BY_CATEGORIES, POST_PURCHASE, UPDATE_STATE } from "../redux/actions";
+import { FILTER_BY_CATEGORIES, GET_ALL_USERS, POST_PURCHASE, UPDATE_STATE } from "../redux/actions";
 import { LOADING } from "../redux/actions";
 import { DELETE_PRODUCTS } from "../redux/actions";
 import { GET_PRODUCTS_DETAIL } from "../redux/actions";
@@ -31,6 +31,7 @@ const initialState = {
 	loading: true,
 	actualPage: 1,
 	user: {},
+	users: [],
 	paymentUrl: "",
 	buyProducts: [],
 	cart: JSON.parse(window.localStorage.getItem('carrito')) || [],
@@ -74,6 +75,11 @@ const rootReducer = (state = initialState, action) => {
 				products: action.payload,
 				allProducts: action.payload,
 			};
+		case GET_ALL_USERS:
+			return {
+				...state,
+				users: action.payload
+			}
 
 		case GET_ALL_PURCHASES:
 			return {
@@ -254,20 +260,20 @@ const rootReducer = (state = initialState, action) => {
 			return initialState;
 		}
 		case RESET_STATE_PURCHASE:
-     
-		const { id, state: newState } = action.payload;
-		 	return {
-		 		...state,
-		 		purchase: state.purchase.map(purchase => {
-		 			if (purchase.id === id) {
-		 				return {
-		 					...purchase,
-		 					state: newState
-		 				}
-		 			}
-		 			return purchase
+
+			const { id, state: newState } = action.payload;
+			return {
+				...state,
+				purchase: state.purchase.map(purchase => {
+					if (purchase.id === id) {
+						return {
+							...purchase,
+							state: newState
+						}
+					}
+					return purchase
 				})
-		 	};
+			};
 		// case ORDER_BY_POPULATION:
 		default:
 			return state;
