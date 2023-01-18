@@ -13,7 +13,8 @@ import axios from 'axios';
 const CheckOutSucces = () => {
 
   const dispatch = useDispatch()
-  const purchases = useSelector((state) => state.purchases)
+  const newPurchase = useSelector((state) => state.newPurchase)
+  const purchase = useSelector((state) => state.purchases)
   const user = useSelector((state) => state.user)
   const cart = useSelector((state) => state.cart)
 
@@ -31,18 +32,17 @@ const CheckOutSucces = () => {
   };
   sendEmail();
 
-  const compras = getAllPurchases()
-
-  useEffect(() => {
+  /*useEffect(() => {
     sendEmail()
-    dispatch(getAllPurchases())
-  }, [dispatch])
-
-  console.log(purchases)
+  })*/
+  sendEmail()
+  console.log(newPurchase)
+  console.log(purchase)
+  console.log(user)
 
   return (
     <>
-      {purchases.map((e) => (
+      {purchase.map((e) => (
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
@@ -97,6 +97,9 @@ const CheckOutSucces = () => {
           </div>
         </div>
       ))}
+       <Link to="/miscompras">
+                       <button>Mis compras</button>
+                  </Link>
 
     </>
 
