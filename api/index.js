@@ -10,7 +10,7 @@ const testConection = async () => {
     console.log("Conection ok");
     conn.sync({ force: false }).then(() => {
       server.listen(port, () => {
-        console.log("%s listening at 3001"); // eslint-disable-line no-console
+        console.log(`%s listening at ${port}`); // eslint-disable-line no-console
       });
     });
   } catch (error) {
