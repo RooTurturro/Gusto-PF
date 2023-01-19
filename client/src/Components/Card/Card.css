@@ -264,3 +264,8 @@ a:hover {
 .card-img-top:hover{
   height: 270px;
 }
+
+.card{
+  display: flex;
+  justify-content: center;
+}

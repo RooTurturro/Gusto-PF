@@ -51,7 +51,7 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 			};
-//-------------------Users Reducers--------------
+		//-------------------Users Reducers--------------
 		case USER_UPDATE:
 			return {
 				...state,
@@ -70,16 +70,16 @@ const rootReducer = (state = initialState, action) => {
 		}
 		case USER_LOCAL_LOGOUT:
 			return {
-				...state, user: {}, 
+				...state, user: {},
 			}
 
 		case USER_LOCAL_LOGIN:
-				
+
 			return {
 				...state, user: action.payload,
 			}
 		case USER_LOGIN:
-				
+
 			return {
 				...state,
 			}
@@ -242,21 +242,19 @@ const rootReducer = (state = initialState, action) => {
 				(producto) => producto.id === action.payload
 			);
 			let itemInCart = state.cart.find((item) => item.id === newItem.id);
-			if (itemInCart) {
-				return {
+			return itemInCart
+				? {
 					...state,
 					cart: state.cart.map((item) =>
 						item.id === newItem.id
-							? { ...item, quantity: item.quantity + 1}
+							? { ...item, quantity: item.quantity + 1 }
 							: item
 					),
 				}
-			} else {
-				return {
+				: {
 					...state,
 					cart: [...state.cart, { ...newItem, quantity: 1 }],
 				};
-			}
 		}
 
 		case REMOVE_ALL_FROM_CART: {
