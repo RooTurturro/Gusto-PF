@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
-var { json } = require('body-parser')
+const { json } = require('body-parser')
 const routes = require("./routing/index");
 
 
@@ -23,6 +23,15 @@ const authConfig = {
   secret: process.env.SECRET,
   /* idpLogout: true, */
 };
+
+const logTime = (req, res, next) => {
+  console.log(
+    `Date: ${new Date().toString()} - Method: ${req.method} - URL: ${req.url}`
+  );
+  next();
+};
+
+
 
 server.use(auth(authConfig));
 server.use(logger("dev"));
@@ -41,6 +50,7 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
+server.use(logTime);
 
 
 server.use("/", routes);
