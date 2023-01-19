@@ -4,7 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, priceOrder, filterProductsByCategories, aplhabeticalOrder } from "../../redux/actions";
 import { addToCart } from "../../redux/shoppingActions";
 import './Menu.css'
-import { Link, Element } from 'react-scroll'
+import ListGroup from 'react-bootstrap/ListGroup';
+import burger from '../../assets/nav.png'
+import agua from '../../assets/agua.png'
+import wrap from '../../assets/wrap.png'
+import postre from '../../assets/postre.png'
+import snack from '../../assets/snack.png'
+import papas from '../../assets/papas.png'
+import ensalada from '../../assets/ensalada.png'
+import Spinner from 'react-bootstrap/Spinner';
+
 
 
 
@@ -42,249 +51,66 @@ const Menu = () => {
   function handleFilterProductsByCategories(e) {
     e.preventDefault(e);
     dispatch(filterProductsByCategories(e.target.value));
-    setOrder(`Ordenado ${e.target.value}`)
+
   }
 
 
   return (
     <div className='menu-body'>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <ul class="nav justify-content-center navBar2" >
-          <li class="nav-item-category">
-            <Link class="nav-link-category" to="hamburguesas" smooth={true} duration={200}  >
-              <button type="button" class="btn btn-outline-danger">
-                Hamburguesas
-              </button>
-            </Link>
-          </li>
-          <li class="nav-item-category">
-            <Link class="nav-link-category " to="ensaladas" smooth={true} duration={200} >
-              <button type="button" class="btn btn-outline-danger">
-                Ensaladas
-              </button>
-            </Link>
-          </li>
-          <li class="nav-item-category">
-            <Link class="nav-link-category " to="postres" smooth={true} duration={200}  >
-              <button type="button" class="btn btn-outline-danger">
-                Postres
-              </button>
-            </Link>
-          </li>
-          <li class="nav-item-category">
-            <Link class="nav-link-category" to="papas" smooth={true} duration={200}  >
-              <button type="button" class="btn btn-outline-danger">
-                Papas
-              </button>
-            </Link>
-          </li>
-          <li class="nav-item-category">
-            <Link class="nav-link-category " to="bebidas" smooth={true} duration={200}  >
-              <button type="button" class="btn btn-outline-danger">
-                Bebidas
-              </button>
-            </Link>
-          </li>
-          <li class="nav-item-category">
-            <Link class="nav-link-category " to="snacks" smooth={true} duration={200} >
-              <button type="button" class="btn btn-outline-danger">
-                Snacks
-              </button>
-            </Link>
-          </li>
-          <li class="nav-item-category" >
-            <Link class="nav-link-category " to="wrap" smooth={true} duration={200}  >
-              <button type="button" class="btn btn-outline-danger">
-                Wraps
-              </button>
-            </Link>
-          </li>
-        </ul>
-
-        {/* <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <div >
-            <select className="form-select" onChange={e => handleOrderByName(e)}>
-              <option disabled selected defaultValue='default'>Alfabetico</option>
-              <option value='A-Z'>A-Z</option>
-              <option value='Z-A'>Z-A</option>
-            </select>
-          </div>
-          <div>
-            <select className="form-select" aria-label="Default select example" onChange={(e) => handlePriceOrder(e)}>
-              <option disabled selected defaultValue='default'>Precio</option>
-              <option value='asc'>Menor</option>
-              <option value='desc'>Mayor</option>
-            </select>
-          </div>
-          <button type="button" className="btn btn-dark" onClick={(e) => { handleClick(e) }}>Limpiar</button>
-        </div> */}
-        {/* <div>
-          <select className="form-select" aria-label="Default select example" onChange={e => handleFilterProductsByCategories(e)}>
-            <option disabled selected value='All'>Categoria</option>
-            <option value='Hamburguesa'>Hamburguesa</option>
-            <option value='Wrap'>Wrap</option>
-            <option value='Postre'>Postre</option>
-            <option value='Bebida'>Bebida</option>
+      <div className="navContainer">
+        <ListGroup className='listGroup' onClick={e => handleFilterProductsByCategories(e)}>
+          <ListGroup.Item className="listGroupItemHead">
+            
+            <option value='All'>Todos los productos</option>
+          </ListGroup.Item >
+          <ListGroup.Item className="listGroupItem">
+            <img src={burger} alt='not found' />
+            <option value='Hamburguesa'>Hamburguesas</option>
+          </ListGroup.Item >
+          <ListGroup.Item className="listGroupItem">
+            <img src={agua} alt='not found' />
+            <option value='Bebida'>Bebidas</option>
+          </ListGroup.Item>
+          <ListGroup.Item className="listGroupItem">
+            <img src={wrap} alt='not found' />
+            <option value='Wrap'>Wraps</option>
+          </ListGroup.Item>
+          <ListGroup.Item className="listGroupItem">
+            <img src={postre} alt='not found' />
+            <option value='Postre'>Postres</option>
+          </ListGroup.Item>
+          <ListGroup.Item className="listGroupItem">
+            <img src={snack} alt='not found' />
+            <option value='Snack'>Snacks</option>
+          </ListGroup.Item>
+          <ListGroup.Item className="listGroupItem">
+            <img src={papas} alt='not found' />
             <option value='Papas'>Papas</option>
-            <option value='Snack'>Snack</option>
-            <option value='Ensalada'>Ensalada</option>
-          </select>
-        </div> */}
-
+          </ListGroup.Item>
+          <ListGroup.Item className="listGroupItem">
+            <img src={ensalada} alt='not found' />
+            <option value='Ensalada'>Ensaladas</option>
+          </ListGroup.Item>
+        </ListGroup>
       </div>
-      <Element id='hamburguesas'>
-        <h3 style={{ marginLeft: '50px', marginTop: '50px' }}>Hamburguesas</h3>
-      </Element>
       <div className='cardContainer'>
         {products.length > 0 ?
-          products.map((el) => {
-            if (el.state && el.category === 'Hamburguesa') {
+          products.map((e) => {
+            if (e.state) {
               return (
                 <Card
-                  addToCart={() => dispatch(addToCart(el.id))}
-                  id={el.id}
-                  key={el.id}
-                  name={el.name}
-                  price={el.price}
-                  image={el.image}
-                  category={el.category}
+                  addToCart={() => dispatch(addToCart(e.id))}
+                  id={e.id}
+                  key={e.id}
+                  name={e.name}
+                  price={e.price}
+                  image={e.image}
+                  category={e.category}
                 />
               )
             }
-          }) : <div>nada</div>
+          }) : <Spinner animation="border" variant="danger" />
         }
-      </div>
-      <Element id='ensaladas' style={{ marginLeft: '30px' }}>
-        <h3 style={{ marginLeft: '50px', marginTop: '50px' }}>Ensaladas</h3>
-      </Element>
-      <div className="cardContainer">
-        {products.length > 0 ?
-          products.map((el) => {
-            if (el.category === 'Ensalada') {
-              return (
-                <Card
-                  addToCart={() => dispatch(addToCart(el.id))}
-                  id={el.id}
-                  key={el.id}
-                  name={el.name}
-                  price={el.price}
-                  image={el.image}
-                  category={el.category}
-                />
-              )
-            }
-            return null
-          }) : null}
-      </div>
-      <Element id='postres' style={{ marginLeft: '30px' }}>
-        <h3 style={{ marginLeft: '50px', marginTop: '50px' }}>Postres</h3>
-      </Element>
-      <div className="cardContainer">
-
-        {products.length > 0 ?
-          products.map((el) => {
-            if (el.category === 'Postre') {
-              return (
-                <Card
-                  addToCart={() => dispatch(addToCart(el.id))}
-                  id={el.id}
-                  key={el.id}
-                  name={el.name}
-                  price={el.price}
-                  image={el.image}
-                  category={el.category}
-                />
-              )
-            }
-          }) : null}
-      </div>
-      <Element id='papas' style={{ marginLeft: '30px' }}>
-        <h3 style={{ marginLeft: '50px', marginTop: '50px' }}>Papas</h3>
-      </Element>
-      <div className="cardContainer">
-
-        {products.length > 0 ?
-          products.map((el) => {
-            if (el.category === 'Papas') {
-              return (
-                <Card
-                  addToCart={() => dispatch(addToCart(el.id))}
-                  id={el.id}
-                  key={el.id}
-                  name={el.name}
-                  price={el.price}
-                  image={el.image}
-                  category={el.category}
-                />
-              )
-            }
-          }) : null}
-      </div>
-      <Element id='snacks' style={{ marginLeft: '30px' }}>
-        <h3 style={{ marginLeft: '50px', marginTop: '50px' }}>Snacks</h3>
-      </Element>
-      <div className="cardContainer">
-
-        {products.length > 0 ?
-          products.map((el) => {
-            if (el.category === 'Snack') {
-              return (
-                <Card
-                  addToCart={() => dispatch(addToCart(el.id))}
-                  id={el.id}
-                  key={el.id}
-                  name={el.name}
-                  price={el.price}
-                  image={el.image}
-                  category={el.category}
-                />
-              )
-            }
-          }) : null}
-      </div>
-      <Element id='bebidas' style={{ marginLeft: '30px' }}>
-        <h3 style={{ marginLeft: '50px', marginTop: '50px' }}>Bebidas</h3>
-      </Element>
-      <div className="cardContainer">
-
-        {products.length > 0 ?
-          products.map((el) => {
-            if (el.category === 'Bebida') {
-              return (
-                <Card
-                  addToCart={() => dispatch(addToCart(el.id))}
-                  id={el.id}
-                  key={el.id}
-                  name={el.name}
-                  price={el.price}
-                  image={el.image}
-                  category={el.category}
-                />
-              )
-            }
-          }) : null}
-      </div>
-      <Element id='wrap' style={{ marginLeft: '30px' }}>
-        <h3 style={{ marginLeft: '50px', marginTop: '50px' }}>Wrap</h3>
-      </Element>
-      <div className="cardContainer">
-
-        {products.length > 0 ?
-          products.map((el) => {
-            if (el.category === 'Wrap') {
-              return (
-                <Card
-                  addToCart={() => dispatch(addToCart(el.id))}
-                  id={el.id}
-                  key={el.id}
-                  name={el.name}
-                  price={el.price}
-                  image={el.image}
-                  category={el.category}
-                />
-              )
-            }
-          }) : null}
       </div>
     </div >
 

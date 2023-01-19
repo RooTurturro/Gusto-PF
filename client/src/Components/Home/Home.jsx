@@ -31,54 +31,54 @@ const Home = () => {
 
 
 
-  const storageLogIn =  () => {
+  const storageLogIn = () => {
     window.localStorage.setItem('userPicture', user.picture);
     window.localStorage.setItem('userName', user.name);
     window.localStorage.setItem('userEmail', user.email);
     window.localStorage.setItem('isLogIn', 'Log In');
-  
+
   }
 
 
-const handleSelect = (selectedIndex, e) => {
-  setIndex(selectedIndex);
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
   };
 
 
   //-----Local Storage-----
 
-  if(isAuthenticated) {
-    
-      storageLogIn()
-      
+  if (isAuthenticated) {
 
-    };
+    storageLogIn()
 
-  
-    const picture = window.localStorage.getItem('userPicture')
-    const name = window.localStorage.getItem('userName')
-    const email = window.localStorage.getItem('userEmail')
-    const log = localStorage.getItem('isLogIn')
 
-    console.log(picture, name, email, log )
+  };
 
-    useEffect(()=>{
-      const timer = setTimeout(() => {
-        console.log('This will run after 1 second!')
-        dispatch(userLocalLogin({picture, name, email, log}))
-        dispatch(userLogin({name, email}))
-      }, 2000);
 
-      
-      return () => clearTimeout(timer);
-      
-    }, [dispatch])
-    
-    
+  const picture = window.localStorage.getItem('userPicture')
+  const name = window.localStorage.getItem('userName')
+  const email = window.localStorage.getItem('userEmail')
+  const log = localStorage.getItem('isLogIn')
+
+  console.log(picture, name, email, log)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log('This will run after 1 second!')
+      dispatch(userLocalLogin({ picture, name, email, log }))
+      dispatch(userLogin({ name, email }))
+    }, 2000);
+
+
+    return () => clearTimeout(timer);
+
+  }, [dispatch])
 
 
 
-return (
+
+
+  return (
     <div className={styles.container}>
       <Carousel activeIndex={index} onSelect={handleSelect} className={styles.carrucel}>
 
@@ -200,7 +200,7 @@ return (
 
 
 
-  
+
 }
 
 export default Home;
