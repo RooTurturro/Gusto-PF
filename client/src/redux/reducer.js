@@ -1,4 +1,4 @@
-import { FILTER_BY_CATEGORIES, GET_ALL_USERS, POST_PURCHASE, UPDATE_STATE } from "../redux/actions";
+import { FILTER_BY_CATEGORIES, GET_ALL_USERS, GET_PURCHASE_DETAIL, POST_PURCHASE, UPDATE_STATE } from "../redux/actions";
 import { LOADING } from "../redux/actions";
 import { DELETE_PRODUCTS } from "../redux/actions";
 import { GET_PRODUCTS_DETAIL } from "../redux/actions";
@@ -119,6 +119,12 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				loading: false,
 				productDetail: action.payload,
+			};
+		case GET_PURCHASE_DETAIL:
+			return {
+				...state,
+				loading: false,
+				newPurchase: action.payload,
 			};
 		case CREATE_PRODUCTS:
 			return {
