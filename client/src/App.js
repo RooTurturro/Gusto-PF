@@ -23,7 +23,10 @@ import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces"
 function App() {
 	return (
 		<div>
+			
 			<Nav />
+			
+			
 			<Routes>
 				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
 				<Route exact path="/" element={<Home />} />

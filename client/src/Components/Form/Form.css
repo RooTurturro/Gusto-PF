@@ -10,7 +10,9 @@
 
 
 .form-body{
-    background-color: #ef1939;
+    background-image: url('../../assets/hamburguesa7.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 

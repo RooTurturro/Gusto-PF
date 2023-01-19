@@ -2,7 +2,9 @@
  
  
  .container {
-    background-color: #ef1939;
+    background-image: url('../../assets/hamburguesa3.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
