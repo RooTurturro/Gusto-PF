@@ -86,10 +86,7 @@ const PediYa = () => {
 	console.log(usuario);
 
 	return (
-		<>
-			{/* {isAuthenticated ?
-				isAuthenticated && ( */}
-			<div>
+			
 				<div className="card-body">
 					<div>
 
@@ -109,17 +106,9 @@ const PediYa = () => {
 							</div>
 						</div>
 					</div >
-				{/* ) :
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-					<div>
-						Inicie sesion para utilizar el carrito!
-					</div>
-					<button onClick={() => loginWithRedirect()} type="button" className="btn btn-primary">
-						Iniciar Sesion
-					</button>
-				</div>
-			} */}
-		</>
+				</div >
+				
+		
 	);
 };
 
