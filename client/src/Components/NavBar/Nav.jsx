@@ -5,16 +5,24 @@ import './Nav.css'
 import { useSelector } from 'react-redux'
 import LogoutButton from '../Login/LogoutButton'
 import LoginButton from '../Login/LoginButton'
+import { useEffect } from 'react'
 
 
 export default function Nav() {
 
   const usuario = useSelector(state => state.user);
-  const picture = window.localStorage.getItem('userPicture')
-  const log = window.localStorage.getItem('isLogIn')
-
-  const cart = useSelector((state) => state.cart)
+  const cart = useSelector((state) => state.cart);
   console.log(cart)
+  
+    const picture = window.localStorage.getItem('userPicture')
+    const log = window.localStorage.getItem('isLogIn')
+    console.log(log + ' navbar log')
+    console.log(picture + ' navbar picture')
+
+  useEffect(()=>{
+    console.log('se relogueo la navBAR')
+  },[usuario])
+  
 
 
   return (

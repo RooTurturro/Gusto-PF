@@ -47,13 +47,10 @@ const Home = () => {
 
   //-----Local Storage-----
 
+
   if (isAuthenticated) {
-
     storageLogIn()
-
-
   };
-
 
   const picture = window.localStorage.getItem('userPicture')
   const name = window.localStorage.getItem('userName')
@@ -62,19 +59,19 @@ const Home = () => {
 
   console.log(picture, name, email, log)
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      console.log('This will run after 1 second!')
-      dispatch(userLocalLogin({ picture, name, email, log }))
-      dispatch(userLogin({ name, email }))
-    }, 2000);
-
-
-    return () => clearTimeout(timer);
-
-  }, [dispatch])
-
-
+  
+    useEffect(()=>{
+      
+      if(name && email){
+        dispatch(userLogin({name, email}))
+      }
+      if(name&&email&&picture&&log){
+        dispatch(userLocalLogin({picture, name, email, log}))
+      }
+      
+    }, [dispatch, log])
+    
+   
 
 
 
