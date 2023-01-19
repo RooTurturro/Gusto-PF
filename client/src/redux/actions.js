@@ -10,19 +10,27 @@ export const FILTER_BY_CATEGORIES = "FILTER_BY_CATEGORIES";
 export const LOADING = "LOADING";
 export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
 export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
-export const USER_UPDATE = "USER_UPDATE";
-export const USER_LOGIN = 'USER_LOGIN';
-export const USER_EDIT_PROFILE = 'USER_EDIT_PROFILE';
+
 export const ALPHABETICAL_ORDER = "ALPHABETICAL_ORDER";
 export const PRICE_ORDER = "PRICE_ORDER";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 export const RATING_PRODUCTS = "RATING_PRODUCTS";
 export const UPDATE_STATE = "UPDATE_STATE"
 export const EDIT_FORM = "EDIT_FORM";
-export const GET_ALL_PURCHASES = "GET_PURCHASE"
-export const CLEAN_DETAIL = 'CLEAN_DETAIL'
+export const GET_ALL_PURCHASES = "GET_PURCHASE";
+export const CLEAN_DETAIL = 'CLEAN_DETAIL';
+export const POST_PURCHASE = 'POST_PURCHASE';
 
-export const POST_PURCHASE = 'POST_PURCHASE'
+
+//--------------User Actions-----------
+export const USER_LOCAL_LOGIN = 'USER_LOCAL_LOGIN';
+export const USER_LOCAL_LOGOUT = 'USER_LOCAL_LOGIN';
+export const USER_PROFILE = 'USER_PROFILE';
+export const USER_UPDATE = "USER_UPDATE";
+export const USER_LOGIN = 'USER_LOGIN';
+export const USER_EDIT_PROFILE = 'USER_EDIT_PROFILE';
+
+
 
 // export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 
@@ -200,13 +208,24 @@ export const aplhabeticalOrder = (payload) => {
 
 //-------------Actions Usuario -------------- Auth0
 
-export const userEditProfile = () => {
+export const userLocalLogin = (payload) => {
 	return async function (dispatch) {
-		const json = await axios.put("http://localhost:3001/users");
-		return dispatch({ type: USER_EDIT_PROFILE, payload: json.data });
+		return dispatch({ type: USER_LOCAL_LOGIN, payload: payload });
 	};
 };
 
+export const userLocalLogout = () => {
+	return async function (dispatch) {
+		return dispatch({ type: USER_LOCAL_LOGOUT });
+	};
+};
+
+export const userProfile = (payload) => {
+	return async function (dispatch) {
+		const json = await axios.get("http://localhost:3001/users/email", payload);
+		return dispatch({ type: USER_PROFILE, payload: json.data });
+	};
+};
 
 
 export const userLogin = (payload) => {

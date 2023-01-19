@@ -15,6 +15,9 @@ import { PRICE_ORDER } from "../redux/actions";
 import { ALPHABETICAL_ORDER } from "../redux/actions";
 import { EDIT_FORM } from "../redux/actions"
 import { CLEAN_DETAIL } from '../redux/actions'
+import { USER_LOCAL_LOGIN } from '../redux/actions'
+import { USER_LOCAL_LOGOUT } from '../redux/actions'
+import { USER_PROFILE } from '../redux/actions'
 import {
 	ADD_TO_CART,
 	CLEAR_CART,
@@ -44,8 +47,13 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 			};
-
+//-------------------Users Reducers--------------
 		case USER_UPDATE:
+			return {
+				...state,
+				user: action.payload
+			}
+		case USER_PROFILE:
 			return {
 				...state,
 				user: action.payload
@@ -56,9 +64,20 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 			}
 		}
-		case USER_LOGIN:
+		case USER_LOCAL_LOGOUT:
 			return {
-				...state
+				...state, user: {}, 
+			}
+
+		case USER_LOCAL_LOGIN:
+				
+			return {
+				...state, user: action.payload,
+			}
+		case USER_LOGIN:
+				
+			return {
+				...state,
 			}
 		case CLEAN_DETAIL:
 			return {

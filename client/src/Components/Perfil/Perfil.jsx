@@ -1,123 +1,99 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 // import { getUserLog, login } from "../redux/actions";
-import { useAuth0 } from "@auth0/auth0-react";
-import LoginButton from '../Login/LoginButton';
+// import { useAuth0 } from "@auth0/auth0-react";
+// import LoginButton from '../Login/LoginButton';
 import LogoutButton from '../Login/LogoutButton';
-import Loading from '../Loading/Loading';
 import styles from './Perfil.module.css'
 import { Link } from 'react-router-dom';
-import { userLogin } from '../../redux/actions';
+import { userProfile } from '../../redux/actions';
+
 
 
 const Perfil = () => {
 
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    
     const dispatch = useDispatch();
+
+    
+    
+    const email = window.localStorage.getItem('userEmail')
+    console.log ('este es el email qeu se manda     ' + email)
+    const picture = window.localStorage.getItem('userPicture')
+    console.log ('este es el email qeu se manda     ' + picture)
+
+
+    useEffect(()=>{
+
+       
+        dispatch(userProfile(email))
+
+    }, [dispatch])
+   
     const usuario = useSelector((state) => state.user);
 
-    if (isAuthenticated) {
-
-        usuario.name = user.name;
-        usuario.email = user.email;
-
-    }
-
-
-    useEffect(() => {
-
-        if (isLoading) {
-
-            return <Loading />;
-
-        } else if (isAuthenticated) {
-
-
-            dispatch(userLogin({ name: user.name, email: user.email }))
-
-        }
-
-    }, [dispatch]);
+    console.log('Estado Global ' + usuario)
 
 
 
 
-    return (<div>
+    return (
+        
 
+                <div>
+                    <div className={styles.container}>
+                        <div className={styles.bloque}>
+                            <div className={styles.left}>
 
-        {isAuthenticated ?
-            isAuthenticated && (
-
-                <div className={styles.container}>
-                    <div className={styles.bloque}>
-                        <div className={styles.left}>
-                            <div>
-                                <img src={user.picture} className={styles.imagen} alt="imagen de usuario" />
-                            </div>
-                            <div>
-                                <h3>{user.name}</h3>
-                            </div>
-
-                        </div>
-
-                        <div className={styles.right}>
-                            <div className={styles.info}>
                                 <div>
-                                    <h3 className={styles.titulo}>Correo</h3>
-                                    <p className={styles.text}>{user.email}</p>
-
+                                    <img src={picture} className={styles.imagen} alt="imagen de usuario" />
                                 </div>
 
                                 <div>
-                                    <h3 className={styles.titulo}>Teléfono</h3>
-                                    <p className={styles.text}>{usuario.phone}</p>
-
-                                </div>
-                                <div>
-                                    <h3 className={styles.titulo}>Dirección</h3>
-                                    <p className={styles.text}>{usuario.address}</p>
+                                    { usuario.length > 0 ? <h3 className={styles.text}>{usuario[0].name}</h3> : <p>Cargando Datos</p> }
                                 </div>
 
                             </div>
 
+                            <div className={styles.right}>
+                                <div className={styles.info}>
 
-                            <div className={styles.botones}>
+                                    <div>
 
-                                <LogoutButton />
-                                {usuario.isAdmin ? usuario.isAdmin && (
-                                    <Link to={'/historial'}>
+                                        <h3 className={styles.titulo}>Correo</h3>
+                                        { usuario.length > 0 ? <p className={styles.text}>{usuario[0].email}</p> : <p>Cargando Datos</p> }
+                                        
+                                    </div>
 
+                                    <div>
+                                        <h3 className={styles.titulo}>Teléfono</h3>
+                                        { usuario.length > 0 ? <p className={styles.text}>{usuario[0].phone}</p> : <p>Cargando Datos</p> }
+
+                                    </div>
+
+                                    <div>
+                                        <h3 className={styles.titulo}>Dirección</h3>
+                                        { usuario.length > 0 ? <p className={styles.text}>{usuario[0].addres}</p> : <p>Cargando Datos</p> }
+                                    </div>
+
+                                </div>
+
+
+                                <div className={styles.botones}>
+                                   
+
+                                    <Link to={'/editarperfilusuario'}>
                                         <button className={styles.button}>
-                                            <span>Historial Compras</span>
+                                            <span>Editar Perfil</span>
                                         </button>
                                     </Link>
-                                ) : null}
 
-                                <Link to={'/editarperfilusuario'}>
-                                    <button className={styles.button}>
-                                        <span>Editar Perfil</span>
-                                    </button>
-                                </Link>
-
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-
-
-            ) :
-
-            <div className={styles.containerLogin}>
-
-
-                <LoginButton />
-
-
-            </div>
-
-        }
-
-    </div>
 
     )
 }
