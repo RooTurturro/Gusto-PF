@@ -5,17 +5,13 @@ import axios from "axios";
 import FinalCheckOut from "./FinalCheckOut";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
-
-
 const PediYa = () => {
-
-	const { isAuthenticated, loginWithRedirect } = useAuth0()
+	const { isAuthenticated, loginWithRedirect } = useAuth0();
 	const dispatch = useDispatch();
 
-	const cart = useSelector((state) => state.cart)
-	const usuario = useSelector(state => state.user);
-	
+	const cart = useSelector((state) => state.cart);
+	const usuario = useSelector((state) => state.user);
+
 	const Swal = require("sweetalert2");
 
 	const totalPrice = () => {
@@ -23,14 +19,11 @@ const PediYa = () => {
 		return cart.reduce((total, item) => total + item.price, 0);
 	};
 
-
-
-
 	const handlePayment = () => {
-		if(!usuario.address){
-			Swal.fire('Completa los datos para continuar la compra')
-			return 
-		} 
+		if (!usuario.address) {
+			Swal.fire("Completa los datos para continuar la compra");
+			return;
+		}
 
 		const detail = {
 			name: usuario.name,
@@ -40,14 +33,14 @@ const PediYa = () => {
 			specification: usuario.specification,
 			total: totalPrice(),
 
-			state: 'en proceso',
+			state: "en proceso",
 
-			products: [cart.map((el) => {
-				return (
-					el.name
-				)
-			})],
-			takeAway: true
+			products: [
+				cart.map((el) => {
+					return el.name;
+				}),
+			],
+			takeAway: true,
 		};
 
 		/*const to = detail.email;
@@ -58,38 +51,43 @@ const PediYa = () => {
 		};
 		sendEmail();*/
 		dispatch(getPaymentUrl(detail));
-		dispatch(postPurchase(detail))
-
-
+		dispatch(postPurchase(detail));
 	};
 
-	console.log(usuario)
+	console.log(usuario);
 
 	return (
 		<>
 			{/* {isAuthenticated ?
 				isAuthenticated && ( */}
+			<div>
+				<div className="card-body">
 					<div>
-						<div className="card-body">
-							<div>
-								<ul className="list-group list-group-flush">
-									<li
-										className="list-group-item border-0 px-0 mb-3">
-										<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-											<strong>Monto total</strong>
-											<span><strong>${totalPrice()}</strong></span>
-										</div>
-									</li>
-								</ul>
-								<button onClick={handlePayment} type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style={{alignContent:'flex-start',color: '#212529'}} >
-								Finalizar compra!
- 								<FinalCheckOut/>
-								</button>
-								
-							</div>
-						</div>
-					</div >
-				{/* ) :
+						<ul className="list-group list-group-flush">
+							<li className="list-group-item border-0 px-0 mb-3">
+								<div style={{ display: "flex", justifyContent: "flex-end" }}>
+									<strong>Monto total</strong>
+									<span>
+										<strong>${totalPrice()}</strong>
+									</span>
+								</div>
+							</li>
+						</ul>
+						<button
+							onClick={handlePayment}
+							type="button"
+							className="btn btn-primary"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop"
+							style={{ alignContent: "flex-start", color: "#212529" }}
+						>
+							Finalizar compra!
+							<FinalCheckOut />
+						</button>
+					</div>
+				</div>
+			</div>
+			{/* ) :
 
 				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 					<div>

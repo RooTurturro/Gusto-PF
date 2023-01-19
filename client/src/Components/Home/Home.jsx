@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import fatty from '../../assets/fatty.jpg'
-import hamburguesa5 from '../../assets/hamburguesa5.png'
-import hamburguesa6 from '../../assets/hamburguesa6.png'
-import carrusel1 from '../../assets/carrusel1.jpg'
-import carrusel2 from '../../assets/carrusel2.png'
-import sucursal3 from '../../assets/sucursal3.jpg'
-import logo from '../../assets/gustoPng.png'
+import React, { useEffect, useState } from "react";
+import fatty from "../../assets/fatty.jpg";
+import hamburguesa5 from "../../assets/hamburguesa5.png";
+import hamburguesa6 from "../../assets/hamburguesa6.png";
+import carrusel1 from "../../assets/carrusel1.jpg";
+import carrusel2 from "../../assets/carrusel2.png";
+import sucursal3 from "../../assets/sucursal3.jpg";
+import logo from "../../assets/gustoPng.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Carousel from 'react-bootstrap/Carousel';
-import styles from './Home.module.css';
-import { Link } from 'react-router-dom'
+import Carousel from "react-bootstrap/Carousel";
+import styles from "./Home.module.css";
+import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch, useSelector } from 'react-redux';
-import { userLocalLogin, userLogin } from '../../redux/actions';
-
+import { useDispatch, useSelector } from "react-redux";
+import { userLocalLogin, userLogin } from "../../redux/actions";
 
 // import { userLogin } from '../../redux/actions';
 
@@ -21,7 +20,6 @@ import { userLocalLogin, userLogin } from '../../redux/actions';
 // import Loading from '../Loading/Loading';
 
 const Home = () => {
-
 
   const [index, setIndex] = useState(0);
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -206,3 +204,4 @@ return (
 }
 
 export default Home;
+
