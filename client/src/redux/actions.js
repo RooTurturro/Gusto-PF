@@ -22,6 +22,7 @@ export const UPDATE_STATE = "UPDATE_STATE"
 export const UPDATE_SPECIFICATION = "UPDATE_SPECIFICATION"
 export const EDIT_FORM = "EDIT_FORM";
 export const GET_ALL_PURCHASES = "GET_PURCHASE"
+export const GET_PURCHASE_DETAIL = "GET_PURCHASE_DETAIL"
 export const RESET_STATE_PURCHASE = 'RESET_STATE_PURCHASE'
 export const CLEAN_DETAIL = 'CLEAN_DETAIL'
 
@@ -59,6 +60,22 @@ export const getAllPurchases = () => {
 		}
 	}
 }
+
+export const getPurchaseDetail = (id) => {
+	return async function (dispatch) {
+		try {
+			dispatch(loading());
+			let response = await axios.get(`http://localhost:3001/purchase/${id}`);
+			return dispatch({
+				type: GET_PURCHASE_DETAIL,
+				payload: response.data,
+			});
+		} catch (error) {
+			return dispatch({ type: GET_PURCHASE_DETAIL, payload: {} });
+		}
+	};
+};
+
 
 export const getAllUsers = () => {
 	return async function (dispatch) {
@@ -228,7 +245,7 @@ export const updatePurchaseState = (id, payload) => {
 export const updateSpecification = (id, payload) => {
 	return async () => {
 		try {
-			await axios.put(`http://localhost:3001/purchase/specification/${id}`, payload)
+			await axios.put(`http://localhost:3001/purchase/specifications/${id}`, payload)
 		} catch (error) {
 			console.log(error)
 		}

@@ -2,19 +2,68 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPaymentUrl, postPurchase } from "../../redux/actions";
 import axios from "axios";
-import FinalCheckOut from "./FinalCheckOut";
+
+import { useState } from "react";
+import Modal from "../Modal/Modal";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 
 
 
 
 const PediYa = () => {
 
+	const useModal = (initialValue = false) => {
+		const [isOpen, setIsOpen] = useState(initialValue);
+	  
+		const openModal = () =>{
+	
+			setIsOpen(true);
+	
+					const detail = {
+				name: usuario.name,
+				lastname: usuario.lastname,
+				address: usuario.address,
+				email: usuario.email,
+				specification: usuario.specification,
+				total: totalPrice(),
+	
+				state: 'en proceso',
+	
+				products: [cart.map((el) => {
+					return (
+						el.name
+					)
+				})],
+				takeAway: true
+			};
+	
+			/*const to = detail.email;
+			const name = detail.name;
+			const compras = detail;
+			const sendEmail = async () => {
+				await axios.post("http://localhost:3001/api/mail/checkout", { to, name , compras})
+			};
+			sendEmail();*/
+			dispatch(getPaymentUrl(detail));
+			dispatch(postPurchase(detail))
+	
+		} 
+	  
+		const closeModal = () => setIsOpen(false);
+	  
+		return [isOpen, openModal, closeModal];
+	  };
+
+	const [isOpenModal, openModal, closeModal] = useModal(false);
+
 	const { isAuthenticated, loginWithRedirect } = useAuth0()
 	const dispatch = useDispatch();
 
 	const cart = useSelector((state) => state.cart)
 	const usuario = useSelector(state => state.user);
+
+	
 	
 	const Swal = require("sweetalert2");
 
@@ -29,36 +78,14 @@ const PediYa = () => {
 	const handlePayment = () => {
 		if(!usuario.address){
 			Swal.fire('Completa los datos para continuar la compra')
-			return 
+			.then((result) => {
+				if (result.value) {
+					window.location.href='http://localhost:3000/editarperfilusuario';
+				}
+			})
+			
 		} 
 
-		const detail = {
-			name: usuario.name,
-			lastname: usuario.lastname,
-			address: usuario.address,
-			email: usuario.email,
-			specification: usuario.specification,
-			total: totalPrice(),
-
-			state: 'en proceso',
-
-			products: [cart.map((el) => {
-				return (
-					el.name
-				)
-			})],
-			takeAway: true
-		};
-
-		/*const to = detail.email;
-		const name = detail.name;
-		const compras = detail;
-		const sendEmail = async () => {
-			await axios.post("http://localhost:3001/api/mail/checkout", { to, name , compras})
-		};
-		sendEmail();*/
-		dispatch(getPaymentUrl(detail));
-		dispatch(postPurchase(detail))
 
 
 	};
@@ -81,11 +108,8 @@ const PediYa = () => {
 										</div>
 									</li>
 								</ul>
-								<button onClick={handlePayment} type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style={{alignContent:'flex-start',color: '#212529'}} >
-								Finalizar compra!
- 								<FinalCheckOut/>
-								</button>
-								
+								<button type="button" className="btn btn-primary" style={{ alignContent: "flex-start", color: "#212529" }} onClick={usuario.address ? openModal : handlePayment}>Finalizar compra!</button>
+									<Modal isOpen={isOpenModal} closeModal={closeModal}/>								
 							</div>
 						</div>
 					</div >

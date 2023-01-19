@@ -67,7 +67,7 @@ purchaseRouter.put("/specifications/:id", async (req,res)=>{
         res.status(200).send("Estado modificado con exito");
         } 
         catch (error) {
-        console.log("entre al error del put", error);
+        console.log( error);
     }
 });
 module.exports = purchaseRouter
