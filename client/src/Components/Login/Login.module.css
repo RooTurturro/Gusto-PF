@@ -2,8 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 3rem;
-    width: 10rem;
+    
 }
 
 
@@ -11,7 +10,7 @@
     background-color: rgb(#0c1a01);
     border: none;
     color: rgb(0, 0, 0);
-    padding: 1rem;
+    padding: 0.6rem;
     text-align: center;
     text-decoration: none;
     display: flex;

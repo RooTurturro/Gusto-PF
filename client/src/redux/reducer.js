@@ -60,7 +60,7 @@ const rootReducer = (state = initialState, action) => {
 		case USER_PROFILE:
 			return {
 				...state,
-				user: action.payload
+				user: action.payload,
 			}
 
 		case EDIT_FORM: {

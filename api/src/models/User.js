@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             allowNull: false,
-            primaryKey: true,
+            
         },
         name: {
             type: DataTypes.STRING,
@@ -20,6 +20,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
             unique: true,
+            primaryKey: true,
         },
         address: {
             type: DataTypes.STRING,
