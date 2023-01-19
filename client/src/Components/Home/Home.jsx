@@ -50,11 +50,9 @@ const handleSelect = (selectedIndex, e) => {
   if(isAuthenticated) {
     
       storageLogIn()
-      
 
     };
 
-  
     const picture = window.localStorage.getItem('userPicture')
     const name = window.localStorage.getItem('userName')
     const email = window.localStorage.getItem('userEmail')
@@ -63,16 +61,15 @@ const handleSelect = (selectedIndex, e) => {
     console.log(picture, name, email, log )
 
     useEffect(()=>{
-      const timer = setTimeout(() => {
-        console.log('This will run after 1 second!')
-        dispatch(userLocalLogin({picture, name, email, log}))
+      
+      if(name && email){
         dispatch(userLogin({name, email}))
-      }, 2000);
-
+      }
+      if(name&&email&&picture&&log){
+        dispatch(userLocalLogin({picture, name, email, log}))
+      }
       
-      return () => clearTimeout(timer);
-      
-    }, [dispatch])
+    }, [dispatch, log])
     
     
 
