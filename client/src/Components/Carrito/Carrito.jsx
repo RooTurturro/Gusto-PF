@@ -33,6 +33,7 @@ const Carrito = () => {
                                                     price={item.price}
                                                     quantity={item.quantity}
                                                     description={item.description}
+                                                    total={item.quantity * item.price}
                                                     image={item.image}
                                                     delOneFromCart={() => dispatch(delFromCart(item.id))}
                                                     delAllFromCart={() => dispatch(delFromCart(item.id, true))}

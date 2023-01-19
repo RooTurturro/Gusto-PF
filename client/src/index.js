@@ -6,10 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import store from './redux/store'
 import { Provider } from 'react-redux';
-//----------------Auth0 Config----------------------------
+import axios from 'axios'
+import dotenv from 'dotenv'
 import { Auth0Provider } from '@auth0/auth0-react'
+//----------------Auth0 Config----------------------------
 const domain = 'dev-18zov1enqjrx8hn7.us.auth0.com';
 const clientId = 'LqqBa9zF6gjJ2lwcrNYsAtYpikXifzQZ';
+dotenv.config()
+
+axios.defaults.baseURL = process.env.REACT_APP_API || 'http://localhost:3001'
 
 ReactDOM.render(
 
@@ -18,9 +23,9 @@ ReactDOM.render(
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </Provider>
-  </Auth0Provider>,
-
+      </Provider>
+    </Auth0Provider>
+  ,
   document.getElementById('root')
 );
 // ReactDOM.render(

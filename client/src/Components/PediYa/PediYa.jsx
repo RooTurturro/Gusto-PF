@@ -8,10 +8,8 @@ import Modal from "../Modal/Modal";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 
-
-
-
 const PediYa = () => {
+
 
 	const useModal = (initialValue = false) => {
 		const [isOpen, setIsOpen] = useState(initialValue);
@@ -72,10 +70,8 @@ const PediYa = () => {
 		return cart.reduce((total, item) => total + item.price, 0);
 	};
 
-
-
-
 	const handlePayment = () => {
+
 		if(!usuario.address){
 			Swal.fire('Completa los datos para continuar la compra')
 			.then((result) => {
@@ -85,18 +81,18 @@ const PediYa = () => {
 			})
 			
 		} 
-
-
-
 	};
 
-	console.log(usuario)
+	console.log(usuario);
 
 	return (
 		<>
 			{/* {isAuthenticated ?
 				isAuthenticated && ( */}
+			<div>
+				<div className="card-body">
 					<div>
+
 						<div className="card-body">
 							<div>
 								<ul className="list-group list-group-flush">
@@ -114,7 +110,6 @@ const PediYa = () => {
 						</div>
 					</div >
 				{/* ) :
-
 				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 					<div>
 						Inicie sesion para utilizar el carrito!

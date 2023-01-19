@@ -15,7 +15,11 @@ import { PRICE_ORDER } from "../redux/actions";
 import { ALPHABETICAL_ORDER } from "../redux/actions";
 import { EDIT_FORM } from "../redux/actions"
 import { CLEAN_DETAIL } from '../redux/actions'
+import { USER_LOCAL_LOGIN } from '../redux/actions'
+import { USER_LOCAL_LOGOUT } from '../redux/actions'
+import { USER_PROFILE } from '../redux/actions'
 import { RESET_STATE_PURCHASE } from '../redux/actions'
+
 import {
 	ADD_TO_CART,
 	CLEAR_CART,
@@ -37,7 +41,7 @@ const initialState = {
 	cart: JSON.parse(window.localStorage.getItem('carrito')) || [],
 	rating: undefined,
 	purchases: [],
-	newPurchase:[]
+	newPurchase: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -47,11 +51,16 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 			};
-
+//-------------------Users Reducers--------------
 		case USER_UPDATE:
 			return {
 				...state,
 				user: action.payload
+			}
+		case USER_PROFILE:
+			return {
+				...state,
+				user: action.payload,
 			}
 
 		case EDIT_FORM: {
@@ -59,9 +68,20 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 			}
 		}
-		case USER_LOGIN:
+		case USER_LOCAL_LOGOUT:
 			return {
-				...state
+				...state, user: {}, 
+			}
+
+		case USER_LOCAL_LOGIN:
+				
+			return {
+				...state, user: action.payload,
+			}
+		case USER_LOGIN:
+				
+			return {
+				...state,
 			}
 		case CLEAN_DETAIL:
 			return {
@@ -227,7 +247,7 @@ const rootReducer = (state = initialState, action) => {
 					...state,
 					cart: state.cart.map((item) =>
 						item.id === newItem.id
-							? { ...item, quantity: item.quantity + 1 }
+							? { ...item, quantity: item.quantity + 1}
 							: item
 					),
 				}
@@ -240,9 +260,15 @@ const rootReducer = (state = initialState, action) => {
 		}
 
 		case REMOVE_ALL_FROM_CART: {
+			return {
+				...state,
+				cart: state.cart.filter((item) => item.id !== action.payload),
+			};
+		}
+		case REMOVE_ONE_FROM_CART: {
 			let itemToDelete = state.cart.find((item) => item.id === action.payload);
 
-			return itemToDelete > 1
+			return itemToDelete.quantity > 1
 				? {
 					...state,
 					cart: state.cart.map((item) =>
@@ -256,17 +282,10 @@ const rootReducer = (state = initialState, action) => {
 					cart: state.cart.filter((item) => item.id !== action.payload),
 				};
 		}
-		case REMOVE_ONE_FROM_CART: {
-			return {
-				...state,
-				cart: state.cart.filter((item) => item.id !== action.payload),
-			};
-		}
 		case CLEAR_CART: {
 			return initialState;
 		}
 		case RESET_STATE_PURCHASE:
-
 			const { id, state: newState } = action.payload;
 			return {
 				...state,

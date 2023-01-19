@@ -9,7 +9,7 @@
     background-color: rgb(#b71c1c);
     border: none;
     color: rgb(0, 0, 0);
-    padding: 1rem;
+    padding: 0.6rem;
     text-align: center;
     text-decoration: none;
     display: flex;
@@ -18,6 +18,6 @@
 }
 
 .button:hover{
-	background-color: rgb(168, 107, 15);
+	background-color: rgb(221, 23, 23);
     color: aliceblue;
 }

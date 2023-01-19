@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CartItem = ({ id, name, price, image, description, quantity, delOneFromCart }) => {
+const CartItem = ({ id, name, price, image, description,total, quantity, delOneFromCart }) => {
     return (
         <div class=" mt-3 row">
             < hr />
@@ -24,7 +24,11 @@ const CartItem = ({ id, name, price, image, description, quantity, delOneFromCar
             </div>
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <p class="text-start text-md-center">
-                    Precio del producto <strong>${price}</strong>
+                    <h5>
+                        Cantidad: {quantity}
+                        <hr />
+                        ${price * quantity}
+                    </h5>
                 </p>
             </div>
         </div>
