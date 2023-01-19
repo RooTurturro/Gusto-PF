@@ -16,14 +16,15 @@ const ProfileUserForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const usuario = useSelector((state) => state.user);
-
+    const email = window.localStorage.getItem('userEmail')
+    console.log(email)
 
     const Swal = require('sweetalert2')
 
 
     const [inputs, setInputs] = useState({
         name: usuario.name,
-        email: usuario.email,
+        email: email,
         phone: "",
         address: "",
     });
@@ -72,6 +73,7 @@ const ProfileUserForm = () => {
                         <div class="form-items">
                             <h2>Editar Perfil</h2>
                             <form class="requires-validation formDa">
+                                <p>Para modificar el correo electronico debe iniciar sesion con una nueva cuenta</p>
                                 <div class="col-md-12">
                                     <input
                                         class="form-control"
@@ -82,17 +84,7 @@ const ProfileUserForm = () => {
                                         placeholder="Nombre Completo"
                                         required />
                                 </div>
-                                <div class="col-md-12">
-                                    <input
-                                        class="form-control"
-                                        type="text"
-                                        name="email"
-                                        onChange={handleInputs}
-                                        value={inputs.email}
-                                        placeholder={usuario[0].email}
-                                        required
-                                    />
-                                </div>
+                                
                                 <div class="col-md-12">
                                     <input
                                         class="form-control"
