@@ -17,7 +17,7 @@ class PaymentService {
 			back_urls: {
 				failure: "http://localhost:3001/paymentFailure",
 				pending: "http://localhost:3001/paymentPending",
-				success: "http://localhost:3001/paymentSuccess",
+				success: "http://localhost:3001/checkout",
 			},
 		};
 
