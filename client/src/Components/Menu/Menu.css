@@ -79,9 +79,11 @@
 
 .listGroup {
     cursor: pointer;
+
     width: 300px;
 }
 
 .listGroupItem:hover{
     background-color: crimson;
 }
+

@@ -15,35 +15,27 @@ const CheckOutSucces = () => {
   const dispatch = useDispatch()
   const newPurchase = useSelector((state) => state.newPurchase)
   const purchase = useSelector((state) => state.purchases)
-  const user = useSelector((state) => state.user)
   const cart = useSelector((state) => state.cart)
 
+  const name = window.localStorage.getItem('userName')
+  const to = window.localStorage.getItem('userEmail')
 
-  const to = "emilianore997@gmail.com ";
-  const name = "emiliano";
-  const compra = [cart.map((el) => {
-    return (
-      el.name
-    )
-  })];
 
   const sendEmail = async () => {
     await axios.post("http://localhost:3001/api/mail/checkout", { to, name })
   };
   sendEmail();
-
+  
   /*useEffect(() => {
     sendEmail()
   })*/
   sendEmail()
-  console.log(newPurchase)
-  console.log(purchase)
-  console.log(user)
-
+ console.log(name)
+ console.log(to)
   return (
     <>
-      {purchase.map((e) => (
-        <div class="container">
+         <div class="container">
+          <h2>SU COMPRA A SIDO ESITOSA XD</h2>
           <div class="row">
             <div class="col-lg-12">
               <div class="main-box clearfix">
@@ -63,29 +55,29 @@ const CheckOutSucces = () => {
                     <tbody>
                       <tr>
                         <td class="text-center" >
-                          {e.name}
+                          {name}
                         </td>
 
                         <td class="text-center">
-                          {e.address}
+                          {newPurchase.address}
                         </td>
                         <td class="text-center">
-                          {e.products}
+                          {newPurchase.products}
                         </td>
                         <td class="text-center">
-                          {e.specification}
+                          {newPurchase.specification}
                         </td>
                         <td class="text-center">
-                          {e.total}
+                          {newPurchase.total}
                         </td>
                         <td class="text-center">
                           Delivery
                         </td>
                         <td class="text-center">
-                          {e.state}
+                          {newPurchase.state}
                         </td>
                         <td class="text-center">
-                          {e.state === 'En proceso'}
+                          {newPurchase.state === 'En proceso'}
                         </td>
                       </tr>
                     </tbody>
@@ -95,7 +87,9 @@ const CheckOutSucces = () => {
             </div>
           </div>
         </div>
+
       ))}
+
       <Link to="/miscompras">
         <button>Mis compras</button>
       </Link>

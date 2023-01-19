@@ -60,7 +60,6 @@ const Menu = () => {
       <div className="navContainer">
         <ListGroup className='listGroup' onClick={e => handleFilterProductsByCategories(e)}>
           <ListGroup.Item className="listGroupItemHead">
-            
             <option value='All'>Todos los productos</option>
           </ListGroup.Item >
           <ListGroup.Item className="listGroupItem">
@@ -112,6 +111,7 @@ const Menu = () => {
           }) : <Spinner animation="border" variant="danger" />
         }
       </div>
+
     </div >
 
   )
