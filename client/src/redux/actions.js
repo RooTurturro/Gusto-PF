@@ -11,12 +11,16 @@ export const LOADING = "LOADING";
 export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
 export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
 
+
+
 export const ALPHABETICAL_ORDER = "ALPHABETICAL_ORDER";
 export const PRICE_ORDER = "PRICE_ORDER";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 export const RATING_PRODUCTS = "RATING_PRODUCTS";
 export const UPDATE_STATE = "UPDATE_STATE"
+export const UPDATE_SPECIFICATION = "UPDATE_SPECIFICATION"
 export const EDIT_FORM = "EDIT_FORM";
+
 export const GET_ALL_PURCHASES = "GET_PURCHASE";
 export const CLEAN_DETAIL = 'CLEAN_DETAIL';
 export const POST_PURCHASE = 'POST_PURCHASE';
@@ -24,12 +28,21 @@ export const POST_PURCHASE = 'POST_PURCHASE';
 
 //--------------User Actions-----------
 export const USER_LOCAL_LOGIN = 'USER_LOCAL_LOGIN';
-export const USER_LOCAL_LOGOUT = 'USER_LOCAL_LOGIN';
+export const USER_LOCAL_LOGOUT = 'USER_LOCAL_LOGOUT';
 export const USER_PROFILE = 'USER_PROFILE';
 export const USER_UPDATE = "USER_UPDATE";
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_EDIT_PROFILE = 'USER_EDIT_PROFILE';
+export const GET_ALL_USERS = 'GET_ALL_USERS'
 
+
+
+export const GET_ALL_PURCHASES = "GET_PURCHASE"
+export const RESET_STATE_PURCHASE = 'RESET_STATE_PURCHASE'
+export const CLEAN_DETAIL = 'CLEAN_DETAIL'
+
+
+export const POST_PURCHASE = 'POST_PURCHASE'
 
 
 // export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
@@ -63,6 +76,21 @@ export const getAllPurchases = () => {
 		}
 	}
 }
+
+export const getAllUsers = () => {
+	return async function (dispatch) {
+		try {
+			const response = await axios.get('http://localhost:3001/users')
+			return dispatch({
+				type: GET_ALL_USERS,
+				payload: response.data
+			})
+		} catch (error) {
+			return dispatch({ type: GET_ALL_USERS, payload: error.message })
+		}
+	}
+}
+
 
 
 
@@ -112,6 +140,7 @@ export const getProductsDetail = (id) => {
 	};
 };
 
+
 export const createProduct = (values) => {
 	return async function (dispatch) {
 		await axios.post("http://localhost:3001/products", values);
@@ -119,12 +148,29 @@ export const createProduct = (values) => {
 	};
 };
 
+// export const postPurchase = (payload) => {
+// 	return async function (dispatch) {
+// 		await axios.post('http://localhost:3001/purchase', payload)
+// 		return dispatch({ type: POST_PURCHASE, payload: payload })
+// 	}
+// }
+
 export const postPurchase = (payload) => {
 	return async function (dispatch) {
-		await axios.post('http://localhost:3001/purchase', payload)
-		return dispatch({ type: POST_PURCHASE, payload: payload })
-	}
-}
+		try {
+			const response = await axios.post(
+				"http://localhost:3001/purchase",
+				payload
+			);
+			return dispatch({
+				type: POST_PURCHASE,
+				payload: response.data,
+			});
+		} catch (error) {
+			return error;
+		}
+	};
+};
 
 export const deleteProducts = (id) => {
 	return async function (dispatch) {
@@ -168,6 +214,38 @@ export const updateState = (id, payload) => {
 	return async () => {
 		try {
 			await axios.put(`http://localhost:3001/products/state/${id}`, payload)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+
+
+export const updateUser = (payload) => {
+	return async () => {
+		try {
+			await axios.put(`http://localhost:3001/users`, payload)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+
+
+export const updatePurchaseState = (id, payload) => {
+	return async () => {
+		try {
+			await axios.put(`http://localhost:3001/purchase/state/${id}`, payload)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+
+export const updateSpecification = (id, payload) => {
+	return async () => {
+		try {
+			await axios.put(`http://localhost:3001/purchase/specification/${id}`, payload)
 		} catch (error) {
 			console.log(error)
 		}

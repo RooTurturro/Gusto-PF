@@ -27,13 +27,13 @@ module.exports = (sequelize) => {
 				validate: {
 					min: 1,
 					max: 5,
-        },
-        defaultValue: 1,
-      },
-      totalRating: {
-        type: DataTypes.INTEGER,
-        defaultValue: 1,
-      },
+				},
+				defaultValue: 1,
+			},
+			totalRating: {
+				type: DataTypes.INTEGER,
+				defaultValue: 1,
+			},
 			image: {
 				type: DataTypes.STRING,
 				allowNull: false,

@@ -5,7 +5,7 @@
 
 
 .img {
- 
+
     height: 80vh;
     width: 20vw;
 }
@@ -14,6 +14,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .type {
@@ -25,12 +26,14 @@
 .type2 {
     color: aliceblue;
     font-family: 'Poppins', sans-serif;
-    
+
 }
+
 .a {
     text-decoration: none;
     color: aliceblue;
 }
+
 .a:hover {
     color: black;
 }
@@ -38,13 +41,14 @@
 .titulo {
     color: aliceblue;
     font-family: 'Rubik Mono One', sans-serif;
-    font-size: 1rem; 
+    font-size: 1rem;
 }
+
 .titulo2 {
     color: aliceblue;
     font-family: 'Rubik Mono One', sans-serif;
     padding: 2rem;
-    
+
 }
 
 .logo {
@@ -63,17 +67,16 @@
 
 
 .img2 {
-        height: 20rem;
-        width: 15rem;
-        margin: 1rem;
-    }
+    height: 20rem;
+    width: 15rem;
+    margin: 1rem;
+}
 
 .gusto {
-        color: rgb(255, 255, 255);
-        font-size: 3rem;
-    }
-  
-  footer {
-    background: #4d0707;
-  }
+    color: rgb(255, 255, 255);
+    font-size: 3rem;
+}
 
+footer {
+    background: #4d0707;
+}

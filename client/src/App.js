@@ -9,11 +9,16 @@ import FormCreate from "./Components/Form/FormCreate";
 import Detail from "./Components/Detail/Detail";
 import Perfil from "./Components/Perfil/Perfil";
 import Historial from "./Components/Historial/Historial";
+import UserHistory from "./Components/Historial/UserHistory";
 import Carrito from "./Components/Carrito/Carrito";
 import SenGrid from "./Components/SendGrid/SenGrid";
 import ProductList from "./Components/ProductList/ProductList";
 import ProfileUserForm from "./Components/Form/ProfileUserForm";
 import LoginButton from "./Components/Login/LoginButton";
+import Users from "./Components/Users/Users";
+import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces"
+
+
 
 function App() {
 	return (
@@ -22,6 +27,7 @@ function App() {
 			<Routes>
 				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
 				<Route exact path="/" element={<Home />} />
+				<Route exact path="/users" element={<Users />} />
 				<Route exact path="/productlist" element={<ProductList />} />
 				<Route exact path="/sendgrid" element={<SenGrid />} />
 				<Route exact path="/carrito" element={<Carrito />} />
@@ -32,7 +38,10 @@ function App() {
 				<Route exact path="/perfil" element={<Perfil />} />
 				<Route exact path="/sucursales" element={<Sucursales />} />
 				<Route exact path="/login" element={<LoginButton />} />
-				
+				<Route exact path="/checkout" element={<CheckOutSucces />} />
+				<Route exact path="/miscompras" element={<UserHistory />} />
+
+
 				<Route
 					exact
 					path="/editarperfilusuario"

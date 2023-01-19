@@ -1,4 +1,4 @@
-import { FILTER_BY_CATEGORIES, POST_PURCHASE, UPDATE_STATE } from "../redux/actions";
+import { FILTER_BY_CATEGORIES, GET_ALL_USERS, POST_PURCHASE, UPDATE_STATE } from "../redux/actions";
 import { LOADING } from "../redux/actions";
 import { DELETE_PRODUCTS } from "../redux/actions";
 import { GET_PRODUCTS_DETAIL } from "../redux/actions";
@@ -18,6 +18,8 @@ import { CLEAN_DETAIL } from '../redux/actions'
 import { USER_LOCAL_LOGIN } from '../redux/actions'
 import { USER_LOCAL_LOGOUT } from '../redux/actions'
 import { USER_PROFILE } from '../redux/actions'
+import { RESET_STATE_PURCHASE } from '../redux/actions'
+
 import {
 	ADD_TO_CART,
 	CLEAR_CART,
@@ -33,12 +35,14 @@ const initialState = {
 	loading: true,
 	actualPage: 1,
 	user: {},
+	users: [],
 	paymentUrl: "",
 	buyProducts: [],
-	cart: [],
+	cart: JSON.parse(window.localStorage.getItem('carrito')) || [],
 	rating: undefined,
-	purchases: []
-};
+	purchases: [],
+	newPurchase:[]
+}
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -91,6 +95,11 @@ const rootReducer = (state = initialState, action) => {
 				products: action.payload,
 				allProducts: action.payload,
 			};
+		case GET_ALL_USERS:
+			return {
+				...state,
+				users: action.payload
+			}
 
 		case GET_ALL_PURCHASES:
 			return {
@@ -119,7 +128,7 @@ const rootReducer = (state = initialState, action) => {
 		case POST_PURCHASE:
 			return {
 				...state,
-				purchase: action.payload
+				newPurchase: action.payload
 			}
 		case GET_PAYMENT_URL:
 			return {
@@ -227,8 +236,8 @@ const rootReducer = (state = initialState, action) => {
 				(producto) => producto.id === action.payload
 			);
 			let itemInCart = state.cart.find((item) => item.id === newItem.id);
-			return itemInCart
-				? {
+			if (itemInCart) {
+				return {
 					...state,
 					cart: state.cart.map((item) =>
 						item.id === newItem.id
@@ -236,10 +245,12 @@ const rootReducer = (state = initialState, action) => {
 							: item
 					),
 				}
-				: {
+			} else {
+				return {
 					...state,
 					cart: [...state.cart, { ...newItem, quantity: 1 }],
 				};
+			}
 		}
 
 		case REMOVE_ALL_FROM_CART: {
@@ -268,7 +279,21 @@ const rootReducer = (state = initialState, action) => {
 		case CLEAR_CART: {
 			return initialState;
 		}
+		case RESET_STATE_PURCHASE:
 
+			const { id, state: newState } = action.payload;
+			return {
+				...state,
+				purchase: state.purchase.map(purchase => {
+					if (purchase.id === id) {
+						return {
+							...purchase,
+							state: newState
+						}
+					}
+					return purchase
+				})
+			};
 		// case ORDER_BY_POPULATION:
 		default:
 			return state;

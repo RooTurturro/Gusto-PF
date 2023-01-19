@@ -23,7 +23,6 @@ const CartItem = ({ id, name, price, image, description, quantity, delOneFromCar
                 </button>
             </div>
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-
                 <p class="text-start text-md-center">
                     Precio del producto <strong>${price}</strong>
                 </p>
