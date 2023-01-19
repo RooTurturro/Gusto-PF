@@ -7,10 +7,8 @@ const CartItem = ({ id, name, price, image, description,total, quantity, delOneF
             <div class="  col-lg-3 col-md-12  mb-4 mb-lg-0">
                 <div class="  bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
                     <img src={image}
-                        class="w-100" alt="Blue Jeans Jacket" />
-                    <a href="#!">
-                        <div class="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.2)' }}></div>
-                    </a>
+                        class="w-100" alt="Blue Jeans Jacket" style={{height:'150px'}} />
+                    
                 </div>
             </div>
             <div class=" col-lg-5 col-md-6 mb-4 mb-lg-0">

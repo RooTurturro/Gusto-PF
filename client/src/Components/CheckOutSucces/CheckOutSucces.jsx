@@ -52,7 +52,6 @@ const CheckOutSucces = () => {
                     <thead>
                       <tr>
                         <th scope="col" width="10%"><span>Name</span></th>
-
                         <th scope="col" width="20%" class="text-center"><span>Direccion</span></th>
                         <th scope="col" width="20%"><span>Productos</span></th>
                         <th scope="col" width="20%"><span>Especificaciones</span></th>
@@ -97,9 +96,9 @@ const CheckOutSucces = () => {
           </div>
         </div>
       ))}
-       <Link to="/miscompras">
-                       <button>Mis compras</button>
-                  </Link>
+      <Link to="/miscompras">
+        <button>Mis compras</button>
+      </Link>
 
     </>
 

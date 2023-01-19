@@ -20,7 +20,6 @@ const Menu = () => {
 
   }, [dispatch, products.length]);
 
-
   function handleClick(e) {
     e.preventDefault(e);
     dispatch(getAllProducts());
@@ -50,7 +49,7 @@ const Menu = () => {
   return (
     <div className='menu-body'>
       <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-        <ul class="nav justify-content-center" style={{ maxWidth: '100%', padding: '0 12px 0 24px' }}>
+        <ul class="nav justify-content-center navBar2" >
           <li class="nav-item-category">
             <Link class="nav-link-category" to="hamburguesas" smooth={true} duration={200}  >
               <button type="button" class="btn btn-outline-danger">
@@ -101,7 +100,7 @@ const Menu = () => {
             </Link>
           </li>
         </ul>
-        
+
         {/* <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div >
             <select className="form-select" onChange={e => handleOrderByName(e)}>
@@ -142,6 +141,7 @@ const Menu = () => {
             if (el.state && el.category === 'Hamburguesa') {
               return (
                 <Card
+                  addToCart={() => dispatch(addToCart(el.id))}
                   id={el.id}
                   key={el.id}
                   name={el.name}
@@ -163,6 +163,7 @@ const Menu = () => {
             if (el.category === 'Ensalada') {
               return (
                 <Card
+                  addToCart={() => dispatch(addToCart(el.id))}
                   id={el.id}
                   key={el.id}
                   name={el.name}
@@ -172,6 +173,7 @@ const Menu = () => {
                 />
               )
             }
+            return null
           }) : null}
       </div>
       <Element id='postres' style={{ marginLeft: '30px' }}>
@@ -184,6 +186,7 @@ const Menu = () => {
             if (el.category === 'Postre') {
               return (
                 <Card
+                  addToCart={() => dispatch(addToCart(el.id))}
                   id={el.id}
                   key={el.id}
                   name={el.name}
@@ -205,6 +208,7 @@ const Menu = () => {
             if (el.category === 'Papas') {
               return (
                 <Card
+                  addToCart={() => dispatch(addToCart(el.id))}
                   id={el.id}
                   key={el.id}
                   name={el.name}
@@ -226,6 +230,7 @@ const Menu = () => {
             if (el.category === 'Snack') {
               return (
                 <Card
+                  addToCart={() => dispatch(addToCart(el.id))}
                   id={el.id}
                   key={el.id}
                   name={el.name}
@@ -247,6 +252,7 @@ const Menu = () => {
             if (el.category === 'Bebida') {
               return (
                 <Card
+                  addToCart={() => dispatch(addToCart(el.id))}
                   id={el.id}
                   key={el.id}
                   name={el.name}
@@ -268,6 +274,7 @@ const Menu = () => {
             if (el.category === 'Wrap') {
               return (
                 <Card
+                  addToCart={() => dispatch(addToCart(el.id))}
                   id={el.id}
                   key={el.id}
                   name={el.name}
