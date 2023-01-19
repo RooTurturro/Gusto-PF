@@ -37,7 +37,7 @@ const initialState = {
 	cart: JSON.parse(window.localStorage.getItem('carrito')) || [],
 	rating: undefined,
 	purchases: [],
-	newPurchase:[]
+	newPurchase: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -221,7 +221,7 @@ const rootReducer = (state = initialState, action) => {
 					...state,
 					cart: state.cart.map((item) =>
 						item.id === newItem.id
-							? { ...item, quantity: item.quantity + 1 }
+							? { ...item, quantity: item.quantity + 1}
 							: item
 					),
 				}
@@ -234,9 +234,15 @@ const rootReducer = (state = initialState, action) => {
 		}
 
 		case REMOVE_ALL_FROM_CART: {
+			return {
+				...state,
+				cart: state.cart.filter((item) => item.id !== action.payload),
+			};
+		}
+		case REMOVE_ONE_FROM_CART: {
 			let itemToDelete = state.cart.find((item) => item.id === action.payload);
 
-			return itemToDelete > 1
+			return itemToDelete.quantity > 1
 				? {
 					...state,
 					cart: state.cart.map((item) =>
@@ -250,17 +256,10 @@ const rootReducer = (state = initialState, action) => {
 					cart: state.cart.filter((item) => item.id !== action.payload),
 				};
 		}
-		case REMOVE_ONE_FROM_CART: {
-			return {
-				...state,
-				cart: state.cart.filter((item) => item.id !== action.payload),
-			};
-		}
 		case CLEAR_CART: {
 			return initialState;
 		}
 		case RESET_STATE_PURCHASE:
-
 			const { id, state: newState } = action.payload;
 			return {
 				...state,
