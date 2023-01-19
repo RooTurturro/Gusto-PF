@@ -1,38 +1,46 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-// import { getUserLog, login } from "../redux/actions";
-// import { useAuth0 } from "@auth0/auth0-react";
-// import LoginButton from '../Login/LoginButton';
-import LogoutButton from '../Login/LogoutButton';
 import styles from './Perfil.module.css'
 import { Link } from 'react-router-dom';
 import { userProfile } from '../../redux/actions';
 
 
-
 const Perfil = () => {
 
-    
     const dispatch = useDispatch();
-
+    const usuario = useSelector((state) => state.user);
+    
+    
+    console.log('Estado Global ' + usuario)
     
     
     const email = window.localStorage.getItem('userEmail')
-    console.log ('este es el email qeu se manda     ' + email)
-    const picture = window.localStorage.getItem('userPicture')
-    console.log ('este es el email qeu se manda     ' + picture)
+        
+    
 
+    const picture = window.localStorage.getItem('userPicture')
+    
+    console.log ('este es localstorage antes del use ' + email) 
+    const variablePrueba = 'info fuera del use'
+    
+    console.log(email)
 
     useEffect(()=>{
 
+
+            console.log('Porque no haces dispatch')
+            console.log(variablePrueba)
+
+            dispatch(userProfile(email))
+
+    
        
-        dispatch(userProfile(email))
 
     }, [dispatch])
    
-    const usuario = useSelector((state) => state.user);
+    console.log('estado global' + usuario.name)
 
-    console.log('Estado Global ' + usuario)
+    
 
 
 
@@ -50,7 +58,7 @@ const Perfil = () => {
                                 </div>
 
                                 <div>
-                                    { usuario.length > 0 ? <h3 className={styles.text}>{usuario[0].name}</h3> : <p>Cargando Datos</p> }
+                                    <h3 className={styles.text}>{usuario.name}</h3> 
                                 </div>
 
                             </div>
@@ -61,19 +69,19 @@ const Perfil = () => {
                                     <div>
 
                                         <h3 className={styles.titulo}>Correo</h3>
-                                        { usuario.length > 0 ? <p className={styles.text}>{usuario[0].email}</p> : <p>Cargando Datos</p> }
+                                        <p className={styles.text}>{usuario.email}</p>
                                         
                                     </div>
 
                                     <div>
                                         <h3 className={styles.titulo}>Teléfono</h3>
-                                        { usuario.length > 0 ? <p className={styles.text}>{usuario[0].phone}</p> : <p>Cargando Datos</p> }
+                                         <p className={styles.text}>{usuario.phone}</p>
 
                                     </div>
 
                                     <div>
                                         <h3 className={styles.titulo}>Dirección</h3>
-                                        { usuario.length > 0 ? <p className={styles.text}>{usuario[0].addres}</p> : <p>Cargando Datos</p> }
+                                        <p className={styles.text}>{usuario.address}</p>
                                     </div>
 
                                 </div>

@@ -36,7 +36,7 @@ const Home = () => {
   const storageLogIn =  () => {
     window.localStorage.setItem('userPicture', user.picture);
     window.localStorage.setItem('userName', user.name);
-    window.localStorage.setItem('useremail', user.email);
+    window.localStorage.setItem('userEmail', user.email);
     window.localStorage.setItem('isLogIn', 'Log In');
   
   }
@@ -49,19 +49,30 @@ const handleSelect = (selectedIndex, e) => {
 
   //-----Local Storage-----
 
-  if(isAuthenticated) storageLogIn();
+  if(isAuthenticated) {
+    
+      storageLogIn()
+      
+
+    };
 
   
     const picture = window.localStorage.getItem('userPicture')
     const name = window.localStorage.getItem('userName')
     const email = window.localStorage.getItem('userEmail')
-    const log = window.localStorage.getItem('isLogIn')
+    const log = localStorage.getItem('isLogIn')
+
     console.log(picture, name, email, log )
 
     useEffect(()=>{
+      const timer = setTimeout(() => {
+        console.log('This will run after 1 second!')
+        dispatch(userLocalLogin({picture, name, email, log}))
+        dispatch(userLogin({name, email}))
+      }, 2000);
 
-      dispatch(userLocalLogin({picture, name, email, log}))
-      dispatch(userLogin({name, email}))
+      
+      return () => clearTimeout(timer);
       
     }, [dispatch])
     

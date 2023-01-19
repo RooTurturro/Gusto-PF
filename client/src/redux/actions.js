@@ -102,6 +102,7 @@ export const getProductsSummary = (name) => {
 				`http://localhost:3001/products?name=${name}`
 			);
 			return dispatch({ type: GET_PRODUCTS_SUMMARY, payload: response.data });
+
 		} catch (error) {
 			return dispatch({ type: GET_PRODUCTS_SUMMARY, payload: error.message });
 		}
@@ -279,9 +280,9 @@ export const userLocalLogout = () => {
 	};
 };
 
-export const userProfile = (payload) => {
+export const userProfile = (email) => {
 	return async function (dispatch) {
-		const json = await axios.get("http://localhost:3001/users/email", payload);
+		const json = await axios.get(`http://localhost:3001/users/email?email=${email}`);
 		return dispatch({ type: USER_PROFILE, payload: json.data });
 	};
 };

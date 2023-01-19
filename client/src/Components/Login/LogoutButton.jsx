@@ -4,11 +4,12 @@ import styled from './Logout.module.css';
 import { userLocalLogout } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 const LogoutButton = () => {
 
-  
+  const { logout } = useAuth0();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,6 +21,7 @@ const LogoutButton = () => {
   
   }
   const handleClick = ()=>{
+    logout();
     localStorage.clear();
     storageLogOut();
     dispatch(userLocalLogout())

@@ -47,16 +47,25 @@ userRouter.get("/", async (req, res) => {
 
 userRouter.get("/email", async (req, res)=>{
 
-  const {email} = req.body;
+  const email = req.query.email;
+
+  console.log('que llega por query ' + email )
   
+ 
+
     try {
-      const findUser = await User.findOne({ where: { email: email } });
+      const findUser = await User.findByPk(email);
+
+      console.log('usuario encontrado ' + findUser)
 
       if (!findUser) return res.status(200).send('Email no encontrado')
 
       return res.status(200).send(findUser)
       
     } catch (error) {
+
+      
+      console.log(error)
 
       res.status(400).send(error)
 
@@ -67,6 +76,7 @@ userRouter.get("/email", async (req, res)=>{
 
 
 userRouter.post("/", async (req, res) => {
+  console.log(req.body)
   try {
 
     const { name, email } = req.body;
