@@ -23,9 +23,9 @@ ReactDOM.render(
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </Provider>
-  </Auth0Provider>,
-
+      </Provider>
+    </Auth0Provider>
+  ,
   document.getElementById('root')
 );
 // ReactDOM.render(

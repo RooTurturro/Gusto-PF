@@ -1,35 +1,84 @@
-import React, { useState } from 'react'
-import fatty from '../../assets/fatty.jpg'
-
-import hamburguesa5 from '../../assets/hamburguesa5.png'
-import hamburguesa6 from '../../assets/hamburguesa6.png'
-import carrusel1 from '../../assets/carrusel1.jpg'
-import carrusel2 from '../../assets/carrusel2.png'
-import sucursal3 from '../../assets/sucursal3.jpg'
-import logo from '../../assets/gustoPng.png'
+import React, { useEffect, useState } from "react";
+import fatty from "../../assets/fatty.jpg";
+import hamburguesa5 from "../../assets/hamburguesa5.png";
+import hamburguesa6 from "../../assets/hamburguesa6.png";
+import carrusel1 from "../../assets/carrusel1.jpg";
+import carrusel2 from "../../assets/carrusel2.png";
+import sucursal3 from "../../assets/sucursal3.jpg";
+import logo from "../../assets/gustoPng.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Carousel from 'react-bootstrap/Carousel';
-import styles from './Home.module.css';
-import { Link } from 'react-router-dom'
+import Carousel from "react-bootstrap/Carousel";
+import styles from "./Home.module.css";
+import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from "react-redux";
+import { userLocalLogin, userLogin } from "../../redux/actions";
 
-// import { useAuth0 } from "@auth0/auth0-react";
 // import { userLogin } from '../../redux/actions';
-// import { useDispatch } from 'react-redux';
+
 // import {useEffect} from 'react';
 // import Loading from '../Loading/Loading';
 
 const Home = () => {
 
-
   const [index, setIndex] = useState(0);
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  const usuario = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
+  console.log(isAuthenticated)
+
+
+
+  const storageLogIn =  () => {
+    window.localStorage.setItem('userPicture', user.picture);
+    window.localStorage.setItem('userName', user.name);
+    window.localStorage.setItem('userEmail', user.email);
+    window.localStorage.setItem('isLogIn', 'Log In');
+  
+  }
+
+
+const handleSelect = (selectedIndex, e) => {
+  setIndex(selectedIndex);
   };
 
-  return (
 
+  //-----Local Storage-----
+
+  if(isAuthenticated) {
+    
+      storageLogIn()
+      
+
+    };
+
+  
+    const picture = window.localStorage.getItem('userPicture')
+    const name = window.localStorage.getItem('userName')
+    const email = window.localStorage.getItem('userEmail')
+    const log = localStorage.getItem('isLogIn')
+
+    console.log(picture, name, email, log )
+
+    useEffect(()=>{
+      const timer = setTimeout(() => {
+        console.log('This will run after 1 second!')
+        dispatch(userLocalLogin({picture, name, email, log}))
+        dispatch(userLogin({name, email}))
+      }, 2000);
+
+      
+      return () => clearTimeout(timer);
+      
+    }, [dispatch])
+    
+    
+
+
+
+return (
     <div className={styles.container}>
       <Carousel activeIndex={index} onSelect={handleSelect} className={styles.carrucel}>
 
@@ -146,12 +195,13 @@ const Home = () => {
         </footer>
       </div>
 
-    </div>
+    </div>)
 
 
 
 
-  )
+  
 }
 
 export default Home;
+

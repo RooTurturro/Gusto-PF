@@ -1,128 +1,108 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-// import { getUserLog, login } from "../redux/actions";
-import { useAuth0 } from "@auth0/auth0-react";
-import LoginButton from '../Login/LoginButton';
-import LogoutButton from '../Login/LogoutButton';
-import Loading from '../Loading/Loading';
 import styles from './Perfil.module.css'
 import { Link } from 'react-router-dom';
-import { userLogin } from '../../redux/actions';
+import { userProfile } from '../../redux/actions';
 
 
 const Perfil = () => {
 
-    const { user, isAuthenticated, isLoading } = useAuth0();
     const dispatch = useDispatch();
     const usuario = useSelector((state) => state.user);
+    
+    
+    console.log('Estado Global ' + usuario)
+    
+    
+    const email = window.localStorage.getItem('userEmail')
+        
+    
 
-    if (isAuthenticated) {
+    const picture = window.localStorage.getItem('userPicture')
+    
+    console.log ('este es localstorage antes del use ' + email) 
+    const variablePrueba = 'info fuera del use'
+    
+    console.log(email)
 
-        usuario.name = user.name;
-        usuario.email = user.email;
-
-    }
-
-
-    useEffect(() => {
-
-        if (isLoading) {
-
-            return <Loading />;
-
-        } else if (isAuthenticated) {
-
-
-            dispatch(userLogin({ name: user.name, email: user.email }))
-
-        }
-
-    }, [dispatch]);
+    useEffect(()=>{
 
 
+            console.log('Porque no haces dispatch')
+            console.log(variablePrueba)
+
+            dispatch(userProfile(email))
+
+    
+       
+
+    }, [dispatch])
+   
+    console.log('estado global' + usuario.name)
+
+    
 
 
-    return (<div>
 
 
-        {isAuthenticated ?
-            isAuthenticated && (
+    return (
+        
 
-                <div className={styles.container}>
-                    <div className={styles.bloque}>
-                        <div className={styles.left}>
-                            <div>
-                                <img src={user.picture} className={styles.imagen} alt="imagen de usuario" />
-                            </div>
-                            <div>
-                                <h3>{user.name}</h3>
-                            </div>
+                <div>
+                    <div className={styles.container}>
+                        <div className={styles.bloque}>
+                            <div className={styles.left}>
 
-                        </div>
-
-                        <div className={styles.right}>
-                            <div className={styles.info}>
                                 <div>
-                                    <h3 className={styles.titulo}>Correo</h3>
-                                    <p className={styles.text}>{user.email}</p>
-
+                                    <img src={picture} className={styles.imagen} alt="imagen de usuario" />
                                 </div>
 
                                 <div>
-                                    <h3 className={styles.titulo}>Teléfono</h3>
-                                    <p className={styles.text}>{usuario.phone}</p>
-
-                                </div>
-                                <div>
-                                    <h3 className={styles.titulo}>Dirección</h3>
-                                    <p className={styles.text}>{usuario.address}</p>
+                                    <h3 className={styles.text}>{usuario.name}</h3> 
                                 </div>
 
                             </div>
 
+                            <div className={styles.right}>
+                                <div className={styles.info}>
 
-                            <div className={styles.botones}>
+                                    <div>
 
-                                <LogoutButton />
-                                {usuario.isAdmin ? usuario.isAdmin && (
-                                    <Link to={'/historial'}>
+                                        <h3 className={styles.titulo}>Correo</h3>
+                                        <p className={styles.text}>{usuario.email}</p>
+                                        
+                                    </div>
 
+                                    <div>
+                                        <h3 className={styles.titulo}>Teléfono</h3>
+                                         <p className={styles.text}>{usuario.phone}</p>
+
+                                    </div>
+
+                                    <div>
+                                        <h3 className={styles.titulo}>Dirección</h3>
+                                        <p className={styles.text}>{usuario.address}</p>
+                                    </div>
+
+                                </div>
+
+
+                                <div className={styles.botones}>
+                                   
+
+                                    <Link to={'/editarperfilusuario'}>
                                         <button className={styles.button}>
-                                            <span>Historial Compras</span>
+                                            <span>Editar Perfil</span>
                                         </button>
                                     </Link>
-                                ) : <Link to={'/miscompras'}>
 
-                                <button className={styles.button}>
-                                    <span>Historial Compras</span>
-                                </button>
-                            </Link> }
 
-                                <Link to={'/editarperfilusuario'}>
-                                    <button className={styles.button}>
-                                        <span>Editar Perfil</span>
-                                    </button>
-                                </Link>
-
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-
-
-            ) :
-
-            <div className={styles.containerLogin}>
-
-
-                <LoginButton />
-
-
-            </div>
-
-        }
-
-    </div>
 
     )
 }
