@@ -26,29 +26,29 @@ const Sidebar = () => {
                     <Link to="/users" style={{ textDecoration: "none" }}>
                         <li className='li'>
                             <MdAccountCircle className="icon" />
-                            <span className='span'>Users</span>
+                            <span className='span'>Usuarios</span>
                         </li>
                     </Link>
                     <Link to="/productlist" style={{ textDecoration: "none" }}>
                         <li className='li'>
                             <MdInventory2 className="icon" />
-                            <span className='span'>Products</span>
+                            <span className='span'>Productos</span>
                         </li>
                     </Link>
                     <Link to='/historial'>
                         <li className='li'>
                             <HiOutlineShoppingBag className="icon" />
-                            <span className='span'>Orders</span>
+                            <span className='span'>Compras</span>
                         </li>
                     </Link>
                     <p className="title">USER</p>
                     <li className='li'>
                         <MdAccountCircle className="icon" />
-                        <span className='span'>Profile</span>
+                        <span className='span'>Perfil</span>
                     </li>
                     <li className='li'>
                         <BiLogOut className="icon" />
-                        <span className='span'>Logout</span>
+                        <span className='span'>Cerrar sesión</span>
                     </li>
                 </ul>
             </div>
