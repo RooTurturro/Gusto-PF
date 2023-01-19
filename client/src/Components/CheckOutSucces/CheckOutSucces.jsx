@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getAllPurchases } from '../../redux/actions'
+import { getAllPurchases, priceOrder } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
@@ -19,10 +19,20 @@ const CheckOutSucces = () => {
 
   const name = window.localStorage.getItem('userName')
   const to = window.localStorage.getItem('userEmail')
+  const products = window.localStorage.getItem('detailProducts')
+  const price = window.localStorage.getItem('detailPrice')
+  const state = window.localStorage.getItem('detailState')
+  const address = window.localStorage.getItem('detailAdress')
+  const specification = window.localStorage.getItem('detailSpecification')
 
+  const detail = {
+    products : products ,
+    price : price ,
+    address : address 
+  }
 
   const sendEmail = async () => {
-    await axios.post("http://localhost:3001/api/mail/checkout", { to, name })
+    await axios.post("http://localhost:3001/api/mail/checkout", { to, name , detail })
   };
   sendEmail();
   
@@ -32,6 +42,10 @@ const CheckOutSucces = () => {
   sendEmail()
  console.log(name)
  console.log(to)
+ console.log(products)
+ console.log(price)
+ console.log(state)
+
   return (
     <>
          <div class="container">
@@ -46,7 +60,7 @@ const CheckOutSucces = () => {
                         <th scope="col" width="10%"><span>Name</span></th>
                         <th scope="col" width="20%" class="text-center"><span>Direccion</span></th>
                         <th scope="col" width="20%"><span>Productos</span></th>
-                        <th scope="col" width="20%"><span>Especificaciones</span></th>
+                        
                         <th scope="col" width="10%"><span>Total</span></th>
                         <th scope="col" width="20%"><span>Envio a domicilio</span></th>
                         <th scope="col" width="20%"><span>Estado</span></th>
@@ -59,25 +73,23 @@ const CheckOutSucces = () => {
                         </td>
 
                         <td class="text-center">
-                          {newPurchase.address}
+                          {address}
                         </td>
                         <td class="text-center">
-                          {newPurchase.products}
+                          {products}
                         </td>
+                       
                         <td class="text-center">
-                          {newPurchase.specification}
-                        </td>
-                        <td class="text-center">
-                          {newPurchase.total}
+                          {price}
                         </td>
                         <td class="text-center">
                           Delivery
                         </td>
                         <td class="text-center">
-                          {newPurchase.state}
+                          {state}
                         </td>
                         <td class="text-center">
-                          {newPurchase.state === 'En proceso'}
+                          {state === 'En proceso'}
                         </td>
                       </tr>
                     </tbody>
@@ -87,9 +99,7 @@ const CheckOutSucces = () => {
             </div>
           </div>
         </div>
-
-      ))}
-
+      
       <Link to="/miscompras">
         <button>Mis compras</button>
       </Link>
