@@ -87,7 +87,9 @@ const CheckOutSucces = () => {
             </div>
           </div>
         </div>
-      
+
+      ))}
+
       <Link to="/miscompras">
         <button>Mis compras</button>
       </Link>
