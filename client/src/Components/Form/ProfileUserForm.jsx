@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import { userLocalLogin } from '../../redux/actions';
 import { Link } from "react-router-dom";
-
+import { useSelector } from 'react-redux';
 import { userUpdate } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 // import * as actions from "../../redux/actions";
@@ -12,19 +12,18 @@ import { useDispatch } from "react-redux";
 // import { Link } from "react-router-dom";
 
 const ProfileUserForm = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate()
 
-    //const { user, isAuthenticated, isLoading } = useAuth0();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const usuario = useSelector((state) => state.user);
+
 
     const Swal = require('sweetalert2')
 
 
-
-
     const [inputs, setInputs] = useState({
-        name: '',
-        email: '',
+        name: usuario.name,
+        email: usuario.email,
         phone: "",
         address: "",
     });
@@ -35,8 +34,8 @@ const ProfileUserForm = () => {
         evento.preventDefault();
         dispatch(userUpdate(inputs));
         setInputs({
-            name: '',
-            email: '',
+            name: "",
+            email: "",
             phone: "",
             address: "",
         })
@@ -53,6 +52,16 @@ const ProfileUserForm = () => {
         })
 
     }
+    // const picture = window.localStorage.getItem('userPicture')
+    // const name =window.localStorage.getItem('userName')
+    // const email =window.localStorage.getItem('useremail')
+    // const log =window.localStorage.getItem('isLogIn')
+
+    // useEffect(()=>{
+    //     dispatch(userLocalLogin({picture, name, email, log}))
+    //   }, [])
+
+    console.log(usuario)
 
 
     return (
@@ -80,7 +89,7 @@ const ProfileUserForm = () => {
                                         name="email"
                                         onChange={handleInputs}
                                         value={inputs.email}
-                                        placeholder="Correo Electronico"
+                                        placeholder={usuario[0].email}
                                         required
                                     />
                                 </div>

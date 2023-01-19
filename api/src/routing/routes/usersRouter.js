@@ -8,21 +8,61 @@ const { User } = require('../../db')
 // });  
 
 userRouter.get("/", async (req, res) => {
-
+  const {email} = req.body;
+  
   const allUsers = await User.findAll();
 
-  try {
+  //------PETICION CON EMAIL
+  if(email){
+    try {
+      const findUser = await User.findOne({ where: { email: email } });
 
-    const user = allUsers
-    return res.status(200).send(user)
+      if (!findUser) return res.status(200).send('Email no encontrado')
+
+      return res.status(200).send(findUser)
+      
+    } catch (error) {
+
+      res.status(400).send(error)
+
+    }
 
   }
+  //------Si no tiene email que devuelva todos los users--------
+  if(!email){
 
-  catch (error) {
+    try {
+      const allUsers = await User.findAll();
+      return res.status(200).send(allUsers)
 
-    res.status(400).send(error)
+    } catch (error) {
+  
+      res.status(400).send(error)
+    }
+
   }
+  
+
 });
+
+userRouter.get("/email", async (req, res)=>{
+
+  const {email} = req.body;
+  
+    try {
+      const findUser = await User.findOne({ where: { email: email } });
+
+      if (!findUser) return res.status(200).send('Email no encontrado')
+
+      return res.status(200).send(findUser)
+      
+    } catch (error) {
+
+      res.status(400).send(error)
+
+    }
+
+  })
 
 
 
