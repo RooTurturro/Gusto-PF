@@ -5,6 +5,8 @@ import { MdInventory2, MdAccountCircle } from 'react-icons/md'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { BiLogOut } from 'react-icons/bi'
 import './Sidebar.css'
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 const Sidebar = () => {
     return (
@@ -34,6 +36,7 @@ const Sidebar = () => {
                             <MdInventory2 className="icon" />
                             <span className='span'>Productos</span>
                         </li>
+                       
                     </Link>
                     <Link to='/historial'>
                         <li className='li'>

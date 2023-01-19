@@ -28,6 +28,8 @@
 .menu-body {
     background-color: #f3f5f7;
     min-height: 100vh;
+    display: flex;
+    justify-content: space-around;
 }
 
 .cardContainer {
@@ -37,26 +39,51 @@
     padding: 100px;
     margin-top: 30px;
     margin-left: 50px;
+    gap: 7rem;
 }
 
-.nav-item-category {
-    margin-right: 8px;
-    white-space: nowrap;
-    padding: 6px 12px;
+.btn {
+    border: none;
 }
 
-.nav-link-category {
+.navContainer {
+    padding-top: 10%;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.listGroupItemHead{
+    height: 70px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.listGroupItemHead:hover{
+    background-color: cadetblue;
+}
+
+.listGroupItem{
+    height: 70px;
+    font-size: 20px;
+    display: flex;
+    justify-content:space-between;   
+}
+
+.listGroupItem img{
+    width: 80px;
+    height: 50px;
+    
+}
+
+.listGroup {
     cursor: pointer;
-    color: red;
+
+    width: 300px;
 }
 
-/* .navBar2 {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    z-index: 9999;
-    transition: all 0.5 ease;
-} */
+.listGroupItem:hover{
+    background-color: crimson;
+}
 

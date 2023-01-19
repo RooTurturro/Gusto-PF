@@ -2,6 +2,7 @@ const { Router } = require("express");
 const userRouter = Router();
 const { requiresAuth } = require("express-openid-connect");
 const { User } = require('../../db')
+const bodyParser = require('body-parser');
 //------Ruta de la documentacion------------
 // userRouter.put("/", (req, res) => {
 //   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
@@ -75,31 +76,43 @@ userRouter.get("/email", async (req, res)=>{
 
 
 
-userRouter.post("/", async (req, res) => {
+userRouter.post("/", bodyParser.json(), async (req, res) => {
+
   console.log(req.body)
-  try {
 
-    const { name, email } = req.body;
-    const findUser = await User.findOne({ where: { email: email } });
+  const { name, email } = req.body;
 
-    if (findUser) {
-
-      res.status(201).send('Usuario ya existe');
-
-    } else {
-
-      const newUser = await User.findOrCreate({ where: { name, email } })
-
-      res.status(201).send(newUser);
-
+  if(!email){
+    try {
+      res.status(201).send('No email');
+    } catch (error) {
+      console.log(error)
+      res.status(400).send(error);
     }
-
-
-
-  } catch (error) {
-    console.log(error)
-    res.status(400).send(error);
   }
+  if(name&&email){
+
+    try {
+            const findUser = await User.findOne({ where: { email: email } });
+        
+            if (findUser) {
+        
+              res.status(201).send('Usuario ya existe');
+        
+            } else {
+        
+              const newUser = await User.findOrCreate({ where: { name, email } })
+        
+              res.status(201).send(newUser);
+        
+            }
+  
+    } catch (error) {
+      console.log(error)
+      res.status(400).send(error);
+    }
+  }
+  
 });
 
 
@@ -110,22 +123,41 @@ userRouter.put("/", async (req, res) => {
 
   const { name, phone, email, address, isAdmin, state } = req.body;
 
-  const findUser = await User.findOne({ where: { email: email } });
+      if(!email){
 
-  try {
+        try {
 
-    if (name && phone && email && address) {
+          res.status(201).send('No email');
 
-      await findUser.update({ name, phone, email, address, isAdmin, state });
-      res.status(200).send(findUser);
+        } catch (error) {
 
-    } else {
-      res.status(400).send("Faltaron datos para modificar el Usuario");
-    }
+          console.log(error)
 
-  } catch (error) {
-    console.log("entre al error del put", error);
+          res.status(400).send(error);
+
+        }
+      }
+      
+  if(name&&phone&&email&&address){
+            const findUser = await User.findOne({ where: { email: email } });
+
+            try {
+
+              if (name && phone && email && address) {
+
+                await findUser.update({ name, phone, email, address, isAdmin, state });
+                res.status(200).send(findUser);
+
+              } else {
+                res.status(400).send("Faltaron datos para modificar el Usuario");
+              }
+
+            } catch (error) {
+              console.log("entre al error del put", error);
+            }
+
   }
+  
 })
 
 
