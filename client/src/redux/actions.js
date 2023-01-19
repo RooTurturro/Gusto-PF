@@ -11,41 +11,27 @@ export const LOADING = "LOADING";
 export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
 export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
 
-
-
 export const ALPHABETICAL_ORDER = "ALPHABETICAL_ORDER";
 export const PRICE_ORDER = "PRICE_ORDER";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 export const RATING_PRODUCTS = "RATING_PRODUCTS";
-export const UPDATE_STATE = "UPDATE_STATE"
-export const UPDATE_SPECIFICATION = "UPDATE_SPECIFICATION"
+export const UPDATE_STATE = "UPDATE_STATE";
+export const UPDATE_SPECIFICATION = "UPDATE_SPECIFICATION";
 export const EDIT_FORM = "EDIT_FORM";
 
-export const GET_ALL_PURCHASES = "GET_PURCHASE";
-export const CLEAN_DETAIL = 'CLEAN_DETAIL';
-export const POST_PURCHASE = 'POST_PURCHASE';
-
-
-//--------------User Actions-----------
-export const USER_LOCAL_LOGIN = 'USER_LOCAL_LOGIN';
-export const USER_LOCAL_LOGOUT = 'USER_LOCAL_LOGOUT';
-export const USER_PROFILE = 'USER_PROFILE';
+export const USER_LOCAL_LOGIN = "USER_LOCAL_LOGIN";
+export const USER_LOCAL_LOGOUT = "USER_LOCAL_LOGOUT";
+export const USER_PROFILE = "USER_PROFILE";
 export const USER_UPDATE = "USER_UPDATE";
-export const USER_LOGIN = 'USER_LOGIN';
-export const USER_EDIT_PROFILE = 'USER_EDIT_PROFILE';
-export const GET_ALL_USERS = 'GET_ALL_USERS'
+export const USER_LOGIN = "USER_LOGIN";
+export const USER_EDIT_PROFILE = "USER_EDIT_PROFILE";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 
+export const GET_ALL_PURCHASES = "GET_PURCHASE";
+export const RESET_STATE_PURCHASE = "RESET_STATE_PURCHASE";
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
 
-
-export const GET_ALL_PURCHASES = "GET_PURCHASE"
-export const RESET_STATE_PURCHASE = 'RESET_STATE_PURCHASE'
-export const CLEAN_DETAIL = 'CLEAN_DETAIL'
-
-
-export const POST_PURCHASE = 'POST_PURCHASE'
-
-
-// export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
+export const POST_PURCHASE = "POST_PURCHASE";
 
 export const getAllProducts = () => {
 	return async function (dispatch) {
@@ -66,33 +52,30 @@ export const getAllProducts = () => {
 export const getAllPurchases = () => {
 	return async function (dispatch) {
 		try {
-			const response = await axios.get('http://localhost:3001/purchase')
+			const response = await axios.get("http://localhost:3001/purchase");
 			return dispatch({
 				type: GET_ALL_PURCHASES,
-				payload: response.data
-			})
+				payload: response.data,
+			});
 		} catch (error) {
-			return dispatch({ type: GET_ALL_PURCHASES, payload: error.message })
+			return dispatch({ type: GET_ALL_PURCHASES, payload: error.message });
 		}
-	}
-}
+	};
+};
 
 export const getAllUsers = () => {
 	return async function (dispatch) {
 		try {
-			const response = await axios.get('http://localhost:3001/users')
+			const response = await axios.get("http://localhost:3001/users");
 			return dispatch({
 				type: GET_ALL_USERS,
-				payload: response.data
-			})
+				payload: response.data,
+			});
 		} catch (error) {
-			return dispatch({ type: GET_ALL_USERS, payload: error.message })
+			return dispatch({ type: GET_ALL_USERS, payload: error.message });
 		}
-	}
-}
-
-
-
+	};
+};
 
 export const getPaymentUrl = (values) => {
 	return async function (dispatch) {
@@ -140,7 +123,6 @@ export const getProductsDetail = (id) => {
 	};
 };
 
-
 export const createProduct = (values) => {
 	return async function (dispatch) {
 		await axios.post("http://localhost:3001/products", values);
@@ -186,7 +168,6 @@ export const editForm = (product, id) => {
 	};
 };
 
-
 export const updateProduct = (product) => async (dispatch) => {
 	try {
 		const response = await axios.put(
@@ -209,48 +190,48 @@ export const ratingProducts = (rating, id) => {
 	};
 };
 
-
 export const updateState = (id, payload) => {
 	return async () => {
 		try {
-			await axios.put(`http://localhost:3001/products/state/${id}`, payload)
+			await axios.put(`http://localhost:3001/products/state/${id}`, payload);
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
-	}
-}
-
+	};
+};
 
 export const updateUser = (payload) => {
 	return async () => {
 		try {
-			await axios.put(`http://localhost:3001/users`, payload)
+			await axios.put(`http://localhost:3001/users`, payload);
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
-	}
-}
-
+	};
+};
 
 export const updatePurchaseState = (id, payload) => {
 	return async () => {
 		try {
-			await axios.put(`http://localhost:3001/purchase/state/${id}`, payload)
+			await axios.put(`http://localhost:3001/purchase/state/${id}`, payload);
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
-	}
-}
+	};
+};
 
 export const updateSpecification = (id, payload) => {
 	return async () => {
 		try {
-			await axios.put(`http://localhost:3001/purchase/specification/${id}`, payload)
+			await axios.put(
+				`http://localhost:3001/purchase/specification/${id}`,
+				payload
+			);
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
-	}
-}
+	};
+};
 
 export const loading = () => {
 	return { type: LOADING };
@@ -305,7 +286,6 @@ export const userProfile = (payload) => {
 	};
 };
 
-
 export const userLogin = (payload) => {
 	return async function (dispatch) {
 		const json = await axios.post("http://localhost:3001/users", payload);
@@ -319,4 +299,3 @@ export const userUpdate = (payload) => {
 		return dispatch({ type: USER_UPDATE, payload: json.data });
 	};
 };
-
