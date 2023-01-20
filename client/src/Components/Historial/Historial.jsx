@@ -61,6 +61,16 @@ const Historial = () => {
     })
   }
 
+  function purchaseState(id) {
+    dispatch(updatePurchaseState(id, { state: 'entregado' }));
+    dispatch(getAllPurchases())
+    Swal.fire({
+        title: 'Entrega confirmada'
+    }).then(() => {
+        window.location.reload()
+    })
+}
+
   return (
     <div style={{ display: 'flex' }}>
       <div >
