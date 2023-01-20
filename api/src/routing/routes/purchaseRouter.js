@@ -8,7 +8,7 @@ purchaseRouter.get("/", async (req, res) => {
 
   try {
     const allPurchase = await Purchase.findAll();
-    allPurchase.length > 0 ? res.status(200).send(allPurchase) : res.status(404).send("Not Found");
+    allPurchase.length > 0 ? res.status(200).json(allPurchase) : res.status(404).send("Not Found");
   } catch (error) {
     console.log(error);
   }
