@@ -8,7 +8,7 @@ purchaseRouter.get("/", async (req, res) => {
 
   try {
     const allPurchase = await Purchase.findAll();
-    allPurchase.length > 0 ? res.status(200).json(allPurchase) : res.status(404).send("Not Found");
+    allPurchase.length > 0 ? res.status(200).send(allPurchase) : res.status(404).send("Not Found");
   } catch (error) {
     console.log(error);
   }
@@ -52,6 +52,7 @@ purchaseRouter.put("/state/:id", async (req,res)=>{
 purchaseRouter.post("/", async (req, res) => {
   try {
     const {
+      email,
       name,
       lastname,
       address,
@@ -62,6 +63,7 @@ purchaseRouter.post("/", async (req, res) => {
       state,
     } = req.body;
     const newPurchase = await Purchase.create({
+      email,
       name,
       lastname,
       address,
