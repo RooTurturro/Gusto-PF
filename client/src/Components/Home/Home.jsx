@@ -59,19 +59,19 @@ const Home = () => {
 
   console.log(picture, name, email, log)
 
-  
-    useEffect(()=>{
-      
-      if(name && email){
-        dispatch(userLogin({name, email}))
-      }
-      if(name&&email&&picture&&log){
-        dispatch(userLocalLogin({picture, name, email, log}))
-      }
-      
-    }, [dispatch, log])
-    
-   
+
+  useEffect(() => {
+
+    if (name && email) {
+      dispatch(userLogin({ name, email }))
+    }
+    if (name && email && picture && log) {
+      dispatch(userLocalLogin({ picture, name, email, log }))
+    }
+
+  }, [dispatch, log])
+
+
 
 
 
@@ -166,7 +166,7 @@ const Home = () => {
                 <h5 className={styles.titulo}>Informacion</h5>
                 <p className={styles.type2}>Contactanos</p>
                 <p className={styles.type2}> +54 323464351</p>
-                <a href='https://www.instagram.com/ganasdegusto/' className={styles.a}>Instagram</a>
+                <a href='https://www.instagram.com/ganasdegusto/' target='_blank' rel='noreferrer' className={styles.a}>Instagram</a>
               </div>
 
               <div className="col-lg-2 col-md-6">

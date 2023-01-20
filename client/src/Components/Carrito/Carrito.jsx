@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { delFromCart } from '../../redux/shoppingActions'
+import { useState } from 'react'
+import { delFromCart, updateCartStorage } from '../../redux/shoppingActions'
 import CarritoItem from './CarritoItem'
 import { useEffect } from 'react'
 import { getAllProducts } from '../../redux/actions'
@@ -8,9 +9,14 @@ import './Carrito.css'
 
 const Carrito = () => {
     const dispatch = useDispatch()
-    const cart = useSelector((state) => state.cart)
+    const cart = useSelector(state => state.cart)
+
+
+
+
 
     useEffect(() => {
+
         dispatch(getAllProducts())
     }, [dispatch])
 

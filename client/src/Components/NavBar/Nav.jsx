@@ -13,16 +13,16 @@ export default function Nav() {
   const usuario = useSelector(state => state.user);
   const cart = useSelector((state) => state.cart);
   console.log(cart)
-  
-    const picture = window.localStorage.getItem('userPicture')
-    const log = window.localStorage.getItem('isLogIn')
-    console.log(log + ' navbar log')
-    console.log(picture + ' navbar picture')
 
-  useEffect(()=>{
+  const picture = window.localStorage.getItem('userPicture')
+  const log = window.localStorage.getItem('isLogIn')
+  console.log(log + ' navbar log')
+  console.log(picture + ' navbar picture')
+
+  useEffect(() => {
     console.log('se relogueo la navBAR')
-  },[usuario])
-  
+  }, [usuario])
+
 
 
   return (
@@ -42,10 +42,13 @@ export default function Nav() {
               <Link className="nav-link active" aria-current="page" to='/'>HOME</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to='/sucursales'>SUCURSALES</Link>
+              <Link className="nav-link active" to='/sucursales'>SUCURSALES</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to='/menu'>MENU</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to='/contacto'>CONTACTENOS</Link>
             </li>
             {usuario.isAdmin ? usuario.isAdmin && (
               <li className="nav-item">

@@ -22,11 +22,42 @@ const Historial = () => {
   const Swal = require('sweetalert2')
 
   function handleClick(id) {
-    dispatch(updatePurchaseState(id, { state: "Cancelado" }));
     Swal.fire({
-      title: 'Cancelado'
-    }).then(() => {
-      window.location.reload()
+      title: '¿Estás seguro de cancelar la compra?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, cancelar',
+      cancelButtonText: 'Volver atras'
+    }).then((result) => {
+      if (result.value) {
+        dispatch(updatePurchaseState(id, { state: "Cancelado" }))
+        Swal.fire({
+          title: 'Compra cancelada',
+          icon: 'warning'
+        }).then(() => {
+          window.location.reload()
+        })
+      }
+    })
+  }
+
+  function handleFinalizada(id) {
+    Swal.fire({
+      title: '¿Estás seguro de finalizar la compra?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, finalizar',
+      cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+      if (result.value) {
+        dispatch(updatePurchaseState(id, { state: "entregado" }));
+        Swal.fire({
+          title: 'Compra finalizada!',
+          icon: 'success'
+        }).then(() => {
+          window.location.reload()
+        })
+      }
     })
   }
 
@@ -90,17 +121,21 @@ const Historial = () => {
                           {e.state}
                         </td>
                         <td class="text-center">
-                            {e.state === 'en proceso' ?
-                            <div>
-                              <button style={{width:'100px'}} type='button' className='btn btn-danger' onClick={() => handleClick(e.id)} disabled={e.state === "Cancelado"}>Cancelar</button>
-                              <button type='button' class='btn btn-success' onClick={() => purchaseState(e.id)}>Entregada!</button>
-                            </div>
-                            : e.state}
-                      </td>
                           {/* {e.state === 'En proceso'}
-                          <button style={{width:'100px'}} type='button' class='btn btn-danger' onClick={() => handleClick(e.id)} disabled={e.state === "Cancelado"}>Cancelar</button>
+                          <button style={{ width: '100px' }} type='button' class='btn btn-danger' onClick={() => handleClick(e.id)} disabled={e.state === "Cancelado"}>Cancelar</button>
                           {e.state === 'En proceso'}
-                          <button style={{width:'100px'}} type='button' class='btn btn-success' disabled={e.state === "Cancelado"}>Entregada</button> */}
+                          <button style={{ width: '100px' }} type='button' class='btn btn-success' disabled={e.state === "Cancelado"}>Entregada</button> */}
+                          {e.state === 'en proceso' ? (
+                            <div>
+                              <button style={{ width: '100px' }} type='button' class='btn btn-danger' onClick={() => handleClick(e.id)} >Cancelar</button>
+                              <button style={{ width: '100px' }} type='button' class='btn btn-success' onClick={() => handleFinalizada(e.id)}>Finalizar</button>
+                            </div>
+
+                          ) : e.state === 'entregado' ?
+                            <button style={{ width: '100px' }} type='button' class='btn btn-info' disabled>Entregada</button>
+                            : <button type='button' class='btn btn-warning' disabled>Cancelada</button>
+                          }
+                        </td>
                       </tr>
                     </tbody>
                   ))}
@@ -111,7 +146,7 @@ const Historial = () => {
         </div>
       </div>
 
-    </div>
+    </div >
 
   );
 };

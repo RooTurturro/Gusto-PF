@@ -60,7 +60,6 @@ const CheckOutSucces = () => {
                         <th scope="col" width="10%"><span>Name</span></th>
                         <th scope="col" width="20%" class="text-center"><span>Direccion</span></th>
                         <th scope="col" width="20%"><span>Productos</span></th>
-                        
                         <th scope="col" width="10%"><span>Total</span></th>
                         <th scope="col" width="20%"><span>Envio a domicilio</span></th>
                         <th scope="col" width="20%"><span>Estado</span></th>
@@ -71,7 +70,6 @@ const CheckOutSucces = () => {
                         <td class="text-center" >
                           {name}
                         </td>
-
                         <td class="text-center">
                           {address}
                         </td>
