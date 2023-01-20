@@ -20,7 +20,7 @@ userRouter.get("/", async (req, res) => {
 
       if (!findUser) return res.status(200).send('Email no encontrado')
 
-      return res.status(200).send(findUser)
+      return res.status(200).json(findUser)
       
     } catch (error) {
 
@@ -34,7 +34,7 @@ userRouter.get("/", async (req, res) => {
 
     try {
       const allUsers = await User.findAll();
-      return res.status(200).send(allUsers)
+      return res.status(200).json(allUsers)
 
     } catch (error) {
   
@@ -61,7 +61,7 @@ userRouter.get("/email", async (req, res)=>{
 
       if (!findUser) return res.status(200).send('Email no encontrado')
 
-      return res.status(200).send(findUser)
+      return res.status(200).json(findUser)
       
     } catch (error) {
 
@@ -103,7 +103,7 @@ userRouter.post("/", bodyParser.json(), async (req, res) => {
         
               const newUser = await User.findOrCreate({ where: { name, email } })
         
-              res.status(201).send(newUser);
+              res.status(201).json(newUser);
         
             }
   
