@@ -15,15 +15,7 @@ const ProductList = () => {
     }, [dispatch])
 
     const Swal = require('sweetalert2')
-    // const trashEmpty = (id) => {
-    //     dispatch(deleteProducts(id));
-    //     Swal.fire({
-    //         icon: 'error',
-    //         title: 'Eliminado!'
-    //     }).then((e) => {
-    //         window.location.reload()
-    //     })
-    // };
+    
     const trashEmpty = (id) => {
         Swal.fire({
             title: '¿Estás seguro de eliminar el producto?',
