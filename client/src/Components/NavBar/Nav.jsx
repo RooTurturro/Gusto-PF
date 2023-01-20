@@ -73,12 +73,6 @@ export default function Nav() {
               ?
               <div>
                 <img src={picture} className='image-logo' backgroundColor='black' alt='nada' />
-{/* 
-                .image-logo {
-  height: 60x;
-  width: 60px;
-  border-radius: 50%; */}
-
               </div>
               : <svg xmlns="http://www.w3.org/2000/svg" width="36" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
