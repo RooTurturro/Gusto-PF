@@ -71,7 +71,7 @@ const ProfileUserForm = () => {
                 <div class="form-holder">
                     <div class="form-content">
                         <div class="form-items">
-                            <h2>Editar Perfil</h2>
+                            <h2 style={{color: 'white'}}>Editar Perfil</h2>
                             <form class="requires-validation formDa">
                                 <p>Para modificar el correo electronico debe iniciar sesion con una nueva cuenta</p>
                                 <div class="col-md-12">
