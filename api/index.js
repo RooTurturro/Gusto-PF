@@ -13,7 +13,7 @@ const testConection = async () => {
         console.log(`%s listening at ${port}`); // eslint-disable-line no-console
       });
     });
-  } catch (error) {
+  } catch (error) { 
     console.log("Error en la conexion", error);
   }
 };

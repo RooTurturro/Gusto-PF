@@ -6,3 +6,10 @@
 .nav-item{
     font-size: 20px;
 }
+
+.image-logo {
+    height: 60x;
+    width: 60px;
+    border-radius: 50%;
+  }
+
