@@ -45,6 +45,9 @@ purchaseRouter.put("/state/:id", async (req,res)=>{
         catch (error) {
         console.log("entre al error del put", error);
     }
+  }
+)
+
 
 purchaseRouter.post("/", async (req, res) => {
   try {
@@ -73,6 +76,7 @@ purchaseRouter.post("/", async (req, res) => {
     res.status(400).send(error);
     console.log(error);
   }
+
 });
 
 purchaseRouter.put("/specifications/:id", async (req, res) => {
