@@ -10,6 +10,9 @@ module.exports = (sequelize) =>{
         name:{
             type: DataTypes.STRING,
             allowNull:false,
+      },
+      lastname:{
+          type: DataTypes.STRING,
         },
         address:{
             type:DataTypes.STRING,

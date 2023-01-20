@@ -15,7 +15,7 @@ productRouter.get("/", async (req, res) => {
         (e) => e.name.toLowerCase() === name.toLowerCase()
       );
       product.length
-        ? res.status(200).send(product)
+        ? res.status(200).json(product)
         : res.send("Product not found");
     } else {
       const products = allProducts;
@@ -32,7 +32,7 @@ productRouter.get("/:id", async (req, res) => {
   try {
     if (id) {
       const productId = await Product.findByPk(id);
-      res.status(200).send(productId);
+      res.status(200).json(productId);
     } else {
       res.status(400).send("Product not found");
     }
@@ -53,7 +53,7 @@ productRouter.post("/", async (req, res) => {
       state,
       category,
     });
-    res.status(201).send(newProduct);
+    res.status(201).json(newProduct);
   } catch (error) {
     res.status(400).send(error);
     console.log(error);
