@@ -30,6 +30,16 @@ const Historial = () => {
     })
   }
 
+  function purchaseState(id) {
+    dispatch(updatePurchaseState(id, { state: 'entregado' }));
+    dispatch(getAllPurchases())
+    Swal.fire({
+        title: 'Entrega confirmada'
+    }).then(() => {
+        window.location.reload()
+    })
+}
+
   return (
     <div style={{ display: 'flex' }}>
       <div >
@@ -80,11 +90,17 @@ const Historial = () => {
                           {e.state}
                         </td>
                         <td class="text-center">
-                          {e.state === 'En proceso'}
+                            {e.state === 'en proceso' ?
+                            <div>
+                              <button style={{width:'100px'}} type='button' className='btn btn-danger' onClick={() => handleClick(e.id)} disabled={e.state === "Cancelado"}>Cancelar</button>
+                              <button type='button' class='btn btn-success' onClick={() => purchaseState(e.id)}>Entregada!</button>
+                            </div>
+                            : e.state}
+                      </td>
+                          {/* {e.state === 'En proceso'}
                           <button style={{width:'100px'}} type='button' class='btn btn-danger' onClick={() => handleClick(e.id)} disabled={e.state === "Cancelado"}>Cancelar</button>
                           {e.state === 'En proceso'}
-                          <button style={{width:'100px'}} type='button' class='btn btn-success' disabled={e.state === "Cancelado"}>Entregada</button>
-                        </td>
+                          <button style={{width:'100px'}} type='button' class='btn btn-success' disabled={e.state === "Cancelado"}>Entregada</button> */}
                       </tr>
                     </tbody>
                   ))}
