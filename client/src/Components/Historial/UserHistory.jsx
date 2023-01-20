@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getAllPurchases } from '../../redux/actions'
+import { getAllPurchases, updatePurchaseState} from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -20,6 +20,18 @@ const Historial = () => {
 
   const purchases = useSelector((state) => state.purchases)
   const user = useSelector(state => state.user);
+
+  const Swal = require('sweetalert2')
+
+  function purchaseState(id) {
+    dispatch(updatePurchaseState(id, { state: 'entregado' }));
+    dispatch(getAllPurchases())
+    Swal.fire({
+        title: 'Esperamos que lo disfrutes!'
+    }).then(() => {
+        window.location.reload()
+    })
+}
   return (
     <>
       {purchases?.map((e) => ( e.name === user.name ? 
@@ -63,14 +75,17 @@ const Historial = () => {
                         <td class="text-center">
                           Delivery
                         </td>
-                        <td class="text-center">
-                          {e.state}
-                        </td>
-                        <td class="text-center">
-                          {e.state === 'en proceso' ?
-                            <button type='button' class='btn btn-success'>Entregada!</button>
-                           : e.state}
-                        </td>
+
+                        { e.takeAway === false ?
+                          <td class="text-center">
+                            {e.state === 'en proceso' ?
+                            <button type='button' class='btn btn-success' onClick={() => purchaseState(e.id)}>Entregada!</button>
+                            : e.state}
+                          </td>
+                        : <td class="text-center">
+                        {e.state}
+                      </td>}
+
                       </tr>
                     </tbody>
                   </table>

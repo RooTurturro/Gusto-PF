@@ -145,7 +145,7 @@ userRouter.put("/", async (req, res) => {
 
               if (name && phone && email && address) {
 
-                await findUser.update({ name, phone, email, address, isAdmin, state });
+                await findUser?.update({ name, phone, email, address, isAdmin, state });
                 res.status(200).send(findUser);
 
               } else {

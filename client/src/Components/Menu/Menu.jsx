@@ -93,8 +93,8 @@ const Menu = () => {
         </ListGroup>
       </div>
       <div className='cardContainer'>
-        {products.length > 0 ?
-          products.map((e) => {
+        {products?.length > 0 ?
+          products?.map((e) => {
             if (e.state) {
               return (
                 <Card

@@ -42,10 +42,10 @@ purchaseRouter.post('/', async (req, res) =>{
 purchaseRouter.put("/state/:id", async (req,res)=>{
     try {
         const { id } = req.params;
-        const { state, takeAway, specification } = req.body;
+        const { state} = req.body;
         const findProduct = await Purchase.findByPk(id)
         await findProduct.update(
-            { state, takeAway, specification },
+            { state},
             { where: { id: id } }
             );
         res.status(200).send("Estado modificado con exito");

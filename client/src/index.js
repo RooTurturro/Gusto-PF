@@ -14,8 +14,7 @@ const domain = 'dev-18zov1enqjrx8hn7.us.auth0.com';
 const clientId = 'LqqBa9zF6gjJ2lwcrNYsAtYpikXifzQZ';
 dotenv.config()
 
-// axios.defaults.baseURL = process.env.REACT_APP_API || 'http://localhost:3001'
-axios.defaults.baseURL = process.env.REACT_APP_API || 'gusto-pf-production.up.railway.app'
+axios.defaults.baseURL = process.env.REACT_APP_API || 'http://localhost:3001'
 
 ReactDOM.render(
 
