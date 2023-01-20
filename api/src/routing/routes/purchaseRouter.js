@@ -74,6 +74,7 @@ purchaseRouter.post("/", async (req, res) => {
       state,
     });
     res.status(201).json(newPurchase);
+
   } catch (error) {
     res.status(400).send(error);
     console.log(error);
@@ -91,8 +92,10 @@ purchaseRouter.put("/specifications/:id", async (req, res) => {
       { where: { id: id } }
     );
     res.status(200).send("Estado modificado con exito");
+
   } catch (error) {
     console.log(error);
   }
 });
-module.exports = purchaseRouter;
+  
+  module.exports = purchaseRouter;

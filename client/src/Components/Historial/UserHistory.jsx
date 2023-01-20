@@ -35,6 +35,7 @@ const UserHistory = () => {
 }
   return (
     <>
+
     <div class="container">
       
         
@@ -97,10 +98,8 @@ const UserHistory = () => {
               </div>
             </div>
           </div>
-      
-      </div>
+          </div>
     </>
-
   );
 };
 
