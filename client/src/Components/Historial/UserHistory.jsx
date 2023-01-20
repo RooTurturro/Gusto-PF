@@ -27,7 +27,7 @@ const Historial = () => {
     dispatch(updatePurchaseState(id, { state: 'entregado' }));
     dispatch(getAllPurchases())
     Swal.fire({
-        title: 'Esperamos que lo disfrutes!'
+        title: 'Entrega confirmada'
     }).then(() => {
         window.location.reload()
     })
@@ -58,7 +58,7 @@ const Historial = () => {
                         <td class="text-center" >
                           {e.name}
                         </td>
-                        
+
                         <td class="text-center">
                           {e.address}
                         </td>
