@@ -13,39 +13,39 @@ const PediYa = () => {
 
 	const useModal = (initialValue = false) => {
 		const [isOpen, setIsOpen] = useState(initialValue);
-	  
+		
 		const openModal = () =>{
-	
+			
 			setIsOpen(true);
-	
-					const detail = {
+			
+			const detail = {
 				name: usuario.name,
 				lastname: usuario.lastname,
 				address: usuario.address,
 				email: usuario.email,
 				specification: usuario.specification,
 				total: totalPrice(),
-	
+				
 				state: 'en proceso',
-	
+				
 				products: [cart.map((el) => {
 					return (
 						el.name
-					)
-				})],
-				takeAway: true
-			};
-	
-			/*const to = detail.email;
-			const name = detail.name;
-			const compras = detail;
-			const sendEmail = async () => {
-				await axios.post("http://localhost:3001/api/mail/checkout", { to, name , compras})
-			};
-			sendEmail();*/
+						)
+					})],
+					takeAway: true
+				};
+				
+				const data = () => {
+					window.localStorage.setItem('detailProducts', detail.products);
+					window.localStorage.setItem('detailPrice', detail.total);
+					window.localStorage.setItem('detailState', detail.state);
+					window.localStorage.setItem('detailAdress', detail.adress);
+				}
+			
 			dispatch(getPaymentUrl(detail));
-			dispatch(postPurchase(detail))
-	
+			dispatch(postPurchase(detail));
+			data();
 		} 
 	  
 		const closeModal = () => setIsOpen(false);

@@ -24,34 +24,23 @@ sendGrid.post("/", async (req,res)=>{
 
 sendGrid.post("/checkout", async (req,res)=>{
 
-  /*const detail = await axios.get("https://localhost/3001/purchase")
-  const sendDetail = {
-    compraId: detail.id,
-    productName: detail.products.name,
-    productPrice: detail.products.price,
-    product2: detail.specification,
-    product3: detail.total
-  }*/
-  const { to , name } = req.body ; 
+  const { to , name , detail} = req.body ; 
   
- /* const detail = {
-    name : compras.name,
-    total: compras.total,
-    products : compras.products.map((el) => {
-      return (
-        el.map((el)=> {
-          return (el)
-        })
-      )
-    })
-  }*/
+  const detalle = {
+    products : detail.products ,
+    price : detail.price ,
+    address : detail.adress 
+  }
+   
      
    const msg = {
      to,
      from: `rocioolivaturturro@gmail.com`,
      subject: "Su pedido esta siendo preparado",
      text:"Gracias por su compra",
-     html: `<h1>Preparando pedido</h1><strong>Hola ${name} recibimos tu compra ! <br></br> Pediste  <br></br> </strong> <br></br><strong> Muchas Gracias !!! :D  <br></br> </strong><strong>Gusto</strong>`,
+     html: `<h1>Preparando pedido</h1><strong>Hola ${name} recibimos tu compra ! <br></br> Pediste: ${detalle.products} <br></br>
+     <br></br> El total de su compra es : ${detail.price} <br></br>
+      </strong> <br></br><strong> Muchas Gracias !!! :D  <br></br> </strong><strong>Gusto</strong>`,
    }
    try{
      await sgMail.send(msg)
