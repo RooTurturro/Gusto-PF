@@ -40,7 +40,7 @@ const PediYa = () => {
 					window.localStorage.setItem('detailProducts', detail.products);
 					window.localStorage.setItem('detailPrice', detail.total);
 					window.localStorage.setItem('detailState', detail.state);
-					window.localStorage.setItem('detailAdress', detail.adress);
+					window.localStorage.setItem('detailAdress', detail.address);
 				}
 			
 			dispatch(getPaymentUrl(detail));

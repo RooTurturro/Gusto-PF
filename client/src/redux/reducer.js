@@ -20,11 +20,13 @@ import { USER_LOCAL_LOGOUT } from '../redux/actions'
 import { USER_PROFILE } from '../redux/actions'
 import { RESET_STATE_PURCHASE } from '../redux/actions'
 
+
 import {
 	ADD_TO_CART,
 	CLEAR_CART,
 	REMOVE_ALL_FROM_CART,
 	REMOVE_ONE_FROM_CART,
+	UPDATE_CART_STORAGE
 } from "../types";
 
 const initialState = {
@@ -38,7 +40,7 @@ const initialState = {
 	users: [],
 	paymentUrl: "",
 	buyProducts: [],
-	cart: JSON.parse(window.localStorage.getItem('carrito')) || [],
+	cart: [],
 	rating: undefined,
 	purchases: [],
 	newPurchase: []
@@ -257,6 +259,7 @@ const rootReducer = (state = initialState, action) => {
 				};
 		}
 
+
 		case REMOVE_ALL_FROM_CART: {
 			return {
 				...state,
@@ -280,6 +283,11 @@ const rootReducer = (state = initialState, action) => {
 					cart: state.cart.filter((item) => item.id !== action.payload),
 				};
 		}
+		case UPDATE_CART_STORAGE:
+			return {
+				...state,
+				cart: action.payload
+			}
 		case CLEAR_CART: {
 			return initialState;
 		}

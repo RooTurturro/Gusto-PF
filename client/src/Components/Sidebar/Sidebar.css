@@ -1,9 +1,9 @@
 .sidebar {
-    flex: 1;
+    flex: 0;
     border-right: 0.5px solid rgb(230, 227, 227);
     min-height: 100vh;
     background-color: white;
-    width: 150px;
+    width: 200px;
 }
 
 .top {
@@ -34,12 +34,13 @@ hr {
     list-style: none;
     margin: 0;
     padding: 0;
+    
 }
 
 .title {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: bold;
-    color: #999;
+    color: rgb(0, 0, 0);
     margin-top: 15px;
     margin-bottom: 5px;
 }
@@ -52,17 +53,23 @@ hr {
 }
 
 .li:hover {
-    background-color: #ece8ff;
+    background-color: crimson;
+    border-radius: 200px;
 }
 
 .icon {
-    font-size: 18px;
+    font-size: 23px;
     color: #7451f8;
 }
 
 .span {
-    font-size: 13px;
+    font-size: 17px;
     font-weight: 600;
-    color: #888;
+    color: rgb(0, 0, 0);
     margin-left: 10px;
+   
+}
+
+.span:hover{
+    color:#fff
 }

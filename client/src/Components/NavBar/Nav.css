@@ -2,14 +2,25 @@
     align-items: center;
     display: flex;
 }
+.nav-item:hover{
+    background-color: rgb(221, 23, 23);;
+    color: #fff;
+}
 
 .nav-item{
     font-size: 20px;
+    border-radius: 20px;
 }
+.nav-link:hover {
+    color: #fff;
+}
+
+
 
 .image-logo {
     height: 60x;
     width: 60px;
     border-radius: 50%;
   }
+
 

@@ -15,15 +15,22 @@ const ProductList = () => {
     }, [dispatch])
 
     const Swal = require('sweetalert2')
+    
     const trashEmpty = (id) => {
-        dispatch(deleteProducts(id));
         Swal.fire({
-            icon: 'error',
-            title: 'Eliminado!'
-        }).then((e) => {
-            window.location.reload()
+            title: '¿Estás seguro de eliminar el producto?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'No, cancelar'
+        }).then((result) => {
+            if (result.value) {
+                // aquí se puede llamar la acción de borrado del producto
+                dispatch(deleteProducts(id))
+                window.location.reload()
+            }
         })
-    };
+    }
     function handleClick(e) {
         e.preventDefault(e);
         dispatch(getAllProducts());
@@ -71,12 +78,12 @@ const ProductList = () => {
 
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', gap: '10rem' }}>
             <div >
                 <Sidebar />
             </div>
-            <div>
-                <div style={{ display: 'flex', justifyContent:'space-around', marginTop:'20px' }}>
+            <div >
+                <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                     <Link to={'/create'}>
                         <button type="button" class="btn btn-primary">
                             Nuevo producto
@@ -116,7 +123,7 @@ const ProductList = () => {
                         <div class="col-lg-12">
                             <div class="main-box clearfix">
                                 <div class="table-responsive">
-                                    <table class="table user-list">
+                                    <table class="table user-list" >
                                         <thead>
                                             <tr class="text-center">
                                                 <th scope="col" width="20%" class="text-center"><span>Producto</span></th>

@@ -46,17 +46,17 @@ const Users = () => {
               <div className="table-responsive">
                 <table className="table user-list">
                   <thead>
-                    <tr>
+                    <tr className='text-center'>
                       <th scope="col" width="20%"><span>Nombre</span></th>
                       <th scope="col" width="20%" className="text-center"><span>Dirección</span></th>
                       <th scope="col" width="20%"><span>Telefono</span></th>
                       <th scope="col" width="25%"><span>E-Mail</span></th>
-                      <th scope="col" width="20%"><span>state</span></th>
+                      <th scope="col" width="20%"><span>Estado</span></th>
                     </tr>
                   </thead>
                   {user.map((e) => (
-                    <tbody>
-                      <tr key={e.id} >
+                    <tbody key={e.id}>
+                      <tr  >
                         <td className="text-center" >
                           {e.name}
                         </td>

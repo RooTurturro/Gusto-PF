@@ -41,6 +41,8 @@ const CreateProduct = () => {
 			errors.name = `El producto ${state.name} ya existe`;
 		if (!state.description) errors.description = 'Ingrese una descripcion'
 		if (!state.category) errors.category = 'Selecciona una categoria'
+		if (!state.image) errors.image = 'Selecciona una categoria'
+		if (!state.price) errors.price = 'Fija un precio'
 
 		return errors;
 	};
@@ -86,7 +88,7 @@ const CreateProduct = () => {
 										value={state.name}
 										required
 									/>
-									{errors.name && <p className={styles.error}>{errors.name}</p>}
+									{errors.name && <p style={{color:'red'}}>{errors.name}</p>}
 								</div>
 								<div className="col-md-12">
 									<input
@@ -98,7 +100,7 @@ const CreateProduct = () => {
 										value={state.description}
 										required
 									/>
-									{errors.description && <p className={styles.error}>{errors.description}</p>}
+									{errors.description && <p style={{color:'red'}}>{errors.description}</p>}
 								</div>
 
 								<div className="col-md-12">
@@ -111,8 +113,7 @@ const CreateProduct = () => {
 										value={state.price}
 										required
 									/>
-									{errors.description && <p className={styles.error}>{errors.description}</p>}
-
+									{errors.price && <p style={{color:'red'}}>{errors.price}</p>}
 								</div>
 								<div className="col-md-12">
 									<input
@@ -124,7 +125,7 @@ const CreateProduct = () => {
 										value={state.image}
 										required
 									/>
-									{errors.description && <p className={styles.error}>{errors.description}</p>}
+									{errors.description && <p style={{color:'red'}}>{errors.image}</p>}
 								</div>
 								<div class="col-md-12 mt-3 mb-2 checkbox-container">
 									<div style={{ display: 'flex', gap: '0.3rem' }}>
@@ -140,7 +141,7 @@ const CreateProduct = () => {
 								</div>
 								<div style={{ display: 'flex', gap: '1rem' }} className="btn-group-toggle" data-toggle="buttons">
 									<div style={{ display: 'flex', gap: '0.3rem' }}>
-										Categorias:
+										<label>Categorias: </label>
 										<br />
 										<label onChange={handlerChange} className="btn btn-secondary">
 											<input className="btn-check" type="radio" name="category" value='Bebida' autoComplete="off" /> Bebida
