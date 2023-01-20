@@ -45,7 +45,7 @@ const Historial = () => {
                         <td class="text-center" >
                           {e.name}
                         </td>
-
+                        
                         <td class="text-center">
                           {e.address}
                         </td>

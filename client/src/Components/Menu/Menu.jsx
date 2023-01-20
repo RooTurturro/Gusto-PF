@@ -98,7 +98,7 @@ const Menu = () => {
             if (e.state) {
               return (
                 <Card
-                  addToCart={() => dispatch(addToCart(e.id))}
+                  addToCart={() => {dispatch(addToCart(e.id))}}
                   id={e.id}
                   key={e.id}
                   name={e.name}

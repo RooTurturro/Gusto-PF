@@ -26,7 +26,7 @@
 }
 
 .menu-body {
-    background-color: #f3f5f7;
+    background-color: #faeeee;
     min-height: 100vh;
     display: flex;
     justify-content: space-around;
@@ -79,11 +79,11 @@
 
 .listGroup {
     cursor: pointer;
-
     width: 300px;
 }
 
 .listGroupItem:hover{
-    background-color: crimson;
+    background-color: rgb(221, 23, 23);;
+    color: #fff;
 }
 

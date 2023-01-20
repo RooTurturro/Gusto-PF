@@ -10,6 +10,7 @@ export default function Card({ id, name, price, description, image, addToCart, r
 
 	const handleClick = () => {
 		Swal.fire('Producto añadido al carrito!')
+		
 	}
 	return (
 		<div class="card" style={{ width: '18rem', backgroundColor: 'transparent', border: 'none' }}>

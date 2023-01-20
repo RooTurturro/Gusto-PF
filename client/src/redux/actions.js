@@ -10,7 +10,6 @@ export const FILTER_BY_CATEGORIES = "FILTER_BY_CATEGORIES";
 export const LOADING = "LOADING";
 export const DELETE_PRODUCTS = "DELETE_PRODUCTS";
 export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
-
 export const ALPHABETICAL_ORDER = "ALPHABETICAL_ORDER";
 export const PRICE_ORDER = "PRICE_ORDER";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
@@ -68,7 +67,7 @@ export const getPurchaseDetail = (id) => {
 	return async function (dispatch) {
 		try {
 			dispatch(loading());
-			let response = await axios.get(`http://localhost:3001/purchase/${id}`);
+			let response = await axios.get(`/purchase/${id}`);
 			return dispatch({
 				type: GET_PURCHASE_DETAIL,
 				payload: response.data,
@@ -249,7 +248,7 @@ export const updatePurchaseState = (id, payload) => {
 export const updateSpecification = (id, payload) => {
 	return async () => {
 		try {
-			await axios.put(`http://localhost:3001/purchase/specifications/${id}`, payload)
+			await axios.put(`/purchase/specifications/${id}`, payload)
 		} catch (error) {
 			console.log(error);
 		}

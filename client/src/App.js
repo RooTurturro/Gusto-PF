@@ -17,15 +17,16 @@ import ProfileUserForm from "./Components/Form/ProfileUserForm";
 import LoginButton from "./Components/Login/LoginButton";
 import Users from "./Components/Users/Users";
 import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces"
+import Contacto from "./Components/Contacto/Contacto";
 
 
 
 function App() {
 	return (
 		<div>
-			
+
 			<Nav />
-			
+
 			
 			<Routes>
 				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
@@ -43,8 +44,7 @@ function App() {
 				<Route exact path="/login" element={<LoginButton />} />
 				<Route exact path="/checkout" element={<CheckOutSucces />} />
 				<Route exact path="/miscompras" element={<UserHistory />} />
-
-
+				<Route exact path="/contacto" element={<Contacto />} />
 				<Route
 					exact
 					path="/editarperfilusuario"
