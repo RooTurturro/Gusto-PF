@@ -48,7 +48,7 @@ const Historial = () => {
                             <span>Name</span>
                           </th>
 
-                          <th scope="col" width="20%" class="text-center">
+                          <th scope="col" width="20%" className="text-center">
                             <span>Adress</span>
                           </th>
                           <th scope="col" width="20%">

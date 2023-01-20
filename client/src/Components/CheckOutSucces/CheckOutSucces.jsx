@@ -48,17 +48,17 @@ const CheckOutSucces = () => {
 
   return (
     <>
-         <div class="container">
+         <div className="container">
           <h2>SU COMPRA A SIDO ESITOSA XD</h2>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="main-box clearfix">
-                <div class="table-responsive">
-                  <table class="table user-list">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="main-box clearfix">
+                <div className="table-responsive">
+                  <table className="table user-list">
                     <thead>
                       <tr>
                         <th scope="col" width="10%"><span>Name</span></th>
-                        <th scope="col" width="20%" class="text-center"><span>Direccion</span></th>
+                        <th scope="col" width="20%" className="text-center"><span>Direccion</span></th>
                         <th scope="col" width="20%"><span>Productos</span></th>
                         <th scope="col" width="10%"><span>Total</span></th>
                         <th scope="col" width="20%"><span>Envio a domicilio</span></th>
@@ -67,26 +67,26 @@ const CheckOutSucces = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="text-center" >
+                        <td className="text-center" >
                           {name}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {address}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {products}
                         </td>
                        
-                        <td class="text-center">
+                        <td className="text-center">
                           {price}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           Delivery
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {state}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {state === 'En proceso'}
                         </td>
                       </tr>
