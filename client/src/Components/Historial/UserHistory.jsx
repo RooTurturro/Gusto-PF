@@ -12,16 +12,17 @@ import { Link } from 'react-router-dom'
 const Historial = () => {
 
     const dispatch = useDispatch()
-    const purchases = useSelector((state) => state.purchases)
-    const user = useSelector(state => state.user);
+
 
   useEffect(() => {
     dispatch(getAllPurchases())
   }, [dispatch])
 
+  const purchases = useSelector((state) => state.purchases)
+  const user = useSelector(state => state.user);
   return (
     <>
-      {purchases.map((e) => ( e.name === user.name ? 
+      {purchases?.map((e) => ( e.name === user.name ? 
         <div class="container">
           <div class="row">
             <div class="col-lg-12">

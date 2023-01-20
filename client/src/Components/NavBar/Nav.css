@@ -14,3 +14,13 @@
 .nav-link:hover {
     color: #fff;
 }
+
+
+
+.image-logo {
+    height: 60x;
+    width: 60px;
+    border-radius: 50%;
+  }
+
+
