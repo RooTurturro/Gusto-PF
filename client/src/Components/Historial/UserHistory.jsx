@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getAllPurchases, updatePurchaseState} from '../../redux/actions'
+import { getAllPurchases, userProfile, updatePurchaseState} from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -9,13 +9,14 @@ import { Link } from 'react-router-dom'
 // se muestran en el perfil de cada usuario luego de logearse
 // se puede hacer un mapeo y devolver la Card del menu pero siendo ya una compra realizada
 
-const Historial = () => {
+const UserHistory = () => {
 
     const dispatch = useDispatch()
-
+    const email = window.localStorage.getItem('userEmail')
 
   useEffect(() => {
     dispatch(getAllPurchases())
+    dispatch(userProfile(email))
   }, [dispatch])
 
   const purchases = useSelector((state) => state.purchases)
@@ -34,8 +35,9 @@ const Historial = () => {
 }
   return (
     <>
-      {purchases?.map((e) => ( e.name === user.name ? 
-        <div class="container">
+    <div class="container">
+      
+        
           <div class="row">
             <div class="col-lg-12">
               <div class="main-box clearfix">
@@ -53,6 +55,7 @@ const Historial = () => {
                         <th scope="col" width="20%"><span>state</span></th>
                       </tr>
                     </thead>
+                    {purchases?.map((e) => ( e.name === user.name ? 
                     <tbody>
                       <tr>
                         <td class="text-center" >
@@ -88,17 +91,17 @@ const Historial = () => {
 
                       </tr>
                     </tbody>
+                    :null ))}
                   </table>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      :null ))}
-
+      
+      </div>
     </>
 
   );
 };
 
-export default Historial;
+export default UserHistory;
