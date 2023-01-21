@@ -16,7 +16,7 @@ const CheckOutSucces = () => {
   const newPurchase = useSelector((state) => state.newPurchase)
   const purchase = useSelector((state) => state.purchases)
   const cart = useSelector((state) => state.cart)
-
+  // LOCAL STORAGE
   const name = window.localStorage.getItem('userName')
   const to = window.localStorage.getItem('userEmail')
   const products = window.localStorage.getItem('detailProducts')
@@ -24,28 +24,18 @@ const CheckOutSucces = () => {
   const state = window.localStorage.getItem('detailState')
   const address = window.localStorage.getItem('detailAdress')
   const specification = window.localStorage.getItem('detailSpecification')
-
+  const quantity = window.localStorage.getItem('detailQuantity')
+  // DETALLE DEL PEDIDO
   const detail = {
     products : products ,
     price : price ,
-    address : address 
+    address : address ,
+    quantity : quantity
   }
-
   const sendEmail = async () => {
     await axios.post("http://localhost:3001/api/mail/checkout", { to, name , detail })
   };
   sendEmail();
-  
-  /*useEffect(() => {
-    sendEmail()
-  })*/
-  sendEmail()
- console.log(name)
- console.log(to)
- console.log(products)
- console.log(price)
- console.log(state)
-
   return (
     <>
          <div className="container">
@@ -74,7 +64,7 @@ const CheckOutSucces = () => {
                           {address}
                         </td>
                         <td className="text-center">
-                          {products}
+                          {products + ""}x{quantity}
                         </td>
                        
                         <td className="text-center">

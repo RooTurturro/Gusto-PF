@@ -1,6 +1,23 @@
 import React from 'react'
+import { useState } from 'react'
+import { delFromCart, updateCartStorage, addToCart } from '../../redux/shoppingActions'
+import { useSelector, useDispatch } from 'react-redux'
 
 const CartItem = ({ id, name, price, image, description,total, quantity, delOneFromCart }) => {
+    const dispatch = useDispatch()
+    const cart = useSelector(state => state.cart)
+    
+    const [state , setState ] = useState(quantity)
+   
+    
+
+ /*   const handleClick = (e)=>{
+        e.preventDefault()
+        dispatch(addToCart(id))
+        setState(state + 1)
+    }*/
+    console.log(quantity)
+ console.log(cart)
     return (
         <div className=" mt-3 row">
             < hr />
@@ -24,6 +41,8 @@ const CartItem = ({ id, name, price, image, description,total, quantity, delOneF
                 <p className="text-start text-md-center">
                     <h5>
                         Cantidad: {quantity}
+                  <button onClick={() => {dispatch(addToCart(id))}}> + </button>
+                  <button onClick={() => {dispatch(delFromCart(id))}}> - </button>
                         <hr />
                         ${price * quantity}
                     </h5>
