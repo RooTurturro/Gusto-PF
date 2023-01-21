@@ -58,7 +58,7 @@ const Perfil = () => {
                                 </div>
 
                                 <div>
-                                    <h3 className={styles.text}>{usuario.name}</h3> 
+                                    <h3 className={styles.text2}>{usuario.name}</h3> 
                                 </div>
 
                             </div>
