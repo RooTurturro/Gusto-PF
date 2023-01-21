@@ -52,6 +52,7 @@ purchaseRouter.put("/state/:id", async (req,res)=>{
 purchaseRouter.post("/", async (req, res) => {
   try {
     const {
+      email,
       name,
       lastname,
       address,
@@ -62,6 +63,7 @@ purchaseRouter.post("/", async (req, res) => {
       state,
     } = req.body;
     const newPurchase = await Purchase.create({
+      email,
       name,
       lastname,
       address,
