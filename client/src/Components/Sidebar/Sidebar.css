@@ -55,6 +55,7 @@ hr {
 .li:hover {
     background-color: crimson;
     border-radius: 200px;
+    color: #fff;
 }
 
 .icon {
@@ -64,7 +65,7 @@ hr {
 
 .span {
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 400;
     color: rgb(0, 0, 0);
     margin-left: 10px;
    

@@ -52,6 +52,7 @@ purchaseRouter.put("/state/:id", async (req,res)=>{
 purchaseRouter.post("/", async (req, res) => {
   try {
     const {
+      email,
       name,
       lastname,
       address,
@@ -62,6 +63,7 @@ purchaseRouter.post("/", async (req, res) => {
       state,
     } = req.body;
     const newPurchase = await Purchase.create({
+      email,
       name,
       lastname,
       address,
@@ -72,6 +74,7 @@ purchaseRouter.post("/", async (req, res) => {
       state,
     });
     res.status(201).json(newPurchase);
+
   } catch (error) {
     res.status(400).send(error);
     console.log(error);
@@ -89,8 +92,10 @@ purchaseRouter.put("/specifications/:id", async (req, res) => {
       { where: { id: id } }
     );
     res.status(200).send("Estado modificado con exito");
+
   } catch (error) {
     console.log(error);
   }
 });
-module.exports = purchaseRouter;
+  
+  module.exports = purchaseRouter;

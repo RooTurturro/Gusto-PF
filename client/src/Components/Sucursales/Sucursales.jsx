@@ -7,52 +7,52 @@ import './Sucursales.css'
 
 const Sucursales = () => {
 	return (
-		<div class="container" style={{marginTop:'20px'}}>
-			<div class="row">
-				<div class="col-lg-6 mb-4">
-					<div class="card h-100">
-						<img class="card-img-top" src={sucursal1} alt="" />
-						<div class="card-body">
-							<h4 class="card-title">
+		<div className="container" style={{marginTop:'20px'}}>
+			<div className="row">
+				<div className="col-lg-6 mb-4">
+					<div className="card h-100">
+						<img className="card-img-top" src={sucursal1} alt="" />
+						<div className="card-body">
+							<h4 className="card-title">
 								<p>Sucursal Rio cuarto</p>
 							</h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
+							<p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
 								odio, gravida pellentesque urna varius vitae.</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6 mb-4">
-					<div class="card h-100">
-						<img class="card-img-top" src={sucursal2} alt="" />
-						<div class="card-body">
-							<h4 class="card-title">
+				<div className="col-lg-6 mb-4">
+					<div className="card h-100">
+						<img className="card-img-top" src={sucursal2} alt="" />
+						<div className="card-body">
+							<h4 className="card-title">
 								<p>Sucursal Córdoba</p>
 							</h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
+							<p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
 								odio, gravida pellentesque urna varius vitae.</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6 mb-4">
-					<div class="card h-100">
-						<img class="card-img-top" src={sucursal3} alt="" />
-						<div class="card-body">
-							<h4 class="card-title">
+				<div className="col-lg-6 mb-4">
+					<div className="card h-100">
+						<img className="card-img-top" src={sucursal3} alt="" />
+						<div className="card-body">
+							<h4 className="card-title">
 								<p>Sucursal Buenos Aires</p>
 							</h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
+							<p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
 								odio, gravida pellentesque urna varius vitae.</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6 mb-4">
-					<div class="card h-100">
-						<img class="card-img-top" src={sucursal4} alt="" />
-						<div class="card-body">
-							<h4 class="card-title">
+				<div className="col-lg-6 mb-4">
+					<div className="card h-100">
+						<img className="card-img-top" src={sucursal4} alt="" />
+						<div className="card-body">
+							<h4 className="card-title">
 								<p>Sucursal Santa fe</p>
 							</h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
+							<p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
 								odio, gravida pellentesque urna varius vitae.</p>
 						</div>
 					</div>
