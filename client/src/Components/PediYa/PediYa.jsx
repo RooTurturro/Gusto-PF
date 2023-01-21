@@ -33,6 +33,11 @@ const PediYa = () => {
 						el.name
 						)
 					})],
+					quantity: [cart.map((el) => {
+						return (
+							el.quantity
+							)
+						})],
 					takeAway: true
 				};
 				
@@ -41,6 +46,7 @@ const PediYa = () => {
 					window.localStorage.setItem('detailPrice', detail.total);
 					window.localStorage.setItem('detailState', detail.state);
 					window.localStorage.setItem('detailAdress', detail.address);
+					window.localStorage.setItem('detailQuantity', detail.quantity);
 				}
 			
 			dispatch(getPaymentUrl(detail));

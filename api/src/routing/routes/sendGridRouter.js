@@ -29,7 +29,8 @@ sendGrid.post("/checkout", async (req,res)=>{
   const detalle = {
     products : detail.products ,
     price : detail.price ,
-    address : detail.adress 
+    address : detail.adress ,
+    quantity : detail.quantity
   }
    
      
@@ -38,7 +39,7 @@ sendGrid.post("/checkout", async (req,res)=>{
      from: `rocioolivaturturro@gmail.com`,
      subject: "Su pedido esta siendo preparado",
      text:"Gracias por su compra",
-     html: `<h1>Preparando pedido</h1><strong>Hola ${name} recibimos tu compra ! <br></br> Pediste: ${detalle.products} <br></br>
+     html: `<h1>Preparando pedido</h1><strong>Hola ${name} recibimos tu compra ! <br></br> Pediste: ${detalle.products} x ${detalle.quantity} <br></br>
      <br></br> El total de su compra es : ${detail.price} <br></br>
       </strong> <br></br><strong> Muchas Gracias !!! :D  <br></br> </strong><strong>Gusto</strong>`,
    }
