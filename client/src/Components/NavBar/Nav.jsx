@@ -6,6 +6,9 @@ import { useSelector } from "react-redux";
 import LogoutButton from "../Login/LogoutButton";
 import LoginButton from "../Login/LoginButton";
 import { useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import carrito from '../../assets/cart.png'
+
 
 export default function Nav() {
 	const usuario = useSelector((state) => state.user);
@@ -15,148 +18,50 @@ export default function Nav() {
 	const log = window.localStorage.getItem("isLogIn");
 	console.log(log + " navbar log");
 	console.log(picture + " navbar picture");
-
+	const { isAuthenticated } = useAuth0();
 
 	useEffect(() => {
 		console.log("se relogueo la navBAR");
 	}, [usuario]);
 
 	return (
-		<nav className="navbar navbar-expand-lg nav-container-custom ">
-			<div className="container-fluid all-show">
-				<button
-					className="navbar-toggler"
-					type="button"
-					data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
+		<nav className="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
+			<div className="container-fluid all-show nav-container-custom">
+				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>
-				<div></div>
-				<div
-					className="collapse navbar-collapse nav-custom"
-					id="navbarSupportedContent"
-				>
-					{/* <Link className="nav-item-custom-carrito" to="/carrito">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="40"
-							height="36"
-							fill="currentColor"
-							className="bi bi-cart2"
-							viewBox="0 0 16 16"
-						>
-							<path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-						</svg>
-						{cart.length > 0 ? (
-							<a
-								href="#!"
-								style={{
-									backgroundColor: "red",
-									color: "white",
-									fontSize: "18px",
-									borderRadius: "100%",
-								}}
-							>
-								{cart.length}
-							</a>
-						) : null}
-					</Link> */}
-					<ul className="navbar-nav mx-auto">
-						<li className="nav-item-custom">
-							<Link className="nav-link-custom active" to="/sucursales">
-								SUCURSALES
-							</Link>
-						</li>
-						<li className="nav-item-custom">
-							<Link
-								className="nav-link-custom active"
-								aria-current="page"
-								to="/menu"
-							>
-								MENU
-							</Link>
-						</li>
-						<li className="nav-item-custom">
-							<Link className="nav-link-custom nav-logo-custom" to="/">
-								<img src={logo} alt="logo" style={{ width: "170px" }} />
-							</Link>
-						</li>
-						<li className="nav-item-custom">
-							<Link
-								className="nav-link-custom active"
-								aria-current="page"
-								to="/contacto"
-							>
-								CONTACTENOS
-							</Link>
-						</li>
-						{usuario.isAdmin ? (
-							usuario.isAdmin && (
-								<li className="nav-item-custom">
-									<Link
-										className="nav-link-custom active"
-										aria-current="page"
-										to="/productlist"
-									>
-										ADMIN
-									</Link>
-								</li>
-							)
-						) : (
-							<li className="nav-item-custom">
-								<Link
-									className="nav-link-custom active"
-									aria-current="page"
-									to="/miscompras"
-								>
-									MIS COMPRAS
-								</Link>
-							</li>
-						)}
+				<div className="fuente">
+					<ul style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2rem', }}>
+						<Link className="nav-link" to='/'>
+							<img src={logo} alt='logo' style={{ width: '280px', marginLeft: '-3.9rem ' }} />
+						</Link>
+						<div className="nav-item">
+							<Link className="nav-link-custom active" aria-current="page" to='/menu'>MENU</Link>
+						</div>
+						<div className="nav-item">
+							<Link className="nav-link-custom active" to='/sucursales'>SUCURSALES</Link>
+						</div>
+						<div className="nav-item">
+							<Link className="nav-link-custom active" aria-current="page" to='/productlist'>CONTACTANOS</Link>
+						</div>
 					</ul>
 				</div>
-				<div
-					style={{
-						color: "black",
-						display: "flex",
-						gap: "1rem",
-						marginRight: "10px",
-						margintTop: "0px",
-						maxHeight: "40px",
-						display: "flex",
-						alignItems: "center",
-					}}
-				>
-					{/* <Link className="nav-link-custom" to="/perfil">
-						{picture ? (
-							<div>
-								<img
-									src={picture}
-									className="image-logo"
-									backgroundColor="black"
-									alt="nada"
-								/>
-							</div>
-						) : (
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="36"
-								height="40"
-								fill="currentColor"
-								class="bi bi-person-square"
-								viewBox="0 0 16 16"
-							>
-								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-								<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
-							</svg>
-						)}
+				<div style={{ color: 'red', display: 'flex', marginRight: '10px', alignItems: 'center', justifyContent: 'center' }}>
+					<Link className='nav-link' to='/carrito'>
+						<img src={carrito} style={{width:'300px', height:'200px'}} alt='not found' />
 					</Link>
-
-					{log === "Log In" ? <LogoutButton /> : <LoginButton />} */}
+					{picture ? (
+						<Link>
+							<img src={picture} alt='not found' className="picture-img" />
+						</Link>
+					) :
+						<Link className="nav-link" to='/perfil'>
+							<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+								<path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
+								<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+							</svg>
+						</Link>
+					}
 				</div>
 			</div>
 		</nav>

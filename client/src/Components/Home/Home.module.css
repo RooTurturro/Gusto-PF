@@ -4,11 +4,6 @@
 	--bgDark: #1d1d1d;
 }
 
-/* font for titles and logo */
-@font-face {
-	font-family: "Recoleta-Bold";
-	src: url("../../assets/RecoletaAlt-Bold.ttf");
-}
 
 .home1 {
 	margin-top: -11rem;
@@ -17,6 +12,7 @@
 
 .home1 img {
 	width: 98%;
+	margin-top:110px;
 }
 
 .img {
@@ -26,6 +22,8 @@
 
 .container {
 	max-width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
 .container::-webkit-scrollbar {
