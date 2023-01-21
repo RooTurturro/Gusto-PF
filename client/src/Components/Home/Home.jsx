@@ -1,22 +1,13 @@
 import React, { useEffect, useState } from "react";
-import fatty from "../../assets/fatty.jpg";
-import hamburguesa5 from "../../assets/hamburguesa5.png";
-import hamburguesa6 from "../../assets/hamburguesa6.png";
-import carrusel1 from "../../assets/carrusel1.jpg";
-import carrusel2 from "../../assets/carrusel2.png";
-import sucursal3 from "../../assets/sucursal3.jpg";
-import logo from "../../assets/gustoPng.png";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Carousel from "react-bootstrap/Carousel";
 import styles from "./Home.module.css";
-import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLocalLogin, userLogin } from "../../redux/actions";
 import home1 from "../../assets/home1.png";
-import vicio from '../../assets/vicio.png'
-import vicio_cut from '../../assets/vicio_cut.png'
-import vicio_two from '../../assets/vicio_two.png'
+import homeOurCollection from '../../assets/homeOurCollection.png'
+import imageForCintaGusto from '../../assets/imageForCintaGusto.png'
+import neck from '../../assets/neck.png'
+import video from '../../assets/vagoMovimiento.mp4'
 
 
 // import { userLogin } from '../../redux/actions';
@@ -26,8 +17,8 @@ import vicio_two from '../../assets/vicio_two.png'
 
 const Home = () => {
 	const [index, setIndex] = useState(0);
-	const { user, isAuthenticated, isLoading } = useAuth0();
-	const usuario = useSelector((state) => state.user);
+	const { user, isAuthenticated, } = useAuth0();
+
 	const dispatch = useDispatch();
 
 	console.log(isAuthenticated);
@@ -39,15 +30,15 @@ const Home = () => {
 		window.localStorage.setItem("isLogIn", "Log In");
 	};
 
-	const handleSelect = (selectedIndex, e) => {
-		setIndex(selectedIndex);
-	};
+
 
 	//-----Local Storage-----
 
 	if (isAuthenticated) {
 		storageLogIn();
 	}
+
+
 
 	const picture = window.localStorage.getItem("userPicture");
 	const name = window.localStorage.getItem("userName");
@@ -65,17 +56,35 @@ const Home = () => {
 		}
 	}, [dispatch, log]);
 
+
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.home1}>
 				<img src={home1} alt="home1" />
 			</div>
-			{/* <div className='col-12 col-md4'>
-            <h3 className='title_two'>OUR COLLECTION</h3>
-            <img className="img_vicio img fluid" src={vicio} alt="vicio" />
-            <img className="img_vicio_cut img fluid" src={vicio_cut} alt="vicio_cut" />
-            <img className="img_vicio_two img fluid" src={vicio_two} alt="vicio_two" />
-          </div> */}
+			<div className={styles.container2}>
+				<div>
+
+					<div>
+						<img src={homeOurCollection} className={styles.collection} alt='our colection' />
+					</div>
+					<div className={styles.container3}>
+						{/* <div style={{ width: '100%', height: '0', paddingbottom: '100', position: 'relative' }}>
+							<iframe src="https://giphy.com/embed/nO5muK3XxJPxAqIEiu" style={{ width: "100%", height: "100%", position: 'absolute' }} class="giphy-embed" allowFullScreen>	
+							</iframe>
+						</div> */}
+						<video className={styles.video} autoPlay='autoplay' muted loop='loop'>
+							<source src={video} type='video/mp4' />
+						</video>
+						<img className={styles.vago} src={imageForCintaGusto} alt='vago' />
+						<div>
+						</div>
+						<img className={styles.cuellito} src={neck} alt='cuello' />
+					</div>
+				</div>
+			</div>
+
 		</div>
 	);
 };
