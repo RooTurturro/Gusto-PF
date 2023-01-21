@@ -70,6 +70,6 @@ const Home = () => {
 	);
 };
 
-//cintaGusto
+
 
 export default Home;

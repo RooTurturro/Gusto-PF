@@ -11,11 +11,11 @@ export default function Nav() {
 	const usuario = useSelector((state) => state.user);
 	const cart = useSelector((state) => state.cart);
 	console.log(cart);
-
 	const picture = window.localStorage.getItem("userPicture");
 	const log = window.localStorage.getItem("isLogIn");
 	console.log(log + " navbar log");
 	console.log(picture + " navbar picture");
+
 
 	useEffect(() => {
 		console.log("se relogueo la navBAR");

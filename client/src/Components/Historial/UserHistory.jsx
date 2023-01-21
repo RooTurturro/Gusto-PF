@@ -35,10 +35,7 @@ const UserHistory = () => {
 }
   return (
     <>
-
     <div class="container">
-      
-        
           <div class="row">
             <div class="col-lg-12">
               <div class="main-box clearfix">
@@ -94,6 +91,7 @@ const UserHistory = () => {
                     </tbody>
                     :null ))}
                   </table>
+
                 </div>
               </div>
             </div>

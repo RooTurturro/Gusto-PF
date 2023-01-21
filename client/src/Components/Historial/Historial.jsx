@@ -76,16 +76,16 @@ const Historial = () => {
       <div >
         <Sidebar />
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="main-box clearfix">
-              <div class="table-responsive">
-                <table class="table user-list">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="main-box clearfix">
+              <div className="table-responsive">
+                <table className="table user-list">
                   <thead>
                     <tr>
                       <th scope="col" width="10%"><span>Name</span></th>
-                      <th scope="col" width="20%" class="text-center"><span>Adress</span></th>
+                      <th scope="col" width="20%" className="text-center"><span>Adress</span></th>
                       <th scope="col" width="20%"><span>Productos</span></th>
                       <th scope="col" width="20%"><span>Especificaciones</span></th>
                       <th scope="col" width="10%"><span>Total</span></th>
@@ -97,43 +97,43 @@ const Historial = () => {
                   {purchases.map((e) => (
                     <tbody>
                       <tr>
-                        <td class="text-center" >
+                        <td className="text-center" >
                           {e.name}
                         </td>
 
-                        <td class="text-center">
+                        <td className="text-center">
                           {e.address}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {e.products}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {e.specification}
                         </td>
 
-                        <td class="text-center">
+                        <td className="text-center">
                           {e.total}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           Delivery
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {e.state}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {/* {e.state === 'En proceso'}
-                          <button style={{ width: '100px' }} type='button' class='btn btn-danger' onClick={() => handleClick(e.id)} disabled={e.state === "Cancelado"}>Cancelar</button>
+                          <button style={{ width: '100px' }} type='button' className='btn btn-danger' onClick={() => handleClick(e.id)} disabled={e.state === "Cancelado"}>Cancelar</button>
                           {e.state === 'En proceso'}
-                          <button style={{ width: '100px' }} type='button' class='btn btn-success' disabled={e.state === "Cancelado"}>Entregada</button> */}
+                          <button style={{ width: '100px' }} type='button' className='btn btn-success' disabled={e.state === "Cancelado"}>Entregada</button> */}
                           {e.state === 'en proceso' ? (
                             <div>
-                              <button style={{ width: '100px' }} type='button' class='btn btn-danger' onClick={() => handleClick(e.id)} >Cancelar</button>
-                              <button style={{ width: '100px' }} type='button' class='btn btn-success' onClick={() => handleFinalizada(e.id)}>Finalizar</button>
+                              <button style={{ width: '100px' }} type='button' className='btn btn-danger' onClick={() => handleClick(e.id)} >Cancelar</button>
+                              <button style={{ width: '100px' }} type='button' className='btn btn-success' onClick={() => handleFinalizada(e.id)}>Finalizar</button>
                             </div>
 
                           ) : e.state === 'entregado' ?
-                            <button style={{ width: '100px' }} type='button' class='btn btn-info' disabled>Entregada</button>
-                            : <button type='button' class='btn btn-warning' disabled>Cancelada</button>
+                            <button style={{ width: '100px' }} type='button' className='btn btn-info' disabled>Entregada</button>
+                            : <button type='button' className='btn btn-warning' disabled>Cancelada</button>
                           }
                         </td>
                       </tr>
