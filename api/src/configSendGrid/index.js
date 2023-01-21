@@ -1,12 +1,13 @@
+"use strict";
 const devConfig = require("./dev");
 const prodConfig = require("./prod");
 
 let config;
 
-if(process.env.NODE_ENV === "production"){
-        config = prodConfig ;
+if (process.env.NODE_ENV === "production") {
+  config = prodConfig;
 } else {
-    config = devConfig ; 
+  config = devConfig;
 }
 
-module.exports = config ; 
+module.exports = config;
