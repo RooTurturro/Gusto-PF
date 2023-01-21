@@ -70,6 +70,6 @@ const Home = () => {
 	);
 };
 
-//cintaGusto
+//el que lee es gay
 
 export default Home;
