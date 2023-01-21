@@ -1,7 +1,9 @@
+'use strict';
 const createError = require("http-errors");
 const express = require("express");
 const { auth, requiresAuth } = require("express-openid-connect");
 const path = require("path");
+const jade = require("jade");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
@@ -11,6 +13,8 @@ const routes = require("./routing/index");
 
 
 const server = express();
+
+server.set('view engine', 'jade');
 
 server.use(cors());
 

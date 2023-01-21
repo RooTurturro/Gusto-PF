@@ -1,5 +1,6 @@
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+"use strict";
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
 const port = process.env.PORT || 3001;
 
 // Syncing all the models at once.
@@ -13,10 +14,9 @@ const testConection = async () => {
         console.log(`%s listening at ${port}`); // eslint-disable-line no-console
       });
     });
-  } catch (error) { 
+  } catch (error) {
     console.log("Error en la conexion", error);
   }
 };
-  
 
 testConection();
