@@ -42,7 +42,7 @@
 	flex-direction: row-reverse;
 	align-items: flex-end;
 	position: absolute;
-	margin-top: 22rem;
+	margin-top: 24.2rem;
 	margin-left: -5rem;
 }
 
@@ -67,9 +67,15 @@
 	margin-left: 10rem;
 }
 
-.video{
+.video {
+	width: 18rem;
 	margin-right: 2rem;
 	margin-bottom: 4.5rem;
 }
 
+.gif {
+	margin-bottom: 4.5rem;
+	padding-right: 2rem;
+	width: 20rem;
 
+}

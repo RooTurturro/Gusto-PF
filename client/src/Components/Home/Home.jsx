@@ -8,6 +8,7 @@ import homeOurCollection from '../../assets/homeOurCollection.png'
 import imageForCintaGusto from '../../assets/imageForCintaGusto.png'
 import neck from '../../assets/neck.png'
 import video from '../../assets/vagoMovimiento.mp4'
+import gif from '../../assets/gif.mp4'
 
 
 // import { userLogin } from '../../redux/actions';
@@ -76,10 +77,11 @@ const Home = () => {
 						</div> */}
 						<video className={styles.video} autoPlay='autoplay' muted loop='loop'>
 							<source src={video} type='video/mp4' />
+							<source src={gif} type='video/mp4' />
 						</video>
-						<img className={styles.vago} src={imageForCintaGusto} alt='vago' />
-						<div>
-						</div>
+						<video className={styles.gif} autoPlay='autoplay' muted loop>
+							<source src={gif} type='video/mp4' />
+						</video>
 						<img className={styles.cuellito} src={neck} alt='cuello' />
 					</div>
 				</div>
