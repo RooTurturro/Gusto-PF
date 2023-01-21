@@ -14,6 +14,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLocalLogin, userLogin } from "../../redux/actions";
 import home1 from "../../assets/home1.png";
+import vicio from '../../assets/vicio.png'
+import vicio_cut from '../../assets/vicio_cut.png'
+import vicio_two from '../../assets/vicio_two.png'
+
 
 // import { userLogin } from '../../redux/actions';
 
@@ -66,6 +70,12 @@ const Home = () => {
 			<div className={styles.home1}>
 				<img src={home1} alt="home1" />
 			</div>
+			{/* <div className='col-12 col-md4'>
+            <h3 className='title_two'>OUR COLLECTION</h3>
+            <img className="img_vicio img fluid" src={vicio} alt="vicio" />
+            <img className="img_vicio_cut img fluid" src={vicio_cut} alt="vicio_cut" />
+            <img className="img_vicio_two img fluid" src={vicio_two} alt="vicio_two" />
+          </div> */}
 		</div>
 	);
 };
