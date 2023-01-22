@@ -9,6 +9,7 @@ import imageForCintaGusto from '../../assets/imageForCintaGusto.png'
 import neck from '../../assets/neck.png'
 import video from '../../assets/vagoMovimiento.mp4'
 import gif from '../../assets/gif.mp4'
+import Nav from "../NavBar/Nav";
 
 
 // import { userLogin } from '../../redux/actions';
@@ -60,34 +61,37 @@ const Home = () => {
 
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.home1}>
-				<img src={home1} alt="home1" />
-			</div>
-			<div className={styles.container2}>
-				<div>
-
+		<>
+			<Nav />
+			<div className={styles.container}>
+				<div className={styles.home1}>
+					<img src={home1} alt="home1" />
+				</div>
+				<div className={styles.container2}>
 					<div>
-						<img src={homeOurCollection} className={styles.collection} alt='our colection' />
-					</div>
-					<div className={styles.container3}>
-						{/* <div style={{ width: '100%', height: '0', paddingbottom: '100', position: 'relative' }}>
+
+						<div>
+							<img src={homeOurCollection} className={styles.collection} alt='our colection' />
+						</div>
+						<div className={styles.container3}>
+							{/* <div style={{ width: '100%', height: '0', paddingbottom: '100', position: 'relative' }}>
 							<iframe src="https://giphy.com/embed/nO5muK3XxJPxAqIEiu" style={{ width: "100%", height: "100%", position: 'absolute' }} class="giphy-embed" allowFullScreen>	
 							</iframe>
 						</div> */}
-						<video className={styles.video} autoPlay='autoplay' muted loop='loop'>
-							<source src={video} type='video/mp4' />
-							<source src={gif} type='video/mp4' />
-						</video>
-						<video className={styles.gif} autoPlay='autoplay' muted loop>
-							<source src={gif} type='video/mp4' />
-						</video>
-						<img className={styles.cuellito} src={neck} alt='cuello' />
+							<video className={styles.video} autoPlay='autoplay' muted loop='loop'>
+								<source src={video} type='video/mp4' />
+								<source src={gif} type='video/mp4' />
+							</video>
+							<video className={styles.gif} autoPlay='autoplay' muted loop>
+								<source src={gif} type='video/mp4' />
+							</video>
+							<img className={styles.cuellito} src={neck} alt='cuello' />
+						</div>
 					</div>
 				</div>
-			</div>
 
-		</div>
+			</div>
+		</>
 	);
 };
 
