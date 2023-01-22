@@ -2,8 +2,8 @@ import axios from "axios";
 export const GET_USER_INFO = "GET_USER_INFO";
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
-export const GET_PRODUCTS_DETAIL = "GET_PRODUCTSDETAIL";
-export const GET_PRODUCTS_SUMMARY = "GET_PRODUCTSS_SUMMARY";
+export const GET_PRODUCTS_DETAIL = "GET_PRODUCTS_DETAIL";
+export const GET_PRODUCTS_SUMMARY = "GET_PRODUCTS_SUMMARY";
 export const CREATE_PRODUCTS = "CREATE_PRODUCTS";
 export const GET_PAYMENT_URL = "GET_PAYMENT_URL";
 export const FILTER_BY_CATEGORIES = "FILTER_BY_CATEGORIES";
@@ -25,7 +25,7 @@ export const USER_UPDATE = "USER_UPDATE";
 export const USER_LOGIN = "USER_LOGIN";
 export const USER_EDIT_PROFILE = "USER_EDIT_PROFILE";
 export const GET_ALL_USERS = "GET_ALL_USERS";
-export const GET_ALL_PURCHASES = "GET_PURCHASES";
+export const GET_ALL_PURCHASES = "GET_ALL_PURCHASES";
 export const RESET_STATE_PURCHASE = "RESET_STATE_PURCHASE";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 
@@ -168,7 +168,7 @@ export const postPurchase = (payload) => {
 				payload: response.data,
 			});
 		} catch (error) {
-			return error;
+			return dispatch({ type: POST_PURCHASE, payload: payload });
 		}
 	};
 };

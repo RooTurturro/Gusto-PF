@@ -77,7 +77,7 @@ const PediYa = () => {
 
 	const totalPrice = () => {
 		//FUNCIONA, tenemos la suma de todos los precios
-		return cart.reduce((total, item) => total + item.price, 0);
+		return cart.reduce((total, item) => total + item.price * item.quantity, 0);
 	};
 
 	const handlePayment = () => {
@@ -86,7 +86,7 @@ const PediYa = () => {
 			Swal.fire('Completa los datos para continuar la compra')
 			.then((result) => {
 				if (result.value) {
-					window.location.href='http://localhost:3000/editarperfilusuario';
+					window.location.href='http://gusto-pf-production.up.railway.app/editarperfilusuario';
 				}
 			})
 			

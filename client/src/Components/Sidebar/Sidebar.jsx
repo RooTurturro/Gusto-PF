@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { RiDashboardFill } from 'react-icons/ri'
 import { MdInventory2, MdAccountCircle } from 'react-icons/md'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
+import { AiOutlineHome } from 'react-icons/ai'
 import { BiLogOut } from 'react-icons/bi'
 import './Sidebar.css'
 
@@ -19,11 +19,13 @@ const Sidebar = () => {
             <hr />
             <div className="center">
                 <ul className='ul'>
-                    <p className="title">MAIN</p>
-                    <li className='li'>
-                        <RiDashboardFill className="icon" />
-                        <span className='span'>Dashboard</span>
-                    </li>
+
+                    <Link to='/' className='span' style={{ textDecoration: 'none' }}>
+                        <li className='li'>
+                            <AiOutlineHome className="icon" />
+                            <span className='span'>Home</span>
+                        </li>
+                    </Link>
                     <p className="title">LISTS</p>
                     <Link to="/users" style={{ textDecoration: "none" }}>
                         <li className='li'>

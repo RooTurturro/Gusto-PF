@@ -1,89 +1,83 @@
-.boton_refresh {
-    height: 40px;
-    width: 176px;
-    box-sizing: border-box;
-    border: transparent;
-    font-size: 15px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    outline: none;
-    cursor: pointer;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
+@font-face {
+    font-family: 'Recoleta';
+    src: url('../../assets/RecoletaAlt-Bold.ttf');
 }
 
-.boton {
-    height: 40px;
-    width: 176px;
-    box-sizing: border-box;
-    border: transparent;
-    font-size: 15px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    outline: none;
-    cursor: pointer;
+.recoleta {
+    font-family: 'Recoleta';
+    color: red;
+}
+
+.flechas {
+    width: 14rem;
+    margin-left: 1.3rem;
+    margin-top: -1.4rem;
+}
+
+.arrow {
+    transform: rotate(270deg);
+    width: 1.1rem;
+    margin-bottom: .2rem;
+}
+
+.sucursal {
+    font-size: .9rem;
+    font-family: 'Oswald';
+    font-weight: 900;
+    border: none;
+    background-color: transparent;
+}
+
+
+body {
+    background-color: #ededed;
 }
 
 .menu-body {
-    background-color: #faeeee;
-    min-height: 100vh;
+    padding-top: 9%;
+    background-color: #ededed;
+    width: 100%;
+}
+
+.listGroup {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2rem;
+    font-weight: 900;
+    font-size: 1.3rem;
+    font-family: 'Oswald', sans-serif;
+    margin-right: 3rem;
+
+}
+
+.listGroupItem {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+
+.listGroupItem option {
+    font-weight: bold;
+}
+
+
+.listGroup img {
+    width: 12rem;
 }
 
 .cardContainer {
     display: grid;
     justify-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 100px;
-    margin-top: 30px;
-    margin-left: 50px;
-    gap: 7rem;
+    grid-template-columns: 1fr 1fr;
+
+
 }
 
-.btn {
-    border: none;
-}
-
-.navContainer {
-    padding-top: 10%;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-}
-
-.listGroupItemHead{
-    height: 70px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.listGroupItemHead:hover{
-    background-color: cadetblue;
-}
-
-.listGroupItem{
-    height: 70px;
-    font-size: 20px;
-    display: flex;
-    justify-content:space-between;   
-}
-
-.listGroupItem img{
-    width: 80px;
-    height: 50px;
-    
-}
-
-.listGroup {
+.listGroup:hover {
     cursor: pointer;
-    width: 300px;
 }
-
-.listGroupItem:hover{
-    background-color: rgb(221, 23, 23);;
-    color: #fff;
-}
-

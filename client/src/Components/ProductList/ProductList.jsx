@@ -15,7 +15,7 @@ const ProductList = () => {
     }, [dispatch])
 
     const Swal = require('sweetalert2')
-    
+
     const trashEmpty = (id) => {
         Swal.fire({
             title: '¿Estás seguro de eliminar el producto?',
@@ -107,12 +107,10 @@ const ProductList = () => {
                             <select className="form-select" aria-label="Default select example" onChange={e => handleFilterProductsByCategories(e)}>
                                 <option disabled selected value='All'>Categoria</option>
                                 <option value='Hamburguesa'>Hamburguesa</option>
-                                <option value='Wrap'>Wrap</option>
+                                <option value='Combos'>Combos</option>
                                 <option value='Postre'>Postre</option>
                                 <option value='Bebida'>Bebida</option>
-                                <option value='Papas'>Papas</option>
-                                <option value='Snack'>Snack</option>
-                                <option value='Ensalada'>Ensalada</option>
+                                <option value='Batidos'>Batidos</option>
                             </select>
                             <button type="button" className="btn btn-dark" onClick={(e) => { handleClick(e) }}>Resetear</button>
                         </div>
@@ -128,7 +126,7 @@ const ProductList = () => {
                                             <tr className="text-center">
                                                 <th scope="col" width="20%" className="text-center"><span>Producto</span></th>
                                                 <th scope="col" width="20%" className="text-center"><span>Description</span></th>
-                                                <th scope="col" width="12%" className="text-center"><span>Stock</span></th>
+                                                <th scope="col" width="15%" className="text-center"><span>Stock</span></th>
                                                 <th scope="col" width="12%" className="text-center"><span>Precio</span></th>
                                                 <th scope="col" width="10%" className="text-center"><span>Valoración</span></th>
                                                 <th scope="col" width="16%" className="text-center"><span>Categoria</span></th>
@@ -149,8 +147,8 @@ const ProductList = () => {
                                                     <td className="text-center">
                                                         {e.state ?
                                                             e.state && (
-                                                                <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px', marginBottom: '10px' }} onClick={() => soldOut(e.id)} className="btn btn-success">Disponible</button>
-                                                            ) : <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '70px' }} onClick={() => available(e.id)} className="btn btn-danger">Agotado</button>}
+                                                                <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '85px', marginBottom: '10px' }} onClick={() => soldOut(e.id)} className="btn btn-success">Disponible</button>
+                                                            ) : <button type="button" style={{ fontSize: '12px', gap: '1rem', width: '85px' }} onClick={() => available(e.id)} className="btn btn-danger">Agotado</button>}
                                                     </td>
                                                     <td className="text-center">
                                                         <span className="label label-default">${e.price}</span>

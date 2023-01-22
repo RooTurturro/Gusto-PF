@@ -182,7 +182,7 @@ const rootReducer = (state = initialState, action) => {
 					(product) => product.name !== action.payload
 				),
 			};
-		//for drinks, burgers, wraps, desserts...
+		
 
 		//add to the products props a 'category'.
 		case FILTER_BY_CATEGORIES:

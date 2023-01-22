@@ -69,7 +69,7 @@ purchaseRouter.post("/", async (req, res) => {
       takeAway,
       state,
     });
-    res.status(201).json(newPurchase);
+    newPurchase ? res.status(201).json(newPurchase) : res.status(404).send("No se encontro compra !!!")
   } catch (error) {
     res.status(400).send(error);
     console.log(error);

@@ -3,10 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsDetail } from "../../redux/actions";
 import styles from "./Detail.module.css";
-import RatingProducts from "../RatingProducts/RatingProducts";
-import Edit from "../Edit";
-import {addToCart} from '../../redux/shoppingActions'
-
+import start from '../../assets/startButton.png'
+import { addToCart } from '../../redux/shoppingActions'
+import add from '../../assets/addToCart.png'
+import Nav from '../NavBar/Nav'
+import arrow from '../../assets/arrow.png'
+import RatingProducts from '../RatingProducts/RatingProducts'
+import videomaqueta from '../../assets/videoMaqueta.png'
+import hottestImage from '../../assets/hottestImage.png'
 
 const Detail = () => {
 	const navigate = useNavigate()
@@ -21,33 +25,52 @@ const Detail = () => {
 
 	const Swal = require("sweetalert2");
 
-	function addItemToCart(){
+	function addItemToCart() {
 		dispatch(addToCart(id));
 		Swal.fire('Producto añadido al carrito!')
 	}
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.infoContainer}>
-				<img src={product.image} alt="nada" />
-				<div className={styles.info} >
-					<h3>{product.name}</h3>
-					<p>{product.description}</p>
-					<RatingProducts id={id} />
-					<button style={{ width: '50px', margin: '6px', marginTop:'20px'}} type="button" className="btn btn-success" onClick={() => {addItemToCart()}} >
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart-plus-fill" viewBox="0 0 16 16">
-							<path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z" />
-						</svg>
-					</button>
+		<div className={styles.detail}>
+			<Nav />
+			<div className={styles.detailContainer}>
+				<div className={styles.detailInfo}>
+					<div>
+						<h1>{product.name}</h1>
+						<RatingProducts />
+						<p className={styles.description}>{product.description}</p>
+						<p className={styles.price}>${product.price}</p>
+						<img src={add} alt='??' />
+					</div>
+					<div style={{ width: '40rem', display: 'flex', justifyContent: 'space-between' }}>
+						<button className={styles.arrowContainer} onClick={() => navigate(-1)} ><img className={styles.arrow} src={arrow} alt='nada' />VOLVER</button>
+						<div style={{ display: 'flex', width: '50rem', alignItems: 'flex-end', marginLeft: '30rem' }}>
+							<div style={{ display: 'flex', flexDirection: 'column' }}>
+								<img src={arrow} className={styles.videoArrow} alt="flecha" />
+								<img src={videomaqueta} alt="" />
+							</div>
+							<div>
+								<p style={{ fontSize: '.8rem', marginBottom: '-.1rem', marginLeft: '1rem' }}>
+									<img src={start} alt='nada' />
+									<br />
+									NO MARKETING
+									<br />
+									BULLSHIT, 2 MINUTOS
+									<br />
+									DE BURGER
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-
-			<div className={styles.actionsButtons}>
-				{usuario.isAdmin ? usuario.isAdmin && (
-					<Edit productDetail={product} />
-				) : null}
-				<div>
-					<button onClick={() => navigate(-1)} type="button" className="btn btn-danger">Volver</button>
+				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginRight: '4rem' }}>
+					<div style={{ display: 'flex', alignItems: 'center', height: '5rem' }} >
+						<p style={{ fontFamily: 'Oswald', fontWeight: '900', color: '#707981' }} >{product.name} ES EL
+							<br />
+							MAS COMPRADO DE HOY</p>
+						<img style={{ marginBottom: '1rem',transform: 'scaleX(-1)' }} src={hottestImage} alt="adasd" />
+					</div>
+					<img className={styles.detailImage} src={product.image} alt='foto' />
 				</div>
 			</div>
 		</div>
