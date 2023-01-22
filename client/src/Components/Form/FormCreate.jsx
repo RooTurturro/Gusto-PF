@@ -88,7 +88,7 @@ const CreateProduct = () => {
 										value={state.name}
 										required
 									/>
-									{errors.name && <p style={{color:'red'}}>{errors.name}</p>}
+									{errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
 								</div>
 								<div className="col-md-12">
 									<input
@@ -100,7 +100,7 @@ const CreateProduct = () => {
 										value={state.description}
 										required
 									/>
-									{errors.description && <p style={{color:'red'}}>{errors.description}</p>}
+									{errors.description && <p style={{ color: 'red' }}>{errors.description}</p>}
 								</div>
 
 								<div className="col-md-12">
@@ -113,7 +113,7 @@ const CreateProduct = () => {
 										value={state.price}
 										required
 									/>
-									{errors.price && <p style={{color:'red'}}>{errors.price}</p>}
+									{errors.price && <p style={{ color: 'red' }}>{errors.price}</p>}
 								</div>
 								<div className="col-md-12">
 									<input
@@ -125,7 +125,7 @@ const CreateProduct = () => {
 										value={state.image}
 										required
 									/>
-									{errors.description && <p style={{color:'red'}}>{errors.image}</p>}
+									{errors.description && <p style={{ color: 'red' }}>{errors.image}</p>}
 								</div>
 								<div className="col-md-12 mt-3 mb-2 checkbox-container">
 									<div style={{ display: 'flex', gap: '0.3rem' }}>
@@ -135,7 +135,7 @@ const CreateProduct = () => {
 											<input className="btn-check" type="radio" name="state" value={true} autocomplete="off" /> Disponible
 										</label>
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="state" value={false}  autocomplete="off" /> Agotado
+											<input className="btn-check" type="radio" name="state" value={false} autocomplete="off" /> Agotado
 										</label>
 									</div>
 								</div>
@@ -147,23 +147,17 @@ const CreateProduct = () => {
 											<input className="btn-check" type="radio" name="category" value='Bebida' autoComplete="off" /> Bebida
 										</label>
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Ensalada' autoComplete="off" /> Ensalada
-										</label>
-										<label onChange={handlerChange} className="btn btn-secondary">
 											<input className="btn-check" type="radio" name="category" value='Hamburguesa' autoComplete="off" /> Hamburguesa
 										</label>
 										<br />
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Papas' autoComplete="off" /> Papas
-										</label>
-										<label onChange={handlerChange} className="btn btn-secondary">
 											<input className="btn-check" type="radio" name="category" value='Postre' autoComplete="off" /> Postre
 										</label>
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Snack' autoComplete="off" /> Snack
+											<input className="btn-check" type="radio" name="category" value='Combos' autoComplete="off" /> Combos
 										</label>
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Wrap' autoComplete="off" /> Wrap
+											<input className="btn-check" type="radio" name="category" value='Batidos' autoComplete="off" /> Batidos
 										</label>
 									</div>
 								</div>

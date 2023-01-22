@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Card from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts, priceOrder, filterProductsByCategories, aplhabeticalOrder } from "../../redux/actions";
+import { getAllProducts, filterProductsByCategories } from "../../redux/actions";
 import { addToCart } from "../../redux/shoppingActions";
 import './Menu.css'
 import ListGroup from 'react-bootstrap/ListGroup';
-import burger from '../../assets/nav.png'
-import agua from '../../assets/agua.png'
-import wrap from '../../assets/wrap.png'
-import postre from '../../assets/postre.png'
-import snack from '../../assets/snack.png'
-import papas from '../../assets/papas.png'
-import ensalada from '../../assets/ensalada.png'
+import burger from '../../assets/burger.png'
+import bebidas from '../../assets/bebidas.png'
+import batidos from '../../assets/batidos.png'
+import postres from '../../assets/postres.png'
+import combos from '../../assets/combos.png'
 import Spinner from 'react-bootstrap/Spinner';
+import Nav from "../NavBar/Nav";
+import flechas from '../../assets/redBoxes.png'
+import arrow from '../../assets/arrow.png'
 
 
 
 
 const Menu = () => {
-  const [/*order*/, setOrder] = useState('')
+
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
 
@@ -29,90 +30,81 @@ const Menu = () => {
 
   }, [dispatch, products.length]);
 
-  function handleClick(e) {
-    e.preventDefault(e);
-    dispatch(getAllProducts());
-  }
-
-
-  function handleOrderByName(e) {
-    e.preventDefault(e);
-    dispatch(aplhabeticalOrder(e.target.value));
-    setOrder(`Ordenado ${e.target.value}`)
-  }
-
-
-  function handlePriceOrder(e) {
-    e.preventDefault(e);
-    dispatch(priceOrder(e.target.value));
-    setOrder(`Ordenado ${e.target.value}`)
-  }
 
   function handleFilterProductsByCategories(e) {
     e.preventDefault(e);
-    dispatch(filterProductsByCategories(e.target.value));
+    dispatch(filterProductsByCategories(e.target.name));
 
   }
 
 
   return (
-    <div className='menu-body'>
-      <div className="navContainer">
-        <ListGroup className='listGroup' onClick={e => handleFilterProductsByCategories(e)}>
-          <ListGroup.Item className="listGroupItemHead">
-            <option value='All'>Todos los productos</option>
-          </ListGroup.Item >
-          <ListGroup.Item className="listGroupItem">
-            <img src={burger} alt='not found' />
-            <option value='Hamburguesa'>Hamburguesas</option>
-          </ListGroup.Item >
-          <ListGroup.Item className="listGroupItem">
-            <img src={agua} alt='not found' />
-            <option value='Bebida'>Bebidas</option>
-          </ListGroup.Item>
-          <ListGroup.Item className="listGroupItem">
-            <img src={wrap} alt='not found' />
-            <option value='Wrap'>Wraps</option>
-          </ListGroup.Item>
-          <ListGroup.Item className="listGroupItem">
-            <img src={postre} alt='not found' />
-            <option value='Postre'>Postres</option>
-          </ListGroup.Item>
-          <ListGroup.Item className="listGroupItem">
-            <img src={snack} alt='not found' />
-            <option value='Snack'>Snacks</option>
-          </ListGroup.Item>
-          <ListGroup.Item className="listGroupItem">
-            <img src={papas} alt='not found' />
-            <option value='Papas'>Papas</option>
-          </ListGroup.Item>
-          <ListGroup.Item className="listGroupItem">
-            <img src={ensalada} alt='not found' />
-            <option value='Ensalada'>Ensaladas</option>
-          </ListGroup.Item>
-        </ListGroup>
-      </div>
-      <div className='cardContainer'>
-        {products.length > 0 ?
-          products.map((e) => {
-            if (e.state) {
-              return (
-                <Card
-                  addToCart={() => {dispatch(addToCart(e.id))}}
-                  id={e.id}
-                  key={e.id}
-                  name={e.name}
-                  price={e.price}
-                  image={e.image}
-                  category={e.category}
-                />
-              )
-            }
-          }) : <Spinner animation="border" variant="danger" />
-        }
-      </div>
 
-    </div >
+    <>
+      <Nav />
+      <div className='menu-body'>
+        <div className="navContainer">
+          <div style={{marginLeft:'.9rem'}}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '.8rem' }}>
+              <h1 className='recoleta' style={{ marginLeft: '2rem', fontSize: '3rem' }}>Buenos Aires  </h1>
+              <button className="sucursal"><img src={arrow} className='arrow' alt='nada' />CAMBIAR SUCURSAL</button>
+            </div>
+            <img className="flechas" src={flechas} alt='flechas' />
+          </div>
+          <ul className='listGroup'>
+            <div className="listGroupItem">
+              <img name='Hamburguesa' className="categoryImage" src={burger} alt='not found' onClick={e => handleFilterProductsByCategories(e)} />
+              <strong>Hamburguesas</strong>
+            </div >
+            <div className="listGroupItem">
+              <img name='Bebida' className="categoryImage" src={bebidas} alt='not found' onClick={e => handleFilterProductsByCategories(e)} />
+              <strong>Bebidas</strong>
+            </div>
+            <div className="listGroupItem" style={{ marginLeft: '-2rem' }}>
+              <img name='Batidos' className="categoryImage" src={batidos} alt='not found' onClick={e => handleFilterProductsByCategories(e)} />
+              <strong>Batidos</strong>
+            </div>
+            <div className="listGroupItem" style={{ marginRight: '1.5rem' }} >
+              <img name='Postre' className="categoryImage" src={postres} style={{ width: '7rem' }} alt='not found' onClick={e => handleFilterProductsByCategories(e)} />
+              <strong>Postres</strong>
+            </div>
+            <div className="listGroupItem">
+              <img name='Combos' className="categoryImage" src={combos} alt='not found' onClick={e => handleFilterProductsByCategories(e)} />
+              <strong>Combos</strong>
+            </div>
+          </ul>
+        </div>
+        <div style={{marginLeft:'0.9rem'}}>
+          <h1 className='recoleta' style={{ marginLeft: '2rem', fontSize: '3rem' }}>Productos  </h1>
+          <img className="flechas" src={flechas} alt='flechas' />
+        </div>
+        <div className='cardContainer'>
+
+          {products?.length > 0 ?
+            products?.map((e) => {
+              if (e.state) {
+                return (
+                  <Card
+                    description={e.description}
+                    id={e.id}
+                    key={e.id}
+                    name={e.name}
+                    price={e.price}
+                    image={e.image}
+                    category={e.category}
+                  />
+                )
+              }
+            }) :
+            <Spinner animation="border" variant="danger" />
+
+          }
+
+        </div>
+
+      </div >
+    </>
+
 
   )
 

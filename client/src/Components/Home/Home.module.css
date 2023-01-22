@@ -11,8 +11,8 @@
 }
 
 .home1 img {
-	width: 98%;
-	margin-top: 110px;
+	width: 100%;
+	margin-top: 3rem;
 }
 
 .img {
@@ -20,12 +20,12 @@
 	width: 20vw;
 }
 
-
-
 .container {
-	max-width: 100%;
+	width: 100%;
+
 	display: flex;
 	justify-content: center;
+
 }
 
 .container::-webkit-scrollbar {
@@ -42,8 +42,8 @@
 	flex-direction: row-reverse;
 	align-items: flex-end;
 	position: absolute;
-	margin-top: 24.2rem;
-	margin-left: -5rem;
+	margin-top: 17.8rem;
+	width: 47.5rem;
 }
 
 .cuellito {
@@ -52,11 +52,11 @@
 }
 
 .collection {
-	margin-top: 16.1rem;
-	margin-left: 12.3rem;
+	margin-top: 9.5rem;
+	margin-left: 10.5rem;
 	z-index: 9999999;
 	position: absolute;
-	width: 40rem;
+	width: 35rem;
 }
 
 .cinta {
@@ -69,6 +69,7 @@
 
 .video {
 	width: 18rem;
+	height: 22rem;
 	margin-right: 2rem;
 	margin-bottom: 4.5rem;
 }
@@ -77,5 +78,6 @@
 	margin-bottom: 4.5rem;
 	padding-right: 2rem;
 	width: 20rem;
+	height: 22rem;
 
 }

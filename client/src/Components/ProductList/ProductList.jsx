@@ -27,8 +27,8 @@ const ProductList = () => {
             if (result.value) {
                 // aquí se puede llamar la acción de borrado del producto
                 dispatch(deleteProducts(id))
-                window.location.reload()
             }
+            window.location.reload()
         })
     }
     function handleClick(e) {
@@ -107,12 +107,10 @@ const ProductList = () => {
                             <select className="form-select" aria-label="Default select example" onChange={e => handleFilterProductsByCategories(e)}>
                                 <option disabled selected value='All'>Categoria</option>
                                 <option value='Hamburguesa'>Hamburguesa</option>
-                                <option value='Wrap'>Wrap</option>
+                                <option value='Combos'>Combos</option>
                                 <option value='Postre'>Postre</option>
                                 <option value='Bebida'>Bebida</option>
-                                <option value='Papas'>Papas</option>
-                                <option value='Snack'>Snack</option>
-                                <option value='Ensalada'>Ensalada</option>
+                                <option value='Batidos'>Batidos</option> 
                             </select>
                             <button type="button" className="btn btn-dark" onClick={(e) => { handleClick(e) }}>Resetear</button>
                         </div>
