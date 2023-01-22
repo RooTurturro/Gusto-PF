@@ -12,9 +12,9 @@ import { Auth0Provider } from '@auth0/auth0-react'
 //----------------Auth0 Config----------------------------
 const domain = 'dev-18zov1enqjrx8hn7.us.auth0.com';
 const clientId = 'LqqBa9zF6gjJ2lwcrNYsAtYpikXifzQZ';
-dotenv.config()
+//dotenv.config()
 
-axios.defaults.baseURL = 'gusto-pf-production.up.railway.app'
+//axios.defaults.baseURL = 'http://gusto-pf-production.up.railway.app/products'
 
 ReactDOM.render(
 

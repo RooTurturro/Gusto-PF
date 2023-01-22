@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
-import { userLocalLogin, userLogin } from "../../redux/actions";
+import { getAllUsers, userLocalLogin, userLogin } from "../../redux/actions";
 import home1 from "../../assets/home1.png";
 import homeOurCollection from '../../assets/homeOurCollection.png'
 import imageForCintaGusto from '../../assets/imageForCintaGusto.png'
@@ -49,6 +49,8 @@ const Home = () => {
 	console.log(picture, name, email, log);
 
 	useEffect(() => {
+
+		dispatch(getAllUsers());
 		if (name && email) {
 			dispatch(userLogin({ name, email }));
 		}

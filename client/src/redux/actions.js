@@ -36,7 +36,7 @@ export const getAllProducts = () => {
 		dispatch(loading());
 		try {
 			//json
-			const response = await axios.get("/products");
+			const response = await axios.get("http://gusto-pf-production.up.railway.app/products");
 			return dispatch({
 				type: GET_ALL_PRODUCTS,
 				payload: response.data,
@@ -306,7 +306,7 @@ export const userLocalLogout = () => {
 
 export const userProfile = (email) => {
 	return async function (dispatch) {
-		const json = await axios.get(`http://localhost:3001/users/email?email=${email}`);
+		const json = await axios.get(`http://http://gusto-pf-production.up.railway.app/users/email?email=${email}`);
 		return dispatch({ type: USER_PROFILE, payload: json.data });
 	};
 };
