@@ -34,13 +34,13 @@ const Contacto = () => {
                       <div className="row">
                         <div className="col-md-6">
                           <div className="form-group">
-                            <label for="form_name">Nombre*</label>
+                            <label htmlFor="form_name">Nombre*</label>
                             <input id="form_name" type="text" name="name" className="form-control" placeholder="Ingrese su nombre *" required="required" data-error="Firstname is required." />
                           </div>
                         </div>
                         <div className="col-md-6">
                           <div className="form-group">
-                            <label for="form_lastname">Apellido *</label>
+                            <label htmlFor="form_lastname">Apellido *</label>
                             <input id="form_lastname" type="text" name="surname" className="form-control" placeholder="Ingrese su apellido *" required="required" data-error="Lastname is required." />
                           </div>
                         </div>
@@ -48,16 +48,16 @@ const Contacto = () => {
                       <div className="row">
                         <div className="col-md-6">
                           <div className="form-group">
-                            <label for="form_email">Email *</label>
+                            <label htmlFor="form_email">Email *</label>
                             <input id="form_email" type="email" name="email" className="form-control" placeholder="Ingrese su email*" required="required" data-error="Valid email is required." />
 
                           </div>
                         </div>
                         <div className="col-md-6">
                           <div className="form-group">
-                            <label for="form_need">Please specify your need *</label>
+                            <label htmlFor="form_need">Please specify your need *</label>
                             <select id="form_need" name="need" className="form-control" required="required" data-error="Please specify your need.">
-                              <option value="" selected disabled>-Seleccione su motivo-</option>
+                              <option defaultValue='nada' disabled>-Seleccione su motivo-</option>
                               <option >Producto en mal estado</option>
                               <option >Mi pedido no llego</option>
                               <option >Aca va algo no se</option>
@@ -69,7 +69,7 @@ const Contacto = () => {
                       <div className="row">
                         <div className="col-md-12">
                           <div className="form-group">
-                            <label for="form_message">Mensaje *</label>
+                            <label htmlFor="form_message">Mensaje *</label>
                             <textarea id="form_message" name="message" className="form-control" placeholder="Ingrese su mensaje" rows="4" required="required" data-error="Please, leave us a message."></textarea>
                           </div>
                         </div>
