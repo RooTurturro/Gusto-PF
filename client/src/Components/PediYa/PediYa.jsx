@@ -73,7 +73,7 @@ const PediYa = () => {
 
 	const totalPrice = () => {
 		//FUNCIONA, tenemos la suma de todos los precios
-		return cart.reduce((total, item) => total + item.price, 0);
+		return cart.reduce((total, item) => total + item.price * item.quantity, 0);
 	};
 
 	const handlePayment = () => {
