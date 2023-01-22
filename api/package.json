@@ -28,6 +28,7 @@
     "morgan": "~1.9.1",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
+    "redirect-ssl": "^3.0.0",
     "sequelize": "^6.28.0",
     "supertest": "^6.3.3"
   },
