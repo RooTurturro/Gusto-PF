@@ -1,3 +1,4 @@
+"use strict";
 const { Router } = require("express");
 const { Product } = require("../../db");
 
@@ -135,7 +136,12 @@ productRouter.put("/rating/:id", async (req, res) => {
       ? res.status(400).send("Valores invalidos !!!")
       : rating; */
 
-    if (rating < 1 || rating > 5 || typeof rating !== "number" || !Number.isInteger(rating)) {
+    if (
+      rating < 1 ||
+      rating > 5 ||
+      typeof rating !== "number" ||
+      !Number.isInteger(rating)
+    ) {
       res.status(400).send("Valores invalidos !!!");
     }
 
