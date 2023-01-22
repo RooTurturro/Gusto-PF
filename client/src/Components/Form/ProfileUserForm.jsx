@@ -17,7 +17,7 @@ const ProfileUserForm = () => {
     const navigate = useNavigate();
     const usuario = useSelector((state) => state.user);
     const email = window.localStorage.getItem('userEmail')
-    console.log(email)
+    
 
     const Swal = require('sweetalert2')
 
@@ -62,7 +62,7 @@ const ProfileUserForm = () => {
     //     dispatch(userLocalLogin({picture, name, email, log}))
     //   }, [])
 
-    console.log(usuario)
+    
 
 
     return (
