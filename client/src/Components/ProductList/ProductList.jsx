@@ -27,8 +27,8 @@ const ProductList = () => {
             if (result.value) {
                 // aquí se puede llamar la acción de borrado del producto
                 dispatch(deleteProducts(id))
-                window.location.reload()
             }
+            window.location.reload()
         })
     }
     function handleClick(e) {
