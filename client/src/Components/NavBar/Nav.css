@@ -73,14 +73,9 @@
 	border-radius: 50%;
 }
 
-.bi-person-bounding-box {
-	margin-right: 45px;
-	margin-bottom: 18px;
-}
 
 .picture-img {
-	margin-right: 45px;
-	margin-bottom: 18px;
-	width: 70px;
+	width: 55px;
+	height: 55px;
 	border-radius: 100%;
 }
