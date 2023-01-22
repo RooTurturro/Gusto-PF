@@ -31,7 +31,7 @@
 }
 
 .nav-container-custom {
-	height: 25vh;
+	height: 13vh;
 	background: rgb(237, 237, 237);
 	background: linear-gradient(180deg,
 			rgba(237, 237, 237, 1) 61%,
@@ -81,6 +81,6 @@
 .picture-img {
 	margin-right: 45px;
 	margin-bottom: 18px;
-	width: 140px;
+	width: 70px;
 	border-radius: 100%;
 }

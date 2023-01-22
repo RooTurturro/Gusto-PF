@@ -25,7 +25,7 @@ const Form = ({ product, editing }) => {
 		Swal.fire(`El producto ${state.name} se edito!`).then(() => {
 			window.location.reload()
 		})
-		
+
 	};
 
 	const handleChange = (event) => {
@@ -39,7 +39,7 @@ const Form = ({ product, editing }) => {
 				<div className="form-holder">
 					<div className="form-content">
 						<div className="form-items">
-							{editing ? <h2>Editando producto</h2>: null}
+							{editing ? <h2>Editando producto</h2> : null}
 							<form className="requires-validation" onSubmit={handleSubmit}>
 								<div className="col-md-12">
 									<input
@@ -97,29 +97,23 @@ const Form = ({ product, editing }) => {
 									</select>
 								</div>
 								<div className="col-md-12 mb-2">
-										<option value="">Selecciona una categoria</option>
-										<label onChange={handleChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Bebida' autoComplete="off" /> Bebida
-										</label>
-										<label onChange={handleChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Hamburguesa' autoComplete="off" /> Hamburguesa
-										</label>
-										<label onChange={handleChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Wrap' autoComplete="off" /> Wrap
-										</label>
-										<label onChange={handleChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Ensalada' autoComplete="off" /> Ensalada
-										</label>
-										<br />
-										<label onChange={handleChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Postre' autoComplete="off" /> Postre
-										</label>
-										<label onChange={handleChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Snack' autoComplete="off" /> Snack
-										</label>
-										<label onChange={handleChange} className="btn btn-secondary">
-											<input className="btn-check" type="radio" name="category" value='Papas' autoComplete="off" /> Papas
-										</label>
+									<option value="">Selecciona una categoria</option>
+									<label onChange={handleChange} className="btn btn-secondary">
+										<input className="btn-check" type="radio" name="category" value='Hamburguesa' autoComplete="off" /> Hamburguesa
+									</label>
+									<label onChange={handleChange} className="btn btn-secondary">
+										<input className="btn-check" type="radio" name="category" value='Bebida' autoComplete="off" /> Bebida
+									</label>
+									<label onChange={handleChange} className="btn btn-secondary">
+										<input className="btn-check" type="radio" name="category" value='Batidos' autoComplete="off" /> Batidos
+									</label>
+									<br />
+									<label onChange={handleChange} className="btn btn-secondary">
+										<input className="btn-check" type="radio" name="category" value='Postre' autoComplete="off" /> Postre
+									</label>
+									<label onChange={handleChange} className="btn btn-secondary">
+										<input className="btn-check" type="radio" name="category" value='Combos' autoComplete="off" /> Combos
+									</label>
 								</div>
 								<button className="btn btn-primary" type="submit">{editing ? "Actualizar" : "Crear"}</button>
 							</form>
