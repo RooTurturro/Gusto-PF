@@ -39,8 +39,9 @@ const Detail = () => {
 						<RatingProducts/>
 						<p className={styles.description}>{product.description}</p>
 						<p>${product.price}</p>
+						<button style={{ border: 'none' }}>
 						<img src={add} alt='??' />
-						
+						</button>
 					</div>
 					<button className={styles.arrowContainer} onClick={() => navigate(-1)} ><img className={styles.arrow} src={arrow} alt='nada' />VOLVER</button>
 				</div>
