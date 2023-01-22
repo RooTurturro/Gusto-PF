@@ -61,14 +61,15 @@ function RatingProducts({ id }) {
 								marginRight: 10,
 								cursor: "pointer",
 								width:'2.3rem',
-								height:'2.3rem'
+								height:'2.3rem',
+								
 							}}
 						/>
 					);
 				})}
 			</div>
 
-			<button type="button submit" style={{ marginTop: '-.4rem', backgroundColor: 'red', fontFamily: 'Oswald', fontWeight: '900', border:'none', color:'white' }}>
+			<button type="button submit" style={{height:'1.7rem', marginTop: '-.6rem', backgroundColor: 'red', fontFamily: 'Oswald', fontWeight: '900', border:'none', color:'white' }}>
 				ENVIAR
 			</button>
 		</form>
