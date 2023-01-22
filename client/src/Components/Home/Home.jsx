@@ -80,7 +80,7 @@ const Home = () => {
 						</div> */}
 							<video className={styles.video} autoPlay='autoplay' muted loop='loop'>
 								<source src={video} type='video/mp4' />
-								<source src={gif} type='video/mp4' />
+								
 							</video>
 							<video className={styles.gif} autoPlay='autoplay' muted loop>
 								<source src={gif} type='video/mp4' />

@@ -3,19 +3,24 @@ body{
 }
 
 .card img {
-  
+  width: 20rem;
   object-fit: contain;
   object-position: top;
   transition: all 0.3s ease-in-out;
+  
 }
 
 
 .card {
   display: flex;
   flex-direction: row;
-  width: 40rem;
+  width: 45rem;
   background-color: transparent;
   border: none;
+  justify-content: space-around;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Oswald';
   
 }
 .card-title{
