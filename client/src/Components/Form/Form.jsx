@@ -92,8 +92,8 @@ const Form = ({ product, editing }) => {
 								<div className="col-md-12">
 									<select name="state" value={state.state} onChange={handleChange}>
 										<option value="">Selecciona un estado</option>
-										<option value="disponible">Disponible</option>
-										<option value="agotado">Agotado</option>
+										<option value={true}>Disponible</option>
+										<option value={false}>Agotado</option>
 									</select>
 								</div>
 								<div className="col-md-12 mb-2">

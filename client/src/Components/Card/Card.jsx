@@ -1,5 +1,6 @@
 import React from "react";
 import "./Card.css";
+import add from '../../assets/addToCart.png'
 
 import { Link } from "react-router-dom";
 
@@ -14,7 +15,10 @@ export default function Card({ id, name, price, description, image, addToCart, r
 			<div className="card-body">
 				<h5 className="card-title">{name}</h5>
 				<p>{description}</p>
-				<p>$<strong>{price}</strong></p>
+				<div >
+					<p>$<strong>{price}</strong></p>
+					<img style={{ width: '9rem' }} src={add} alt='x' />
+				</div>
 			</div>
 		</div>
 	);
