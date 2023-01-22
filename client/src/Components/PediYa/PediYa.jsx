@@ -76,7 +76,7 @@ const PediYa = () => {
 			Swal.fire('Completa los datos para continuar la compra')
 			.then((result) => {
 				if (result.value) {
-					window.location.href='http://localhost:3000/editarperfilusuario';
+					window.location.href='http://gusto-pf-production.up.railway.app/editarperfilusuario';
 				}
 			})
 			
