@@ -32,7 +32,7 @@ const Users = () => {
   useEffect(() => {
     dispatch(getAllUsers())
   }, [dispatch])
-  console.log(user)
+ 
 
   return (
     <div style={{ display: 'flex' }}>
