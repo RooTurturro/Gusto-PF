@@ -7,12 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/store'
 import { Provider } from 'react-redux';
 import axios from 'axios'
-import dotenv from 'dotenv'
+
 import { Auth0Provider } from '@auth0/auth0-react'
 //----------------Auth0 Config----------------------------
 const domain = 'dev-18zov1enqjrx8hn7.us.auth0.com';
 const clientId = 'LqqBa9zF6gjJ2lwcrNYsAtYpikXifzQZ';
-dotenv.config()
+
 
 axios.defaults.baseURL = 'gusto-pf-production.up.railway.app'
 
