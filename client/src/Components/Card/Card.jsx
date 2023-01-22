@@ -16,7 +16,7 @@ export default function Card({ id, name, price, description, image, addToCart, r
 				<h5 className="card-title">{name}</h5>
 				<p>{description}</p>
 				<div >
-					<p>$<strong>{price}</strong></p>
+					<p><strong>${price}</strong></p>
 					<img style={{ width: '9rem' }} src={add} alt='x' />
 				</div>
 			</div>

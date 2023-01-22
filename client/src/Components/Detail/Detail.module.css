@@ -31,8 +31,8 @@
     flex-direction: column;
     align-items: flex-start;
     margin-left: 2rem;
-    height: 27rem;
     justify-content: space-between;
+    width: 60%;
 }
 
 .description {
@@ -45,6 +45,8 @@
     font-weight: 900;
 }
 
+
+
 .detailInfo h1 {
     font-family: 'Recoleta';
     font-size: 5rem;
@@ -54,8 +56,7 @@
 
 .arrow {
     transform: rotate(270deg);
-    width: 1.1rem;
-    margin-bottom: .2rem;
+    width: 1rem;
 }
 
 .arrowContainer {
@@ -64,6 +65,13 @@
     font-weight: 900;
     border: none;
     background-color: transparent;
-    margin-top: 8rem;
-    
+    margin-top: 8.7rem;
+    align-items: center
+
+}
+
+.videoArrow {
+    transform: rotate(90deg);
+    width: 1.1rem;
+    margin-bottom: .2rem;
 }
