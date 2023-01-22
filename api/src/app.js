@@ -4,6 +4,7 @@ const express = require("express");
 const { auth, requiresAuth } = require("express-openid-connect");
 const path = require("path");
 const jade = require("jade");
+/* const redirectHttps = require("redirect-https"); */
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
@@ -35,8 +36,15 @@ const logTime = (req, res, next) => {
   next();
 };
 
+const redirectHttps = (req, res, next) => {
+  if (req.headers["x-forwarded-proto"] !== "https") {
+    return res.redirect(`https://${req.headers.host}${req.url}`);
+  }
+  next();
+};
 
 
+server.use(redirectHttps);
 server.use(auth(authConfig));
 server.use(logger("dev"));
 server.use(express.urlencoded({ extended: false, limit: "100mb" }));

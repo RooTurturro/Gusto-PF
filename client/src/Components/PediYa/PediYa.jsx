@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPaymentUrl, postPurchase } from "../../redux/actions";
+import { getAllUsers, getPaymentUrl, postPurchase } from "../../redux/actions";
 import axios from "axios";
 
 import { useState } from "react";
@@ -9,6 +9,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 
 const PediYa = () => {
+
+
+	
 
 
 	const useModal = (initialValue = false) => {
@@ -51,6 +54,7 @@ const PediYa = () => {
 			
 			dispatch(getPaymentUrl(detail));
 			dispatch(postPurchase(detail));
+			dispatch(getAllUsers());
 			data();
 		} 
 	  

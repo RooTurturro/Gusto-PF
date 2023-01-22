@@ -25,8 +25,10 @@ export default function Card({ id, name, price, description, image, addToCart, r
 				<h5 className="card-title">{name}</h5>
 				<p>{description}</p>
 				<div >
-					<p>$<strong>{price}</strong></p>
+
+					<p><strong>${price}</strong></p>
 					<button style={{ border: 'none' }} onClick={() => { addToCart(id); handleClick() }}>
+
 					<img style={{ width: '9rem' }} src={add} alt='x' />
 					</button>
 				</div>
