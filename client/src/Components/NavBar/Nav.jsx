@@ -10,10 +10,11 @@ import { useEffect } from "react";
 
 
 export default function Nav() {
-	
+	const user = useSelector(state => state.user)
+
 	const cart = useSelector((state) => state.cart);
 	const picture = window.localStorage.getItem("userPicture");
-	
+
 
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
@@ -36,8 +37,13 @@ export default function Nav() {
 							<Link className="nav-link-custom" aria-current="page" to='/contacto'>CONTACTANOS</Link>
 						</div>
 						<div className="nav-item active">
-							<Link className="nav-link-custom" aria-current="page" to='/productlist'>ADMIN</Link>
+							<Link className="nav-link-custom" aria-current="page" to='/miscompras'>MIS COMPRAS</Link>
 						</div>
+						{user.isAdmin ? (
+							<div className="nav-item active">
+								<Link className="nav-link-custom" aria-current="page" to='/productlist'>ADMIN</Link>
+							</div>
+						) : null}
 					</ul>
 				</div>
 				<div style={{ color: 'red', display: 'flex', marginRight: '10px', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>

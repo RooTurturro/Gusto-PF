@@ -3,7 +3,7 @@ body{
 }
 
 .card img {
-  width: 20rem;
+  width: 23rem;
   object-fit: contain;
   object-position: top;
   transition: all 0.3s ease-in-out;

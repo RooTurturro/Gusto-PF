@@ -1,38 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
- 
- 
- .container {
-    background-image: url('../../assets/hamburguesa3.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+
+
+
+body {
+    background-color: #ededed;
+}
+
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 4rem;
     height: 90vh;
     width: 100vw;
-    
- }
- .bloque {
-    width: 60rem;
-    height: 18rem;
+
+}
+
+.bloque {
+    width: 40rem;
+    height: 30rem;
     display: flex;
     border-radius: 10px;
     border: 1px solid black;
     background-color: #9b051c;
-    
- }
 
- .left {
+}
+
+.left {
     display: flex;
     flex-direction: column;
     width: 15rem;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-   
- }
 
- .right {
+}
+
+.right {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,20 +45,20 @@
     background-color: aliceblue;
     color: black;
     gap: 2rem;
- }
+}
 
- .info {
+.info {
     margin: 1rem;
-    display: flex;
+
     justify-content: space-between;
     gap: 3rem;
     padding: 5px;
- }
+}
 
 .titulo {
     border-bottom: 1px solid black;
     font-family: 'Hanken Grotesk', sans-serif;
-    
+
 }
 
 .botones {
@@ -63,8 +67,8 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    
-   
+
+
 }
 
 
@@ -81,21 +85,22 @@
 
 
 .button {
-    
+    background-color: rgb(#b71c1c);
     border: none;
     color: rgb(0, 0, 0);
-    padding: 1rem;
+    padding: 0.6rem;
     text-align: center;
     text-decoration: none;
     display: flex;
     border-radius: 10px;
-    
+
 }
 
-.button:hover{
-	background-color: #efe819;
-    
-}  
+.button:hover {
+    background-color: rgb(221, 23, 23);
+    color: aliceblue;
+}
+
 
 .imagen {
     height: 8rem;
@@ -112,3 +117,7 @@
     color: aliceblue;
 }
 
+a,
+link {
+    text-decoration: none;
+}
