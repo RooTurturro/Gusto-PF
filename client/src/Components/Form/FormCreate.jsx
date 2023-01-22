@@ -127,15 +127,15 @@ const CreateProduct = () => {
 									/>
 									{errors.description && <p style={{color:'red'}}>{errors.image}</p>}
 								</div>
-								<div class="col-md-12 mt-3 mb-2 checkbox-container">
+								<div className="col-md-12 mt-3 mb-2 checkbox-container">
 									<div style={{ display: 'flex', gap: '0.3rem' }}>
 										<label>Estado del producto: </label>
 										<br />
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input class="btn-check" type="radio" name="state" value={true} autocomplete="off" /> Disponible
+											<input className="btn-check" type="radio" name="state" value={true} autocomplete="off" /> Disponible
 										</label>
 										<label onChange={handlerChange} className="btn btn-secondary">
-											<input class="btn-check" type="radio" name="state" value={false}  autocomplete="off" /> Agotado
+											<input className="btn-check" type="radio" name="state" value={false}  autocomplete="off" /> Agotado
 										</label>
 									</div>
 								</div>

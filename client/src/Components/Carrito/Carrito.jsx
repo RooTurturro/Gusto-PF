@@ -1,18 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
-import { delFromCart, updateCartStorage } from '../../redux/shoppingActions'
+import { delFromCart, updateCartStorage, addToCart } from '../../redux/shoppingActions'
 import CarritoItem from './CarritoItem'
 import { useEffect } from 'react'
 import { getAllProducts } from '../../redux/actions'
 import PediYa from '../PediYa/PediYa'
 import './Carrito.css'
 
+
 const Carrito = () => {
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
-
-
-
+ 
+    const [state , setState ] = useState(1)
 
 
     useEffect(() => {
@@ -44,6 +44,7 @@ const Carrito = () => {
                                                     delOneFromCart={() => dispatch(delFromCart(item.id))}
                                                     delAllFromCart={() => dispatch(delFromCart(item.id, true))}
                                                 />)}
+                                               
                                         < PediYa />
                                     </div>
                                 </div>

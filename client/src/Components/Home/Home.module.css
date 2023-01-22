@@ -1,82 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+:root {
+	--main-red: #ff002f;
+	--bgLight: #ededed;
+	--bgDark: #1d1d1d;
+}
 
 
+.home1 {
+	margin-top: -11rem;
+	background-color: var(--bgLight);
+}
 
+.home1 img {
+	width: 98%;
+	margin-top: 110px;
+}
 
 .img {
-
-    height: 80vh;
-    width: 20vw;
-}
-
-.promociones {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-}
-
-.type {
-    color: aliceblue;
-    font-family: 'Poppins', sans-serif;
-    margin-left: 1rem;
-}
-
-.type2 {
-    color: aliceblue;
-    font-family: 'Poppins', sans-serif;
-
-}
-
-.a {
-    text-decoration: none;
-    color: aliceblue;
-}
-
-.a:hover {
-    color: black;
-}
-
-.titulo {
-    color: aliceblue;
-    font-family: 'Rubik Mono One', sans-serif;
-    font-size: 1rem;
-}
-
-.titulo2 {
-    color: aliceblue;
-    font-family: 'Rubik Mono One', sans-serif;
-    padding: 2rem;
-
-}
-
-.logo {
-    height: 4rem;
-    width: 4rem;
-}
-
-.promocionesContainer {
-    gap: 5rem;
-    height: 90vh;
-    background-image: url('../../assets/hamburguesa7.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+	height: 80vh;
+	width: 20vw;
 }
 
 
 
-.img2 {
-    height: 20rem;
-    width: 15rem;
-    margin: 1rem;
+.container {
+	max-width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
-.gusto {
-    color: rgb(255, 255, 255);
-    font-size: 3rem;
+.container::-webkit-scrollbar {
+	display: none;
 }
 
-footer {
-    background: #4d0707;
+.container2 {
+	position: absolute;
+}
+
+.container3 {
+	display: flex;
+	position: absolute;
+	flex-direction: row-reverse;
+	align-items: flex-end;
+	position: absolute;
+	margin-top: 24.2rem;
+	margin-left: -5rem;
+}
+
+.cuellito {
+	margin-bottom: 4.4rem;
+	margin-right: 30px;
+}
+
+.collection {
+	margin-top: 16.1rem;
+	margin-left: 12.3rem;
+	z-index: 9999999;
+	position: absolute;
+	width: 40rem;
+}
+
+.cinta {
+	width: 50rem;
+	position: absolute;
+	z-index: 999999999999999999;
+	margin-top: 47rem;
+	margin-left: 10rem;
+}
+
+.video {
+	width: 18rem;
+	margin-right: 2rem;
+	margin-bottom: 4.5rem;
+}
+
+.gif {
+	margin-bottom: 4.5rem;
+	padding-right: 2rem;
+	width: 20rem;
+
 }

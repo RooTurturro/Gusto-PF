@@ -16,7 +16,7 @@ const CheckOutSucces = () => {
   const newPurchase = useSelector((state) => state.newPurchase)
   const purchase = useSelector((state) => state.purchases)
   const cart = useSelector((state) => state.cart)
-
+  // LOCAL STORAGE
   const name = window.localStorage.getItem('userName')
   const to = window.localStorage.getItem('userEmail')
   const products = window.localStorage.getItem('detailProducts')
@@ -24,41 +24,31 @@ const CheckOutSucces = () => {
   const state = window.localStorage.getItem('detailState')
   const address = window.localStorage.getItem('detailAdress')
   const specification = window.localStorage.getItem('detailSpecification')
-
+  const quantity = window.localStorage.getItem('detailQuantity')
+  // DETALLE DEL PEDIDO
   const detail = {
     products : products ,
     price : price ,
-    address : address 
+    address : address ,
+    quantity : quantity
   }
-
   const sendEmail = async () => {
     await axios.post("http://localhost:3001/api/mail/checkout", { to, name , detail })
   };
   sendEmail();
-  
-  /*useEffect(() => {
-    sendEmail()
-  })*/
-  sendEmail()
- console.log(name)
- console.log(to)
- console.log(products)
- console.log(price)
- console.log(state)
-
   return (
     <>
-         <div class="container">
+         <div className="container">
           <h2>SU COMPRA A SIDO ESITOSA XD</h2>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="main-box clearfix">
-                <div class="table-responsive">
-                  <table class="table user-list">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="main-box clearfix">
+                <div className="table-responsive">
+                  <table className="table user-list">
                     <thead>
                       <tr>
                         <th scope="col" width="10%"><span>Name</span></th>
-                        <th scope="col" width="20%" class="text-center"><span>Direccion</span></th>
+                        <th scope="col" width="20%" className="text-center"><span>Direccion</span></th>
                         <th scope="col" width="20%"><span>Productos</span></th>
                         <th scope="col" width="10%"><span>Total</span></th>
                         <th scope="col" width="20%"><span>Envio a domicilio</span></th>
@@ -67,26 +57,26 @@ const CheckOutSucces = () => {
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="text-center" >
+                        <td className="text-center" >
                           {name}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {address}
                         </td>
-                        <td class="text-center">
-                          {products}
+                        <td className="text-center">
+                          {products + ""}x{quantity}
                         </td>
                        
-                        <td class="text-center">
+                        <td className="text-center">
                           {price}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           Delivery
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {state}
                         </td>
-                        <td class="text-center">
+                        <td className="text-center">
                           {state === 'En proceso'}
                         </td>
                       </tr>
