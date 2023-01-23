@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom'
 
 const UserHistory = () => {
 
-    const dispatch = useDispatch()
-    const email = window.localStorage.getItem('userEmail')
+  const dispatch = useDispatch()
+  const email = window.localStorage.getItem('userEmail')
 
   useEffect(() => {
     dispatch(getAllPurchases())
