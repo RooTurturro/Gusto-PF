@@ -15,7 +15,9 @@ const routes = require("./routing/index");
 
 const server = express();
 
-server.set("view engine", "jade");
+server.use(helmet());
+server.set('view engine', 'jade');
+
 
 server.use(cors());
 
