@@ -90,6 +90,7 @@ const Menu = () => {
                     key={e.id}
                     name={e.name}
                     price={e.price}
+                    addToCart={() => dispatch(addToCart(e.id))}
                     image={e.image}
                     category={e.category}
                   />

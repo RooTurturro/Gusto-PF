@@ -3,7 +3,7 @@ import "./RatingProducts.css";
 import { FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import * as actions from "../../redux/actions";
-
+import {IoMdStar} from 'react-icons/io'
 
 const colors = {
 	red: "#FF0000",
@@ -14,7 +14,7 @@ function RatingProducts({ id }) {
 	const Swal = require("sweetalert2");
 	const stars = Array(5).fill(0);
 	const dispatch = useDispatch();
-	
+
 
 	//DEFINO MIS ESTADOS
 
@@ -45,11 +45,10 @@ function RatingProducts({ id }) {
 
 	return (
 		<form style={styles.container} onSubmit={handleSubmit}>
-			<p style={{marginTop:'6px', marginBottom: '0rem'}}> RATING </p>
 			<div style={styles.stars}>
 				{stars.map((_, index) => {
 					return (
-						<FaStar
+						<IoMdStar
 							key={index}
 							size={24}
 							onClick={() => handleClick(index + 1)}
@@ -61,14 +60,17 @@ function RatingProducts({ id }) {
 							style={{
 								marginRight: 10,
 								cursor: "pointer",
+								width:'2.3rem',
+								height:'2.3rem',
+								
 							}}
 						/>
 					);
 				})}
 			</div>
 
-			<button type="button submit" className="btn btn-primary" style={{marginTop: '5px'}}>
-				Enviar
+			<button type="button submit" style={{height:'1.7rem', marginTop: '-.6rem', backgroundColor: 'red', fontFamily: 'Oswald', fontWeight: '900', border:'none', color:'white' }}>
+				ENVIAR
 			</button>
 		</form>
 	);
@@ -77,21 +79,16 @@ function RatingProducts({ id }) {
 const styles = {
 	container: {
 		display: "flex",
-		flexDirection: "column",
 		alignItems: "center",
-		gap:'0rem'
+		gap: '0rem'
 	},
 	stars: {
 		display: "flex",
 		flexDirection: "row",
-		
+		marginTop:'-1rem'
+
 	},
-	button: {
-		border: "1px solid #a9a9a9",
-		borderRadius: 5,
-		width: 300,
-		padding: 10,
-	},
+	
 };
 
 export default RatingProducts;

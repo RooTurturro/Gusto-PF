@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getAllPurchases, updatePurchaseState } from '../../redux/actions'
+import { getAllPurchases, getAllUsers, updatePurchaseState } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Sidebar from '../Sidebar/Sidebar';
@@ -16,6 +16,7 @@ const Historial = () => {
   const purchases = useSelector((state) => state.purchases)
 
   useEffect(() => {
+    dispatch(getAllUsers());
     dispatch(getAllPurchases())
   }, [dispatch])
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { MdInventory2, MdAccountCircle } from 'react-icons/md'
+import { MdInventory2, MdAccountCircle, MdOutlineRestaurantMenu } from 'react-icons/md'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { AiOutlineHome } from 'react-icons/ai'
 import { BiLogOut } from 'react-icons/bi'
@@ -19,14 +19,19 @@ const Sidebar = () => {
             <hr />
             <div className="center">
                 <ul className='ul'>
-
                     <Link to='/' className='span' style={{ textDecoration: 'none' }}>
                         <li className='li'>
                             <AiOutlineHome className="icon" />
                             <span className='span'>Home</span>
                         </li>
                     </Link>
-                    <p className="title">LISTS</p>
+                    <Link to='/menu' style={{ textDecoration: 'none' }}>
+                        <li className='li'>
+                            <MdOutlineRestaurantMenu className="icon" />
+                            <span className='span'>Menu</span>
+                        </li>
+                    </Link>
+                    <p className="title">ADMIN</p>
                     <Link to="/users" style={{ textDecoration: "none" }}>
                         <li className='li'>
                             <MdAccountCircle className="icon" />
@@ -47,10 +52,13 @@ const Sidebar = () => {
                         </li>
                     </Link>
                     <p className="title">USER</p>
-                    <li className='li'>
-                        <MdAccountCircle className="icon" />
-                        <span className='span'>Perfil</span>
-                    </li>
+                    <Link to='/perfil'>
+
+                        <li className='li'>
+                            <MdAccountCircle className="icon" />
+                            <span className='span'>Perfil</span>
+                        </li>
+                    </Link>
                     <li className='li'>
                         <BiLogOut className="icon" />
                         <span className='span'>Cerrar sesión</span>

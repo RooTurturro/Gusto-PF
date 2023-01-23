@@ -12,6 +12,7 @@ const Form = ({ product, editing }) => {
 	const Swal = require("sweetalert2");
 
 	useEffect(() => {
+		dispatch(actions.getAllUsers());
 		setState(product);
 	}, [product]);
 

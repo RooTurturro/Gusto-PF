@@ -3,17 +3,18 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/gustoPng.png";
 import "./Nav.css";
 import { useSelector } from "react-redux";
+import Carrito from '../Carrito/Carrito'
 
 import LoginButton from "../Login/LoginButton";
-import { useEffect } from "react";
+import { useState } from "react";
 
 
 
 export default function Nav() {
 	const user = useSelector(state => state.user)
-
 	const cart = useSelector((state) => state.cart);
-	const picture = window.localStorage.getItem("userPicture");
+	const picture = window.localStorage.getItem("userPicture")
+	const [openCart, setOpenCart] = useState(false);
 
 
 	return (
@@ -58,6 +59,8 @@ export default function Nav() {
 								</svg>
 							</div>
 						</Link>
+						// <Carrito/>
+
 					) :
 						<Link className='nav-link' to='/carrito'>
 							<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-cart4" viewBox="0 0 16 16">
