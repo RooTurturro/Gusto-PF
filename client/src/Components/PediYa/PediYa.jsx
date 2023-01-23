@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPaymentUrl, postPurchase } from "../../redux/actions";
+import { getPaymentUrl, postPurchase, getAllUsers} from "../../redux/actions";
 import axios from "axios";
 
 import { useState } from "react";
@@ -34,11 +34,11 @@ const PediYa = () => {
 						)
 					})],
 					quantity: [cart.map((el) => {
-						return (
-							el.quantity
-							)
-						})],
-					takeAway: true
+												return (
+													el.quantity
+													)
+												})],
+											takeAway: true
 				};
 				
 				const data = () => {
@@ -51,6 +51,7 @@ const PediYa = () => {
 			
 			dispatch(getPaymentUrl(detail));
 			dispatch(postPurchase(detail));
+			dispatch(getAllUsers());
 			data();
 		} 
 	  
@@ -82,7 +83,7 @@ const PediYa = () => {
 			Swal.fire('Completa los datos para continuar la compra')
 			.then((result) => {
 				if (result.value) {
-					window.location.href='http://gusto-pf-production.up.railway.app/editarperfilusuario';
+					window.location.href='https://ganasdegusto.vercel.app/editarperfilusuario';
 				}
 			})
 			

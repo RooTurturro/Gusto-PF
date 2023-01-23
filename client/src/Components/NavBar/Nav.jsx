@@ -2,20 +2,32 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/gustoPng.png";
 import "./Nav.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Carrito from '../Carrito/Carrito'
 
 import LoginButton from "../Login/LoginButton";
+import { useState } from "react";
 import { useEffect } from "react";
+import { userProfile } from "../../redux/actions";
 
 
 
 export default function Nav() {
+	
+	const cart = useSelector((state) => state.cart);
+	const picture = window.localStorage.getItem("userPicture")
+	const [openCart, setOpenCart] = useState(false);
+	const dispatch = useDispatch();
+	const email = window.localStorage.getItem('userEmail')
+
+	useEffect(()=>{
+		dispatch(userProfile(email))
+	})
+
 	const user = useSelector(state => state.user)
 
-	const cart = useSelector((state) => state.cart);
-	const picture = window.localStorage.getItem("userPicture");
 
-
+	
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
 			<div className="container-fluid all-show nav-container-custom">
@@ -58,6 +70,8 @@ export default function Nav() {
 								</svg>
 							</div>
 						</Link>
+						// <Carrito/>
+
 					) :
 						<Link className='nav-link' to='/carrito'>
 							<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-cart4" viewBox="0 0 16 16">
