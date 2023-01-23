@@ -179,9 +179,11 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				products: state.products.filter(
-					(product) => product.name !== action.payload
+					(product) => product.id === action.payload
 				),
 			};
+
+			
 		
 
 		//add to the products props a 'category'.
