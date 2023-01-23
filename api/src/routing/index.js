@@ -2,6 +2,7 @@
 const { Router } = require("express");
 const productRouter = require("./routes/productRouter");
 const purchaseRouter = require("./routes/purchaseRouter");
+const cloudinaryRouter = require("./routes/cloudinaryRouter");
 
 const toppingsRouter = require("./routes/toppingsRouter");
 const usersRouter = require("./routes/usersRouter");
