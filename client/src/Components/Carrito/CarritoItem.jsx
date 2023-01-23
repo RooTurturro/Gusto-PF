@@ -1,31 +1,31 @@
 import React from 'react'
 import { useState } from 'react'
-import { delFromCart, updateCartStorage, addToCart } from '../../redux/shoppingActions'
+import { delFromCart, addToCart } from '../../redux/shoppingActions'
 import { useSelector, useDispatch } from 'react-redux'
+import './CarritoItem.css'
 
-const CartItem = ({ id, name, price, image, description,total, quantity, delOneFromCart }) => {
+const CartItem = ({ id, name, price, image, description, total, quantity, delOneFromCart }) => {
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
-    
-    const [state , setState ] = useState(quantity)
-   
-    
 
- /*   const handleClick = (e)=>{
-        e.preventDefault()
-        dispatch(addToCart(id))
-        setState(state + 1)
-    }*/
+    const [state, setState] = useState(quantity)
+
+
+
+    /*   const handleClick = (e)=>{
+           e.preventDefault()
+           dispatch(addToCart(id))
+           setState(state + 1)
+       }*/
     console.log(quantity)
- console.log(cart)
+    console.log(cart)
     return (
-        <div className=" mt-3 row">
+        <div className="row carritoItem">
             < hr />
             <div className="  col-lg-3 col-md-12  mb-4 mb-lg-0">
                 <div className="  bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
                     <img src={image}
-                        className="w-100" alt="Blue Jeans Jacket" style={{height:'150px'}} />
-                    
+                        className="w-100" alt="Blue Jeans Jacket" style={{ height: '150px' }} />
                 </div>
             </div>
             <div className=" col-lg-5 col-md-6 mb-4 mb-lg-0">
@@ -41,8 +41,8 @@ const CartItem = ({ id, name, price, image, description,total, quantity, delOneF
                 <p className="text-start text-md-center">
                     <h5>
                         Cantidad: {quantity}
-                  <button onClick={() => {dispatch(addToCart(id))}}> + </button>
-                  <button onClick={() => {dispatch(delFromCart(id))}}> - </button>
+                        <button onClick={() => { dispatch(addToCart(id)) }}> + </button>
+                        <button onClick={() => { dispatch(delFromCart(id)) }}> - </button>
                         <hr />
                         ${price * quantity}
                     </h5>

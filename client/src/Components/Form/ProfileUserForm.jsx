@@ -40,7 +40,10 @@ const ProfileUserForm = () => {
             phone: "",
             address: "",
         })
-        Swal.fire(`Datos Guardados`);
+        Swal.fire({
+			title: 'Datos guardados',
+			confirmButtonColor: 'red'
+		})
         navigate('/perfil')
 
     }

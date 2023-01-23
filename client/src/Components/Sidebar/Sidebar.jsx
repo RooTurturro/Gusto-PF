@@ -53,16 +53,15 @@ const Sidebar = () => {
                     </Link>
                     <p className="title">USER</p>
                     <Link to='/perfil'>
-
                         <li className='li'>
                             <MdAccountCircle className="icon" />
                             <span className='span'>Perfil</span>
                         </li>
                     </Link>
-                    <li className='li'>
+                    {/* <li className='li'>
                         <BiLogOut className="icon" />
                         <span className='span'>Cerrar sesión</span>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
 
