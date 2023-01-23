@@ -2,21 +2,32 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/gustoPng.png";
 import "./Nav.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Carrito from '../Carrito/Carrito'
 
 import LoginButton from "../Login/LoginButton";
 import { useState } from "react";
+import { useEffect } from "react";
+import { userProfile } from "../../redux/actions";
 
 
 
 export default function Nav() {
-	const user = useSelector(state => state.user)
+	
 	const cart = useSelector((state) => state.cart);
 	const picture = window.localStorage.getItem("userPicture")
 	const [openCart, setOpenCart] = useState(false);
+	const dispatch = useDispatch();
+	const email = window.localStorage.getItem('userEmail')
+
+	useEffect(()=>{
+		dispatch(userProfile(email))
+	})
+
+	const user = useSelector(state => state.user)
 
 
+	
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
 			<div className="container-fluid all-show nav-container-custom">
