@@ -27,15 +27,20 @@ const ProductList = () => {
             if (result.value) {
                 // aquí se puede llamar la acción de borrado del producto
                 dispatch(deleteProducts(id))
+
+
                 Swal.fire({
                     title: 'Producto eliminado',
                     icon: 'warning'
-                }).then(() => {
+                  }).then(() => {
                     window.location.reload()
-                })
+                  })
+                }
+              })
+
             }
-        })
-    }
+    
+
     function handleClick(e) {
         e.preventDefault(e);
         dispatch(getAllProducts());
