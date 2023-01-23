@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPaymentUrl, postPurchase } from "../../redux/actions";
+import { getPaymentUrl, postPurchase, getAllUsers} from "../../redux/actions";
 import axios from "axios";
 
 import { useState } from "react";
