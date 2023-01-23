@@ -11,8 +11,16 @@ const Users = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.users)
 
-  function habilitarUser(email) {
-    dispatch(updateUser(email, { state: 'Habilitado' }))
+  function habilitarUser(e) {
+    const userToUpdate = {
+      name : e.name, 
+      phone: e.phone, 
+      email: e.email, 
+      address: e.address, 
+      isAdmin: e.isAdmin, 
+      state: "Habilitado",
+    }
+    dispatch(updateUser(userToUpdate))
     Swal.fire({
       title: 'Usuario habilitado'
     }).then(() => {
@@ -20,8 +28,16 @@ const Users = () => {
     })
   }
 
-  function deshabilitarUser(email) {
-    dispatch(updateUser(email, { state: 'Deshabilitado' }))
+  function deshabilitarUser(e) {
+    const userToUpdate = {
+      name : e.name, 
+      phone: e.phone, 
+      email: e.email, 
+      address: e.address, 
+      isAdmin: e.isAdmin, 
+      state: "Deshabilitado",
+    }
+    dispatch(updateUser(userToUpdate))
     Swal.fire({
       title: 'Usuario deshabilitado'
     }).then(() => {
@@ -72,8 +88,8 @@ const Users = () => {
                         </td>
                         <td className="text-center">
                           {e.state === 'Deshabilitado' ? (
-                            <button onClick={() => habilitarUser(e.email)} type='button' className='btn btn-danger'>Deshabilitado</button>
-                          ) : <button onClick={() => deshabilitarUser(e.email)} type='button' className='btn btn-success'>Habilitado</button>}
+                            <button onClick={() => habilitarUser(e)} type='button' className='btn btn-danger'>Deshabilitado</button>
+                          ) : <button onClick={() => deshabilitarUser(e)} type='button' className='btn btn-success'>Habilitado</button>}
                         </td>
                       </tr>
                     </tbody>
