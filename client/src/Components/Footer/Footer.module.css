@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+
+
+
+.img {
+
+    height: 80vh;
+    width: 20vw;
+}
+
+.promociones {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.type {
+    color: aliceblue;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 1rem;
+}
+
+.type2 {
+    color: aliceblue;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.a:hover {
+    color: black;
+}
+
+.titulo {
+    color: aliceblue;
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 1rem;
+}
+
+.titulo2 {
+    color: aliceblue;
+    font-family: 'Rubik Mono One', sans-serif;
+    padding: 2rem;
+
+}
+
+.logo {
+    height: 4rem;
+    width: 4rem;
+}
+
+.promocionesContainer {
+    gap: 5rem;
+    height: 90vh;
+    background-image: url('../../assets/hamburguesa7.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.img2 {
+    height: 20rem;
+    width: 15rem;
+    margin: 1rem;
+}
+
+.gusto {
+    color: rgb(255, 255, 255);
+    font-size: 3rem;
+}
+
+footer {
+    background: #4d0707;
+}

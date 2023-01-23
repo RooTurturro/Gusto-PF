@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, filterProductsByCategories } from "../../redux/actions";
 import { addToCart } from "../../redux/shoppingActions";
 import './Menu.css'
-import ListGroup from 'react-bootstrap/ListGroup';
 import burger from '../../assets/burger.png'
 import bebidas from '../../assets/bebidas.png'
 import batidos from '../../assets/batidos.png'
@@ -13,7 +12,7 @@ import combos from '../../assets/combos.png'
 import Spinner from 'react-bootstrap/Spinner';
 import Nav from "../NavBar/Nav";
 import flechas from '../../assets/redBoxes.png'
-import arrow from '../../assets/arrow.png'
+
 
 
 
@@ -47,7 +46,6 @@ const Menu = () => {
           <div style={{marginLeft:'.9rem'}}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '.8rem' }}>
               <h1 className='recoleta' style={{ marginLeft: '2rem', fontSize: '3rem' }}>Buenos Aires  </h1>
-              <button className="sucursal"><img src={arrow} className='arrow' alt='nada' />CAMBIAR SUCURSAL</button>
             </div>
             <img className="flechas" src={flechas} alt='flechas' />
           </div>

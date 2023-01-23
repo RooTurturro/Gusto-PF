@@ -28,6 +28,7 @@ const ProductList = () => {
                 // aquí se puede llamar la acción de borrado del producto
                 dispatch(deleteProducts(id))
 
+
                 Swal.fire({
                     title: 'Producto eliminado',
                     icon: 'warning'
@@ -36,6 +37,7 @@ const ProductList = () => {
                   })
                 }
               })
+
             }
     
 
@@ -124,7 +126,7 @@ const ProductList = () => {
                         </div>
                     </div>
                 </div>
-                <div className="container">
+                <div className="container justify-content-center">
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="main-box clearfix">
