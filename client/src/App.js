@@ -22,37 +22,33 @@ import Contacto from "./Components/Contacto/Contacto";
 
 
 function App() {
-	return (
-		<div>
-
-			
-
-			
-			<Routes>
-				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
-				<Route exact path="/" element={<Home />} />
-				<Route exact path="/users" element={<Users />} />
-				<Route exact path="/productlist" element={<ProductList />} />
-				<Route exact path="/sendgrid" element={<SenGrid />} />
-				<Route exact path="/carrito" element={<Carrito />} />
-				<Route exact path="/historial" element={<Historial />} />
-				<Route exact path="/create" element={<FormCreate />} />
-				<Route exact path="/menu" element={<Menu />} />
-				<Route exact path="/products/:id" element={<Detail />} />
-				<Route exact path="/perfil" element={<Perfil />} />
-				<Route exact path="/sucursales" element={<Sucursales />} />
-				<Route exact path="/login" element={<LoginButton />} />
-				<Route exact path="/checkout" element={<CheckOutSucces />} />
-				<Route exact path="/miscompras" element={<UserHistory />} />
-				<Route exact path="/contacto" element={<Contacto />} />
-				<Route
-					exact
-					path="/editarperfilusuario"
-					element={<ProfileUserForm />}
-				/>
-			</Routes>
-		</div>
-	);
+  return (
+      <div>
+        <Routes>
+          {/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/users" element={<Users />} />
+          <Route exact path="/productlist" element={<ProductList />} />
+          <Route exact path="/sendgrid" element={<SenGrid />} />
+          <Route exact path="/carrito" element={<Carrito />} />
+          <Route exact path="/historial" element={<Historial />} />
+          <Route exact path="/create" element={<FormCreate />} />
+          <Route exact path="/menu" element={<Menu />} />
+          <Route exact path="/products/:id" element={<Detail />} />
+          <Route exact path="/perfil" element={<Perfil />} />
+          <Route exact path="/sucursales" element={<Sucursales />} />
+          <Route exact path="/login" element={<LoginButton />} />
+          <Route exact path="/checkout" element={<CheckOutSucces />} />
+          <Route exact path="/miscompras" element={<UserHistory />} />
+          <Route exact path="/contacto" element={<Contacto />} />
+          <Route
+            exact
+            path="/editarperfilusuario"
+            element={<ProfileUserForm />}
+          />
+        </Routes>
+      </div>
+  );
 }
 
 export default App;
