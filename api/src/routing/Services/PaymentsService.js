@@ -6,7 +6,7 @@ class PaymentService {
     const url = "https://api.mercadopago.com/checkout/preferences";
     //aca deberiamos poner nuestro producto. va a venir en el req del front, leemos el body del req y ahi recibir items desde el fontend y ahi pasarlos al controller y de ahi al service para popular este array
     const body = {
-      payer_email: "test_user_1284197311@testuser.com",
+      payer_email: "test_user_1292738543@testuser.com",
       items: [
         {
           title: name,

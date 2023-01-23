@@ -5,7 +5,16 @@ import add from '../../assets/addToCart.png'
 import { Link } from "react-router-dom";
 
 
+
 export default function Card({ id, name, price, description, image, addToCart, rating, category }) {
+
+
+	const Swal = require("sweetalert2");
+	// const { isAuthenticated } = useAuth0();
+
+	const handleClick = () => {
+		Swal.fire('Producto añadido al carrito!')
+	}
 
 	return (
 		<div className="card" >
@@ -16,8 +25,12 @@ export default function Card({ id, name, price, description, image, addToCart, r
 				<h5 className="card-title">{name}</h5>
 				<p>{description}</p>
 				<div >
+
 					<p><strong>${price}</strong></p>
+					<button style={{ border: 'none' }} onClick={() => { addToCart(id); handleClick() }}>
+
 					<img style={{ width: '9rem' }} src={add} alt='x' />
+					</button>
 				</div>
 			</div>
 		</div>
