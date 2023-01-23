@@ -13,7 +13,10 @@ export default function Card({ id, name, price, description, image, addToCart, r
 	// const { isAuthenticated } = useAuth0();
 
 	const handleClick = () => {
-		Swal.fire('Producto añadido al carrito!')
+		Swal.fire({
+			title: 'Producto añadido al carrito!',
+			confirmButtonColor: 'red'
+		})
 	}
 
 	return (
@@ -29,7 +32,7 @@ export default function Card({ id, name, price, description, image, addToCart, r
 					<p><strong>${price}</strong></p>
 					<button style={{ border: 'none' }} onClick={() => { addToCart(id); handleClick() }}>
 
-					<img style={{ width: '9rem' }} src={add} alt='x' />
+						<img style={{ width: '9rem' }} src={add} alt='x' />
 					</button>
 				</div>
 			</div>

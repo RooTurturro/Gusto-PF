@@ -30,7 +30,7 @@ const Carrito = () => {
                         <div className="row d-flex justify-content-center my-4">
                             <div className="col-md-8">
                                 <div className="card mb-0">
-                                    <div className="card-body">
+                                    <div className="cart-body">
                                         {
                                             cart.map((item) =>
                                                 <CarritoItem

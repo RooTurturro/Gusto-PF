@@ -121,7 +121,7 @@ const ProductList = () => {
                         </div>
                     </div>
                 </div>
-                <div className="container">
+                <div className="container justify-content-center">
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="main-box clearfix">
