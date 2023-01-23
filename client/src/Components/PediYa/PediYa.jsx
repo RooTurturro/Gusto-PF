@@ -86,7 +86,7 @@ const PediYa = () => {
 			Swal.fire('Completa los datos para continuar la compra')
 			.then((result) => {
 				if (result.value) {
-					window.location.href='http://gusto-pf-production.up.railway.app/editarperfilusuario';
+					window.location.href='https://ganasdegusto.vercel.app/editarperfilusuario';
 				}
 			})
 			
