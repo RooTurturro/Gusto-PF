@@ -89,12 +89,16 @@ userRouter.post("/", bodyParser.json(), async (req, res) => {
 });
 
 userRouter.put("/", async (req, res) => {
-  const { name, phone, email, address, isAdmin, state } = req.body;
 
+  const { name, phone, email, address, isAdmin, state } = req.body;
+  
   if (!email) {
     try {
-      res.status(201).send("No email");
+      
+      res.status(201).send("No email" + email);
+
     } catch (error) {
+
       console.log(error);
 
       res.status(400).send(error);
@@ -105,9 +109,13 @@ userRouter.put("/", async (req, res) => {
     const findUser = await User.findOne({ where: { email: email } });
 
     try {
+
       if (name && phone && email && address) {
-        await findUser?.update({ name, phone, email, address, isAdmin, state });
+
+        await findUser.update({ name, phone, email, address, isAdmin, state });
+
         res.status(200).send(findUser);
+
       } else {
         res.status(400).send("Faltaron datos para modificar el Usuario");
       }
