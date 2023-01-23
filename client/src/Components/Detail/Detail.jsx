@@ -27,7 +27,10 @@ const Detail = () => {
 
 	function addItemToCart() {
 		dispatch(addToCart(id));
-		Swal.fire('Producto añadido al carrito!')
+		Swal.fire({
+			title: 'Producto añadido al carrito!',
+			confirmButtonColor: 'red'
+		})
 	}
 
 	return (
@@ -41,7 +44,7 @@ const Detail = () => {
 						<p className={styles.description}>{product.description}</p>
 						<p>${product.price}</p>
 						<button style={{ border: 'none' }} onClick={() => { addItemToCart(id) }}>
-						<img src={add} alt='??' />
+							<img src={add} alt='??' />
 						</button>
 					</div>
 					<div style={{ width: '40rem', display: 'flex', justifyContent: 'space-between' }}>
@@ -70,7 +73,7 @@ const Detail = () => {
 						<p style={{ fontFamily: 'Oswald', fontWeight: '900', color: '#707981' }} >{product.name} ES EL
 							<br />
 							MAS COMPRADO DE HOY</p>
-						<img style={{ marginBottom: '1rem',transform: 'scaleX(-1)' }} src={hottestImage} alt="adasd" />
+						<img style={{ marginBottom: '1rem', transform: 'scaleX(-1)' }} src={hottestImage} alt="adasd" />
 					</div>
 					<img className={styles.detailImage} src={product.image} alt='foto' />
 				</div>
