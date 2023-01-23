@@ -40,7 +40,7 @@ const Detail = () => {
 						<RatingProducts />
 						<p className={styles.description}>{product.description}</p>
 						<p>${product.price}</p>
-						<button style={{ border: 'none' }}>
+						<button style={{ border: 'none' }} onClick={() => { addItemToCart(id) }}>
 						<img src={add} alt='??' />
 						</button>
 					</div>
