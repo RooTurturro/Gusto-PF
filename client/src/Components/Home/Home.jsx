@@ -13,6 +13,7 @@ import Carousel from '../Carousel/Carousel'
 import Footer from '../Footer/Footer';
 import bolsa from '../../assets/bolsa.jpg'
 import homevideo from '../../assets/homeVideo2.mp4'
+import Comentarios from "../Comentarios/Comentarios";
 
 
 // import { userLogin } from '../../redux/actions';
@@ -64,7 +65,7 @@ const Home = () => {
 
 
 	return (
-		<div style={{display:'flex', flexDirection:'column', gap:'2rem', overflowX:'hidden'}}>
+		<div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', overflowX: 'hidden' }}>
 			<Nav />
 			<section>
 				{/* <div className={styles.container}>
@@ -101,6 +102,10 @@ const Home = () => {
 
 				<Carousel />
 
+			</section>
+			<section>
+				<h1 style={{ display: 'flex', justifyContent: 'center' }}>Comentarios de nuestros clientes</h1>
+				<Comentarios />
 			</section>
 
 			<section className={styles.fondoSection}>

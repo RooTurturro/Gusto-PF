@@ -18,7 +18,7 @@ import LoginButton from "./Components/Login/LoginButton";
 import Users from "./Components/Users/Users";
 
 import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces"
-import Contacto from "./Components/Contacto/Contacto";
+
 import FormContact from "./Components/Form/FormContact";
 
 
@@ -47,7 +47,7 @@ function App() {
 					path="/editarperfilusuario"
 					element={<ProfileUserForm />}
 				/>
-				<Route exact path="/cloudinary" element={<Cloudinary />} />
+				
 			</Routes>
 
 		</div>

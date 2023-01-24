@@ -1,0 +1,26 @@
+body {
+  background-color: #eee;
+}
+
+.card2 {
+
+  border: none;
+}
+
+.user-content p {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.ratings{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  color: red;
+}
+
+.fa-star{
+  width: 2rem;
+  height: 2rem;
+  color: red;
+}
