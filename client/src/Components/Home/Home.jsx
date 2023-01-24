@@ -3,16 +3,11 @@ import styles from "./Home.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { getAllUsers, userLocalLogin, userLogin } from "../../redux/actions";
-import home1 from "../../assets/home1.png";
-import homeOurCollection from '../../assets/homeOurCollection.png'
-import neck from '../../assets/neck.png'
-import video from '../../assets/vagoMovimiento.mp4'
-import gif from '../../assets/gif.mp4'
 import Nav from "../NavBar/Nav";
 import Carousel from '../Carousel/Carousel'
 import Footer from '../Footer/Footer';
-import bolsa from '../../assets/bolsa.jpg'
 import homevideo from '../../assets/homeVideo2.mp4'
+import Comentarios from "../Comentarios/Comentarios";
 
 
 // import { userLogin } from '../../redux/actions';
@@ -64,7 +59,7 @@ const Home = () => {
 
 
 	return (
-		<div style={{display:'flex', flexDirection:'column', gap:'2rem', overflowX:'hidden'}}>
+		<div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', overflowX: 'hidden', backgroundColor: '#ededed' }}>
 			<Nav />
 			<section>
 				{/* <div className={styles.container}>
@@ -102,10 +97,15 @@ const Home = () => {
 				<Carousel />
 
 			</section>
+			<section>
+				<h1 style={{ display: 'flex', justifyContent: 'center' }}>Comentarios de nuestros clientes</h1>
+				<Comentarios />
+			</section>
 
 			<section className={styles.fondoSection}>
 
 				<Footer />
+				
 			</section>
 
 		</div>
