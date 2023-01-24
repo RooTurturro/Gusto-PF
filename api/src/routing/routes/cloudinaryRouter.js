@@ -12,9 +12,9 @@ cloudinaryRouter.post("/cloudinary", async (req, res) => {
 	const uploadedImage = await cloudinary.uploader.upload(
 		image,
 		{
-			upload_preset: "unsigned_uploads",
+			upload_preset: "nxwzc0rh",
 			// it shold be:		public_id: `${nombre}_productor`,
-			public_id: `nombre_producto`,
+			// public_id: `nombre_producto`,
 			allowed_formats: ["png", "jpg", "jpeg", "svg", "ico", "jfif", "webp"],
 		},
 		function (error, result) {
