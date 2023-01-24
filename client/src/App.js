@@ -16,10 +16,7 @@ import ProductList from "./Components/ProductList/ProductList";
 import ProfileUserForm from "./Components/Form/ProfileUserForm";
 import LoginButton from "./Components/Login/LoginButton";
 import Users from "./Components/Users/Users";
-
 import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces"
-
-import FormContact from "./Components/Form/FormContact";
 
 
 function App() {
@@ -41,13 +38,11 @@ function App() {
 				<Route exact path="/login" element={<LoginButton />} />
 				<Route exact path="/checkout" element={<CheckOutSucces />} />
 				<Route exact path="/miscompras" element={<UserHistory />} />
-				<Route exact path="/contacto" element={<FormContact />} />
 				<Route
 					exact
 					path="/editarperfilusuario"
 					element={<ProfileUserForm />}
-				/>
-				
+				/>	
 			</Routes>
 
 		</div>
