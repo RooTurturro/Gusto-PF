@@ -67,7 +67,7 @@ const Footer = () => {
                         </div>
                         <div className={styles.footer2}>
                             <div>
-                                Todos los derechos reservados. <strong style={{ fontWeight: '900' }}>GUSTO COMPANY</strong>
+                                Todos los derechos reservados. <strong style={{ fontWeight: '900' }}>GUSTO COMPANY.</strong>
                             </div>
                             <button style={{ border: 'none' }}>
                                 <img src={contactanos} alt="xddd" />

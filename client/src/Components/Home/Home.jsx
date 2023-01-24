@@ -12,7 +12,7 @@ import Nav from "../NavBar/Nav";
 import Carousel from '../Carousel/Carousel'
 import Footer from '../Footer/Footer';
 import bolsa from '../../assets/bolsa.jpg'
-import homevideo from '../../assets/homeVideo.mp4'
+import homevideo from '../../assets/homeVideo2.mp4'
 
 
 // import { userLogin } from '../../redux/actions';

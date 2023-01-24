@@ -51,7 +51,7 @@ footer {
 
 .containerInfo {
     height: 17rem;
-    margin-top: .5rem;
+    margin-top: -1rem;
 }
 
 .footerContainer {
@@ -64,7 +64,7 @@ footer {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    width: 98%;
+    width: 90%;
     gap: 1.5rem;
 }
 
