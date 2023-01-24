@@ -1,6 +1,7 @@
 "use strict";
 const createError = require("http-errors");
 const express = require("express");
+const helmet = require("helmet");
 const { auth, requiresAuth } = require("express-openid-connect");
 const path = require("path");
 const jade = require("jade");
@@ -14,7 +15,9 @@ const routes = require("./routing/index");
 
 const server = express();
 
-server.set("view engine", "jade");
+server.use(helmet());
+server.set('view engine', 'jade');
+
 
 server.use(cors());
 
