@@ -17,7 +17,6 @@ import ProfileUserForm from "./Components/Form/ProfileUserForm";
 import LoginButton from "./Components/Login/LoginButton";
 import Users from "./Components/Users/Users";
 import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces";
-import Contacto from "./Components/Contacto/Contacto";
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
 
 function App() {
@@ -39,7 +38,7 @@ function App() {
 				<Route exact path="/login" element={<LoginButton />} />
 				<Route exact path="/checkout" element={<CheckOutSucces />} />
 				<Route exact path="/miscompras" element={<UserHistory />} />
-				<Route exact path="/contacto" element={<Contacto />} />
+
 				<Route
 					exact
 					path="/editarperfilusuario"
@@ -47,6 +46,7 @@ function App() {
 				/>
 				<Route exact path="/cloudinary" element={<Cloudinary />} />
 			</Routes>
+
 		</div>
 	);
 }

@@ -13,21 +13,21 @@ import { userProfile } from "../../redux/actions";
 
 
 export default function Nav() {
-	
+
 	const cart = useSelector((state) => state.cart);
 	const picture = window.localStorage.getItem("userPicture")
 	const [openCart, setOpenCart] = useState(false);
 	const dispatch = useDispatch();
 	const email = window.localStorage.getItem('userEmail')
 
-	useEffect(()=>{
+	useEffect(() => {
 		dispatch(userProfile(email))
 	})
 
 	const user = useSelector(state => state.user)
 
 
-	
+
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
 			<div className="container-fluid all-show nav-container-custom">
@@ -44,9 +44,6 @@ export default function Nav() {
 						</div>
 						<div className="nav-item active">
 							<Link className="nav-link-custom" to='/sucursales'>SUCURSALES</Link>
-						</div>
-						<div className="nav-item active">
-							<Link className="nav-link-custom" aria-current="page" to='/contacto'>CONTACTANOS</Link>
 						</div>
 						<div className="nav-item active">
 							<Link className="nav-link-custom" aria-current="page" to='/miscompras'>MIS COMPRAS</Link>
