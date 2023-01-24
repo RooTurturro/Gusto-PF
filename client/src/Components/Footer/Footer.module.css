@@ -2,69 +2,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 
 
-
-
-.img {
-
-    height: 80vh;
-    width: 20vw;
-}
-
-.promociones {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-}
-
-.type {
-    color: aliceblue;
-    font-family: 'Poppins', sans-serif;
-    margin-left: 1rem;
-}
-
-.type2 {
-    color: aliceblue;
-    font-family: 'Poppins', sans-serif;
-
-}
-
-.a {
-    text-decoration: none;
-    color: aliceblue;
-}
-
-.a:hover {
-    color: black;
-}
-
-.titulo {
-    color: aliceblue;
-    font-family: 'Rubik Mono One', sans-serif;
-    font-size: 1rem;
-}
-
-.titulo2 {
-    color: aliceblue;
-    font-family: 'Rubik Mono One', sans-serif;
+.containerInfo{
     padding: 2rem;
+    display: flex;
+    height: 30vh;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+.type2 {
+    color: (244, 3, 3);
+    font-family: 'Poppins', sans-serif;
 
 }
 
 .logo {
-    height: 4rem;
-    width: 4rem;
+    height: 10rem;
+    width: 10rem;
 }
-
-.promocionesContainer {
-    gap: 5rem;
-    height: 90vh;
-    background-image: url('../../assets/hamburguesa7.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-
 
 .img2 {
     height: 20rem;
@@ -73,10 +27,14 @@
 }
 
 .gusto {
-    color: rgb(255, 255, 255);
-    font-size: 3rem;
+    color: rgb(244, 3, 3);
 }
 
-footer {
-    background: #4d0707;
+.a {
+    text-decoration: none;
+    color: rgb(244, 3, 3);
 }
+
+/* footer {
+    background-image: url('../../assets/fondoFooter.jpg');
+} */

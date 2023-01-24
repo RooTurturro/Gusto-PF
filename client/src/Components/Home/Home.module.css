@@ -81,3 +81,18 @@
 	height: 22rem;
 
 }
+
+.fondoSection {
+	background-color: #ededed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: red;
+	
+}
+
+.sectionCarousel {
+	background-image: url('../../assets/otrofondo.jpg');
+	background-repeat: repeat;
+	background-size: contain;
+	background-attachment: fixed;
+}
