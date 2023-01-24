@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./Home.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAllUsers, userLocalLogin, userLogin } from "../../redux/actions";
 import home1 from "../../assets/home1.png";
 import homeOurCollection from '../../assets/homeOurCollection.png'
@@ -9,6 +9,10 @@ import neck from '../../assets/neck.png'
 import video from '../../assets/vagoMovimiento.mp4'
 import gif from '../../assets/gif.mp4'
 import Nav from "../NavBar/Nav";
+import Carousel from '../Carousel/Carousel'
+import Footer from '../Footer/Footer';
+import bolsa from '../../assets/bolsa.jpg'
+import homevideo from '../../assets/homeVideo2.mp4'
 
 
 // import { userLogin } from '../../redux/actions';
@@ -60,34 +64,51 @@ const Home = () => {
 
 
 	return (
-		<>
+		<div style={{display:'flex', flexDirection:'column', gap:'2rem', overflowX:'hidden'}}>
 			<Nav />
-			<div className={styles.container}>
-				<div className={styles.home1}>
-					<img src={home1} alt="home1" />
-				</div>
-				<div className={styles.container2}>
-					<div>
-
+			<section>
+				{/* <div className={styles.container}>
+					<div className={styles.home1}>
+						<img src={home1} alt="home1" />
+					</div>
+					<div className={styles.container2}>
 						<div>
-							<img src={homeOurCollection} className={styles.collection} alt='our colection' />
-						</div>
-						<div className={styles.container3}>
+							<div>
+								<img src={homeOurCollection} className={styles.collection} alt='our colection' />
+							</div>
+							<div className={styles.container3}>
 
-							<video className={styles.video} autoPlay='autoplay' muted loop='loop'>
-								<source src={video} type='video/mp4' />
+								<video className={styles.video} autoPlay='autoplay' muted loop='loop'>
+									<source src={video} type='video/mp4' />
 
-							</video>
-							<video className={styles.gif} autoPlay='autoplay' muted loop>
-								<source src={gif} type='video/mp4' />
-							</video>
-							<img className={styles.cuellito} src={neck} alt='cuello' />
+								</video>
+								<video className={styles.gif} autoPlay='autoplay' muted loop>
+									<source src={gif} type='video/mp4' />
+								</video>
+								<img className={styles.cuellito} src={neck} alt='cuello' />
+							</div>
 						</div>
 					</div>
-				</div>
 
-			</div>
-		</>
+				</div> */}
+				<video className={styles.video} autoPlay='autoplay' muted loop>
+					<source src={homevideo} type='video/mp4' />
+				</video>
+
+			</section>
+
+			<section className={styles.sectionCarousel}>
+
+				<Carousel />
+
+			</section>
+
+			<section className={styles.fondoSection}>
+
+				<Footer />
+			</section>
+
+		</div>
 	);
 };
 

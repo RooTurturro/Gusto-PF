@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap");
 
 :root {
 	--main-red: #ff002f;
@@ -6,24 +6,33 @@
 }
 
 @font-face {
-	font-family: 'Recoleta';
-	src: url('../../assets/RecoletaAlt-Bold.ttf');
+	font-family: "Recoleta";
+	src: url("../../assets/RecoletaAlt-Bold.ttf");
 }
-
 
 .navbar-nav {
 	align-items: center;
 	display: flex;
 }
 
-.nav-link-custom {
+.nav-link-custom-notSelected {
 	text-decoration: none;
 	font-size: 1.5rem;
 	margin-left: 2rem;
-	font-family: 'Oswald', sans-serif;
+	font-family: "Oswald", sans-serif;
 	margin-bottom: 1rem;
 	font-weight: 900;
-	color: #ff002f
+	color: #ff8383;
+}
+
+.nav-link-custom-selected {
+	text-decoration: none;
+	font-size: 1.5rem;
+	margin-left: 2rem;
+	font-family: "Oswald", sans-serif;
+	margin-bottom: 1rem;
+	font-weight: 900;
+	color: #ff0000;
 }
 
 .nav-custom {
@@ -37,25 +46,24 @@
 .nav-container-custom {
 	height: 16vh;
 	background: rgb(237, 237, 237);
-	background: linear-gradient(180deg,
-			rgba(237, 237, 237, 1) 61%,
-			rgba(189, 189, 189, 1) 100%);
+	background: linear-gradient(
+		180deg,
+		rgba(237, 237, 237, 1) 61%,
+		rgba(189, 189, 189, 1) 100%
+	);
 	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 999;
 }
 
-
-
 .nav-item {
 	font-size: 20px;
 	border-radius: 20px;
-
 }
 
 .nav-link-custom:active {
-	color: #ff002f
+	color: #ff002f;
 }
 
 .image-logo {
@@ -63,8 +71,6 @@
 	width: 60px;
 	border-radius: 50%;
 }
-
-
 
 .picture-img {
 	width: 77px;
@@ -77,8 +83,6 @@
 	color: red;
 }
 
-
-
 .carritoLleno {
 	background-color: #01ca40;
 	border-radius: 100%;
@@ -86,7 +90,7 @@
 	height: 30px;
 	font-weight: bold;
 	font-size: 1.1rem;
-	font-family: 'Recoleta';
+	font-family: "Recoleta";
 	color: black;
 	margin-left: 5.7rem;
 	position: absolute;

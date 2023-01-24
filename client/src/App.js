@@ -16,17 +16,15 @@ import ProductList from "./Components/ProductList/ProductList";
 import ProfileUserForm from "./Components/Form/ProfileUserForm";
 import LoginButton from "./Components/Login/LoginButton";
 import Users from "./Components/Users/Users";
+
 import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces"
 import Contacto from "./Components/Contacto/Contacto";
 import FormContact from "./Components/Form/FormContact";
 
+
 function App() {
 	return (
 		<div>
-
-			
-
-			
 			<Routes>
 				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
 				<Route exact path="/" element={<Home />} />
@@ -49,7 +47,9 @@ function App() {
 					path="/editarperfilusuario"
 					element={<ProfileUserForm />}
 				/>
+				<Route exact path="/cloudinary" element={<Cloudinary />} />
 			</Routes>
+
 		</div>
 	);
 }
