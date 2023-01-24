@@ -1,18 +1,16 @@
-import React from "react"
-import styles from "./Footer.module.css"
-import teesperamos from '../../assets/teEsperamos.png'
-import redBoxes from '../../assets/redBoxes.png'
-import contactanos from '../../assets/buttonContactanos.png'
-import { BsWhatsapp, BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs'
-import { Link } from "react-router-dom"
+import React from "react";
+import styles from "./Footer.module.css";
+import teesperamos from "../../assets/teEsperamos.png";
+import redBoxes from "../../assets/redBoxes.png";
+import contactanos from "../../assets/buttonContactanos.png";
+import { BsWhatsapp, BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-
-    return (
-        <div >
-
-            <footer className={styles.containerInfo}>
-                {/* <div>
+	return (
+		<div>
+			<footer className={styles.containerInfo}>
+				{/* <div>
                     <img src={logo} className={styles.logo} alt="logo gusto" />  
                 </div>
                 <div>
@@ -44,42 +42,46 @@ const Footer = () => {
                     </Link>
                 </div> */}
 
-                <div className={styles.footerContainer}>
-                    <div className={styles.footerInfo}>
-                        <div className={styles.footer1}>
-                            <h1>
-                                GUSTO
-                                <img src={teesperamos} alt="xd" />
-                            </h1>
-                            <div className={styles.iconos}>
-                                <BsTwitter />
-                                <BsFacebook />
-                                <a href='https://www.instagram.com/ganasdegusto/' target='_blank' rel='noreferrer'>
-                                    <BsInstagram />
-                                </a>
-                                <a href='https://wa.me/+543513287397' target='_blank' rel='noreferrer'>
-                                    <BsWhatsapp />
-                                </a>
-                            </div>
-                        </div>
-                        <div className={styles.boxes}>
-                            <img src={redBoxes} alt='box' />
-                        </div>
-                        <div className={styles.footer2}>
-                            <div>
-                                Todos los derechos reservados. <strong style={{ fontWeight: '900' }}>GUSTO COMPANY.</strong>
-                            </div>
-                            <button style={{ border: 'none' }}>
-                                <img src={contactanos} alt="xddd" />
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    )
-
-}
-
+				<div className={styles.footerContainer}>
+					<div className={styles.footerInfo}>
+						<div className={styles.footer1}>
+							<h1>GUSTO</h1>
+							<div className={styles.iconos}>
+								<BsTwitter />
+								<BsFacebook />
+								<a
+									href="https://www.instagram.com/ganasdegusto/"
+									target="_blank"
+									rel="noreferrer"
+								>
+									<BsInstagram />
+								</a>
+								<a
+									href="https://wa.me/+543513287397"
+									target="_blank"
+									rel="noreferrer"
+								>
+									<BsWhatsapp />
+								</a>
+							</div>
+						</div>
+						<div className={styles.boxes}>
+							<img src={redBoxes} alt="box" />
+						</div>
+						<div className={styles.footer2}>
+							<div>
+								Todos los derechos reservados.{" "}
+								<strong style={{ fontWeight: "900" }}>GUSTO COMPANY.</strong>
+							</div>
+							<button style={{ border: "none", marginRight: "-.5rem" }}>
+								<img src={contactanos} alt="xddd" />
+							</button>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	);
+};
 
 export default Footer;
