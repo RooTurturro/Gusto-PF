@@ -10,6 +10,8 @@ import video from '../../assets/vagoMovimiento.mp4'
 import gif from '../../assets/gif.mp4'
 import Nav from "../NavBar/Nav";
 import Carousel from '../Carousel/Carousel'
+import Footer from '../Footer/Footer';
+import bolsa from '../../assets/bolsa.jpg'
 
 
 // import { userLogin } from '../../redux/actions';
@@ -88,6 +90,19 @@ const Home = () => {
 					</div>
 
 				</div>
+
+				
+			</section>
+
+			<section className={styles.sectionCarousel}>
+				
+				<Carousel/>
+
+			</section>
+
+			<section className={styles.fondoSection}>
+				
+				<Footer/>
 			</section>
 			
 		</>
