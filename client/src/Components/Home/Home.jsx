@@ -54,6 +54,7 @@ const Home = () => {
 					<source src={homevideo} type="video/mp4" />
 				</video>
 			</section>
+
 			<section className={styles.sectionCarousel}>
 				<Carousel />
 			</section>
@@ -74,7 +75,6 @@ const Home = () => {
 				<Footer />
 			</section>
 		</div>
-
 
 	);
 };
