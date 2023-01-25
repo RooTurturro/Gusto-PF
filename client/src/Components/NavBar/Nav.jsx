@@ -105,20 +105,8 @@ export default function Nav() {
 								SUCURSALES
 							</Link>
 						</div>
-						<div className="nav-item active">
-							<Link
-								className={
-									userAtMisCompras()
-										? "nav-link-custom-selected"
-										: "nav-link-custom-notSelected"
-								}
-								aria-current="page"
-								to="/miscompras"
-							>
-								MIS COMPRAS
-							</Link>
-						</div>
-						{user.isAdmin ? (
+						{
+							user.isAdmin === true ?
 							<div className="nav-item active">
 								<Link
 									className="nav-link-custom-notSelected"
@@ -127,8 +115,21 @@ export default function Nav() {
 								>
 									ADMIN
 								</Link>
+							</div> :
+							<div className="nav-item active">
+								<Link
+									className={
+										userAtMisCompras()
+											? "nav-link-custom-selected"
+											: "nav-link-custom-notSelected"
+									}
+									aria-current="page"
+									to="/miscompras"
+								>
+									MIS COMPRAS
+								</Link>
 							</div>
-						) : null}
+						}
 					</ul>
 				</div>
 

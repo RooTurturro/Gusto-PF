@@ -1,5 +1,5 @@
 import React from 'react'
-
+import styles from './CheckOutSucces.module.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 
@@ -40,16 +40,20 @@ const CheckOutSucces = () => {
         <div className="col-lg-12">
           <div className="main-box clearfix">
             <div className="table-responsive">
-              <h2>¡Muchas gracias por su compra!</h2>
+              <h2 style={{
+						display: "flex",
+						justifyContent: "center",
+						marginTop: "2rem",
+					}} className={styles.comments} >🔥 ¡GRACIAS POR TU COMPRA! 🔥</h2>
               <table className="table user-list">
                 <thead>
                   <tr>
-                    <th scope="col" width="10%"><span>Name</span></th>
+                    <th scope="col" width="10%"  className="text-center"><span>Nombre</span></th>
                     <th scope="col" width="20%" className="text-center"><span>Direccion</span></th>
-                    <th scope="col" width="20%"><span>Productos</span></th>
-                    <th scope="col" width="10%"><span>Total</span></th>
-                    <th scope="col" width="20%"><span>Envio a domicilio</span></th>
-                    <th scope="col" width="20%"><span>Estado</span></th>
+                    <th scope="col" width="20%"  className="text-center"><span>Productos</span></th>
+                    <th scope="col" width="10%"  className="text-center"><span>Total</span></th>
+                    <th scope="col" width="20%"  className="text-center"><span>Envio a domicilio</span></th>
+                    <th scope="col" width="20%"  className="text-center"><span>Estado</span></th>
                   </tr>
                 </thead>
                 <tbody>
