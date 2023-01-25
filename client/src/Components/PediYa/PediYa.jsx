@@ -32,7 +32,7 @@ const PediYa = () => {
 					)
 				})],
 				takeAway: true,
-				quantity:1
+				quantity: 1
 				/*quantity: [cart.map((el) => {
 					return (
 						el.quantity
@@ -61,7 +61,7 @@ const PediYa = () => {
 
 	const [isOpenModal, openModal, closeModal] = useModal(false);
 
-	
+
 	const dispatch = useDispatch();
 
 	const cart = useSelector((state) => state.cart)
@@ -88,34 +88,34 @@ const PediYa = () => {
 
 		}
 	};
-	
-	
+
+
 
 	return (
 
-		
-			
 
-				<div className={styles.container}>
-					
-						
-							
-						<div className={styles.montototal}>
-									<strong>Monto total</strong>
-									<span><strong>${totalPrice()}</strong></span>
-						</div>
-							
-						<div>
 
-							<button type="button" className={styles.pediya} onClick={usuario.address ? openModal : handlePayment}>PEDI YA!</button>
-						
-						</div>
-						
 
-						<Modal isOpen={isOpenModal} closeModal={closeModal} />
-					
+		<div className={styles.container}>
+			<div className={styles.linea}></div>
+			<div className={styles.montototal}>
+				<div>
+					<p>TOTAL</p>
 				</div>
-			
+				<div>
+					<span>${totalPrice()}</span>
+				</div>
+			</div>
+			<div>
+				<button type="button" className={styles.pediya} onClick={usuario.address ? openModal : handlePayment}>
+					<h4>PEDIR</h4>
+				</button>
+			</div>
+
+			<Modal isOpen={isOpenModal} closeModal={closeModal} />
+
+		</div>
+
 
 
 
