@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap");
+@font-face {
+	font-family: "Recoleta";
+	src: url(../../assets/RecoletaAlt-Bold.ttf);
+}
+
+.cards {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
+	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+	height: 8rem;
+	width: 25rem;
+}
+
+.cards h2 {
+	margin-top: 1.65rem;
+	font-family: "Recoleta", "Arial";
+	color: red;
+	margin-bottom: -0.2rem;
+}
+
+.horario {
+	font-family: "Oswald", "Arial";
+	font-weight: 900;
+	font-size: small;
+	margin-bottom: -0rem;
+}
+
+.distancia {
+	font-family: "Oswald", "Arial";
+	font-weight: 900;
+	font-size: small;
+
+	color: rgb(199, 199, 199);
+}
