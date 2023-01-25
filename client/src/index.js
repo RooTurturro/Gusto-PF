@@ -12,9 +12,9 @@ import { Auth0Provider } from '@auth0/auth0-react'
 const domain = 'dev-18zov1enqjrx8hn7.us.auth0.com';
 const clientId = 'LqqBa9zF6gjJ2lwcrNYsAtYpikXifzQZ';
 
-// axios.defaults.baseURL = 'http://gusto-pf-production.up.railway.app'
+axios.defaults.baseURL = 'http://gusto-pf-production.up.railway.app'
 
-axios.defaults.baseURL = 'http://localhost:3001'
+// axios.defaults.baseURL = 'http://localhost:3001'
 
 
 ReactDOM.render(
