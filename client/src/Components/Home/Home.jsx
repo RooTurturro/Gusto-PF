@@ -59,61 +59,26 @@ const Home = () => {
 
 
 	return (
-		<>
-			<div>
-				<section>
-					{/* <div className={styles.container}>
-					<div className={styles.home1}>
-						<img src={home1} alt="home1" />
-					</div>
-					<div className={styles.container2}>
-						<div>
-							<div>
-								<img src={homeOurCollection} className={styles.collection} alt='our colection' />
-							</div>
-							<div className={styles.container3}>
-
-								<video className={styles.video} autoPlay='autoplay' muted loop='loop'>
-									<source src={video} type='video/mp4' />
-
-								</video>
-								<video className={styles.gif} autoPlay='autoplay' muted loop>
-									<source src={gif} type='video/mp4' />
-								</video>
-								<img className={styles.cuellito} src={neck} alt='cuello' />
-							</div>
-						</div>
-					</div>
-
-				</div> */}
-					<video className={styles.video} autoPlay='autoplay' muted loop>
-						<source src={homevideo} type='video/mp4' />
-					</video>
-
-				</section>
-
-				<section className={styles.sectionCarousel}>
-
-					<Carousel />
-
-				</section>
-				<section>
-					<h1 style={{ display: 'flex', justifyContent: 'center' }}>Comentarios de nuestros clientes</h1>
-					<Comentarios />
-				</section>
-
-				<section className={styles.fondoSection}>
-
-					<Footer />
-
-				</section>
+		<div>
+			<section>
+				<video className={styles.video} autoPlay='autoplay' muted loop>
+					<source src={homevideo} type='video/mp4' />
+				</video>
+			</section>
+			<section className={styles.sectionCarousel}>
+				<Carousel />
+			</section>
+			<section>
+				<h1 style={{ display: 'flex', justifyContent: 'center' }}>Comentarios de nuestros clientes</h1>
+				<Comentarios />
+			</section>
+			<section className={styles.fondoSection}>
+				<Footer />
+			</section>
+		</div>
 
 
 
-			</div>
-
-
-		</>
 	);
 };
 
