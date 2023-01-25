@@ -1,0 +1,25 @@
+.container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 80%;
+    width: 40%;
+    z-index: 999999;
+}
+
+.body {
+    background-color: rgba(254, 254, 254, 0.904);
+    position: fixed;
+    top: 16;
+    right: 0;
+    height: 80vh;
+    overflow: scroll;
+    width: 50%;
+    border-radius: 30px;
+}
+
+.button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

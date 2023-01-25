@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import styles from "./App.module.css";
 import { Route, Routes } from "react-router-dom";
 import Nav from "./Components/NavBar/Nav";
 import Home from "./Components/Home/Home";
@@ -20,9 +20,13 @@ import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces";
 import Contacto from "./Components/Contacto/Contacto";
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
 
+
+
+
 function App() {
 	return (
-		<div>
+		<div className={styles.app}>
+			<Nav className={styles.nav}/>
 			<Routes>
 				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
 				<Route exact path="/" element={<Home />} />

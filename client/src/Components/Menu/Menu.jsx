@@ -40,7 +40,7 @@ const Menu = () => {
   return (
 
     <>
-      <Nav />
+    
       <div className='menu-body'>
         <div className="navContainer">
           <div style={{marginLeft:'.9rem'}}>

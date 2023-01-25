@@ -64,7 +64,7 @@ const Home = () => {
 
 	return (
 		<>
-			<Nav />
+			<div>
 			<section>
 				<div className={styles.container}>
 					<div className={styles.home1}>
@@ -104,6 +104,11 @@ const Home = () => {
 				
 				<Footer/>
 			</section>
+
+
+
+			</div>
+			
 			
 		</>
 	);
