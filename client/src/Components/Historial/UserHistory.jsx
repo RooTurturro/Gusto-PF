@@ -37,81 +37,78 @@ const UserHistory = () => {
   return (
     <div>
       <Nav />
-      {purchases > 0 ? (
-        <div className='containerUsuario'>
-          <div className='container justify-content-center'>
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="main-box clearfix">
-                  <div className="table-responsive">
-                    <table className="table user-list">
-                      <thead>
-                        <tr>
-                          <th scope="col" width="10%">
-                            <span>Nombre</span>
-                          </th>
-                          <th scope="col" width="20%" className="text-center">
-                            <span>Dirección</span>
-                          </th>
-                          <th scope="col" width="20%">
-                            <span>Productos</span>
-                          </th>
-                          <th scope="col" width="20%">
-                            <span>Especificaciones</span>
-                          </th>
-                          <th scope="col" width="10%">
-                            <span>Total</span>
-                          </th>
-                          <th scope="col" width="20%">
-                            <span>Envio a domicilio</span>
-                          </th>
-                          <th scope="col" width="20%">
-                            <span>Estado</span>
-                          </th>
-                        </tr>
-                      </thead>
-                      {purchases?.map((e) =>
-                        e.name === user.name ? (
-                          <tbody>
-                            <tr>
-                              <td className="text-center">{e.name}</td>
-                              <td className="text-center">{e.address}</td>
-                              <td className="text-center">{e.products}</td>
-                              <td className="text-center">{e.specification}</td>
-                              <td className="text-center">{e.total}</td>
-                              <td className="text-center">Delivery</td>
-                              {e.takeAway === false ? (
-                                <td className="text-center">
-                                  {e.state === "en proceso" ? (
-                                    <button
-                                      type="button"
-                                      className="btn btn-success"
-                                      onClick={() => purchaseState(e.id)}
-                                    >
-                                      Recibido!
-                                    </button>
-                                  ) : (
-                                    e.state
-                                  )}
-                                </td>
-                              ) : (
 
-                                <td className="text-center"><button type='button' className='btn btn-danger' disabled>{e.state}</button></td>
-                              )}
-                            </tr>
-                          </tbody>
-                        ) : null
-                      )}
-                    </table>
-                  </div>
+      <div className='containerUsuario'>
+        <div className='container justify-content-center'>
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="main-box clearfix">
+                <div className="table-responsive">
+                  <table className="table user-list">
+                    <thead>
+                      <tr>
+                        <th scope="col" width="10%">
+                          <span>Nombre</span>
+                        </th>
+                        <th scope="col" width="20%" className="text-center">
+                          <span>Dirección</span>
+                        </th>
+                        <th scope="col" width="20%">
+                          <span>Productos</span>
+                        </th>
+                        <th scope="col" width="20%">
+                          <span>Especificaciones</span>
+                        </th>
+                        <th scope="col" width="10%">
+                          <span>Total</span>
+                        </th>
+                        <th scope="col" width="20%">
+                          <span>Envio a domicilio</span>
+                        </th>
+                        <th scope="col" width="20%">
+                          <span>Estado</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    {purchases?.map((e) =>
+                      e.name === user.name ? (
+                        <tbody>
+                          <tr>
+                            <td className="text-center">{e.name}</td>
+                            <td className="text-center">{e.address}</td>
+                            <td className="text-center">{e.products}</td>
+                            <td className="text-center">{e.specification}</td>
+                            <td className="text-center">{e.total}</td>
+                            <td className="text-center">Delivery</td>
+                            {e.takeAway === false ? (
+                              <td className="text-center">
+                                {e.state === "en proceso" ? (
+                                  <button
+                                    type="button"
+                                    className="btn btn-success"
+                                    onClick={() => purchaseState(e.id)}
+                                  >
+                                    Recibido!
+                                  </button>
+                                ) : (
+                                  e.state
+                                )}
+                              </td>
+                            ) : (
+
+                              <td className="text-center"><button type='button' className='btn btn-danger' disabled>{e.state}</button></td>
+                            )}
+                          </tr>
+                        </tbody>
+                      ) : null
+                    )}
+                  </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      ) : <div style={{ marginTop: '15%', display: 'flex', justifyContent: 'center' }}>
-        Aun no tienes compras :(
-      </div>}
+      </div>
     </div>
   );
 };
