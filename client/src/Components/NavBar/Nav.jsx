@@ -4,31 +4,29 @@ import logoRose from "../../assets/gustoRosePng.png";
 import logo from "../../assets/gustoPng.png";
 import "./Nav.css";
 import { useDispatch, useSelector } from "react-redux";
-import Carrito from '../Carrito/Carrito'
+import Carrito from "../Carrito/Carrito";
 import LoginButton from "../Login/LoginButton";
 import { useState } from "react";
 import { useEffect } from "react";
 import { userProfile } from "../../redux/actions";
-import PediYa from '../PediYa/PediYa'
-import { delFromCart } from '../../redux/shoppingActions'
-import CarritoItem from '../Carrito/CarritoItem'
-
+import PediYa from "../PediYa/PediYa";
+import { delFromCart } from "../../redux/shoppingActions";
+import CarritoItem from "../Carrito/CarritoItem";
 
 export default function Nav() {
-
 	//---------MODAL---------------
 	const [mostrar, setMostrar] = useState(false);
 
-	const cart = useSelector(state => state.cart)
+	const cart = useSelector((state) => state.cart);
 	//--------------
 
-	const picture = window.localStorage.getItem("userPicture")
+	const picture = window.localStorage.getItem("userPicture");
 	const dispatch = useDispatch();
 	const email = window.localStorage.getItem("userEmail");
 
 	useEffect(() => {
-		dispatch(userProfile(email))
-	}, [dispatch, email])
+		dispatch(userProfile(email));
+	}, [dispatch, email]);
 
 	const user = useSelector((state) => state.user);
 
@@ -62,15 +60,15 @@ export default function Nav() {
 					<span className="navbar-toggler-icon"></span>
 				</button>
 				<div className="fuente">
-
-					<ul style={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-						gap: "2rem",
-						marginTop: "2.2rem",
-					}}>
-
+					<ul
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							gap: "2rem",
+							marginTop: "2.2rem",
+						}}
+					>
 						<Link className="nav-link" to="/">
 							<img
 								src={userAtHome() ? logo : logoRose}
@@ -134,7 +132,7 @@ export default function Nav() {
 					</ul>
 				</div>
 
-				<div className="carrito" >
+				<div className="carrito">
 					<button onClick={() => setMostrar(true)}>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -149,32 +147,34 @@ export default function Nav() {
 					</button>
 					<Carrito isOpen={mostrar} onClose={() => setMostrar(false)}>
 						<div>
-							{
-								cart.map((item) =>
-									<CarritoItem
-										key={item.id}
-										id={item.id}
-										name={item.name}
-										price={item.price}
-										quantity={item.quantity}
-										description={item.description}
-										total={item.quantity * item.price}
-										image={item.image}
-										delOneFromCart={() => dispatch(delFromCart(item.id))}
-										delAllFromCart={() => dispatch(delFromCart(item.id, true))}
-									/>)
-							}
-							< PediYa />
+							{cart.map((item) => (
+								<CarritoItem
+									key={item.id}
+									id={item.id}
+									name={item.name}
+									price={item.price}
+									quantity={item.quantity}
+									description={item.description}
+									total={item.quantity * item.price}
+									image={item.image}
+									delOneFromCart={() => dispatch(delFromCart(item.id))}
+									delAllFromCart={() => dispatch(delFromCart(item.id, true))}
+								/>
+							))}
+							<PediYa />
 						</div>
 					</Carrito>
 
-					{picture
-						? (<Link to='/perfil'> <img src={picture} alt='not found' className="picture-img" /> </Link>)
-						: <LoginButton />
-					}
-
+					{picture ? (
+						<Link to="/perfil">
+							{" "}
+							<img src={picture} alt="not found" className="picture-img" />{" "}
+						</Link>
+					) : (
+						<LoginButton />
+					)}
 				</div>
 			</div>
-		</nav >
+		</nav>
 	);
 }

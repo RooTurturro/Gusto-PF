@@ -1,12 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap");
+
 :root {
 	--main-red: #ff002f;
 	--bgLight: #ededed;
 	--bgDark: #1d1d1d;
 }
 
-
 .home1 {
-	
 	background-color: var(--bgLight);
 }
 
@@ -25,7 +25,6 @@
 
 	display: flex;
 	justify-content: center;
-
 }
 
 .container::-webkit-scrollbar {
@@ -60,11 +59,15 @@
 	width: 35rem;
 }
 
+.comments {
+	font-size: rem;
+	font-family: "Oswald";
+	font-weight: 900;
+}
 
 .video {
-	margin-top: 8%;
+	margin-top: 13%;
 	margin-left: -1rem;
-	
 }
 
 .gif {
@@ -72,7 +75,6 @@
 	padding-right: 2rem;
 	width: 20rem;
 	height: 22rem;
-
 }
 
 .fondoSection {
@@ -80,12 +82,17 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: red;
-
 }
 
 .sectionCarousel {
-	background-image: url('../../assets/otrofondo.jpg');
+	background-image: url("../../assets/otrofondo.jpg");
 	background-repeat: repeat;
 	background-size: contain;
 	background-attachment: fixed;
+}
+
+.homeContainer {
+	height: 56.5rem;
+	background-color: #ededed;
+	overflow-x: hidden;
 }
