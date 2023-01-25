@@ -45,7 +45,7 @@ productRouter.get("/:id", async (req, res) => {
 productRouter.post("/", async (req, res) => {
   //ANDA
   try {
-    const { name, description, price, image, state, category } = req.body;
+    const { name, description, price, rating, totalRating, image, state, category } = req.body;
     const newProduct = await Product.create({
       name,
       description,
