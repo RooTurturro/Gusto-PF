@@ -36,6 +36,7 @@ const UserHistory = () => {
     })
 }
   return (
+
     <>
 {/* vertical-align: middle */}
     <div class="container" style={{marginTop:'100px'}}>        
@@ -93,12 +94,16 @@ const UserHistory = () => {
                     </tbody>
                     :null ))}
                   </table>
+
                 </div>
               </div>
             </div>
           </div>
+
+
           </div>
     </>
+
   );
 };
 
