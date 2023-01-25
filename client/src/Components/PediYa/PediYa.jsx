@@ -31,12 +31,13 @@ const PediYa = () => {
 						el.name
 					)
 				})],
-				quantity: [cart.map((el) => {
+				takeAway: true,
+				quantity:1
+				/*quantity: [cart.map((el) => {
 					return (
 						el.quantity
 					)
-				})],
-				takeAway: true
+				})],*/
 			};
 
 			const data = () => {

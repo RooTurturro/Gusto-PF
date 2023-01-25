@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logoRose from "../../assets/gustoRosePng.png";
 import logo from "../../assets/gustoPng.png";
 import styles from "./Nav.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +12,6 @@ import { userProfile } from "../../redux/actions";
 import PediYa from '../PediYa/PediYa'
 import { delFromCart } from '../../redux/shoppingActions'
 import CarritoItem from '../Carrito/CarritoItem'
-
-
 
 
 export default function Nav() {
@@ -28,16 +27,29 @@ export default function Nav() {
 	
 	const picture = window.localStorage.getItem("userPicture")
 	const dispatch = useDispatch();
-	const email = window.localStorage.getItem('userEmail')
+	const email = window.localStorage.getItem("userEmail");
 
 	useEffect(()=>{
 		dispatch(userProfile(email))
 	},[dispatch, email])
 
-	const user = useSelector(state => state.user)
+	const user = useSelector((state) => state.user);
 
+	const userAtMenu = () => {
+		if (window.location.pathname === "/menu") return true;
+	};
 
-	
+	const userAtHome = () => {
+		if (window.location.pathname === "/") return true;
+	};
+
+	const userAtSucursales = () => {
+		if (window.location.pathname === "/sucursales") return true;
+	};
+	const userAtMisCompras = () => {
+		if (window.location.pathname === "/miscompras") return true;
+	};
+
 	return (
 
 		<div className={styles.container}>
@@ -69,8 +81,8 @@ export default function Nav() {
 						</div>
 						
 						{user.isAdmin ? (
-							<div >
-								<Link to='/productlist' className={styles.enlace}>ADMIN</Link>
+							<div className="nav-item active">
+								<Link className="nav-link-custom" aria-current="page" to='/productlist'>ADMIN</Link>
 							</div>
 						) : null}
 					

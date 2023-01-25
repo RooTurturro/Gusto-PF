@@ -1,33 +1,37 @@
 import React, { useEffect } from "react";
 import Card from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts, filterProductsByCategories } from "../../redux/actions";
+import {
+	getAllProducts,
+	filterProductsByCategories,
+} from "../../redux/actions";
 import { addToCart } from "../../redux/shoppingActions";
-import './Menu.css'
-import burger from '../../assets/burger.png'
-import bebidas from '../../assets/bebidas.png'
-import batidos from '../../assets/batidos.png'
-import postres from '../../assets/postres.png'
-import combos from '../../assets/combos.png'
-import Spinner from 'react-bootstrap/Spinner';
+import "./Menu.css";
+import burger from "../../assets/burger.png";
+import bebidas from "../../assets/bebidas.png";
+import batidos from "../../assets/batidos.png";
+import postres from "../../assets/postres.png";
+import combos from "../../assets/combos.png";
+import Spinner from "react-bootstrap/Spinner";
 import Nav from "../NavBar/Nav";
-import flechas from '../../assets/redBoxes.png'
-
-
-
-
+import redBoxesLittle from "../../assets/redBoxesLittle.png";
 
 const Menu = () => {
+	const dispatch = useDispatch();
+	const products = useSelector((state) => state.products);
 
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
+	useEffect(() => {
+		if (products.length === 0) {
+			dispatch(getAllProducts());
+		}
+	}, [dispatch, products.length]);
 
-  useEffect(() => {
-    if (products.length === 0) {
-      dispatch(getAllProducts());
-    }
+	function handleFilterProductsByCategories(e) {
+		e.preventDefault(e);
+		dispatch(filterProductsByCategories(e.target.name));
+	}
 
-  }, [dispatch, products.length]);
+  } 
 
 
   function handleFilterProductsByCategories(e) {

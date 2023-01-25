@@ -18,16 +18,18 @@ axios.defaults.baseURL = 'http://gusto-pf-production.up.railway.app'
 
 
 ReactDOM.render(
-
-  <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+    <Auth0Provider
+      domain={domain}
+      clientId={clientId}
+      redirectUri={window.location.origin}
+    >
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>
-    </Auth0Provider>
-  ,
-  document.getElementById('root')
+    </Auth0Provider>,
+  document.getElementById("root")
 );
 // ReactDOM.render(
 //   <React.StrictMode>
