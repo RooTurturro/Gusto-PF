@@ -35,6 +35,7 @@ const CheckOutSucces = () => {
   };
   sendEmail();
   return (
+
     <div className="container justify-content-center mt-5" >
       <div className="row" style={{marginTop:'10%'}}>
         <div className="col-lg-12">
@@ -82,6 +83,7 @@ const CheckOutSucces = () => {
               <Link to="/miscompras">
                 <button type='btn' className='btn btn-success'>Mis compras</button>
               </Link>
+
             </div>
           </div>
         </div>
