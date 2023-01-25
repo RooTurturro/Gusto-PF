@@ -16,10 +16,12 @@ class PaymentService {
         },
       ],
       back_urls: {
-        failure: "http://localhost:3001/paymentFailure",
-        pending: "http://localhost:3001/paymentPending",
+        failure: "",
+        pending: "",
         success: "http://localhost:3000/checkout",
       },
+      auto_return: 'approved',
+      binary_mode: true, // no permite pagos pendientes (rapipago etc)
     };
 
     const payment = await axios.post(url, body, {
