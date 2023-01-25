@@ -54,12 +54,7 @@ const Home = () => {
 					<source src={homevideo} type="video/mp4" />
 				</video>
 			</section>
-			<section style={{ margin: "1rem" }}>
-				<video className={styles.video} autoPlay="autoplay" muted loop>
-					<source src={homevideo} type="video/mp4" />
 
-				</video>
-			</section>
 			<section className={styles.sectionCarousel}>
 				<Carousel />
 			</section>
@@ -80,8 +75,6 @@ const Home = () => {
 				<Footer />
 			</section>
 		</div>
-		
-
 	);
 };
 
