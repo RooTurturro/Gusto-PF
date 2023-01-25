@@ -39,7 +39,7 @@ const Menu = () => {
       <div className="navContainer">
         <div style={{ marginLeft: '.9rem' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '.8rem' }}>
-            <h1 className='recoleta' style={{ marginLeft: '2rem', fontSize: '3rem' }}>Buenos Aires  </h1>
+            <h1 className='recoleta' style={{ marginLeft: '2rem', fontSize: '3rem' }}>Elegí lo tuyo  </h1>
           </div>
           <img className="flechas" src={flechas} alt='flechas' />
         </div>

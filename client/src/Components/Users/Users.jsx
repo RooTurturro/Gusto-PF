@@ -51,7 +51,7 @@ const Users = () => {
  
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', marginTop: '7%'  }}>
       <div >
         <Sidebar />
       </div>

@@ -60,7 +60,7 @@ const Home = () => {
 
 	return (
 		<div>
-			<section>
+			<section style={{margin:'1rem'}}>
 				<video className={styles.video} autoPlay='autoplay' muted loop>
 					<source src={homevideo} type='video/mp4' />
 				</video>
