@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    align-items: center;
+}
+
+.pediya {
+    padding-top: 0.5rem;
+    padding-left: 10rem;
+    padding-bottom: 0.5rem;
+    padding-right: 10rem;
+    background-color: red;
+    color: black;
+    font-size: x-large;
+}
+
+.montototal {
+    display: flex;
+    align-items: flex-end;
+    color: rgb(0, 0, 0);
+    font-size: xx-large;
+    right: 0;
+}

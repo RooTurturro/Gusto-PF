@@ -3,13 +3,12 @@ import sucursal1 from '../../assets/sucursal1.png'
 import sucursal2 from '../../assets/sucursal2.jpg'
 import sucursal3 from '../../assets/sucursal3.jpg'
 import sucursal4 from '../../assets/sucursal4.jpg'
-import Nav from "../NavBar/Nav";
 import './Sucursales.css'
 
 const Sucursales = () => {
 	return (
 		<>
-			<Nav />
+			
 			<div className="container" style={{ marginTop: '10rem' }}>
 				<div className="row">
 					<div className="col-lg-6 mb-4">

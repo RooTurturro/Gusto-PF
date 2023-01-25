@@ -13,6 +13,7 @@ body {
     margin-top: 4rem;
     height: 90vh;
     width: 100vw;
+    background-color: #ededed;
 
 }
 
@@ -22,7 +23,8 @@ body {
     display: flex;
     border-radius: 10px;
     border: 1px solid black;
-    background-color: #9b051c;
+    background-image: url('../../assets/fondoFooter.jpg');
+    background-size: contain;
 
 }
 

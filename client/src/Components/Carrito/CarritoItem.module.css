@@ -1,0 +1,17 @@
+.imagen{
+    width: 10rem;
+	height: 10rem;
+	border-radius: 100%;
+    background-color: aliceblue;
+    
+}
+
+.container {
+    display: flex;
+    margin: 1.5rem;
+    gap: 1rem;
+}
+
+.buttonDel {
+    background-color: aliceblue;
+}

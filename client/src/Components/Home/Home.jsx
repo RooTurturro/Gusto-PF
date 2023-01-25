@@ -59,10 +59,10 @@ const Home = () => {
 
 
 	return (
-		<div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', overflowX: 'hidden', backgroundColor: '#ededed' }}>
-			<Nav />
-			<section>
-				{/* <div className={styles.container}>
+		<>
+			<div>
+				<section>
+					{/* <div className={styles.container}>
 					<div className={styles.home1}>
 						<img src={home1} alt="home1" />
 					</div>
@@ -86,29 +86,34 @@ const Home = () => {
 					</div>
 
 				</div> */}
-				<video className={styles.video} autoPlay='autoplay' muted loop>
-					<source src={homevideo} type='video/mp4' />
-				</video>
+					<video className={styles.video} autoPlay='autoplay' muted loop>
+						<source src={homevideo} type='video/mp4' />
+					</video>
 
-			</section>
+				</section>
 
-			<section className={styles.sectionCarousel}>
+				<section className={styles.sectionCarousel}>
 
-				<Carousel />
+					<Carousel />
 
-			</section>
-			<section>
-				<h1 style={{ display: 'flex', justifyContent: 'center' }}>Comentarios de nuestros clientes</h1>
-				<Comentarios />
-			</section>
+				</section>
+				<section>
+					<h1 style={{ display: 'flex', justifyContent: 'center' }}>Comentarios de nuestros clientes</h1>
+					<Comentarios />
+				</section>
 
-			<section className={styles.fondoSection}>
+				<section className={styles.fondoSection}>
 
-				<Footer />
-				
-			</section>
+					<Footer />
 
-		</div>
+				</section>
+
+
+
+			</div>
+
+
+		</>
 	);
 };
 

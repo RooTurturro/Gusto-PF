@@ -6,7 +6,7 @@
 
 
 .home1 {
-	margin-top: -11rem;
+	
 	background-color: var(--bgLight);
 }
 
@@ -84,14 +84,8 @@
 }
 
 .sectionCarousel {
-	/* background-image: url('../../assets/otrofondo.jpg'); */
-	background-image: url('../../assets/carrusel3.jpg');
-	background-repeat: no-repeat;
-	background-size: 110%;
+	background-image: url('../../assets/otrofondo.jpg');
+	background-repeat: repeat;
+	background-size: contain;
+	background-attachment: fixed;
 }
-
-@media (max-width: 1080px) {
-	.video {
-	  width: 50%;
-	}
-  }
