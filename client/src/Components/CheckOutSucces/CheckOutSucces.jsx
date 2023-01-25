@@ -35,8 +35,8 @@ const CheckOutSucces = () => {
   };
   sendEmail();
   return (
-    <div className="container justify-content-center mt-5">
-      <div className="row">
+    <div className="container justify-content-center mt-5" >
+      <div className="row" style={{marginTop:'10%'}}>
         <div className="col-lg-12">
           <div className="main-box clearfix">
             <div className="table-responsive">
