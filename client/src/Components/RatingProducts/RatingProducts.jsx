@@ -31,7 +31,7 @@ function RatingProducts({ id }) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		dispatch(actions.ratingProducts(currentStars, id));
-		// console.log(currentStars, id); LLEGA
+		console.log(currentStars, id);
 		Swal.fire('¡Rating enviado!');
 	};
 

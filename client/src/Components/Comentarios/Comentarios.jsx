@@ -77,14 +77,14 @@ const Comentarios = () => {
 					<div className="card2 p-3 text-center px-4">
 						<div className="user-image">
 							<img
-								src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Andy_Amyx_as_Bozo_%28cropped%29.jpg"
+								src="https://cdn.resfu.com/img_data/players/medium/23569.jpg?size=300x&lossy=1"
 								className="rounded-circle pictureCustom"
 								width="80"
 								alt="xd"
 							/>
 						</div>
 						<div className="user-content">
-							<h5 className="mb-0 customName ">FRANCO COLL</h5>
+							<h5 className="mb-0 customName ">EMI</h5>
 							<p>
 								La verdad que quede muy encantado con el lugar , la atención del
 								personal fascinante , muy recomendado , un éxito

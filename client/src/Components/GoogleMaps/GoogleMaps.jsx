@@ -52,41 +52,15 @@ class MapContainer extends React.Component {
 	render() {
 		return (
 			<div className="all">
-				<div>
-					<div
-						style={{ position: "absolute", zIndex: 9999, marginTop: "34.1rem" }}
-					>
-						<img src={rectangle} />
-					</div>
-					<div
-						style={{
-							position: "absolute",
-							zIndex: 9999,
-							marginTop: "34.1rem",
-							marginLeft: "93.4rem",
-						}}
-					>
-						<img src={rectangle} />
-					</div>
-				</div>
-				<div
-					style={{
-						display: "flex",
-						marginTop: "37%",
-						marginLeft: "7%",
-
-						position: "absolute",
-						gap: "5rem",
-						zIndex: 9999,
-					}}
-				>
+				<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20rem' }}>
+					<img src={rectangle} alt='rec' />
 					{fakeSucursales.map((e) => {
 						return (
 							<Sucursales street={e.street} schedule={e.schedule} id={e.id} />
 						);
 					})}
+					<img src={rectangle} alt='rec' />
 				</div>
-
 				<Map google={this.props.google} zoom={14}>
 					<Marker onClick={this.onMarkerClick} name={"Current location"} />
 

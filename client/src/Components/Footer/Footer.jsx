@@ -73,83 +73,19 @@ const Footer = () => {
 								Todos los derechos reservados.{" "}
 								<strong style={{ fontWeight: "900" }}>GUSTO COMPANY.</strong>
 							</div>
-							<button
-								style={{ border: "none", marginRight: "-.5rem" }}
-								type="button"
-								data-bs-toggle="modal"
-								data-bs-target="#exampleModal"
-								data-bs-whatever="@mdo"
-							>
-								<img src={contactanos} alt="xddd" />
-							</button>
-							<div
-								class="modal fade"
-								id="exampleModal"
-								tabindex="-1"
-								aria-labelledby="exampleModalLabel"
-								aria-hidden="true"
-							>
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h1 class="modal-title fs-5" id="exampleModalLabel">
-												Formulario de contacto
-											</h1>
-											<button
-												type="button"
-												class="btn-close"
-												data-bs-dismiss="modal"
-												aria-label="Close"
-											></button>
-										</div>
-										<div class="modal-body">
-											<form
-												action="https://getform.io/f/9e90f343-83d2-4804-8fb9-1bf8089ba2e5"
-												method="POST"
-												encType="multipart/form-data"
-											>
-												<div class="mb-3">
-													<label for="name" class="col-form-label">
-														Nombre:
-													</label>
-													<input type="text" class="form-control" name="name" />
-												</div>
-												<div class="mb-3">
-													<label for="email" class="col-form-label">
-														Email:{" "}
-													</label>
-													<input
-														type="text"
-														class="form-control"
-														name="email"
-													/>
-												</div>
-												<div class="mb-3">
-													<label for="mensaje" class="col-form-label">
-														Mensaje:
-													</label>
-													<textarea
-														class="form-control"
-														name="mensaje"
-													></textarea>
-												</div>
-												<div class="modal-footer">
-													<button
-														type="button"
-														class="btn btn-secondary"
-														data-bs-dismiss="modal"
-													>
-														Cerrar
-													</button>
-													<button type="submit" class="btn btn-primary">
-														Enviar mensaje
-													</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
+							<Link to='/contacto'>
+
+								<button
+									style={{ border: "none", marginRight: "-.5rem" }}
+									type="button"
+									data-bs-toggle="modal"
+									data-bs-target="#exampleModal"
+									data-bs-whatever="@mdo"
+									className="btn btn-info"
+								>
+									CONTACTANOS
+								</button>
+							</Link>
 						</div>
 					</div>
 				</div>
