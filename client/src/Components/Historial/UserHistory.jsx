@@ -37,7 +37,7 @@ const UserHistory = () => {
   return (
     <div>
       <Nav />
-      {purchases > 0 ? (
+      
 
         <div className='containerUsuario'>
           <div className='container justify-content-center'>
@@ -83,7 +83,9 @@ const UserHistory = () => {
                               <td className="text-center">{e.specification}</td>
 
                               <td className="text-center">{e.total}</td>
-                              <td className="text-center">Delivery</td>
+                              <td className="text-center">  {e.takeAway == true ? (
+                            <div>Retiro</div> 
+                          ): <div>Delivery</div>}</td>
 
                               {e.takeAway === false ? (
                                 <td className="text-center">
@@ -114,9 +116,8 @@ const UserHistory = () => {
             </div>
           </div>
         </div>
-      ) : <div style={{ marginTop: '15%', display: 'flex', justifyContent: 'center' }}>
-        Aun no tienes compras :(
-      </div>}
+      
+      
     </div>
   );
 };

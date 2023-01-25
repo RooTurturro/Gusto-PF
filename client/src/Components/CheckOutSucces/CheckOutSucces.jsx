@@ -39,7 +39,7 @@ const CheckOutSucces = () => {
   return (
     <>
          <div className="container">
-          <h2>SU COMPRA A SIDO ESITOSA XD</h2>
+          <h2>Su compra se realizo con exito</h2>
           <div className="row">
             <div className="col-lg-12">
               <div className="main-box clearfix">

@@ -52,32 +52,36 @@ sendGrid.post("/checkout", async (req, res) => {
 });
 
 sendGrid.post("/cancel", async (req, res) => {
-  const { to, name, motivo } = req.body;
-
+  const { to , name,  motivo } = req.body;
   const msg = {
     to,
     from: `rocioolivaturturro@gmail.com`,
     subject: "Su pedido a sido cancelado :((",
     text: "Pedido cancelado",
-    html: `<h1>Su pedido fue cancelado :(</h1><strong>Lamentamos este incoveniente, los motivos de cancelacion son : ${motivo}</strong>`,
+    html: `<h1>Su pedido fue cancelado :(</h1><strong>Lamentamos este incoveniente ${name}. Los motivos de cancelacion son ${motivo} </strong>`,
   };
   try {
     await sgMail.send(msg);
   } catch (err) {
-    return res.status(err.code).send(err.message);
+    return res.status(404).send(err.message);
   }
   res.status(201).send({ success: true });
 });
 
-sendGrid.post("/updateAccount", async (req, res) => {
-  const { to, name } = req.body;
+sendGrid.post("/promociones", async (req, res) => {
+  const { to, fecha, texto1, texto2 , texto3 } = req.body;
 
   const msg = {
     to,
     from: `rocioolivaturturro@gmail.com`,
-    subject: "Su cuenta a sido modificada:)",
-    text: "Cuenta su cuenta a sido modificada",
-    html: `<h1>Su cuenta se modifico con exito ! </h1><strong>Hola ${name}.Su cuenta a sido modificada con exito</strong>`,
+    subject: "CONOCE NUESTRAS PROMOS SEMANALES:)",
+    text: "Promociones Gusto",
+    html: `<h1>Hola ! Conoce nuestras promociones semanales y descuentos ! </h1>
+    <strong>Tenemos las siguientes promociones validas hasta el dia:${fecha}</strong><br>
+    <strong>PROMOCION 1${texto1}<strong/><br>
+    <strong>PROMOCION 2${texto2}<strong/><br>
+    <strong>PROMOCION 3${texto3}<strong/><br>   
+    `
   };
   try {
     await sgMail.send(msg);

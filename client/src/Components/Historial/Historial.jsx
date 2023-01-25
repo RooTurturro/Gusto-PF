@@ -1,16 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState } from 'react'
 import { getAllPurchases, getAllUsers, updatePurchaseState } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Sidebar from '../Sidebar/Sidebar';
-
-
+import ModalCancel from "../Modal/ModalCancel";
 
 // aca se obtienen las compras hechas por el usuario
 // se muestran en el perfil de cada usuario luego de logearse
 // se puede hacer un mapeo y devolver la Card del menu pero siendo ya una compra realizada
 
 const Historial = () => {
+ 
+  const [email, setEmail] = useState()
+  const [name , setName] = useState()
+  const useModal = (initialValue = false) => {
+    const [isOpen, setIsOpen] = useState(initialValue);
+
+    const openModal = () => {
+
+        setIsOpen(true);
+    }
+
+    const closeModal = () => setIsOpen(false);
+
+    return [isOpen, openModal, closeModal];
+};
+
+const [isOpenModal, openModal, closeModal] = useModal(false);
+
 
   const dispatch = useDispatch()
   const purchases = useSelector((state) => state.purchases)
@@ -29,17 +46,23 @@ const Historial = () => {
       showCancelButton: true,
       confirmButtonText: 'Sí, cancelar',
       cancelButtonText: 'Volver atras'
-    }).then((result) => {
+    })
+    .then((result) => {
       if (result.value) {
         dispatch(updatePurchaseState(id, { state: "Cancelado" }))
         Swal.fire({
           title: 'Compra cancelada',
           icon: 'warning'
         }).then(() => {
-          window.location.reload()
+          openModal()
         })
       }
     })
+    const userPurchase = purchases.filter((e) => e.id === id)
+    setEmail(userPurchase[0].email)
+    setName(userPurchase[0].name)
+    console.log(name)
+    console.log(userPurchase)
   }
 
   function handleFinalizada(id) {
@@ -128,10 +151,13 @@ const Historial = () => {
                           <button style={{ width: '100px' }} type='button' className='btn btn-success' disabled={e.state === "Cancelado"}>Entregada</button> */}
                           {e.state === 'en proceso' ? (
                             <div>
-                              <button style={{ width: '100px' }} type='button' className='btn btn-danger' onClick={() => handleClick(e.id)} >Cancelar</button>
+                              <button style={{ width: '100px' }} type='button' className='btn btn-danger' onClick={()=>{handleClick(e.id)}} >Cancelar</button>
+                              <ModalCancel
+                              to = {email}
+                              name = {name}
+                              isOpen={isOpenModal} closeModal={closeModal}/>
                               <button style={{ width: '100px' }} type='button' className='btn btn-success' onClick={() => handleFinalizada(e.id)}>Finalizar</button>
                             </div>
-
                           ) : e.state === 'entregado' ?
                             <button style={{ width: '100px' }} type='button' className='btn btn-info' disabled>Entregada</button>
                             : <button type='button' className='btn btn-warning' disabled>Cancelada</button>
