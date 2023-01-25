@@ -1,0 +1,12 @@
+.containerUsuario {
+    margin-top: 10%;
+   
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap");
+
+.comments {
+	font-size: rem;
+	font-family: "Oswald";
+	font-weight: 900;
+}

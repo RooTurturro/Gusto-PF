@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Recoleta';
+    src: url('../../assets/RecoletaAlt-Bold.ttf');
+}
+
+.container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 80%;
+    width: 40%;
+    z-index: 999999;
+    
+}
+
+.body {
+    background-color: #ededed;
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    overflow: scroll;
+    width: 26%;
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.tuyo {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+}
+
+.tuyo div {
+    font-weight: bold;
+    font-family: 'Recoleta';
+    font-size: 1.5rem;
+}
+
+
+.cajasnegras {
+    width: 10%;
+}

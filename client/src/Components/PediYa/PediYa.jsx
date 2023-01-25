@@ -1,12 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPaymentUrl, postPurchase, getAllUsers } from "../../redux/actions";
-import axios from "axios";
-
 import { useState } from "react";
 import Modal from "../Modal/Modal";
-import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+import styles from "./PediYa.module.css";
+
 
 const PediYa = () => {
 
@@ -34,7 +32,7 @@ const PediYa = () => {
 					)
 				})],
 				takeAway: true,
-				quantity:1
+				quantity: 1
 				/*quantity: [cart.map((el) => {
 					return (
 						el.quantity
@@ -63,7 +61,7 @@ const PediYa = () => {
 
 	const [isOpenModal, openModal, closeModal] = useModal(false);
 
-	const { isAuthenticated, loginWithRedirect } = useAuth0()
+
 	const dispatch = useDispatch();
 
 	const cart = useSelector((state) => state.cart)
@@ -90,31 +88,35 @@ const PediYa = () => {
 
 		}
 	};
-	
-	console.log(usuario);
+
+
 
 	return (
 
-		<div className="card-body">
-			<div>
 
-				<div className="card-body">
-					<div>
-						<ul className="list-group list-group-flush">
-							<li
-								className="list-group-item border-0 px-0 mb-3">
-								<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-									<strong>Monto total</strong>
-									<span><strong>${totalPrice()}</strong></span>
-								</div>
-							</li>
-						</ul>
-						<button type="button" className="btn btn-primary" style={{ alignContent: "flex-start", color: "#212529" }} onClick={usuario.address ? openModal : handlePayment}>Finalizar compra!</button>
-						<Modal isOpen={isOpenModal} closeModal={closeModal} />
-					</div>
+
+
+		<div className={styles.container}>
+			<div className={styles.linea}></div>
+			<div className={styles.montototal}>
+				<div>
+					<p>TOTAL</p>
 				</div>
-			</div >
-		</div >
+				<div>
+					<span>${totalPrice()}</span>
+				</div>
+			</div>
+			<div>
+				<button type="button" className={styles.pediya} onClick={usuario.address ? openModal : handlePayment}>
+					<h4>PEDIR</h4>
+				</button>
+			</div>
+
+			<Modal isOpen={isOpenModal} closeModal={closeModal} />
+
+		</div>
+
+
 
 
 	);

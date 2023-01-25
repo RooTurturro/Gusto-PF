@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Recoleta';
+    src: url('../../assets/RecoletaAlt-Bold.ttf');
+}
+.imagen {
+    width: 10rem;
+    height: 10rem;
+
+}
+.container {
+    display: flex;
+    margin: 1.5rem;
+    gap: 1rem;
+}
+
+.buttonDel {
+    background-color: aliceblue;
+}
+
+.carritoInfo p {
+    font-size: 1.6rem;
+    font-family: 'Recoleta';
+}
+
+.carritoButtons {
+    display: flex;
+    gap: 2rem;
+    color: black;
+
+}
+
+.carritoButtons button {
+    height: 2rem;
+    width: 2rem;
+}
+
+.carritoName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

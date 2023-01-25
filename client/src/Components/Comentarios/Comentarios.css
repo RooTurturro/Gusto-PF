@@ -1,22 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap");
 
 .card2 {
-  border: none;
+	border: none;
 }
 
 .user-content p {
-  margin-top: 5px;
-  font-size: 12px;
+	margin-top: 5px;
+	font-size: 15px;
+	font-family: "Oswald", "Arial";
 }
 
-.ratings{
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  color: red;
+.ratings {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	color: red;
 }
 
-.fa-star{
-  width: 2rem;
-  height: 2rem;
-  color: red;
+.fa-star {
+	width: 2rem;
+	height: 2rem;
+	color: red;
+}
+
+.customName {
+	margin-top: 1rem;
+	font-family: "Oswald";
+	font-weight: 900;
 }
