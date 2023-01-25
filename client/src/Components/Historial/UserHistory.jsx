@@ -38,7 +38,6 @@ const UserHistory = () => {
     <div>
       <Nav />
       {purchases > 0 ? (
-
         <div className='containerUsuario'>
           <div className='container justify-content-center'>
             <div className="row">
@@ -73,18 +72,14 @@ const UserHistory = () => {
                       </thead>
                       {purchases?.map((e) =>
                         e.name === user.name ? (
-
                           <tbody>
                             <tr>
                               <td className="text-center">{e.name}</td>
-
                               <td className="text-center">{e.address}</td>
                               <td className="text-center">{e.products}</td>
                               <td className="text-center">{e.specification}</td>
-
                               <td className="text-center">{e.total}</td>
                               <td className="text-center">Delivery</td>
-
                               {e.takeAway === false ? (
                                 <td className="text-center">
                                   {e.state === "en proceso" ? (
