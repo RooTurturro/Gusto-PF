@@ -5,6 +5,7 @@ import Nav from "./Components/NavBar/Nav";
 import Home from "./Components/Home/Home";
 import Menu from "./Components/Menu/Menu";
 import Sucursales from "./Components/Sucursales/Sucursales";
+import MapContainer from "./Components/GoogleMaps/GoogleMaps";
 import FormCreate from "./Components/Form/FormCreate";
 import Detail from "./Components/Detail/Detail";
 import Perfil from "./Components/Perfil/Perfil";
@@ -16,22 +17,17 @@ import ProductList from "./Components/ProductList/ProductList";
 import ProfileUserForm from "./Components/Form/ProfileUserForm";
 import LoginButton from "./Components/Login/LoginButton";
 import Users from "./Components/Users/Users";
-import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces"
+import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces";
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
-
-
-
-
 
 function App() {
 	return (
 		<div className={styles.app}>
-			<Nav className={styles.nav}/>
+			<Nav className={styles.nav} />
 			<Routes>
 				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
 				<Route exact path="/" element={<Home />} />
 				<Route exact path="/cloudinary" element={<Cloudinary />} />
-				
 
 				<Route exact path="/users" element={<Users />} />
 				<Route exact path="/productlist" element={<ProductList />} />
@@ -42,7 +38,7 @@ function App() {
 				<Route exact path="/menu" element={<Menu />} />
 				<Route exact path="/products/:id" element={<Detail />} />
 				<Route exact path="/perfil" element={<Perfil />} />
-				<Route exact path="/sucursales" element={<Sucursales />} />
+				<Route exact path="/sucursales" element={<MapContainer />} />
 				<Route exact path="/login" element={<LoginButton />} />
 				<Route exact path="/checkout" element={<CheckOutSucces />} />
 				<Route exact path="/miscompras" element={<UserHistory />} />
@@ -50,9 +46,8 @@ function App() {
 					exact
 					path="/editarperfilusuario"
 					element={<ProfileUserForm />}
-				/>	
+				/>
 			</Routes>
-
 		</div>
 	);
 }
