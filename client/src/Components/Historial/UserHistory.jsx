@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { useEffect } from 'react'
 import { getAllPurchases, userProfile, updatePurchaseState} from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './UserHistory.module.css'
@@ -15,14 +16,36 @@ const UserHistory = () => {
 
     const dispatch = useDispatch()
     const email = window.localStorage.getItem('userEmail')
+    const purchases = useSelector((state) => state.purchases)
+    const user = useSelector(state => state.user);
+
+    const userPurchase = purchases.filter(purchase =>
+      user.name === purchase.name
+    ) 
+    
+    function purchase() {
+      if (!userPurchase.length) {
+        Swal.fire({
+          title:'Aun no tenes compras! Conoce nuestros productos',
+          confirmButtonText:'Ir al menú'})
+          .then((result) => {
+            if (result.value) {
+              window.location.href = 'https://ganasdegusto.vercel.app/menu';
+            }
+          })
+  
+      }
+    }
+    
 
   useEffect(() => {
+    
     dispatch(getAllPurchases())
     dispatch(userProfile(email))
+    purchase()
   }, [dispatch])
 
-  const purchases = useSelector((state) => state.purchases)
-  const user = useSelector(state => state.user);
+
 
   const Swal = require('sweetalert2')
 
@@ -35,11 +58,15 @@ const UserHistory = () => {
         window.location.reload()
     })
 }
+
+
+
   return (
 
     <>
 {/* vertical-align: middle */}
-    <div class="container" style={{marginTop:'100px'}}>        
+    <div class="container" style={{marginTop:'100px'}}>    
+    {userPurchase?.map((e) => (    
           <div class="row">
             <div class="col-lg-12">
               <div class="main-box clearfix">
@@ -56,7 +83,7 @@ const UserHistory = () => {
                         <th scope="col" width="20%" className="text-center"><span>Estado</span></th>
                       </tr>
                     </thead>
-                    {purchases?.map((e) => ( e.name === user.name ? 
+                    
                     <tbody>
                       <tr>
                         <td class="text-center" >
@@ -92,13 +119,13 @@ const UserHistory = () => {
 
                       </tr>
                     </tbody>
-                    :null ))}
                   </table>
 
                 </div>
               </div>
             </div>
           </div>
+                    ))}
 
 
           </div>
