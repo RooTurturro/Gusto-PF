@@ -6,15 +6,13 @@ import styles from "./Detail.module.css";
 import start from '../../assets/startButton.png'
 import { addToCart } from '../../redux/shoppingActions'
 import add from '../../assets/addToCart.png'
-import Nav from '../NavBar/Nav'
 import arrow from '../../assets/arrow.png'
 import RatingProducts from '../RatingProducts/RatingProducts'
 import videomaqueta from '../../assets/videoMaqueta.png'
 import hottestImage from '../../assets/hottestImage.png'
 
 const Detail = () => {
-	const navigate = useNavigate()
-	const usuario = useSelector(state => state.user);
+	const navigate = useNavigate();
 	const { id } = useParams();
 	const product = useSelector((state) => state.productDetail);
 	const dispatch = useDispatch();
@@ -35,7 +33,7 @@ const Detail = () => {
 
 	return (
 		<div className={styles.detail}>
-			<Nav />
+			
 			<div className={styles.detailContainer}>
 				<div className={styles.detailInfo}>
 					<div>

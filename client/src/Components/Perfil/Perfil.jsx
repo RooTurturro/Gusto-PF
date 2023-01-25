@@ -4,7 +4,6 @@ import styles from './Perfil.module.css'
 import { Link } from 'react-router-dom';
 import { userProfile } from '../../redux/actions';
 import LogoutButton from '../Login/LogoutButton';
-import Nav from '../NavBar/Nav'
 
 
 const Perfil = () => {
@@ -15,12 +14,12 @@ const Perfil = () => {
 
     useEffect(() => {
         dispatch(userProfile(email))
-    }, [dispatch])
+    }, [dispatch, email])
 
 
     return (
         <>
-            <Nav />
+            
             <div>
                 <div className={styles.container}>
                     <div className={styles.bloque}>

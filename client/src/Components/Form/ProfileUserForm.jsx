@@ -1,7 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { userLocalLogin } from '../../redux/actions';
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { userUpdate } from "../../redux/actions";

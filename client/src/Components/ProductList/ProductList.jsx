@@ -32,14 +32,14 @@ const ProductList = () => {
                 Swal.fire({
                     title: 'Producto eliminado',
                     icon: 'warning'
-                  }).then(() => {
+                }).then(() => {
                     window.location.reload()
-                  })
-                }
-              })
-
+                })
             }
-    
+        })
+
+    }
+
 
     function handleClick(e) {
         e.preventDefault(e);
@@ -88,7 +88,7 @@ const ProductList = () => {
 
 
     return (
-        <div style={{ display: 'flex', gap: '10rem' }}>
+        <div style={{ display: 'flex', gap: '10rem', marginTop: '7%' }}>
             <div >
                 <Sidebar />
             </div>

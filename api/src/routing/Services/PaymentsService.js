@@ -2,7 +2,7 @@
 const axios = require("axios");
 
 class PaymentService {
-  async createPayment({ name, total, id, q }) {
+  async createPayment({ name, total, id, quantity }) {
     const url = "https://api.mercadopago.com/checkout/preferences";
     //aca deberiamos poner nuestro producto. va a venir en el req del front, leemos el body del req y ahi recibir items desde el fontend y ahi pasarlos al controller y de ahi al service para popular este array
     const body = {
@@ -11,15 +11,17 @@ class PaymentService {
         {
           title: name,
           category_id: id,
-          quantity: q,
+          quantity: quantity,
           unit_price: total,
         },
       ],
       back_urls: {
-        failure: "http://localhost:3001/paymentFailure",
-        pending: "http://localhost:3001/paymentPending",
-        success: "http://localhost:3001/checkout",
+        failure: "",
+        pending: "",
+        success: "http://localhost:3000/checkout",
       },
+      auto_return: 'approved',
+      binary_mode: true, // no permite pagos pendientes (rapipago etc)
     };
 
     const payment = await axios.post(url, body, {

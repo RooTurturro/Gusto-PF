@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=PT+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
 
 :root {
 	--main-red: #ff002f;
@@ -46,11 +47,9 @@
 .nav-container-custom {
 	height: 16vh;
 	background: rgb(237, 237, 237);
-	background: linear-gradient(
-		180deg,
-		rgba(237, 237, 237, 1) 61%,
-		rgba(189, 189, 189, 1) 100%
-	);
+	background: linear-gradient(180deg,
+			rgba(237, 237, 237, 1) 61%,
+			rgba(189, 189, 189, 1) 100%);
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -83,17 +82,58 @@
 	color: red;
 }
 
-.carritoLleno {
-	background-color: #01ca40;
-	border-radius: 100%;
-	width: 30px;
-	height: 30px;
-	font-weight: bold;
-	font-size: 1.1rem;
-	font-family: "Recoleta";
-	color: black;
-	margin-left: 5.7rem;
-	position: absolute;
-	margin-top: 3.4rem;
-	text-align: center;
+.carrito button {
+	border: none;
+	background-color: transparent;
+	color: red;
 }
+
+/* .container {
+	align-items: center;
+	justify-content: space-between;
+	display: flex;
+	background: rgb(237, 237, 237);
+	background: linear-gradient(180deg,
+			rgba(237, 237, 237, 1) 61%,
+			rgba(189, 189, 189, 1) 100%);
+	position: sticky;
+	z-index: 9999999999999;
+}
+
+.enlaces {
+	color: aliceblue;
+	gap: 2rem;
+	display: flex;
+	justify-content: space-around;
+
+}
+
+.enlace {
+	text-decoration: none;
+	font-size: 1.5rem;
+	margin-left: 2rem;
+	font-family: "Oswald", sans-serif;
+	margin-bottom: 1rem;
+	font-weight: 900;
+	color: #ff0000;
+}
+
+
+.Carrito {
+	position: sticky;
+	display: flex;
+	gap: 2rem;
+
+}
+
+.imagen {
+	width: 77px;
+	height: 77px;
+	border-radius: 100%;
+}
+
+.Carrito button {
+	border: none;
+	background-color: transparent;
+	color: red;
+} */
