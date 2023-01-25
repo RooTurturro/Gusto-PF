@@ -39,6 +39,7 @@ const Detail = () => {
 					<div>
 						<h1>{product.name}</h1>
 						<RatingProducts />
+						<p>{product.rating}</p>
 						<p className={styles.description}>{product.description}</p>
 						<p>${product.price}</p>
 						<button style={{ border: 'none' }} onClick={() => { addItemToCart(id) }}>

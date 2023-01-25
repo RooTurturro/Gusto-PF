@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Nav from "./Components/NavBar/Nav";
 import Home from "./Components/Home/Home";
 import Menu from "./Components/Menu/Menu";
-import Sucursales from "./Components/Sucursales/Sucursales";
+
 import MapContainer from "./Components/GoogleMaps/GoogleMaps";
 import FormCreate from "./Components/Form/FormCreate";
 import Detail from "./Components/Detail/Detail";
@@ -19,6 +19,7 @@ import LoginButton from "./Components/Login/LoginButton";
 import Users from "./Components/Users/Users";
 import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces";
 import Cloudinary from "./Components/Cloudinary/Cloudinary";
+import Contacto from "./Components/Contacto/Contacto";
 
 function App() {
 	return (
@@ -28,9 +29,9 @@ function App() {
 				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
 				<Route exact path="/" element={<Home />} />
 				<Route exact path="/cloudinary" element={<Cloudinary />} />
-
 				<Route exact path="/users" element={<Users />} />
 				<Route exact path="/productlist" element={<ProductList />} />
+				<Route exact path="/contacto" element={<Contacto />} />
 				<Route exact path="/sendgrid" element={<SenGrid />} />
 				<Route exact path="/carrito" element={<Carrito />} />
 				<Route exact path="/historial" element={<Historial />} />

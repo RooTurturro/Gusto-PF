@@ -39,7 +39,7 @@ const Menu = () => {
       <div className="navContainer">
         <div style={{ marginLeft: '.9rem' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '.8rem' }}>
-            <h1 className='recoleta' style={{ marginLeft: '2rem', fontSize: '3rem' }}>Elegí lo tuyo  </h1>
+            <h1 className='recoleta' style={{ marginLeft: '2rem', fontSize: '3rem' }}>Productos  </h1>
           </div>
           <img className="flechas" src={flechas} alt='flechas' />
         </div>
@@ -66,10 +66,10 @@ const Menu = () => {
           </div>
         </ul>
       </div>
-      <div style={{ marginLeft: '0.9rem' }}>
+      {/* <div style={{ marginLeft: '0.9rem' }}>
         <h1 className='recoleta' style={{ marginLeft: '2rem', fontSize: '3rem' }}>Productos  </h1>
         <img className="flechas" src={flechas} alt='flechas' />
-      </div>
+      </div> */}
       <div className='cardContainer'>
 
         {products?.length > 0 ?

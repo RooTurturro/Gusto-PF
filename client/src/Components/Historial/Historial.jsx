@@ -3,7 +3,10 @@ import { getAllPurchases, getAllUsers, updatePurchaseState } from '../../redux/a
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Sidebar from '../Sidebar/Sidebar';
+
+import './Historial.css'
 import ModalCancel from "../Modal/ModalCancel";
+
 
 // aca se obtienen las compras hechas por el usuario
 // se muestran en el perfil de cada usuario luego de logearse
@@ -96,11 +99,11 @@ const [isOpenModal, openModal, closeModal] = useModal(false);
 }
 
   return (
-    <div style={{ display: 'flex', marginTop: '7%'  }}>
+    <div style={{ display: 'flex', marginTop: '7%', justifyContent:'cen' }}>
       <div >
         <Sidebar />
       </div>
-      <div className="container">
+      <div className="containerHistory">
         <div className="row">
           <div className="col-lg-12">
             <div className="main-box clearfix">
