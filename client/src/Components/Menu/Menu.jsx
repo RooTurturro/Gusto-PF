@@ -15,6 +15,7 @@ import combos from "../../assets/combos.png";
 import Spinner from "react-bootstrap/Spinner";
 import Nav from "../NavBar/Nav";
 import redBoxesLittle from "../../assets/redBoxesLittle.png";
+import flechas from '../../assets/arrow.png'
 
 const Menu = () => {
 	const dispatch = useDispatch();
@@ -25,14 +26,7 @@ const Menu = () => {
 			dispatch(getAllProducts());
 		}
 	}, [dispatch, products.length]);
-
-	function handleFilterProductsByCategories(e) {
-		e.preventDefault(e);
-		dispatch(filterProductsByCategories(e.target.name));
-	}
-
-  } 
-
+   
 
   function handleFilterProductsByCategories(e) {
     e.preventDefault(e);
