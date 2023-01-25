@@ -17,6 +17,7 @@ import ProfileUserForm from "./Components/Form/ProfileUserForm";
 import LoginButton from "./Components/Login/LoginButton";
 import Users from "./Components/Users/Users";
 import CheckOutSucces from "./Components/CheckOutSucces/CheckOutSucces"
+import Cloudinary from "./Components/Cloudinary/Cloudinary";
 
 
 
@@ -29,6 +30,9 @@ function App() {
 			<Routes>
 				{/* hasta que tengamos la seccion del admin vamos a estar trabajando aca */}
 				<Route exact path="/" element={<Home />} />
+				<Route exact path="/cloudinary" element={<Cloudinary />} />
+				
+
 				<Route exact path="/users" element={<Users />} />
 				<Route exact path="/productlist" element={<ProductList />} />
 				<Route exact path="/sendgrid" element={<SenGrid />} />
