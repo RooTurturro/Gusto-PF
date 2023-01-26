@@ -36,12 +36,21 @@ const logTime = (req, res, next) => {
 	next();
 };
 
- const redirectHttps = (req, res, next) => {
- 	if (req.headers["x-forwarded-proto"] !== "https") {
- 		return res.redirect(`https://${req.headers.host}${req.url}`);
- 	}
- 	next();
- };
+//  const redirectHttps = (req, res, next) => {
+//  	if (req.headers["x-forwarded-proto"] !== "https") {
+//  		return res.redirect(`https://${req.headers.host}${req.url}`);
+//  	}
+//  	next();
+//  };
+
+const redirectHttps = (req, res, next) => {
+	if (req.secure) {
+		next();
+	} else {
+		res.redirect(`https://${req.headers.host}${req.url}`);
+	}
+};
+
 
 server.use(redirectHttps);
 server.use(auth(authConfig));
