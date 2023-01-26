@@ -27,6 +27,9 @@ const fakeSucursales = [
 	},
 ];
 
+const fireIcon =
+	" https://e7.pngegg.com/pngimages/613/472/png-clipart-gif-emoji-sticker-fire-emoji-orange-sticker-thumbnail.png";
+
 class MapContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -34,7 +37,22 @@ class MapContainer extends React.Component {
 			selectedPlace: {
 				name: "",
 			},
+			userPosition: {
+				lat: null,
+				lng: null,
+			},
 		};
+	}
+
+	componentDidMount() {
+		navigator.geolocation.getCurrentPosition((position) => {
+			this.setState({
+				userPosition: {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude,
+				},
+			});
+		});
 	}
 
 	onMarkerClick = (props, marker, e) => {
@@ -43,27 +61,54 @@ class MapContainer extends React.Component {
 		});
 	};
 
-	onInfoWindowClose = () => {
-		this.setState({
-			selectedPlace: {},
-		});
-	};
-
 	render() {
 		return (
 			<div className="all">
-				<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20rem' }}>
-					<img src={rectangle} alt='rec' />
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						marginTop: "20rem",
+					}}
+				>
+					<img src={rectangle} alt="rec" />
 					{fakeSucursales.map((e) => {
 						return (
 							<Sucursales street={e.street} schedule={e.schedule} id={e.id} />
 						);
 					})}
-					<img src={rectangle} alt='rec' />
+					<img src={rectangle} alt="rec" />
 				</div>
-				<Map google={this.props.google} zoom={14}>
-					<Marker onClick={this.onMarkerClick} name={"Current location"} />
-
+				<Map
+					google={this.props.google}
+					initialCenter={this.state.userPosition}
+					zoom={14}
+				>
+					{this.state.userPosition.lat && (
+						<Marker
+							onClick={this.onMarkerClick}
+							name={"Current location"}
+							position={this.state.userPosition}
+						/>
+					)}
+					<Marker
+						onClick={this.onMarkerClick}
+						name={"Primer local"}
+						position={{ lat: -33.119903, lng: -64.351288 }}
+						icon={fireIcon}
+					/>
+					<Marker
+						onClick={this.onMarkerClick}
+						name={"Segundo local"}
+						position={{ lat: -33.136166, lng: -64.353221 }}
+						icon={fireIcon}
+					/>
+					<Marker
+						onClick={this.onMarkerClick}
+						name={"Tercer local"}
+						position={{ lat: -33.119978, lng: -64.367714 }}
+						icon={fireIcon}
+					/>
 					<InfoWindow
 						marker={this.state.activeMarker}
 						visible={this.state.showingInfoWindow}
