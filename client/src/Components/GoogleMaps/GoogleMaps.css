@@ -1,3 +1,6 @@
 .all {
 	overflow-x: hidden;
 }
+.marker{
+	width: 2rem;
+}

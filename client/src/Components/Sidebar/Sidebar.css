@@ -53,8 +53,8 @@ hr {
 }
 
 .li:hover {
-    background-color: crimson;
-    border-radius: 200px;
+    background-color: red;
+    border-radius: 10px;
     color: #fff;
 }
 

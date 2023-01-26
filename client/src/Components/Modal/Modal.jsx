@@ -49,7 +49,7 @@ const handleInputs = (event) => {
                     <h1 className="modal-title fs-5" id="staticBackdropLabel">Completar pedido</h1>
                     </div>
                     <div className="modal-body">
-                        <DropdownButton id="dropdown-basic-button" title="Seleccione metodo de entrega">
+                        <DropdownButton id="dropdown-basic-button" title="Tipo de entrega">
                             <Dropdown.Item href="#/action-1" onClick={() => takeAway(purchase.id)}>Take Away</Dropdown.Item>
                             <Dropdown.Item href="#/action-2" onClick={() => delivery(purchase.id)}>Delivery</Dropdown.Item>
                         </DropdownButton>

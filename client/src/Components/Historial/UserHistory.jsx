@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { getAllPurchases, userProfile, updatePurchaseState} from '../../redux/actions'
+import { getAllPurchases, userProfile, updatePurchaseState } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './UserHistory.module.css'
 
@@ -14,32 +14,33 @@ import styles from './UserHistory.module.css'
 
 const UserHistory = () => {
 
-    const dispatch = useDispatch()
-    const email = window.localStorage.getItem('userEmail')
-    const purchases = useSelector((state) => state.purchases)
-    const user = useSelector(state => state.user);
+  const dispatch = useDispatch()
+  const email = window.localStorage.getItem('userEmail')
+  const purchases = useSelector((state) => state.purchases)
+  const user = useSelector(state => state.user);
 
-    const userPurchase = purchases.filter(purchase =>
-      user.name === purchase.name
-    ) 
-    
-    function purchase() {
-      if (!userPurchase.length) {
-        Swal.fire({
-          title:'Aun no tenes compras! Conoce nuestros productos',
-          confirmButtonText:'Ir al menú'})
-          .then((result) => {
-            if (result.value) {
-              window.location.href = 'https://ganasdegusto.vercel.app/menu';
-            }
-          })
-  
-      }
+  const userPurchase = purchases.filter(purchase =>
+    user.name === purchase.name
+  )
+
+  function purchase() {
+    if (!userPurchase.length) {
+      Swal.fire({
+        title: 'Aun no tenes compras! Conoce nuestros productos',
+        confirmButtonText: 'Ir al menú'
+      })
+        .then((result) => {
+          if (result.value) {
+            window.location.href = 'https://ganasdegusto.vercel.app/menu';
+          }
+        })
+
     }
-    
+  }
+
 
   useEffect(() => {
-    
+
     dispatch(getAllPurchases())
     dispatch(userProfile(email))
     purchase()
@@ -53,20 +54,20 @@ const UserHistory = () => {
     dispatch(updatePurchaseState(id, { state: 'entregado' }));
     dispatch(getAllPurchases())
     Swal.fire({
-        title: 'Entrega confirmada'
+      title: 'Entrega confirmada'
     }).then(() => {
-        window.location.reload()
+      window.location.reload()
     })
-}
+  }
 
 
 
   return (
 
     <>
-{/* vertical-align: middle */}
-    <div class="container" style={{marginTop:'100px'}}>    
-    {userPurchase?.map((e) => (    
+      {/* vertical-align: middle */}
+      <div class="container" style={{ marginTop: '10%' }}>
+        {userPurchase?.map((e) => (
           <div class="row">
             <div class="col-lg-12">
               <div class="main-box clearfix">
@@ -77,13 +78,13 @@ const UserHistory = () => {
                         <th scope="col" width="10%" className="text-center"><span>Nombre</span></th>
                         <th scope="col" width="20%" className="text-center"><span>Direccion</span></th>
                         <th scope="col" width="20%" className="text-center"><span>Productos</span></th>
-                        <th scope="col" width="20%" className="text-center"><span  style={{verticalAlign:'middle'}}>Especificaciones</span></th>
+                        <th scope="col" width="20%" className="text-center"><span style={{ verticalAlign: 'middle' }}>Especificaciones</span></th>
                         <th scope="col" width="10%" className="text-center"><span>Total</span></th>
                         <th scope="col" width="20%" className="text-center"><span>Envio a domicilio</span></th>
                         <th scope="col" width="20%" className="text-center"><span>Estado</span></th>
                       </tr>
                     </thead>
-                    
+
                     <tbody>
                       <tr>
                         <td class="text-center" >
@@ -103,20 +104,24 @@ const UserHistory = () => {
                         <td class="text-center">
                           {e.total}
                         </td>
-                        <td class="text-center">
-                          Delivery
-                        </td>
-
-                        { e.takeAway === false ?
+                        {e.takeAway ? (
+                          <td className="text-center">
+                            Retiro
+                          </td>
+                        ) :
+                          <td className="text-center">
+                            Delivery
+                          </td>
+                        }
+                        {e.takeAway === false ?
                           <td class="text-center">
                             {e.state === 'en proceso' ?
-                            <button type='button' class='btn btn-success' onClick={() => purchaseState(e.id)}>Entregada!</button>
-                            : e.state}
+                              <button type='button' class='btn btn-success' onClick={() => purchaseState(e.id)}>Entregada!</button>
+                              : e.state}
                           </td>
-                        : <td class="text-center">
-                        {e.state}
-                      </td>}
-
+                          : <td class="text-center">
+                            {e.state}
+                          </td>}
                       </tr>
                     </tbody>
                   </table>
@@ -125,10 +130,10 @@ const UserHistory = () => {
               </div>
             </div>
           </div>
-                    ))}
+        ))}
 
 
-          </div>
+      </div>
     </>
 
   );

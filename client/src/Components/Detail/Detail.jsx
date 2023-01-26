@@ -38,8 +38,7 @@ const Detail = () => {
 				<div className={styles.detailInfo}>
 					<div>
 						<h1>{product.name}</h1>
-						<RatingProducts />
-						<p>{product.rating}</p>
+						<RatingProducts id={id} />
 						<p className={styles.description}>{product.description}</p>
 						<p>${product.price}</p>
 						<button style={{ border: 'none' }} onClick={() => { addItemToCart(id) }}>

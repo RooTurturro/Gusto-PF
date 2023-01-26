@@ -1,8 +1,9 @@
-import React, { useEffect ,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getAllPurchases, getAllUsers, updatePurchaseState } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Sidebar from '../Sidebar/Sidebar';
+
 
 import './Historial.css'
 import ModalCancel from "../Modal/ModalCancel";
@@ -13,23 +14,24 @@ import ModalCancel from "../Modal/ModalCancel";
 // se puede hacer un mapeo y devolver la Card del menu pero siendo ya una compra realizada
 
 const Historial = () => {
- 
+
+  const user = useSelector((state) => state.user)
   const [email, setEmail] = useState()
-  const [name , setName] = useState()
+  const [name, setName] = useState()
   const useModal = (initialValue = false) => {
     const [isOpen, setIsOpen] = useState(initialValue);
 
     const openModal = () => {
 
-        setIsOpen(true);
+      setIsOpen(true);
     }
 
     const closeModal = () => setIsOpen(false);
 
     return [isOpen, openModal, closeModal];
-};
+  };
 
-const [isOpenModal, openModal, closeModal] = useModal(false);
+  const [isOpenModal, openModal, closeModal] = useModal(false);
 
 
   const dispatch = useDispatch()
@@ -50,17 +52,17 @@ const [isOpenModal, openModal, closeModal] = useModal(false);
       confirmButtonText: 'Sí, cancelar',
       cancelButtonText: 'Volver atras'
     })
-    .then((result) => {
-      if (result.value) {
-        dispatch(updatePurchaseState(id, { state: "Cancelado" }))
-        Swal.fire({
-          title: 'Compra cancelada',
-          icon: 'warning'
-        }).then(() => {
-          openModal()
-        })
-      }
-    })
+      .then((result) => {
+        if (result.value) {
+          dispatch(updatePurchaseState(id, { state: "Cancelado" }))
+          Swal.fire({
+            title: 'Compra cancelada',
+            icon: 'warning'
+          }).then(() => {
+            openModal()
+          })
+        }
+      })
     const userPurchase = purchases.filter((e) => e.id === id)
     setEmail(userPurchase[0].email)
     setName(userPurchase[0].name)
@@ -92,14 +94,17 @@ const [isOpenModal, openModal, closeModal] = useModal(false);
     dispatch(updatePurchaseState(id, { state: 'entregado' }));
     dispatch(getAllPurchases())
     Swal.fire({
-        title: 'Entrega confirmada'
+      title: 'Entrega confirmada'
     }).then(() => {
-        window.location.reload()
+      window.location.reload()
     })
-}
+  }
 
   return (
-    <div style={{ display: 'flex', marginTop: '7%', justifyContent:'cen' }}>
+
+
+
+    <div style={{ display: 'flex', marginTop: '7%' }}>
       <div >
         <Sidebar />
       </div>
@@ -111,14 +116,14 @@ const [isOpenModal, openModal, closeModal] = useModal(false);
                 <table className="table user-list">
                   <thead>
                     <tr>
-                      <th scope="col" width="10%"><span>Name</span></th>
+                      <th scope="col" width="10%" className="text-center"><span>Name</span></th>
                       <th scope="col" width="20%" className="text-center"><span>Adress</span></th>
-                      <th scope="col" width="20%"><span>Productos</span></th>
-                      <th scope="col" width="20%"><span>Especificaciones</span></th>
-                      <th scope="col" width="10%"><span>Total</span></th>
-                      <th scope="col" width="20%"><span>Envio a domicilio</span></th>
-                      <th scope="col" width="20%"><span>Estado</span></th>
-                      <th scope="col" width="20%"><span>Acciones</span></th>
+                      <th scope="col" width="20%" className="text-center"><span>Productos</span></th>
+                      <th scope="col" width="20%" className="text-center"><span>Especificaciones</span></th>
+                      <th scope="col" width="10%" className="text-center"><span>Total</span></th>
+                      <th scope="col" width="20%" className="text-center"><span>Envio a domicilio</span></th>
+                      <th scope="col" width="20%" className="text-center"><span>Estado</span></th>
+                      <th scope="col" width="20%" className="text-center"><span>Acciones</span></th>
                     </tr>
                   </thead>
                   {purchases.map((e) => (
@@ -141,9 +146,15 @@ const [isOpenModal, openModal, closeModal] = useModal(false);
                         <td className="text-center">
                           {e.total}
                         </td>
-                        <td className="text-center">
-                          Delivery
-                        </td>
+                        {e.takeAway ? (
+                          <td className="text-center">
+                            Retiro
+                          </td>
+                        ) :
+                          <td className="text-center">
+                            Delivery
+                          </td>
+                        }
                         <td className="text-center">
                           {e.state}
                         </td>
@@ -154,11 +165,11 @@ const [isOpenModal, openModal, closeModal] = useModal(false);
                           <button style={{ width: '100px' }} type='button' className='btn btn-success' disabled={e.state === "Cancelado"}>Entregada</button> */}
                           {e.state === 'en proceso' ? (
                             <div>
-                              <button style={{ width: '100px' }} type='button' className='btn btn-danger' onClick={()=>{handleClick(e.id)}} >Cancelar</button>
+                              <button style={{ width: '100px' }} type='button' className='btn btn-danger' onClick={() => { handleClick(e.id) }} >Cancelar</button>
                               <ModalCancel
-                              to = {email}
-                              name = {name}
-                              isOpen={isOpenModal} closeModal={closeModal}/>
+                                to={email}
+                                name={name}
+                                isOpen={isOpenModal} closeModal={closeModal} />
                               <button style={{ width: '100px' }} type='button' className='btn btn-success' onClick={() => handleFinalizada(e.id)}>Finalizar</button>
                             </div>
                           ) : e.state === 'entregado' ?
@@ -177,6 +188,8 @@ const [isOpenModal, openModal, closeModal] = useModal(false);
       </div>
 
     </div >
+
+
 
   );
 };

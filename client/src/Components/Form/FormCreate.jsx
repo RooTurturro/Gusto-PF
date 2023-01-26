@@ -10,7 +10,7 @@ const CreateProduct = () => {
 	const navigate = useNavigate();
 	const products = useSelector((state) => state.products);
 
-	const imgParaSubir = useSelector((state)=>state.imgSubida);
+	const imgParaSubir = useSelector((state) => state.imgSubida);
 
 	const productNames = products?.map((product) => product.name);
 	const Swal = require("sweetalert2");
@@ -22,7 +22,7 @@ const CreateProduct = () => {
 
 	function previewFiles(file) {
 		const reader = new FileReader();
-		if(file){
+		if (file) {
 			reader.readAsDataURL(file);
 			reader.onloadend = () => {
 				setImage(reader.result);
@@ -34,18 +34,18 @@ const CreateProduct = () => {
 		const file = e.target.files[0];
 		setFile(file);
 		previewFiles(file);
-		
+
 	};
 
-	 const handleCargar =  async (e) => {
+	const handleCargar = async (e) => {
 		e.preventDefault();
-	 	dispatch(actions.cloud(image))
-		 Swal.fire(`La imagen se cargo exitosamente!`);
-	 }	
+		dispatch(actions.cloud(image))
+		Swal.fire(`La imagen se cargo exitosamente!`);
+	}
 
 	console.log('Esta es lo subido ', imgParaSubir)
 
-	
+
 	//---------FIN DE CLOUDINATY---------
 
 
@@ -82,7 +82,7 @@ const CreateProduct = () => {
 		return errors;
 	};
 
-	
+
 
 	const handlerChange = (event) => {
 
@@ -90,8 +90,8 @@ const CreateProduct = () => {
 		const property = event.target.name;
 		setState({ ...state, [property]: value });
 		setErrors(validate({ ...state, [property]: value }));
-		
-		
+
+
 	};
 
 	const handlerSubmit = async (event) => {
@@ -100,7 +100,7 @@ const CreateProduct = () => {
 
 		//dispatch(actions.cloud(image))
 		//---------------
-		dispatch(actions.createProduct({...state, image:imgParaSubir}));
+		dispatch(actions.createProduct({ ...state, image: imgParaSubir }));
 
 		setState({
 			name: "",
@@ -122,7 +122,7 @@ const CreateProduct = () => {
 					<div className="form-content">
 						<div className="form-items">
 							<h2>Creando producto</h2>
-							<form className="requires-validation" onSubmit={(e)=>handlerSubmit(e)}>
+							<form className="requires-validation" onSubmit={(e) => handlerSubmit(e)}>
 								<div className="col-md-12">
 									<input
 										className="form-control"
@@ -162,16 +162,18 @@ const CreateProduct = () => {
 								</div>
 
 
-								<div className="col-md-12">
+								<div className="col-md-12 mt-3">
 									<input
 										className="form-control"
 										id="fileInput"
 										type="file"
 										name="image"
-										onChange={(e)=> handleChangeFile(e)}
+										onChange={(e) => handleChangeFile(e)}
 										required
 									/>
-									<button onClick={(e)=> handleCargar(e)}>Cargar</button>
+									<div style={{marginTop:'1rem'}}>
+										<button type="button" className="btn btn-info" onClick={(e) => handleCargar(e)}>Cargar</button>
+									</div>
 
 									{errors.description && <p style={{ color: 'red' }}>{errors.image}</p>}
 								</div>

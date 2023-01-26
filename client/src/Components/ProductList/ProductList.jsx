@@ -7,11 +7,14 @@ import Sidebar from '../Sidebar/Sidebar'
 
 
 const ProductList = () => {
+
+    const user = useSelector((state) => state.user);
     const [/*order*/, setOrder] = useState('')
     const dispatch = useDispatch()
     const products = useSelector((state) => state.products)
     useEffect(() => {
         dispatch(getAllProducts())
+
     }, [dispatch])
 
     const Swal = require('sweetalert2')
@@ -27,8 +30,6 @@ const ProductList = () => {
             if (result.value) {
                 // aquí se puede llamar la acción de borrado del producto
                 dispatch(deleteProducts(id))
-
-
                 Swal.fire({
                     title: 'Producto eliminado',
                     icon: 'warning'
@@ -88,6 +89,8 @@ const ProductList = () => {
 
 
     return (
+
+
         <div style={{ display: 'flex', gap: '10rem', marginTop: '7%' }}>
             <div >
                 <Sidebar />
@@ -185,8 +188,7 @@ const ProductList = () => {
                     </div>
                 </div>
             </div>
-
-        </div>
+        </div >
     )
 }
 
