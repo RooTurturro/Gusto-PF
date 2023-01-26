@@ -27,6 +27,9 @@ const fakeSucursales = [
 	},
 ];
 
+const fireIcon =
+	" https://e7.pngegg.com/pngimages/613/472/png-clipart-gif-emoji-sticker-fire-emoji-orange-sticker-thumbnail.png";
+
 class MapContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -92,16 +95,19 @@ class MapContainer extends React.Component {
 						onClick={this.onMarkerClick}
 						name={"Primer local"}
 						position={{ lat: -33.119903, lng: -64.351288 }}
+						icon={fireIcon}
 					/>
 					<Marker
 						onClick={this.onMarkerClick}
 						name={"Segundo local"}
 						position={{ lat: -33.136166, lng: -64.353221 }}
+						icon={fireIcon}
 					/>
 					<Marker
 						onClick={this.onMarkerClick}
 						name={"Tercer local"}
 						position={{ lat: -33.119978, lng: -64.367714 }}
+						icon={fireIcon}
 					/>
 					<InfoWindow
 						marker={this.state.activeMarker}
