@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 import { getAllPurchases, userProfile, updatePurchaseState} from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './UserHistory.module.css'
+import OldUserHistory from './oldUserHistory'
+import logo from "../../assets/gustoPng.png";
 
 
 
@@ -23,26 +25,12 @@ const UserHistory = () => {
       user.name === purchase.name
     ) 
     
-    function purchase() {
-      if (!userPurchase.length) {
-        Swal.fire({
-          title:'Aun no tenes compras! Conoce nuestros productos',
-          confirmButtonText:'Ir al menú'})
-          .then((result) => {
-            if (result.value) {
-              window.location.href = 'https://ganasdegusto.vercel.app/menu';
-            }
-          })
   
-      }
-    }
-    
-
   useEffect(() => {
     
     dispatch(getAllPurchases())
     dispatch(userProfile(email))
-    purchase()
+
   }, [dispatch])
 
 
@@ -60,77 +48,34 @@ const UserHistory = () => {
 }
 
 
-
+// height: 100vh; /* Magic here */
+// display: flex;
+// justify-content: center;
+// align-items: center;
   return (
-
-    <>
-{/* vertical-align: middle */}
-    <div class="container" style={{marginTop:'100px'}}>    
-    {userPurchase?.map((e) => (    
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="main-box clearfix">
-                <div class="table-responsive">
-                  <table class="table user-list">
-                    <thead>
-                      <tr>
-                        <th scope="col" width="10%" className="text-center"><span>Nombre</span></th>
-                        <th scope="col" width="20%" className="text-center"><span>Direccion</span></th>
-                        <th scope="col" width="20%" className="text-center"><span>Productos</span></th>
-                        <th scope="col" width="20%" className="text-center"><span  style={{verticalAlign:'middle'}}>Especificaciones</span></th>
-                        <th scope="col" width="10%" className="text-center"><span>Total</span></th>
-                        <th scope="col" width="20%" className="text-center"><span>Envio a domicilio</span></th>
-                        <th scope="col" width="20%" className="text-center"><span>Estado</span></th>
-                      </tr>
-                    </thead>
-                    
-                    <tbody>
-                      <tr>
-                        <td class="text-center" >
-                          {e.name}
-                        </td>
-
-                        <td class="text-center">
-                          {e.address}
-                        </td>
-                        <td class="text-center">
-                          {e.products}
-                        </td>
-                        <td class="text-center">
-                          {e.specification}
-                        </td>
-
-                        <td class="text-center">
-                          {e.total}
-                        </td>
-                        <td class="text-center">
-                          Delivery
-                        </td>
-
-                        { e.takeAway === false ?
-                          <td class="text-center">
-                            {e.state === 'en proceso' ?
-                            <button type='button' class='btn btn-success' onClick={() => purchaseState(e.id)}>Entregada!</button>
-                            : e.state}
-                          </td>
-                        : <td class="text-center">
-                        {e.state}
-                      </td>}
-
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-              </div>
-            </div>
+    <div>
+      { userPurchase.length > 0 ?
+        <OldUserHistory/>
+        : 
+        <div>
+          <div>
+          <div style={{height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '-170px', marginTop:'-20px' }}>
+            <img src={logo} alt="img" style={{maxWidth:'30%'}} />
           </div>
-                    ))}
-
-
+          <h2 style={{
+						display: "flex",
+						justifyContent: "center",
+						marginTop: "0rem",
+					}} className={styles.comments} >PARECE QUE AUN NO TIENES COMPRAS</h2>
+          <h2 style={{
+						display: "flex",
+						justifyContent: "center",
+						marginTop: "0rem",
+					}} className={styles.comments} > <a href='http://ganasdegusto.vercel.app/menu' style={{color: 'red'}}>🔥VER MENÚ🔥</a></h2>
           </div>
-    </>
-
+        </div>
+        }
+    </div>
   );
 };
 
