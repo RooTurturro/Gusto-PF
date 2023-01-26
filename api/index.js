@@ -9,7 +9,7 @@ const testConection = async () => {
   try {
     await conn.authenticate();
     console.log("Conection ok");
-    await conn.sync({ force: true }).then(() => {
+    await conn.sync({ force: false }).then(() => {
       server.listen(port, () => {
         console.log(`%s listening at ${port}`); // eslint-disable-line no-console
       });
