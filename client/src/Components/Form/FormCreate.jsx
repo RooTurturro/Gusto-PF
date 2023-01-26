@@ -39,9 +39,8 @@ const CreateProduct = () => {
 
 	 const handleCargar =  async (e) => {
 		e.preventDefault();
-
 	 	dispatch(actions.cloud(image))
-		
+		 Swal.fire(`La imagen se cargo exitosamente!`);
 	 }	
 
 	console.log('Esta es lo subido ', imgParaSubir)
