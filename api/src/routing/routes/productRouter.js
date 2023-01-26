@@ -127,16 +127,77 @@ productRouter.put("/state/:id", async (req, res) => {
   }
 });
 
-productRouter.put("/rating/:id", async (req, res) => {
+
+productRouter.post("/rating/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { rating } = req.body;
+    const calf = req.body.rating;
+
+    if (
+      calf < 1 ||
+      calf > 5 ||
+      typeof calf !== "number" ||
+      !Number.isInteger(calf)
+    ) {
+      return res.status(400).send("Valores invalidos !!!");
+    }
+
+    const proProduct = await Product.findByPk(id);
+
+    if (!proProduct) {
+      return res.status(404).send("No se encontro promedio");
+    }
+
+    const sum = [calf].reduce((a, b) => a + b); // reduce the array to the sum of its values
+    const pro = Math.ceil(sum / [calf].length); // calculate the average of the rating
+
+    await proProduct.update({ totalRating: pro }, { where: { id: id } }); // update the product with the new rating
+
+    return res.status(200).json(proProduct); // send back the updated product
+    
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+/* productRouter.post("/rating/:id", async (req, res) => {
+  let califics = [];
+
+  try {
+    const { id } = req.params;
+    const calf = req.body.rating;
+
+    if (
+      calf < 1 ||
+      calf > 5 ||
+      typeof calf !== "number" ||
+      !Number.isInteger(calf)
+    ) {
+      res.status(400).send("Valores invalidos !!!");
+    }
+
+    califics.push(calf);
+
+    let sum = califics.reduce((a, b) => a + b);
+    let pro = Math.ceil(sum / califics.length);
+    const proProduct = await Product.findByPk(id);
+    await proProduct.update({ totalRating: pro }, { where: { id: id } });
+    proProduct ? res.status(200).json(proProduct) : res.status(404).send("No se encontro promedio");
+  } catch (error) {
+    console.log(error)
+  }
+}); */
+
+/* productRouter.put("/rating/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { rating } = req.body; */
 
     /* rating < 1 || rating > 5
       ? res.status(400).send("Valores invalidos !!!")
       : rating; */
 
-    if (
+    /* if (
       rating < 1 ||
       rating > 5 ||
       typeof rating !== "number" ||
@@ -161,6 +222,6 @@ productRouter.put("/rating/:id", async (req, res) => {
   } catch (error) {
     console.log("entre al error del put", error);
   }
-});
+}); */
 
 module.exports = productRouter;
