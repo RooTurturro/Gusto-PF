@@ -69,7 +69,7 @@ const rootReducer = (state = initialState, action) => {
 
 		case CLOUD:
 			
-			const uploadedImage = action.payload.data.public_id;
+			const uploadedImage = action.payload.data;
 			
 			return {
 				...state,
