@@ -8,7 +8,7 @@ const cloudinaryRouter = Router();
 // .../images/cloudinary
 cloudinaryRouter.post("/cloudinary", async (req, res) => {
 	const { image } = req.body;
-
+	
 	const uploadedImage = await cloudinary.uploader.upload(
 		image,
 		{
