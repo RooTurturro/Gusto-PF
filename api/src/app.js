@@ -36,14 +36,14 @@ const logTime = (req, res, next) => {
 	next();
 };
 
-//  const redirectHttps = (req, res, next) => {
-//  	if (req.headers["x-forwarded-proto"] !== "https") {
-//  		return res.redirect(`https://${req.headers.host}${req.url}`);
-//  	}
-//  	next();
-//  };
+ const redirectHttps = (req, res, next) => {
+ 	if (req.headers["x-forwarded-proto"] !== "https") {
+ 		return res.redirect(`https://${req.headers.host}${req.url}`);
+ 	}
+ 	next();
+ };
 
-// server.use(redirectHttps);
+server.use(redirectHttps);
 server.use(auth(authConfig));
 server.use(logger("dev"));
 server.use(express.urlencoded({ extended: false, limit: "100mb" }));
