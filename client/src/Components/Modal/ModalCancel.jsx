@@ -21,7 +21,7 @@ const handleInputs = (event) =>{
 }
 
  const handleSubmit = async ()=>{
- await axios.post("http://localhost:3001/api/mail/cancel",{to, name ,motivo})
+ await axios.post("http://gusto-pf-production.up.railway.app/api/mail/cancel",{to, name ,motivo})
  }
 console.log(to);
     return(
