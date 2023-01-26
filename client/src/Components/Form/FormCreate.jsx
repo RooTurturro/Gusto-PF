@@ -9,7 +9,9 @@ const CreateProduct = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const products = useSelector((state) => state.products);
-	const imgParaSubir = useSelector((state)=>state.preview);
+
+	const imgParaSubir = useSelector((state)=>state.imgSubida);
+
 	const productNames = products?.map((product) => product.name);
 	const Swal = require("sweetalert2");
 
@@ -35,7 +37,14 @@ const CreateProduct = () => {
 		
 	};
 
-	console.log('Esta es lo subido ', image)
+	 const handleCargar =  async (e) => {
+		e.preventDefault();
+
+	 	dispatch(actions.cloud(image))
+		
+	 }	
+
+	console.log('Esta es lo subido ', imgParaSubir)
 
 	
 	//---------FIN DE CLOUDINATY---------
@@ -49,7 +58,7 @@ const CreateProduct = () => {
 		name: "",
 		price: "",
 		description: "",
-		image: "",
+		image: '',
 		state: "",
 		rating: "",
 		category: "",
@@ -77,22 +86,23 @@ const CreateProduct = () => {
 	
 
 	const handlerChange = (event) => {
+
 		const value = event.target.value;
 		const property = event.target.name;
 		setState({ ...state, [property]: value });
 		setErrors(validate({ ...state, [property]: value }));
+		
+		
 	};
 
 	const handlerSubmit = async (event) => {
 
 		event.preventDefault();
 
-		
-		
-		dispatch(actions.cloud(image))
-
+		//dispatch(actions.cloud(image))
 		//---------------
-		dispatch(actions.createProduct(state));
+		dispatch(actions.createProduct({...state, image:imgParaSubir}));
+
 		setState({
 			name: "",
 			price: "",
@@ -162,7 +172,8 @@ const CreateProduct = () => {
 										onChange={(e)=> handleChangeFile(e)}
 										required
 									/>
-									
+									<button onClick={(e)=> handleCargar(e)}>Cargar</button>
+
 									{errors.description && <p style={{ color: 'red' }}>{errors.image}</p>}
 								</div>
 

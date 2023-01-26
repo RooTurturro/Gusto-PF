@@ -26,7 +26,7 @@ cloudinaryRouter.post("/cloudinary", async (req, res) => {
 	);
 
 	try {
-		res.status(200).json(uploadedImage);
+		res.status(200).json(uploadedImage.url);
 	} catch (error) {
 		console.log(error);
 	}

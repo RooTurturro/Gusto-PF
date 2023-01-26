@@ -17,7 +17,7 @@ const clientId = 'LqqBa9zF6gjJ2lwcrNYsAtYpikXifzQZ';
 // const domain = 'dev-18zov1enqjrx8hn7.us.auth0.com';
 // const clientId = 'dC62CcwF4rJihASZzkZ7ZTixIGGoRtao';
 
-// axios.defaults.baseURL = 'http://gusto-pf-production.up.railway.app'
+ // axios.defaults.baseURL = 'http://gusto-pf-production.up.railway.app'
 
  axios.defaults.baseURL = 'http://localhost:3001'
 
