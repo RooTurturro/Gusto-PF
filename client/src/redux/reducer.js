@@ -19,6 +19,8 @@ import { USER_LOCAL_LOGIN } from '../redux/actions'
 import { USER_LOCAL_LOGOUT } from '../redux/actions'
 import { USER_PROFILE } from '../redux/actions'
 import { RESET_STATE_PURCHASE } from '../redux/actions'
+import { PREVIEW } from '../redux/actions';
+import { CLOUD } from '../redux/actions';
 
 
 import {
@@ -43,7 +45,9 @@ const initialState = {
 	cart: [],
 	rating: undefined,
 	purchases: [],
-	newPurchase: []
+	newPurchase: [],
+	preview:'',
+	imgSubida:'',
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -54,6 +58,26 @@ const rootReducer = (state = initialState, action) => {
 				loading: true,
 			};
 		//-------------------Users Reducers--------------
+		case PREVIEW:
+			const reader = new FileReader();
+				reader.readAsDataURL(action.payload);
+				
+				return {
+					...state,
+					preview: reader.result,
+				}
+
+		case CLOUD:
+			
+			const uploadedImage = action.payload.data.public_id;
+			
+			return {
+				...state,
+				imgSubida: uploadedImage,
+			}
+
+
+
 		case USER_UPDATE:
 			return {
 				...state,

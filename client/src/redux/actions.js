@@ -28,7 +28,8 @@ export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_ALL_PURCHASES = "GET_ALL_PURCHASES";
 export const RESET_STATE_PURCHASE = "RESET_STATE_PURCHASE";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
-
+export const PREVIEW = "PREVIEW";
+export const CLOUD = 'CLOUD';
 export const POST_PURCHASE = "POST_PURCHASE";
 
 export const getAllProducts = () => {
@@ -324,3 +325,19 @@ export const userUpdate = (payload) => {
 		return dispatch({ type: USER_UPDATE, payload: json.data });
 	};
 };
+
+
+export const preview = (file)=>{
+	return async function (dispatch) {
+		return dispatch({ type: PREVIEW, payload: file });
+	};
+}
+
+export const cloud = (image)=>{
+	return async function (dispatch) {
+		const result = await axios.post("/images/cloudinary", {
+			image,
+		});
+		return dispatch({ type: CLOUD, payload: result });
+	};
+}
