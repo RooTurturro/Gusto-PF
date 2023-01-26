@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: center;
+}
+
+.pediya h4 {
+    color: black;
+    background-color: red;
+    padding-top: 1rem;
+    padding-left: 10rem;
+    padding-bottom: 1rem;
+    padding-right: 10rem;
+    font-weight: bold;
+}
+
+.montototal {
+    font-family: 'Oswald';
+    display: flex;
+    justify-content:flex-end;
+    width: 80%;
+    gap: 2rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.linea {
+    width: 80%;
+    height: 2px;
+    background-color: #000;
+    border: none;
+}

@@ -5,7 +5,6 @@ body{
 .card img {
   width: 23rem;
   object-fit: contain;
-  object-position: top;
   transition: all 0.3s ease-in-out;
   
 }
@@ -21,6 +20,7 @@ body{
   margin-right: 2rem;
   margin-bottom: 1rem;
   font-family: 'Oswald';
+  z-index: 1;
   
 }
 .card-title{

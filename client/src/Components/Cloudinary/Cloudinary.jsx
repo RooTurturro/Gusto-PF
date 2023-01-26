@@ -37,7 +37,7 @@ const Cloudinary = () => {
 	};
 
 	return (
-		<>
+		<div style={{marginTop:'10%'}}>
 			<div className="container mt-5 align-items-center justify-content-center">
 				<h2>Hello, Welcome on this Cloudinary course</h2>
 				<form onSubmit={(e) => handleSubmit(e)}>
@@ -53,7 +53,7 @@ const Cloudinary = () => {
 			</div>
 			<img src={image} alt="" />
 			<Img uploadedImage={uploadedImg} />
-		</>
+		</div>
 	);
 };
 
