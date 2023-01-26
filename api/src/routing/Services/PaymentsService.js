@@ -18,7 +18,7 @@ class PaymentService {
       back_urls: {
         failure: "",
         pending: "",
-        success: "http://localhost:3000/checkout",
+        success: "http://ganasdegusto.vercel.app/checkout",
       },
       auto_return: 'approved',
       binary_mode: true, // no permite pagos pendientes (rapipago etc)

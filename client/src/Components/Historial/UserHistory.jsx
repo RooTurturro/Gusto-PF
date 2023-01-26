@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { getAllPurchases, userProfile, updatePurchaseState} from '../../redux/actions'
+import { getAllPurchases, userProfile, updatePurchaseState } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './UserHistory.module.css'
 import OldUserHistory from './oldUserHistory'
@@ -16,6 +16,7 @@ import logo from "../../assets/gustoPng.png";
 
 const UserHistory = () => {
 
+
     const dispatch = useDispatch()
     const email = window.localStorage.getItem('userEmail')
     const purchases = useSelector((state) => state.purchases)
@@ -25,9 +26,9 @@ const UserHistory = () => {
       user.name === purchase.name
     ) 
     
-  
+ 
   useEffect(() => {
-    
+
     dispatch(getAllPurchases())
     dispatch(userProfile(email))
 
@@ -41,11 +42,11 @@ const UserHistory = () => {
     dispatch(updatePurchaseState(id, { state: 'entregado' }));
     dispatch(getAllPurchases())
     Swal.fire({
-        title: 'Entrega confirmada'
+      title: 'Entrega confirmada'
     }).then(() => {
-        window.location.reload()
+      window.location.reload()
     })
-}
+  }
 
 
 // height: 100vh; /* Magic here */
@@ -53,6 +54,7 @@ const UserHistory = () => {
 // justify-content: center;
 // align-items: center;
   return (
+
     <div>
       { userPurchase.length > 0 ?
         <OldUserHistory/>
@@ -76,6 +78,7 @@ const UserHistory = () => {
         </div>
         }
     </div>
+
   );
 };
 
