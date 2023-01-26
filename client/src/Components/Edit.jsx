@@ -11,13 +11,13 @@ const Edit = ({ productDetail }) => {
 		setEditing(true);
 	};
 
-	useEffect(()=>{
+	useEffect(() => {
 		dispatch(getAllUsers());
 	})
 
 	return (
 		<div>
-			<button type="button" className="btn btn-warning" onClick={handleEdit}>Editar</button>
+			<button type="button" onClick={handleEdit} style={{ fontFamily: 'Oswald', fontSize: '1.4rem', border: 'none', backgroundColor: 'red', color:'white'}}>EDITAR</button>
 			{editing && <Form product={productDetail} editing={editing} />}
 		</div>
 	);

@@ -94,7 +94,7 @@ const OldUserHistory = () => {
                             Retiro en local
                           </td>
                           :<td class="text-center">
-                            Retiro en local
+                            Delivery
                           </td>}
                       
 

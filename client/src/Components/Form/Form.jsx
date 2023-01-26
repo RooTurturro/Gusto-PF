@@ -88,6 +88,7 @@ const Form = ({ product, editing }) => {
 										placeholder={
 											editing ? `Imagen actual: ${product.image}` : "Imagen del producto"
 										}
+										disabled
 									/>
 								</div>
 								<div className="col-md-12">
