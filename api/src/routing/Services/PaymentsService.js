@@ -17,8 +17,8 @@ class PaymentService {
       ],
       back_urls: {
         failure: "",
-        pending: "",
-        success: "http://ganasdegusto.vercel.app/checkout",
+        pending: "https://ganasdegusto.vercel.app/checkout",
+        success: "https://ganasdegusto.vercel.app/checkout",
       },
       auto_return: 'approved',
       binary_mode: true, // no permite pagos pendientes (rapipago etc)
